@@ -32,7 +32,7 @@ export default function Pricing() {
                 Simple, Transparent Pricing
               </h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Choose the plan that's right for your business. All plans
+                Choose the plan that is right for your business. All plans
                 include a 14-day free trial.
               </p>
             </motion.div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
@@ -28,7 +28,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center max-w-3xl mx-auto mb-12 pt-10"
+              className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                 Your Harbor for Financial Growth
@@ -39,11 +39,15 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="relative w-full h-[80vh] sm:h-[90vh] md:h-screen mb-[100px]  sm:mb-[300px] md:mb-[400px]">
-              <GlobeComponent />
+            <div className="w-full mb-[100px] sm:mb-[300px] md:mb-[400px]">
+              {/* Wrap GlobeComponent in a relative container */}
+              <div className="relative w-full">
+                <GlobeComponent />
 
-              <div className="absolute top-1/2 left-0 w-full h-1/2 z-10 transform -translate-y-1/2">
-                <SamplePage />
+                {/* Position SamplePage absolutely inside Globe */}
+                <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
+                  <SamplePage />
+                </div>
               </div>
             </div>
           </div>
@@ -61,7 +65,7 @@ export default function HomePage() {
 
         <Faq />
 
-        <ReadyToTransform />
+        {/* <ReadyToTransform /> */}
       </main>
     </div>
   );
