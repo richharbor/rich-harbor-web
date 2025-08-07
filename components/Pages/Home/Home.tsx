@@ -3,7 +3,6 @@
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { motion } from "framer-motion";
-import ReadyToTransform from "./ReadyToTransform/ReadyToTransform";
 import Faq from "./Faq/Faq";
 import Pricing from "./Pricing/Pricing";
 import Testimonials from "./Testimonials/Testimonials";
@@ -16,7 +15,6 @@ import SamplePage from "./SamplePage/SamplePage";
 export default function HomePage() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      {/* Stooting Stars  */}
       <ShootingStars />
       <StarsBackground />
 
