@@ -25,7 +25,7 @@ export default function Testimonials() {
                 Loved by Teams Worldwide
               </h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Don't just take our word for it. See what our customers have to
+                Dont just take our word for it. See what our customers have to
                 say about their experience.
               </p>
             </motion.div>
@@ -41,35 +41,35 @@ export default function Testimonials() {
                 },
                 {
                   quote:
-                    "The analytics dashboard provides insights we never had access to before. It's helped us make data-driven decisions that have improved our ROI.",
+                    "The analytics dashboard provides insights we never had access to before. It has helped us make data-driven decisions that have improved our ROI.",
                   author: "Michael Chen",
                   role: "Marketing Director, GrowthLabs",
                   rating: 5,
                 },
                 {
                   quote:
-                    "Customer support is exceptional. Any time we've had an issue, the team has been quick to respond and resolve it. Couldn't ask for better service.",
+                    "Customer support is exceptional. Any time we have had an issue, the team has been quick to respond and resolve it. Could not ask for better service.",
                   author: "Emily Rodriguez",
                   role: "Operations Lead, StartupX",
                   rating: 5,
                 },
                 {
                   quote:
-                    "We've tried several similar solutions, but none compare to the ease of use and comprehensive features of SaaSify. It's been a game-changer.",
+                    "We have tried several similar solutions, but none compare to the ease of use and comprehensive features of SaaSify. It is been a game-changer.",
                   author: "David Kim",
                   role: "CEO, InnovateNow",
                   rating: 5,
                 },
                 {
                   quote:
-                    "The collaboration tools have made remote work so much easier for our team. We're more productive than ever despite being spread across different time zones.",
+                    "The collaboration tools have made remote work so much easier for our team. We are more productive than ever despite being spread across different time zones.",
                   author: "Lisa Patel",
                   role: "HR Director, RemoteFirst",
                   rating: 5,
                 },
                 {
                   quote:
-                    "Implementation was seamless, and the ROI was almost immediate. We've reduced our operational costs by 30% since switching to SaaSify.",
+                    "Implementation was seamless, and the ROI was almost immediate. We have reduced our operational costs by 30% since switching to SaaSify.",
                   author: "James Wilson",
                   role: "COO, ScaleUp Inc",
                   rating: 5,
