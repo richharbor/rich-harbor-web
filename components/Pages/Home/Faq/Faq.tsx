@@ -1,93 +1,96 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
 
-export default function Faq() {
-  return (
-    <section id="faq" className="w-full py-20 md:py-32">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
-        >
-          <h2 className="text-5xl md:text-5xl font-bold tracking-tight">
-            Let's Answer Your Questions
-          </h2>
-          <p className="max-w-[800px] text-muted-foreground text-sm ">
-            Simplify crypto investing, trading, and portfolio management with
-            cutting- <br />
-            edge tools designed for everyone—from beginners to pros.
-          </p>
-        </motion.div>
+import Tag from "@/components/ui/Tag";
+import { AnimatePresence, motion } from "framer-motion";
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-        <div className="mx-auto max-w-3xl">
-          <Accordion type="single" collapsible className="w-full">
-            {[
-              {
-                question: "How does the 14-day free trial work?",
-                answer:
-                  "Our 14-day free trial gives you full access to all features of your selected plan. No credit card is required to sign up, and you can cancel at any time during the trial period with no obligation.",
-              },
-              {
-                question: "Can I change plans later?",
-                answer:
-                  "Yes, you can upgrade or downgrade your plan at any time. If you upgrade, the new pricing will be prorated for the remainder of your billing cycle. If you downgrade, the new pricing will take effect at the start of your next billing cycle.",
-              },
-              {
-                question: "Is there a limit to how many users I can add?",
-                answer:
-                  "The number of users depends on your plan. The Starter plan allows up to 5 team members, the Professional plan allows up to 20, and the Enterprise plan has no limit on team members.",
-              },
-              {
-                question:
-                  "Do you offer discounts for nonprofits or educational institutions?",
-                answer:
-                  "Yes, we offer special pricing for nonprofits, educational institutions, and open-source projects. Please contact our sales team for more information.",
-              },
-              {
-                question: "How secure is my data?",
-                answer:
-                  "We take security very seriously. All data is encrypted both in transit and at rest. We use industry-standard security practices and regularly undergo security audits. Our platform is compliant with GDPR, CCPA, and other relevant regulations.",
-              },
-              {
-                question: "What kind of support do you offer?",
-                answer:
-                  "Support varies by plan. All plans include email support, with the Professional plan offering priority email support. The Enterprise plan includes 24/7 phone and email support. We also have an extensive knowledge base and community forum available to all users.",
-              },
-            ].map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-              >
-                <AccordionItem
-                  value={`item-${i}`}
-                  className="border-b border-border/40 py-2"
-                >
-                  <AccordionTrigger className="text-left text-lg font-medium hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
-                  <div className="w-full border-t border-gray-300 " />
-                </AccordionItem>
-              </motion.div>
-            ))}
-          </Accordion>
-        </div>
-      </div>
-    </section>
-  );
+const faqs = [
+    {
+        question: "How is Layers different from other design tools?",
+        answer: "Unlike traditional design tools, Layers prioritizes speed and simplicity without sacrificing power. Our intelligent interface adapts to your workflow, reducing clicks and keeping you in your creative flow.",
+    },
+    {
+        question: "Is there a learning curve?",
+        answer: "Layers is designed to feel intuitive from day one. Most designers are productive within hours, not weeks. We also provide interactive tutorials and comprehensive documentation to help you get started.",
+    },
+    {
+        question: "How do you handle version control?",
+        answer: "Every change in Layers is automatically saved and versioned. You can review history, restore previous versions, and create named versions for important milestones.",
+    },
+    {
+        question: "Can I work offline?",
+        answer: "Yes! Layers includes a robust offline mode. Changes sync automatically when you're back online, so you can keep working anywhere.",
+    },
+    {
+        question: "How does Layers handle collaboration?",
+        answer: "Layers is built for collaboration. You can invite team members to your projects, share feedback, and work together in real-time.",
+    },
+];
+
+export default function Faqs() {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    return (
+        <section className="py-24 ">
+            <div className="container">
+                <div className="flex justify-center">
+                    <Tag>Faqs</Tag>
+                </div>
+                <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
+                    Questions? We&apos;ve got{" "}
+                    <span className="text-lime-400">answers</span>
+                </h2>
+
+                <div className="mt-12 flex flex-col gap-6 max-w-xl mx-auto">
+                    {faqs.map((faq, faqIndex) => (
+                        <div
+                            key={faq.question}
+                            onClick={() => setSelectedIndex(faqIndex)}
+                            className="bg-neutral-900 rounded-2xl border border-white/10 p-6 "
+                        >
+                            <div className="flex justify-between items-start">
+                                <h3 className="font-medium m-0">
+                                    {faq.question}
+                                </h3>
+                                <Plus
+                                    size={30}
+                                    className={twMerge(
+                                        "feather feather-plus text-lime-400 flex-shrink-0 transition duration-300",
+                                        selectedIndex === faqIndex &&
+                                            "rotate-45"
+                                    )}
+                                />
+                            </div>
+
+                            <AnimatePresence>
+                                {selectedIndex === faqIndex && (
+                                    <motion.div
+                                        initial={{
+                                            height: 0,
+                                            marginTop: 0,
+                                        }}
+                                        animate={{
+                                            height: "auto",
+                                            marginTop: 24,
+                                        }}
+                                        exit={{
+                                            height: 0,
+                                            marginTop: 0,
+                                        }}
+                                        className="overflow-hidden"
+                                    >
+                                        <p className="text-white/50">
+                                            {faq.answer}
+                                        </p>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }

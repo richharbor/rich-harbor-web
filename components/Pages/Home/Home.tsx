@@ -16,6 +16,12 @@ import {
   GlowingEffectDemo,
 } from "./GlowingEffect/Glowing-effect";
 import { GlowingStarsBackgroundCardPreview } from "./GlowingStarsCard/glowing-stars";
+import Integrations from "./Integration/Integration";
+import ExtraFeatures from "./ExtraFeatures/ExtraFeatures";
+import ReadyToBoost from "./ReadyToBoost/ReadyToBoost";
+import Integration2 from "./Integration2/integration";
+import Features2 from "./Features2/Features2";
+import Companies from "./Companies/companies";
 
 export default function HomePage() {
   return (
@@ -43,8 +49,7 @@ export default function HomePage() {
             </motion.div>
 
             <div className="w-full mb-[100px] sm:mb-[250px] md:mb-[250px]">
-
-              <div className="relative -top-20 w-full">
+              <div className="relative -top:5 sm:-top-20 w-full">
                 <GlobeComponent />
 
                 <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
@@ -55,17 +60,20 @@ export default function HomePage() {
           </div>
         </section>
 
-        <TrustedBy />
+        <Companies />
         <Features />
-
+        <Features2 />
         <GlowingEffectDemo />
-        <GlowingStarsBackgroundCardPreview /> 
+        <GlowingStarsBackgroundCardPreview />
 
         <HowItWorks />
         <Testimonials />
-
+        <Integration2 />
         <Pricing />
 
+        <ExtraFeatures />
+        <Integrations />
+        <ReadyToBoost />
         <Faq />
 
         {/* <ReadyToTransform /> */}
