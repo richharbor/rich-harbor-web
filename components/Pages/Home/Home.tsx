@@ -11,6 +11,11 @@ import TrustedBy from "./TrustedBy/TrustedBy";
 import Features from "./Features/Features";
 import GlobeComponent from "./Globe/Globe";
 import SamplePage from "./SamplePage/SamplePage";
+import {
+  GlowingEffect,
+  GlowingEffectDemo,
+} from "./GlowingEffect/Glowing-effect";
+import { GlowingStarsBackgroundCardPreview } from "./GlowingStarsCard/glowing-stars";
 
 export default function HomePage() {
   return (
@@ -37,12 +42,11 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="w-full mb-[100px] sm:mb-[300px] md:mb-[400px]">
-              {/* Wrap GlobeComponent in a relative container */}
-              <div className="relative w-full">
+            <div className="w-full mb-[100px] sm:mb-[250px] md:mb-[250px]">
+
+              <div className="relative -top-20 w-full">
                 <GlobeComponent />
 
-                {/* Position SamplePage absolutely inside Globe */}
                 <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
                   <SamplePage />
                 </div>
@@ -52,11 +56,12 @@ export default function HomePage() {
         </section>
 
         <TrustedBy />
-
         <Features />
 
-        <HowItWorks />
+        <GlowingEffectDemo />
+        <GlowingStarsBackgroundCardPreview /> 
 
+        <HowItWorks />
         <Testimonials />
 
         <Pricing />

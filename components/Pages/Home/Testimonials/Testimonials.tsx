@@ -84,7 +84,7 @@ export default function Testimonials() {
                 >
                   <Card className="h-full overflow-hidden border-border/40 bg-gradient-to-b from-background to-muted/10 backdrop-blur transition-all hover:shadow-md">
                     <CardContent className="p-6 flex flex-col h-full">
-                      <div className="flex mb-4">
+                      {/* <div className="flex mb-4">
                         {Array(testimonial.rating)
                           .fill(0)
                           .map((_, j) => (
@@ -93,7 +93,7 @@ export default function Testimonials() {
                               className="size-4 text-yellow-500 fill-yellow-500"
                             />
                           ))}
-                      </div>
+                      </div> */}
                       <p className="text-lg mb-6 flex-grow">
                         {testimonial.quote}
                       </p>

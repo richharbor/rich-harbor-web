@@ -1,29 +1,61 @@
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
+
+
+
+
+
+
+// const globeConfig = {
+//   pointSize: 4,
+//   globeColor: "#062056",
+//   showAtmosphere: true,
+//   atmosphereColor: "#F2EDD1",
+//   atmosphereAltitude: 0.2,
+//   emissive: "#062056",
+//   emissiveIntensity: 0.1,
+//   shininess: 0.9,
+//   polygonColor: "rgba(255,255,255,0.7)",
+//   ambientLight: "#38bdf8",
+//   directionalLeftLight: "#ffffff",
+//   directionalTopLight: "#ffffff",
+//   pointLight: "#ffffff",
+//   arcTime: 1000,
+//   arcLength: 0.9,
+//   rings: 1,
+//   maxRings: 3,
+//   initialPosition: { lat: 22.3193, lng: 114.1694 },
+//   autoRotate: true,
+//   autoRotateSpeed: 0.5,
+// };
+
+
 const globeConfig = {
-  pointSize: 4,
-  globeColor: "#062056",
+  pointSize: 3,
+  globeColor: "#0B1B3D", // Deeper navy for elegance
   showAtmosphere: true,
-  atmosphereColor: "#FFFFFF",
-  atmosphereAltitude: 0.1,
-  emissive: "#062056",
-  emissiveIntensity: 0.1,
-  shininess: 0.9,
-  polygonColor: "rgba(255,255,255,0.7)",
-  ambientLight: "#38bdf8",
-  directionalLeftLight: "#ffffff",
-  directionalTopLight: "#ffffff",
-  pointLight: "#ffffff",
-  arcTime: 1000,
-  arcLength: 0.9,
-  rings: 1,
-  maxRings: 3,
+  atmosphereColor: "#38bdf8", // Cool cyan glow
+  atmosphereAltitude: 0.25, // Higher for more dramatic atmosphere
+  emissive: "#1E3A8A", // Richer blue for subtle glow
+  emissiveIntensity: 0.3, // Stronger emissive effect
+  shininess: 1.2, // Slightly shinier for depth
+  polygonColor: "rgba(255, 255, 255, 0.15)", // Subtle polygon outlines
+  ambientLight: "#38bdf8", // Matches atmosphere
+  directionalLeftLight: "#a5f3fc", // Soft teal light from left
+  directionalTopLight: "#f0f9ff", // Soft icy light from top
+  pointLight: "#7dd3fc", // Gentle cool point highlights
+  arcTime: 1500, // Slightly slower arc animation
+  arcLength: 0.8,
+  rings: 2,
+  maxRings: 4,
   initialPosition: { lat: 22.3193, lng: 114.1694 },
   autoRotate: true,
-  autoRotateSpeed: 0.5,
+  autoRotateSpeed: 0.4,
 };
+
 const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+
 const sampleArcs = [
   {
     order: 1,
@@ -399,7 +431,7 @@ import React from "react";
 export default function GlobeComponent() {
   return (
     <motion.div className="relative w-full flex justify-center">
-      <div className="w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl aspect-square">
+      <div className="w-full  max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl aspect-square">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </div>
     </motion.div>
