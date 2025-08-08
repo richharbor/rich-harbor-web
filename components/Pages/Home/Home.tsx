@@ -16,6 +16,8 @@ import {
   GlowingEffectDemo,
 } from "./GlowingEffect/Glowing-effect";
 import { GlowingStarsBackgroundCardPreview } from "./GlowingStarsCard/glowing-stars";
+import Integrations from "./Integration/Integration";
+import ExtraFeatures from "./ExtraFeatures/ExtraFeatures";
 
 export default function HomePage() {
   return (
@@ -43,7 +45,6 @@ export default function HomePage() {
             </motion.div>
 
             <div className="w-full mb-[100px] sm:mb-[250px] md:mb-[250px]">
-
               <div className="relative -top-20 w-full">
                 <GlobeComponent />
 
@@ -59,13 +60,15 @@ export default function HomePage() {
         <Features />
 
         <GlowingEffectDemo />
-        <GlowingStarsBackgroundCardPreview /> 
+        <GlowingStarsBackgroundCardPreview />
 
         <HowItWorks />
         <Testimonials />
 
         <Pricing />
 
+        <ExtraFeatures/>
+        <Integrations />
         <Faq />
 
         {/* <ReadyToTransform /> */}
