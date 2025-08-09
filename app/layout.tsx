@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Footer from "../components/Common/Footer/Footer";
-// import {Navbar} from "@/components/Common/Navbar/Navbar";
+import Navbar from "@/components/Common/Navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        {/* <Navbar/> */}
+        <Navbar/>
         <div className="max-w-7xl mx-auto items-center flex flex-col px-5">
           {children}
         </div>
