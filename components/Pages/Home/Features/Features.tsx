@@ -7,39 +7,39 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
-    title: "Smart Automation",
+    title: "Centralized Marketplace",
     description:
-      "Automate repetitive tasks and workflows to save time and reduce errors.",
+      "A unified platform for seamless trading with transparent pricing and efficient deal matching.",
     icon: <Zap className="size-5" />,
   },
   {
-    title: "Advanced Analytics",
+    title: "Comprehensive Research",
     description:
-      "Gain valuable insights with real-time data visualization and reporting.",
+      "Access verified financial insights, standardized valuation models, and deep sector analytics.",
     icon: <BarChart className="size-5" />,
   },
   {
-    title: "Team Collaboration",
+    title: "Trust Framework",
     description:
-      "Work together seamlessly with integrated communication tools.",
-    icon: <Users className="size-5" />,
-  },
-  {
-    title: "Enterprise Security",
-    description:
-      "Keep your data safe with end-to-end encryption and compliance features.",
+      "Built on rigorous KYC/AML compliance with blockchain-secured transaction records.",
     icon: <Shield className="size-5" />,
   },
   {
-    title: "Seamless Integration",
+    title: "Liquidity Enhancement",
     description:
-      "Connect with your favorite tools through our extensive API ecosystem.",
+      "Advanced matching algorithms, partial transaction support, and incentive-driven liquidity.",
+    icon: <Users className="size-5" />,
+  },
+  {
+    title: "Intuitive User Experience",
+    description:
+      "Mobile-first design with a unified trading dashboard and frictionless onboarding.",
     icon: <Layers className="size-5" />,
   },
   {
-    title: "24/7 Support",
+    title: "Regulatory Compliance Hub",
     description:
-      "Get help whenever you need it with our dedicated support team.",
+      "Automated checks, standardized documentation, and real-time reporting tools.",
     icon: <Star className="size-5" />,
   },
 ];
@@ -74,15 +74,13 @@ export default function Features() {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            Features
+            Core Solution Components
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Everything You Need to Succeed
+            Designed to empower modern trading through innovation and trust
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            Our comprehensive platform provides all the tools you need to
-            streamline your workflow, boost productivity, and achieve your
-            goals.
+            Discover how Rich Harbor brings together markets, intelligence, trust, and compliance to power institutional-grade trading.
           </p>
         </motion.div>
 

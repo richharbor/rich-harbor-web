@@ -8,33 +8,45 @@ import {
 
 export const FEATURES = [
     {
-        title: "Enhance User Experience",
-        description: "Efficiently manage user data and interactions with advanced AI tools",
+        title: "SEO",
+        description: "Technical SEO, On-page/Off-page, Keyword Strategy",
         icon: WandSparklesIcon,
         image: "/images/feature-two.svg",
     },
     {
-        title: "Comprehensive Insights",
-        description: "Gain deep insights into your audience and campaign performance",
+        title: "Social Media Marketing",
+        description: "Paid Ads, Organic Content, Engagement Strategy",
         icon: ChartColumnBigIcon,
         image: "/images/feature-one.svg",
     },
     {
-        title: "Data Management",
-        description: "Manage your data with ease and efficiency",
-        icon: DatabaseIcon,
-        image: "/images/feature-three.svg",
-    },
-    {
-        title: "Real-Time Analytics",
-        description: "Track and analyze your marketing performance in real-time",
+        title: "PPC / Performance Ads",
+        description: "Google Ads, Meta Ads, Retargeting, A/B Testing",
         icon: TrendingUpIcon,
         image: "/images/feature-four.svg",
     },
     {
-        title: "Dynamic Optimization",
-        description: "AI-powered optimization for smarter marketing",
+        title: "Content Marketing",
+        description: "Blogs, Infographics, Whitepapers, Video",
+        icon: DatabaseIcon,
+        image: "/images/feature-three.svg",
+    },
+    {
+        title: "Email Marketing",
+        description: "Campaign Strategy, Automation, Lead Nurturing",
         icon: ZapIcon,
         image: "/images/feature-five.svg",
+    },
+    {
+        title: "Analytics & Reporting",
+        description: "Google Analytics, Heatmaps, Dashboard Setup",
+        icon: ChartColumnBigIcon,
+        image: "/images/feature-one.svg",
+    },
+    {
+        title: "Influencer & Affiliate",
+        description: "Influencer tie-ups, Program setup and management",
+        icon: TrendingUpIcon,
+        image: "/images/feature-four.svg",
     }
 ]

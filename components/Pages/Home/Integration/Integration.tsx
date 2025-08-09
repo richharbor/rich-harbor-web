@@ -49,14 +49,11 @@ export default function Integrations() {
                 <div className="grid lg:grid-cols-2 items-center lg:gap-16">
                     <div>
                         <h2 className="text-6xl font-medium mt-6">
-                            Plays well with{" "}
-                            <span className="text-[#FFFFFF] ">others</span>
+                            Connect Rich Harbor with the apps you use
                         </h2>
 
                         <p className="text-white/50 mt-4 text-lg ">
-                            Layers seamessly connects with your favourite tools
-                            and platforms. It's easy to plug into any workflow
-                            and collaborate platforms.
+                            Seamless integration with finance tools, CRMs, and data feeds to fit your workflow.
                         </p>
                     </div>
                     <div>

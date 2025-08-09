@@ -46,23 +46,23 @@ const Perks = () => {
 
     const PERKS = [
     {
-        title: "Property Sync",
-        description: "Sync listings across platforms instantly.",
+        title: "Sync your notes",
+        description: "Bring notes, research, and insights together in one place.",
         icon: "/icons/perk-one.svg"
     },
     {
-        title: "Smart Analytics",
-        description: "Track performance with realtime insights.",
+        title: "Tag & organize",
+        description: "Effortlessly tag and organize financial data for clarity.",
         icon: "/icons/perk-two.svg"
     },
     {
-        title: "Doc Manager",
-        description: "Handle documents and esigns easily.",
+        title: "AI opportunity detection",
+        description: "Let AI surface opportunities and risks automatically.",
         icon: "/icons/perk-three.svg"
     },
     {
-        title: "Lead Connect",
-        description: "Manage all property inquiries centrally.",
+        title: "Frictionless onboarding",
+        description: "Get started fast with a unified trading dashboard.",
         icon: "/icons/perk-four.svg"
     }
 ]; 
@@ -72,17 +72,17 @@ const Perks = () => {
             <div className="flex flex-col items-center text-center gap-4">
 
                 <AnimationContainer animation="fadeUp" delay={0.3}>
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
-                        Use our platform
-                        <br />
-                        with powerful tools
-                    </h2>
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
+                            Supercharge your trading intelligence
+                            <br />
+                            with your second brain
+                        </h2>
                 </AnimationContainer>
 
                 <AnimationContainer animation="fadeUp" delay={0.4}>
-                    <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Seamlessly integrated tools for effortless property management.
-                    </p>
+                        <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
+                            Sync knowledge, organize signals, and let AI keep you ahead.
+                        </p>
                 </AnimationContainer>
             </div>
 

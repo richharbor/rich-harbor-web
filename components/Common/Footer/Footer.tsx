@@ -1,225 +1,170 @@
-import Link from 'next/link'
-import React from 'react'
+"use client";
 
-export default function Footer() {
-  return (
-        <footer className="w-full border-t bg-background/95 backdrop-blur-sm">
-            <div className="container flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16">
-              <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 font-bold">
-                    <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground">
-                      S
-                    </div>
-                    <span>SaaSify</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Streamline your workflow with our all-in-one SaaS platform.
-                    Boost productivity and scale your business.
-                  </p>
-                  <div className="flex gap-4">
-                    <Link
-                      href="#"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="size-5"
-                      >
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                      </svg>
-                      <span className="sr-only">Facebook</span>
-                    </Link>
-                    <Link
-                      href="#"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="size-5"
-                      >
-                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                      </svg>
-                      <span className="sr-only">Twitter</span>
-                    </Link>
-                    <Link
-                      href="#"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="size-5"
-                      >
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect width="4" height="12" x="2" y="9"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                      </svg>
-                      <span className="sr-only">LinkedIn</span>
-                    </Link>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-sm font-bold">Product</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <Link
-                        href="#features"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Features
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#pricing"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Pricing
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Integrations
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        API
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-sm font-bold">Resources</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Documentation
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Guides
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Blog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Support
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-sm font-bold">Company</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Careers
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Privacy Policy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Terms of Service
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 sm:flex-row justify-between items-center border-t border-border/40 pt-8">
-                <p className="text-xs text-muted-foreground">
-                  &copy; {new Date().getFullYear()} SaaSify. All rights reserved.
-                </p>
-                <div className="flex gap-4">
-                  <Link
-                    href="#"
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Cookie Policy
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </footer>
-  )
+import Link from "next/link";
+import Icons from "../../global/icons";
+import { Button } from "../../ui/button";
+import { Particles } from "../../ui/particles";
+
+
+
+
+import { cn } from "@/lib/cn";
+import { motion } from "framer-motion";
+
+interface Props {
+    className?: string;
+    children: React.ReactNode;
+    delay?: number;
+    reverse?: boolean;
+    simple?: boolean;
 }
+
+const Container = ({ children, className, delay = 0.2, reverse, simple }: Props) => {
+    return (
+        <motion.div
+            className={cn("w-full h-full", className)}
+            initial={{ opacity: 0, y: reverse ? -20 : 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ delay: delay, duration: simple ? 0.2 : 0.4, type: simple ? "keyframes" : "spring"}}
+        >
+            {children}
+        </motion.div>
+    )
+};
+
+
+
+interface Props {
+    className?: string;
+    children: React.ReactNode;
+}
+
+const Wrapper = ({ children, className }: Props) => {
+    return (
+        <div
+            className={cn(
+                "size-full mx-auto max-w-6xl px-4 md:px-12",
+                className
+            )}
+        >
+            {children}
+        </div>
+    )
+};
+
+
+
+
+
+export const FOOTER_LINKS = [
+    {
+        title: "Product",
+        links: [
+            { name: "Home", href: "/" },
+            { name: "Features", href: "/" },
+            { name: "Pricing", href: "/" },
+            { name: "Contact", href: "/" },
+            { name: "Download", href: "/" },
+        ],
+    },
+    {
+        title: "Resources",
+        links: [
+            { name: "Blog", href: "/blog" },
+            { name: "Help Center", href: "/help-center" },
+            { name: "Community", href: "/community" },
+            { name: "Guides", href: "/guides" },
+        ],
+    },
+    {
+        title: "Legal",
+        links: [
+            { name: "Privacy", href: "/privacy" },
+            { name: "Terms", href: "/terms" },
+            { name: "Cookies", href: "/cookies" },
+        ],
+    },
+    {
+        title: "Developers",
+        links: [
+            { name: "API Docs", href: "/api-docs" },
+            { name: "SDKs", href: "/sdks" },
+            { name: "Tools", href: "/tools" },
+            { name: "Open Source", href: "/open-source" },
+            { name: "Changelog", href: "/changelog" },
+        ],
+    },
+];
+
+const Footer = () => {
+    return (
+        <footer className="w-full py-10 relative">
+            <Container>
+                <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden footer">
+                    <Particles
+                        className="absolute inset-0 w-full -z-10"
+                        quantity={40}
+                        ease={10}
+                        color="#d4d4d8"
+                        refresh
+                    />
+                    <div className="flex flex-col items-start max-w-48">
+                        <div className="flex items-center gap-2">
+                            <Icons.icon className="w-5 h-5" />
+                            <span className="text-xl font-medium">
+                                RH
+                            </span>
+                        </div>
+                        <p className="text-base max-w mt-4">
+                            Empower your business with our AI tools.
+                        </p>
+                        <Button className="mt-8">
+                            <Link href="/app">
+                                Start for free
+                            </Link>
+                        </Button>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-lg mt-10 md:mt-0">
+                        {FOOTER_LINKS?.map((section, index) => (
+                            <div key={index} className="flex flex-col gap-4">
+                                <h4 className="text-sm font-medium">
+                                    {section.title}
+                                </h4>
+                                <ul className="space-y-4 w-full">
+                                    {section.links.map((link, index) => (
+                                        <li key={index} className="text-sm text-muted-foreground hover:text-foreground transition-all w-full">
+                                            <Link href={link.href} className="w-full">
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </Wrapper>
+            </Container>
+            <Container>
+                <Wrapper className="pt-10 flex items-center justify-between relative">
+                    <p className="text-sm text-secondary-foreground">
+                        &copy; {new Date().getFullYear()} RH. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-4">
+                        <Link href="#" className="p-1">
+                            <Icons.instagram className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        </Link>
+                        <Link href="#" className="p-1">
+                            <Icons.twitter className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        </Link>
+                        <Link href="#" className="p-1">
+                            <Icons.discord className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        </Link>
+                    </div>
+                </Wrapper>
+            </Container>
+        </footer>
+    )
+};
+
+export default Footer
