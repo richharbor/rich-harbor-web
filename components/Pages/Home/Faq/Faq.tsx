@@ -8,29 +8,29 @@ import { twMerge } from "tailwind-merge";
 
 const faqs = [
   {
-    question: "How is Layers different from other design tools?",
+    question: "What makes Rich Harbor different?",
     answer:
-      "Unlike traditional design tools, Layers prioritizes speed and simplicity without sacrificing power. Our intelligent interface adapts to your workflow, reducing clicks and keeping you in your creative flow.",
+      "Rich Harbor unifies trading, research, compliance, and AI into one platform—bringing transparency, liquidity, and intelligence together.",
   },
   {
-    question: "Is there a learning curve?",
+    question: "Is my data secure?",
     answer:
-      "Layers is designed to feel intuitive from day one. Most designers are productive within hours, not weeks. We also provide interactive tutorials and comprehensive documentation to help you get started.",
+      "Yes. We use encryption for trading history and secure data handling across devices, with rigorous KYC/AML controls.",
   },
   {
-    question: "How do you handle version control?",
+    question: "Who benefits from Rich Harbor?",
     answer:
-      "Every change in Layers is automatically saved and versioned. You can review history, restore previous versions, and create named versions for important milestones.",
+      "Investors get trusted access and liquidity; companies gain visibility and fair valuation; intermediaries expand reach and efficiency.",
   },
   {
-    question: "Can I work offline?",
+    question: "How does the AI assistant help?",
     answer:
-      "Yes! Layers includes a robust offline mode. Changes sync automatically when you're back online, so you can keep working anywhere.",
+      "It analyzes trends, summarizes reports, and highlights signals so you can act faster with more confidence.",
   },
   {
-    question: "How does Layers handle collaboration?",
+    question: "What is the pricing?",
     answer:
-      "Layers is built for collaboration. You can invite team members to your projects, share feedback, and work together in real-time.",
+      "One plan at $10/month. Full access to the platform, AI tools, compliance suite, and digital marketing add‑ons.",
   },
 ];
 

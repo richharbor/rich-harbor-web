@@ -41,11 +41,10 @@ export default function HomePage() {
               className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                Your Harbor for Financial Growth
+                Think Smarter. Trade Better.
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Rich Harbor is your anchor in the sea of opportunities – steady,
-                reliable, and built for growth.
+                Welcome to Rich Harbor – Your Gateway to Intelligent Trading
               </p>
             </motion.div>
 

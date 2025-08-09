@@ -12,13 +12,13 @@ import Key from "@/components/ui/Key";
 import { motion } from "framer-motion";
 
 const features = [
-    "Asset Library",
-    "Code Preview",
-    "Flow Mode",
-    "Smart Sync",
-    "Auto Layout",
-    "Fast Search",
-    "Smart Guides",
+    "SEO",
+    "Social Media Marketing",
+    "PPC / Performance Ads",
+    "Content Marketing",
+    "Email Marketing",
+    "Analytics & Reporting",
+    "Influencer & Affiliate",
 ];
 
 const parentVariants = {
@@ -45,8 +45,8 @@ export default function ExtraFeatures() {
         <section className="py-24 ">
             <div className="container">
                 <h2 className="text-6xl font-medium text-center mt-6 max-w-2xl m-auto">
-                    Where power meets{" "}
-                    <span className="text-[#FFFFFF]">simplicity</span>
+                    Never lose{" "}
+                    <span className="text-[#FFFFFF]">information</span>
                 </h2>
                 <motion.div
                     variants={parentVariants}
@@ -61,8 +61,8 @@ export default function ExtraFeatures() {
                             viewport={{ once: true, amount: 0.2 }}
                         >
                             <FeatureCard
-                                title="Real-time collaboration"
-                                description="Work together seamlessly with conflict-free team editing"
+                                title="Encrypted trading history"
+                                description="Your trades and records are secured and available when you need them."
                                 className="md:col-span-2 lg:col-span-1"
                             >
                                 <div className="aspect-video flex items-center justify-center">
@@ -103,16 +103,15 @@ export default function ExtraFeatures() {
                             viewport={{ once: true, amount: 0.2 }}
                         >
                             <FeatureCard
-                                title="Interactive prototyping"
-                                description="Engage your clients with prototypes that react
-                                to user actions"
+                                title="Auto-synced reports"
+                                description="Reports sync across devices so insights are always up to date."
                                 className="md:col-span-2 lg:col-span-1 group transition duration-500"
                             >
                                 <div className="aspect-video flex items-center justify-center">
                                     <p className="group-hover:text-white/40 transition duration-500 text-4xl font-extrabold text-white/20 text-center">
-                                        We've achived{" "}
+                                        We’ve achieved{" "}
                                         <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                            incrideible
+                                            incredible
                                         </span>{" "}
                                         growth this year
                                     </p>
@@ -127,8 +126,8 @@ export default function ExtraFeatures() {
                             viewport={{ once: true, amount: 0.2 }}
                         >
                             <FeatureCard
-                                title="Keyboard quick actions"
-                                description="Powerfull commands to make design quickly to manage work"
+                                title="Unified portfolio insights"
+                                description="View your positions, performance, and risk in one place."
                                 className="group md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto"
                             >
                                 <div className="aspect-video flex justify-center items-center gap-4">
