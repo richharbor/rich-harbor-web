@@ -4,7 +4,6 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { motion } from "framer-motion";
 import Faq from "./Faq/Faq";
-import Pricing from "./Pricing/Pricing";
 import Testimonials from "./Testimonials/Testimonials";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import TrustedBy from "./TrustedBy/TrustedBy";
@@ -22,10 +21,12 @@ import ReadyToBoost from "./ReadyToBoost/ReadyToBoost";
 import Integration2 from "./Integration2/integration";
 import Features2 from "./Features2/Features2";
 import Companies from "./Companies/companies";
+import Perks from "./Perks/Perks";
+import Transform from "./Transfrom/Transform";
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col">
+    <div className="flex flex-col pt-5 sm:pt-20">
       <ShootingStars />
       <StarsBackground />
 
@@ -61,6 +62,7 @@ export default function HomePage() {
         </section>
 
         <Companies />
+        <Perks />
         <Features />
         <Features2 />
         <GlowingEffectDemo />
@@ -69,8 +71,7 @@ export default function HomePage() {
         <HowItWorks />
         <Testimonials />
         <Integration2 />
-        <Pricing />
-
+        <Transform />
         <ExtraFeatures />
         <Integrations />
         <ReadyToBoost />
