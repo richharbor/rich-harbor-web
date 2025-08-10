@@ -105,13 +105,13 @@ const Integration2 = () => {
 
       <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:top-1/4 inset-x-0 mt-12 lg:mt-0">
         <h2 className="text-2xl md:text-4xl lg:text-6xl font-heading font-semibold !leading-snug">
-          Social Media Integration
+          Seamless integrations
         </h2>
       </div>
       <div className="flex flex-col items-center text-center max-w-3xl mx-auto lg:absolute lg:bottom-1/4 inset-x-0 z-20 mt-8 lg:mt-0">
         <Link href="#">
           <Button size="lg">
-            See all Integrations
+            See all integrations
             <ArrowRightIcon className="size-4" />
           </Button>
         </Link>

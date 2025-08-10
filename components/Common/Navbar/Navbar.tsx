@@ -14,9 +14,9 @@ import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
 
 export const NAV_LINKS = [
-  { name: "Features", link: "#" },
-  { name: "Pricing", link: "#" },
-  { name: "Contact", link: "#" },
+  { name: "Core Components", link: "#features" },
+  { name: "Academy", link: "#" },
+  { name: "Pricing", link: "#pricing" },
 ];
 
 const useClickOutside = (callback: () => void) => {

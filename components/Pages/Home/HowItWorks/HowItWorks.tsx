@@ -19,14 +19,13 @@ export default function HowItWorks() {
                 className="rounded-full px-4 py-1.5 text-sm font-medium"
                 variant="secondary"
               >
-                How It Works
+                Learn How to Trade Smarter
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Simple Process, Powerful Results
+                Courses, strategies, and mentorship from real experts
               </h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Get started in minutes and see the difference our platform can
-                make for your business.
+                Enroll in Rich Harbor Academy to level up your trading with practical, real-world guidance.
               </p>
             </motion.div>
 
@@ -36,21 +35,21 @@ export default function HowItWorks() {
               {[
                 {
                   step: "01",
-                  title: "Create Account",
+                  title: "Learn the Fundamentals",
                   description:
-                    "Sign up in seconds with just your email. No credit card required to get started.",
+                    "Start with core modules that build strong market understanding.",
                 },
                 {
                   step: "02",
-                  title: "Configure Workspace",
+                  title: "Apply Real Strategies",
                   description:
-                    "Customize your workspace to match your team's unique workflow and requirements.",
+                    "Practice with structured frameworks and guided case studies.",
                 },
                 {
                   step: "03",
-                  title: "Boost Productivity",
+                  title: "Act Smarter, Faster",
                   description:
-                    "Start using our powerful features to streamline processes and achieve your goals.",
+                    "Use AI assistance and analytics to execute with confidence.",
                 },
               ].map((step, i) => (
                 <motion.div

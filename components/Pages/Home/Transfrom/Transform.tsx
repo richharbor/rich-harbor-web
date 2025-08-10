@@ -81,16 +81,15 @@ const Transform = () => {
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
           <AnimationContainer animation="fadeUp" delay={0.3}>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
-              Transforming real estate
+              Built by an independent team
               <br />
-              management globally
+              transforming how trading works
             </h2>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Join thousands who trust our platform to streamline operations and
-              grow.
+              From New York to Singapore, we’re globally distributed and focused on better markets.
             </p>
           </AnimationContainer>
 
