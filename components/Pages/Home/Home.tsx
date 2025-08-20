@@ -60,16 +60,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <Companies />
-        <Perks />
-        <Features />
-        <Features2 />
-        <GlowingEffectDemo />
-        <GlowingStarsBackgroundCardPreview />
+        {/* <Companies /> */}
+        {/* <Perks /> */}
+        {/* <Features /> */}
+        {/* <Features2 /> */}
+        {/* <GlowingEffectDemo /> */}
+        {/* <GlowingStarsBackgroundCardPreview /> */}
 
         <HowItWorks />
-        <Testimonials />
-        <Integration2 />
+        {/* <Testimonials /> */}
+        {/* <Integration2 /> */}
         <Transform />
         <ExtraFeatures />
         <Integrations />
