@@ -32,7 +32,7 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full pt-5 pb-20 overflow-hidden">
+        <section className="w-full pt-5 overflow-hidden">
           <div className="container px-4 md:px-6 relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -41,20 +41,20 @@ export default function HomePage() {
               className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                Think Smarter. Trade Better.
+                Smarter Tech, Better Deals
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Welcome to Rich Harbor – Your Gateway to Intelligent Trading
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                Welcome to Rich Harbor – Where Intelligence Meets Profit
               </p>
             </motion.div>
 
-            <div className="w-full mb-[100px] sm:mb-[250px] md:mb-[250px]">
+            <div className="w-full">
               <div className="relative -top:5 sm:-top-20 w-full">
                 <GlobeComponent />
 
-                <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
+                {/* <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
                   <SamplePage />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -67,14 +67,14 @@ export default function HomePage() {
         {/* <GlowingEffectDemo /> */}
         {/* <GlowingStarsBackgroundCardPreview /> */}
 
-        <HowItWorks />
+        {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
-        <Transform />
+        {/* <Transform />
         <ExtraFeatures />
         <Integrations />
         <ReadyToBoost />
-        <Faq />
+        <Faq /> */}
 
         {/* <ReadyToTransform /> */}
       </main>

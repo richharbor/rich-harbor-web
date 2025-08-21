@@ -12,11 +12,14 @@ import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
+import Image from "next/image";
+import RHLogo from "@/assets/logo/RH-Logo.png";
+import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 
 export const NAV_LINKS = [
-  { name: "Core Components", link: "#features" },
-  { name: "Academy", link: "#" },
-  { name: "Pricing", link: "#pricing" },
+  { name: "", link: "" },
+  // { name: "Academy", link: "#" },
+  // { name: "Pricing", link: "#pricing" },
 ];
 
 const useClickOutside = (callback: () => void) => {
@@ -103,7 +106,11 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
           >
             <Link href="/" className="flex items-center gap-2">
-              RH
+              <Image
+                src={RichHarbor}
+                alt="Rich Harbor Logo"
+                className="h-10 w-auto"
+              />
             </Link>
           </motion.div>
 
@@ -130,10 +137,10 @@ const Navbar = () => {
           </div>
 
           {/* Right Button */}
-          <AnimationContainer animation="fadeLeft" delay={0.1}>
+          {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
-                <Link href="/dashboard">
+                <Link href="#">
                   <Button>Dashboard</Button>
                 </Link>
               ) : (
@@ -142,7 +149,7 @@ const Navbar = () => {
                 </Link>
               )}
             </div>
-          </AnimationContainer>
+          </AnimationContainer> */}
         </Wrapper>
       </motion.div>
 
@@ -174,12 +181,14 @@ const Navbar = () => {
 
             <AnimationContainer animation="fadeLeft" delay={0.1}>
               <div className="flex items-center justify-center gap-x-4">
-                <Button size="sm">
-                  <Link href="/signup" className="flex items-center">
-                    Get started
-                  </Link>
-                </Button>
-                {open ? (
+                <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src={RichHarbor}
+                    alt="Rich Harbor Logo"
+                    className="h-10 w-auto"
+                  />
+                </Link>
+                {/* {open ? (
                   <XIcon
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
@@ -189,7 +198,7 @@ const Navbar = () => {
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
                   />
-                )}
+                )} */}
               </div>
             </AnimationContainer>
           </div>
