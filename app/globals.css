@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @theme inline {
+  --font-batman: Batman, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -90,5 +91,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@font-face {
+  font-family: 'Batman';
+  src: url('/fonts/batman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer utilities {
+  .font-batman {
+    font-family: "Batman", sans-serif;
   }
 }

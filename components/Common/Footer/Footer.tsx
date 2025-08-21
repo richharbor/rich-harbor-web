@@ -9,7 +9,10 @@ const Footer = () => {
       <div className="absolute top-0 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-1.5 bg-foreground rounded-full"></div>
 
       {/* <p className="p-5 ">Stay Tuned — Big Things Ahead</p> */}
-      <h1 className="pt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-3 text-center">
+      <h1
+        style={{ fontFamily: "Batman, sans-serif" }}
+        className="pt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 pb-3 text-center"
+      >
         Stay Tuned <br /> Big Things Ahead
       </h1>
       <AnimationContainer delay={0.6}>
