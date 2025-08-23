@@ -4,6 +4,28 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion } from 'framer-motion'
+import { CircleCheckBig } from 'lucide-react';
+
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+
 
 type FormData = {
     name: string;
@@ -23,6 +45,7 @@ export default function ContactForm() {
         source: "",
         message: "",
     });
+    const [open, setOpen] = useState<boolean>(false);
 
     // Handle input & select changes
     const handleChange = (
@@ -38,28 +61,39 @@ export default function ContactForm() {
     // Handle submit
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form Data Submitted:", formData);
+        // console.log("Form Data Submitted:", formData);
 
         // TODO: send data to API
+
+
+        setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            source: "",
+            message: "",
+        })
+        setOpen(true);
     };
 
     return (
-    //     <div className="fixed inset-0 z-10 flex justify-center items-center bg-black/30 backdrop-blur-sm">
-    // <div className="max-h-screen overflow-y-auto scrollbar-hide bg-background rounded-xl p-6">
-      
-    
-            <motion.div 
-        initial={{opacity:0, y:20}}
-        animate={{opacity:1, y:0}}
-        transition={{duration:0.5}}
-        className="bg-background px-2 py-5 mt-15 mx-auto max-w-2xl"
+        //     <div className="fixed inset-0 z-10 flex justify-center items-center bg-black/30 backdrop-blur-sm">
+        // <div className="max-h-screen overflow-y-auto scrollbar-hide bg-background rounded-xl p-6">
+
+
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-background px-2 py-5 mt-15 mx-auto max-w-2xl"
         >
             <h1 style={{ fontFamily: "Batman, sans-serif" }} className="text-2xl md:text-3xl lg:text-4xl  font-bold text-center mb-6">Contact Us</h1>
             <p className="text-center mb-6 text-muted-foreground
       ">We’re here to help and answer any questions you might have. We look forward to hearing from you!</p>
             <form
                 onSubmit={handleSubmit}
-                
+
                 className="space-y-4 p-6 border rounded mx-auto"
             >
                 {/* Name + Email */}
@@ -106,36 +140,49 @@ export default function ContactForm() {
                     </div>
                     <div>
                         <label className="block font-medium">Subject</label>
-                        <select
-                            name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
-                            className="border p-2 w-full rounded bg-background max-w-full"
-                            required
-                        >
-                            <option value="">Select an Option</option>
-                            <option value="buy">Buy</option>
-                            <option value="sell">Sell</option>
-                            <option value="partner">Want to be a partner</option>
-                        </select>
+                        <Select
+                        name="subject"
+                        value={formData.subject}
+                        onValueChange={(value: string) =>
+                            setFormData((prev) => ({ ...prev, subject: value }))
+                        }
+                    >
+                        <SelectTrigger className="w-full border rounded p-2 bg-background">
+                            <SelectValue placeholder="Select an Option" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectItem value="buy">Buy</SelectItem>
+                                <SelectItem value="sell">Sell</SelectItem>
+                                <SelectItem value="partner">Want to be a partner</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
                     </div>
                 </div>
 
                 {/* Source */}
                 <div>
                     <label className="block font-medium">Where did you find us?</label>
-                    <select
+                    <Select
                         name="source"
                         value={formData.source}
-                        onChange={handleChange}
-                        className="border p-2 w-full rounded bg-background"
+                        onValueChange={(value: string) =>
+                            setFormData((prev) => ({ ...prev, source: value }))
+                        }
                     >
-                        <option value="">Select an Option</option>
-                        <option value="google">Google</option>
-                        <option value="social">Social Media</option>
-                        <option value="friend">Friend/Referral</option>
-                        <option value="other">Other</option>
-                    </select>
+                        <SelectTrigger className="w-full border rounded p-2 bg-background">
+                            <SelectValue placeholder="Select an Option" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectItem value="google">Google</SelectItem>
+                                <SelectItem value="social">Social Media</SelectItem>
+                                <SelectItem value="friend">Friend/Referral</SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
                 </div>
 
                 {/* Message */}
@@ -155,13 +202,31 @@ export default function ContactForm() {
                 {/* Submit */}
                 <Button
                     type="submit"
-
                 >
                     Submit
+
                 </Button>
+
             </form>
 
-            <div className="flex justify-center gap-10 max-sm:gap-3 mt-5 border-t">
+            {/* Dialog */}
+
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Success 🎉</DialogTitle>
+                        <DialogDescription>
+                            Your data has been sent successfully.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-green-500 w-full ">
+                        <CircleCheckBig className="mx-auto font-light" size={100} />
+                    </div>
+                    <Button onClick={() => setOpen(false)}>Close</Button>
+                </DialogContent>
+            </Dialog>
+
+            <div className="flex justify-center max-sm:flex-col py-10 max-sm:py-5 gap-10 max-sm:gap-3 mt-5 border-t">
                 <a href="mailto:info@richharbor.com" className="flex gap-2 items-center">
                     <Mail size={15} />
                     <p>info@richharbor.com</p>
@@ -174,7 +239,7 @@ export default function ContactForm() {
         </motion.div>
         // </div >
         // </div >
-        
+
 
     );
 }

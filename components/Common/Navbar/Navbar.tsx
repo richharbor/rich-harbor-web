@@ -17,7 +17,7 @@ import RHLogo from "@/assets/logo/RH-Logo.png";
 import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 import { useRouter } from "next/navigation";
 import ContactUsPage from '@/components/Pages/ContactUs/page'
-import ContactUs from '@/components/Pages/ContactUs/contactUs'
+
 
 export const NAV_LINKS = [
   { name: "", link: "" },
@@ -83,7 +83,7 @@ const Navbar = () => {
   });
 
   return (
-    <div>
+    
       <header className="fixed w-full top-0 inset-x-0 z-50">
       {/* Desktop Navbar */}
       <motion.div
@@ -283,8 +283,8 @@ const Navbar = () => {
         </AnimatePresence>
       </motion.div>
     </header>
-    {/* <ContactUsPage /> */}
-    </div>
+    
+  
 
   );
 };
