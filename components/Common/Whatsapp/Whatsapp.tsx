@@ -2,7 +2,7 @@ import React from "react";
 
 const Whatsapp = () => {
   return (
-    <div>
+    <div className="z-50">
       <a
         href="https://wa.me/919211265558"
         target="_blank"
