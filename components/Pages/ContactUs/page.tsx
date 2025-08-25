@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Mail, Phone } from "lucide-react";
+import { CircleX, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion } from 'framer-motion'
 import { CircleCheckBig } from 'lucide-react';
@@ -67,7 +67,8 @@ export default function ContactForm() {
         source: "",
         message: "",
     });
-    const [open, setOpen] = useState<boolean>(false);
+    const [SuccOpen, setSuccOpen] = useState<boolean>(false);
+    const [ErrOpen, setErrOpen] = useState<boolean>(false);
 
     // Handle input & select changes
     const handleChange = (
@@ -88,7 +89,7 @@ export default function ContactForm() {
         // TODO: send data to API
 
         const emailHTML = convertToHtmlForm(formData);
-        console.log(emailHTML)
+        // console.log(emailHTML)
 
         const email = {
             to: formData.email,
@@ -99,7 +100,15 @@ export default function ContactForm() {
 
         const response = await axios.post(`${baseURl}/email/send`, email);
 
-        console.log(response.data);
+        // console.log(response.data);
+        try{
+            const response = await axios.post(`${baseURl}/email/send`, email);
+            if(response.status === 200){
+                setSuccOpen(true);
+            }
+        }catch(error){
+            setErrOpen(true);
+        }
 
 
         setFormData({
@@ -110,7 +119,7 @@ export default function ContactForm() {
             source: "",
             message: "",
         })
-        setOpen(true);
+        
     };
 
     return (
@@ -245,9 +254,9 @@ export default function ContactForm() {
 
             </form>
 
-            {/* Dialog */}
+            {/*Success Dialog */}
 
-            <Dialog open={open} onOpenChange={setOpen}>
+            <Dialog open={SuccOpen} onOpenChange={setSuccOpen}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>Success 🎉</DialogTitle>
@@ -258,7 +267,24 @@ export default function ContactForm() {
                     <div className="my-5 text-green-500 w-full ">
                         <CircleCheckBig className="mx-auto font-light" size={100} />
                     </div>
-                    <Button onClick={() => setOpen(false)}>Close</Button>
+                    <Button onClick={() => setSuccOpen(false)}>Close</Button>
+                </DialogContent>
+            </Dialog>
+
+            {/* Error Dialog */}
+
+            <Dialog open={ErrOpen} onOpenChange={setErrOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogDescription>
+                            Unable to sent data.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-red-500 w-full ">
+                        <CircleX className="mx-auto font-light" size={100} />
+                    </div>
+                    <Button onClick={() => setErrOpen(false)}>Close</Button>
                 </DialogContent>
             </Dialog>
 
