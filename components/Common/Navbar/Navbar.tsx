@@ -15,6 +15,9 @@ import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
 import Image from "next/image";
 import RHLogo from "@/assets/logo/RH-Logo.png";
 import RichHarbor from "@/assets/logo/Rich Harbor R.png";
+import { useRouter } from "next/navigation";
+import ContactUsPage from '@/components/Pages/ContactUs/page'
+
 
 export const NAV_LINKS = [
   { name: "", link: "" },
@@ -63,6 +66,8 @@ const Wrapper = ({
 const Navbar = () => {
   const { user } = { user: "user" };
 
+  const route = useRouter();
+
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
 
@@ -78,7 +83,8 @@ const Navbar = () => {
   });
 
   return (
-    <header className="fixed w-full top-0 inset-x-0 z-50">
+    
+      <header className="fixed w-full top-0 inset-x-0 z-50">
       {/* Desktop Navbar */}
       <motion.div
         animate={{
@@ -112,6 +118,7 @@ const Navbar = () => {
                 className="h-10 w-auto"
               />
             </Link>
+            
           </motion.div>
 
           {/* Center Links */}
@@ -137,6 +144,9 @@ const Navbar = () => {
           </div>
 
           {/* Right Button */}
+          {/* <ContactUs /> */}
+          
+          <Button onClick={()=> route.push('/contactus')}>Contact Us</Button>
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
@@ -273,6 +283,9 @@ const Navbar = () => {
         </AnimatePresence>
       </motion.div>
     </header>
+    
+  
+
   );
 };
 
