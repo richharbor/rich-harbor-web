@@ -16,8 +16,7 @@ import Image from "next/image";
 import RHLogo from "@/assets/logo/RH-Logo.png";
 import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 import { useRouter } from "next/navigation";
-import ContactUsPage from '@/components/Pages/ContactUs/page'
-
+import ContactUsPage from "@/components/Pages/ContactUs/page";
 
 export const NAV_LINKS = [
   { name: "", link: "" },
@@ -83,8 +82,7 @@ const Navbar = () => {
   });
 
   return (
-    
-      <header className="fixed w-full top-0 inset-x-0 z-50">
+    <header className="fixed w-full top-0 inset-x-0 z-50">
       {/* Desktop Navbar */}
       <motion.div
         animate={{
@@ -118,7 +116,6 @@ const Navbar = () => {
                 className="h-10 w-auto"
               />
             </Link>
-            
           </motion.div>
 
           {/* Center Links */}
@@ -145,8 +142,8 @@ const Navbar = () => {
 
           {/* Right Button */}
           {/* <ContactUs /> */}
-          
-          <Button onClick={()=> route.push('/contactus')}>Contact Us</Button>
+
+          <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
@@ -186,18 +183,27 @@ const Navbar = () => {
         <Wrapper className="flex items-center justify-between lg:px-4">
           <div className="flex items-center justify-between gap-x-4 w-full">
             <AnimationContainer animation="fadeRight" delay={0.1}>
-              <Link href="/">{/* Logo */}</Link>
+              <Link href="/">
+                <Image
+                  src={RichHarbor}
+                  alt="Rich Harbor Logo"
+                  className="h-10 w-auto"
+                />
+              </Link>
             </AnimationContainer>
 
             <AnimationContainer animation="fadeLeft" delay={0.1}>
-              <div className="flex items-center justify-center gap-x-4">
-                <Link href="/" className="flex items-center gap-2">
+              <div className="flex items-center justify-between gap-x-4 w-full">
+                {/* <Link href="/" className="flex items-center gap-2">
                   <Image
                     src={RichHarbor}
                     alt="Rich Harbor Logo"
                     className="h-10 w-auto"
                   />
-                </Link>
+                </Link> */}
+                <Button onClick={() => route.push("/contactus")}>
+                  Contact Us
+                </Button>
                 {/* {open ? (
                   <XIcon
                     className="text-black dark:text-white"
@@ -283,9 +289,6 @@ const Navbar = () => {
         </AnimatePresence>
       </motion.div>
     </header>
-    
-  
-
   );
 };
 
