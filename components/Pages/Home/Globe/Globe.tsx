@@ -425,7 +425,7 @@ import React from "react";
 export default function GlobeComponent() {
   return (
     <motion.div className="relative w-full flex justify-center">
-      <div className="w-full  max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl aspect-square">
+      <div className="w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl aspect-square">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </div>
     </motion.div>

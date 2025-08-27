@@ -12,11 +12,16 @@ import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
+import Image from "next/image";
+import RHLogo from "@/assets/logo/RH-Logo.png";
+import RichHarbor from "@/assets/logo/Rich Harbor R.png";
+import { useRouter } from "next/navigation";
+import ContactUsPage from "@/components/Pages/ContactUs/page";
 
 export const NAV_LINKS = [
-  { name: "Core Components", link: "#features" },
-  { name: "Academy", link: "#" },
-  { name: "Pricing", link: "#pricing" },
+  { name: "", link: "" },
+  // { name: "Academy", link: "#" },
+  // { name: "Pricing", link: "#pricing" },
 ];
 
 const useClickOutside = (callback: () => void) => {
@@ -59,6 +64,8 @@ const Wrapper = ({
 
 const Navbar = () => {
   const { user } = { user: "user" };
+
+  const route = useRouter();
 
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -103,7 +110,11 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
           >
             <Link href="/" className="flex items-center gap-2">
-              RH
+              <Image
+                src={RichHarbor}
+                alt="Rich Harbor Logo"
+                className="h-10 w-auto"
+              />
             </Link>
           </motion.div>
 
@@ -130,10 +141,13 @@ const Navbar = () => {
           </div>
 
           {/* Right Button */}
-          <AnimationContainer animation="fadeLeft" delay={0.1}>
+          {/* <ContactUs /> */}
+
+          <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+          {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
-                <Link href="/dashboard">
+                <Link href="#">
                   <Button>Dashboard</Button>
                 </Link>
               ) : (
@@ -142,7 +156,7 @@ const Navbar = () => {
                 </Link>
               )}
             </div>
-          </AnimationContainer>
+          </AnimationContainer> */}
         </Wrapper>
       </motion.div>
 
@@ -169,17 +183,28 @@ const Navbar = () => {
         <Wrapper className="flex items-center justify-between lg:px-4">
           <div className="flex items-center justify-between gap-x-4 w-full">
             <AnimationContainer animation="fadeRight" delay={0.1}>
-              <Link href="/">{/* Logo */}</Link>
+              <Link href="/">
+                <Image
+                  src={RichHarbor}
+                  alt="Rich Harbor Logo"
+                  className="h-10 w-auto"
+                />
+              </Link>
             </AnimationContainer>
 
             <AnimationContainer animation="fadeLeft" delay={0.1}>
-              <div className="flex items-center justify-center gap-x-4">
-                <Button size="sm">
-                  <Link href="/signup" className="flex items-center">
-                    Get started
-                  </Link>
+              <div className="flex items-center justify-between gap-x-4 w-full">
+                {/* <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src={RichHarbor}
+                    alt="Rich Harbor Logo"
+                    className="h-10 w-auto"
+                  />
+                </Link> */}
+                <Button onClick={() => route.push("/contactus")}>
+                  Contact Us
                 </Button>
-                {open ? (
+                {/* {open ? (
                   <XIcon
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
@@ -189,7 +214,7 @@ const Navbar = () => {
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
                   />
-                )}
+                )} */}
               </div>
             </AnimationContainer>
           </div>
