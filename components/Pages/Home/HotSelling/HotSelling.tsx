@@ -5,9 +5,10 @@ import relumeIcon from "@/assets/images/relume-logo.svg";
 import framerIcon from "@/assets/images/framer-logo.svg";
 import githubIcon from "@/assets/images/github-logo.svg";
 import IntegrationRows from "./IntegrationRows/IntegrationRows";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 
-const items = [
+const testimonials = [
     {
         name: "Figma",
         icon: figmaIcon,
@@ -40,9 +41,9 @@ const items = [
     },
 ];
 
-export type itemsType = typeof items;
+export type itemsType = typeof testimonials;
 
-export default function HotSelling(){
+export default function HotSelling() {
     return (
         <section className="py-24 overflow-hidden max-sm:py-10 ">
             <div className="container">
@@ -56,14 +57,25 @@ export default function HotSelling(){
                             Explore the most in-demand equities and make informed trading decisions.
                         </p>
                     </div>
-                    <div>
-                        <div className="flex flex-col gap-3 py-10 lg:mt-0 mt-8 overflow-hidden max-w-[99vw] [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-                            <IntegrationRows integrations={items} />
+                    <div className="z-30 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ">
+                        <div className="h-[32rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden min-w-[99vw]">
+                            {/* <IntegrationRows integrations={items} />
                             <IntegrationRows
                                 integrations={items.slice().reverse()}
                                 className=" "
                                 reverse={true}
+                            /> */}
+                            <InfiniteMovingCards
+                                items={testimonials}
+                                direction="right"
+                                speed="fast"
                             />
+                            <InfiniteMovingCards
+                                items={testimonials}
+                                direction="left"
+                                speed="fast"
+                            />
+                            
                         </div>
                     </div>
                 </div>

@@ -38,9 +38,9 @@ export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="py-24 max-md:py-10 ">
+    <section className="py-20 max-md:py-10 ">
       <div className="container">
-        <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium mt-6 text-center max-w-xl mx-auto">
+        <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium text-center max-w-xl mx-auto">
           Questions? We&apos;ve got{" "}
           <span className="text-[#FFFFFF]">answers</span>
         </h2>
@@ -50,7 +50,7 @@ export default function Faqs() {
             <div
               key={faq.question}
               onClick={() => setSelectedIndex(faqIndex)}
-              className="bg-neutral-900 rounded-2xl border border-white/10 p-6 "
+              className="bg-neutral-900 z-10 rounded-2xl border border-white/10 p-6 "
             >
               <div className="flex justify-between items-start">
                 <h3 className="font-medium m-0">{faq.question}</h3>

@@ -19,7 +19,11 @@ import { useRouter } from "next/navigation";
 import ContactUsPage from "@/components/Pages/ContactUs/page";
 
 export const NAV_LINKS = [
-  { name: "", link: "" },
+  { name: "Home", link: "/" },
+  { name: "Unlisted Share", link: "#unlistedShare" },
+  { name: "SME IPO", link: "#smeIPO" },
+  { name: "Startup Funding", link: "#startupFunding" },
+  { name: "About us", link: "#aboutus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
 ];
@@ -128,6 +132,7 @@ const Navbar = () => {
                   delay={0.1 * index}
                 >
                   <div className="relative">
+                    
                     <Link
                       href={link.link}
                       className="hover:text-foreground transition-all duration-500 hover:bg-accent rounded-md px-4 py-2"
@@ -135,8 +140,10 @@ const Navbar = () => {
                       {link.name}
                     </Link>
                   </div>
+                  
                 </AnimationContainer>
               ))}
+              
             </AnimatePresence>
           </div>
 
@@ -204,7 +211,7 @@ const Navbar = () => {
                 <Button onClick={() => route.push("/contactus")}>
                   Contact Us
                 </Button>
-                {/* {open ? (
+                {open ? (
                   <XIcon
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
@@ -214,7 +221,7 @@ const Navbar = () => {
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
                   />
-                )} */}
+                )}
               </div>
             </AnimationContainer>
           </div>

@@ -48,7 +48,7 @@ export default function Integrations() {
             <div className="container">
                 <div className="grid lg:grid-cols-2 items-center lg:gap-16">
                     <div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 max-sm:text-center">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 max-sm:text-center">
                             Connect Rich Harbor with the apps you use
                         </h2>
 
