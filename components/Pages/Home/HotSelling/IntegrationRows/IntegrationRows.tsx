@@ -15,15 +15,16 @@ const IntegrationRows = (props: {
     return (
         <motion.div
             initial={{
-                x: reverse ? "-50%" : 0,
+                x: reverse ? "0%" : "-50%" ,
             }}
             animate={{
-                x: reverse ? 0 : "-50%",
+                x: reverse ? "-50%" : "0%",
             }}
             transition={{
                 duration: 20,
                 repeat: Infinity,
                 ease: "linear",
+                from: reverse ? "-50%" : 0,
             }}
             className={twMerge("flex flex-row gap-4 pb-4", className)}
         >

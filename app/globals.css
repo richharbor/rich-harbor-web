@@ -93,6 +93,22 @@
 .scrollbar-hide {
   scrollbar-width: none; /* Firefox */
 }
+.mask-right {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
 
 @layer base {
   * {

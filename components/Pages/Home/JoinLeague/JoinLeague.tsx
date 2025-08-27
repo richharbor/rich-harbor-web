@@ -79,6 +79,7 @@ export default function JoinLeague() {
                         icon={feature.icon}
                         title={feature.title}
                         description={feature.description}
+                        key={index}
                     />
                 ))}
 

@@ -32,6 +32,7 @@ import EliteClub from "./EliteClub/EliteClub";
 
 export default function HomePage() {
   return (
+    
     <div className="flex flex-col pt-5 sm:pt-20">
       <ShootingStars />
       <StarsBackground />
@@ -61,9 +62,9 @@ export default function HomePage() {
               <div className="relative -top:5 sm:-top-20 w-full">
                 <GlobeComponent />
 
-                {/* <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
+                <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
                   <SamplePage />
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
@@ -93,6 +94,7 @@ export default function HomePage() {
 
         {/* <ReadyToTransform /> */}
       </main>
+      
     </div>
   );
 }
