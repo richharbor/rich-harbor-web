@@ -23,6 +23,12 @@ import Features2 from "./Features2/Features2";
 import Companies from "./Companies/companies";
 import Perks from "./Perks/Perks";
 import Transform from "./Transfrom/Transform";
+import OurProduct from "./OurProduct/OurProduct";
+import TechPlatform from "./TechPlatform/TechPlatform";
+import HotSelling from "./HotSelling/HotSelling";
+import JoinLeague from "./JoinLeague/JoinLeague";
+import Glipms from "./TechPlatform/Glimps";
+import EliteClub from "./EliteClub/EliteClub";
 
 export default function HomePage() {
   return (
@@ -69,15 +75,21 @@ export default function HomePage() {
         {/* <Features2 /> */}
         {/* <GlowingEffectDemo /> */}
         {/* <GlowingStarsBackgroundCardPreview /> */}
-
+        <OurProduct />
         {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
-        {/* <Transform />
-        <ExtraFeatures />
+        <Transform />
+        <TechPlatform />
+        <Glipms />
+        <HotSelling />
+        {/* <ExtraFeatures /> */}
+        <JoinLeague />
         <Integrations />
+        
+        <EliteClub />
         <ReadyToBoost />
-        <Faq /> */}
+        <Faq /> 
 
         {/* <ReadyToTransform /> */}
       </main>

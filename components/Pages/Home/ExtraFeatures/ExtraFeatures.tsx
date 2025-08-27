@@ -42,9 +42,9 @@ const cardVariants = {
 
 export default function ExtraFeatures() {
     return (
-        <section className="py-24 ">
+        <section className="py-24 h-full mx-auto w-full lg:max-w-screen-xl px-4 lg:px-20 max-md:py-10 ">
             <div className="container">
-                <h2 className="text-6xl font-medium text-center mt-6 max-w-2xl m-auto">
+                <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium text-center mt-6 max-w-2xl m-auto">
                     Never lose{" "}
                     <span className="text-[#FFFFFF]">information</span>
                 </h2>
@@ -53,7 +53,7 @@ export default function ExtraFeatures() {
                     initial="hidden"
                     animate="visible"
                 >
-                    <div className="mt-12 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8 px-2">
                         <motion.div
                             variants={cardVariants}
                             initial="hidden"

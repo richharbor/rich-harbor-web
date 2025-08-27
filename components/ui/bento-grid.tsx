@@ -21,10 +21,10 @@ export const CARDS = [
         background: (
             <Card className="absolute top-10 left-10 origin-top rounded-none rounded-tl-md transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_0%,#000_100%)] group-hover:scale-105 border border-border border-r-0">
                 <CardHeader>
-                    <CardTitle>
+                    <CardTitle className="text-sm">
                         Create short links
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-xs">
                         Create short links that are easy to remember and share.
                     </CardDescription>
                 </CardHeader>
@@ -100,7 +100,7 @@ const BentoGrid = ({
     return (
         <div
             className={cn(
-                "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+                "grid w-full auto-rows-[16rem] grid-cols-3 gap-4",
                 className,
             )}
         >
@@ -135,12 +135,12 @@ const BentoCard = ({
         )}
     >
         <div>{background}</div>
-        <div className="pointer-events-none z-10 flex flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-            <Icon className="h-12 w-12 origin-left text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
-            <h3 className="text-xl font-semibold text-neutral-300">
+        <div className="pointer-events-none z-10 flex  flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
+            <Icon className="h-6 w-6 origin-left text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
+            <h3 className="font-semibold text-neutral-300">
                 {name}
             </h3>
-            <p className="max-w-lg text-neutral-400">{description}</p>
+            <p className="max-w-lg text-sm text-neutral-400">{description}</p>
         </div>
 
         <div

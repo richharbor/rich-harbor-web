@@ -38,9 +38,9 @@ export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="py-24 ">
+    <section className="py-24 max-md:py-10 ">
       <div className="container">
-        <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
+        <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium mt-6 text-center max-w-xl mx-auto">
           Questions? We&apos;ve got{" "}
           <span className="text-[#FFFFFF]">answers</span>
         </h2>
