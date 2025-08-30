@@ -10,7 +10,7 @@ export default function OurProduct() {
 
 
     return (
-        <section className="rounded-2xl h-full mx-auto w-full lg:max-w-screen-xl px-4 lg:px-20 py-20 md:py-32 bg-muted/30 relative overflow-hidden">
+        <section className="rounded-2xl h-full mx-auto w-full lg:max-w-screen-xl px-4 lg:px-20 md:py-32 py-10 bg-muted/30 relative overflow-hidden">
             <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)] rounded-lg"></div>
             <div className='grid grid-cols-2 max-md:grid-cols-1 gap-3 max-md:gap-12'>
                 <div>

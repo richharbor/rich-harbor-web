@@ -26,7 +26,7 @@ const Wrapper = ({ className, children }: WrapperProps) => {
 
 export default function TechPlatform(){
     return (
-        <Wrapper className="relative py-10   backdrop-blur-md max-md:py-7 rounded-2xl overflow-hidden">
+        <Wrapper className="relative py-10  backdrop-blur-md max-md:py-7 rounded-2xl overflow-hidden">
             {/* <div className=" absolute inset-0 z-0">
     Blue blur on the right side 
     <div className=" max-md:hidden absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-[300px]"></div>

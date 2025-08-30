@@ -29,6 +29,7 @@ import HotSelling from "./HotSelling/HotSelling";
 import JoinLeague from "./JoinLeague/JoinLeague";
 import Glipms from "./TechPlatform/Glimps";
 import EliteClub from "./EliteClub/EliteClub";
+import UnlistedShares from "./UnlistedShares/UnlistedShares";
 
 export default function HomePage() {
   return (
@@ -80,13 +81,16 @@ export default function HomePage() {
         {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
-        <Transform />
+        {/* <Transform /> */}
+        <HotSelling />
         <TechPlatform />
         <Glipms />
-        <HotSelling />
+        
         {/* <ExtraFeatures /> */}
+        <UnlistedShares />
         <JoinLeague />
-        <Integrations />
+        {/* <Integrations /> */}
+        
         
         <EliteClub />
         <ReadyToBoost />

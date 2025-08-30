@@ -25,7 +25,7 @@ export default function RootLayout({
         <Navbar />
         <div className="max-w-7xl mx-auto items-center flex flex-col px-5 relative">
           {children}
-          <div className="fixed bottom-4 right-4">
+          <div className="fixed bottom-4 right-4 z-10">
             <Whatsapp />
           </div>
         </div>

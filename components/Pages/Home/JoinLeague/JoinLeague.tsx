@@ -7,22 +7,22 @@ import { BadgeIndianRupee, ChartBarBig, IndianRupee, LockKeyhole, Zap } from "lu
 const features = [
     {
         title: "Low ticket size",
-        icon: <BadgeIndianRupee className="size-full text-purple-900" />, // Placeholder for icon path
+        icon: <BadgeIndianRupee className="size-full text-rich-violet" />, // Placeholder for icon path
         description: "A minimum of ₹10,000 is all it takes for you to start investing in private opportunities",
     },
     {
         title: "Bank-level security",
-        icon: <LockKeyhole className="size-full text-purple-900" />, // Placeholder for icon path
+        icon: <LockKeyhole className="size-full text-rich-violet" />, // Placeholder for icon path
         description: "Strict policies are enforced to prevent unauthorized revelation of your sensitive personal information",
     },
     {
         title: "Research-driven",
-        icon: <ChartBarBig className="size-full text-purple-900" />,
+        icon: <ChartBarBig className="size-full text-rich-violet" />,
         description: "Access curated financial reports by analyst for informed investment decisions",
     },
     {
         title: "Fast & Simple",
-        icon: <Zap className="size-full text-purple-900 " />, // Placeholder for icon path
+        icon: <Zap className="size-full text-rich-violet " />, // Placeholder for icon path
         description: "Hassle-free investment experience. Invest in just three steps - confirm, order, and pay",
     },
 ];
@@ -87,16 +87,16 @@ const Feature = ({
             )}
         >
             {index < 4 && (
-                <div className="opacity-0 group-hover/feature:opacity-100 ease-in-out transition-all duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-purple-900/25 to-transparent pointer-events-none" />
+                <div className="opacity-0 group-hover/feature:opacity-100 ease-in-out transition-all duration-300 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-rich-violet/25 to-transparent pointer-events-none" />
             )}
             {index >= 4 && (
-                <div className="opacity-0 group-hover/feature:opacity-100 ease-in-out transition-all duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-purple-900/25 to-transparent pointer-events-none" />
+                <div className="opacity-0 group-hover/feature:opacity-100 ease-in-out transition-all duration-300 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-text-violet/25 to-transparent pointer-events-none" />
             )}
             <div className="mb-4 w-fit group-hover/feature:scale-75 ease-in-out transition-all duration-500 h-12 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
                 {icon}
             </div>
             <div className="text-lg font-bold mb-2 relative z-10 px-10">
-                <div className="absolute  left-0 inset-y-0 h-6 group-hover/feature:h-8 group-hover/feature:-translate-y-1 transform-gpu w-1 rounded-tr-full ease-in-out rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-purple-900 transition-all duration-300 origin-center" />
+                <div className="absolute  left-0 inset-y-0 h-6 group-hover/feature:h-8 group-hover/feature:-translate-y-1 transform-gpu w-1 rounded-tr-full ease-in-out rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-rich-violet transition-all duration-300 origin-center" />
                 <span className=" inline-block text-neutral-800 dark:text-neutral-100">
                     {title}
                 </span>
