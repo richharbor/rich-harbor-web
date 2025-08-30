@@ -51,9 +51,9 @@ export default function StockInfoPage({ params }: { params: { id: string } }) {
                         </div>
                     </div>
                     <div className="flex gap-2 z-10">
-                        <button onClick={() => setWindow('research')} className={`px-3 py-2 ${window === 'research' ? 'border-b-2 border-rich-violet' : ''} transition-all duration-200 ease-in-out`}>Research Report</button>
-                        <button onClick={() => setWindow('finance')} className={`px-3 py-2 ${window === 'finance' ? 'border-b-2 border-rich-violet' : ''} transition-all duration-200 ease-in-out`}>Finance</button>
-                        <button onClick={() => setWindow('news')} className={`px-3 py-2 ${window === 'news' ? 'border-b-2 border-rich-violet' : ''} transition-all duration-200 ease-in-out`}>News</button>
+                        <button onClick={() => setWindow('research')} className={`px-3 py-2 ${window === 'research' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>Research Report</button>
+                        <button onClick={() => setWindow('finance')} className={`px-3 py-2 ${window === 'finance' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>Finance</button>
+                        <button onClick={() => setWindow('news')} className={`px-3 py-2 ${window === 'news' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>News</button>
                     </div>
                 </div>
                 <div className="flex w-[35%] max-md:hidden flex-col justify-center gap-5 py-10 px-5 border-l border-b border-r">

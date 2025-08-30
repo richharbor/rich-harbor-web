@@ -122,7 +122,7 @@ export default function HotSelling() {
 
                 </div>
                 <div className="flex justify-center mt-10">
-                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/stocks")}>View more</Button>
+                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/allstocks")}>View more</Button>
                 </div>
             </div>
         </section>

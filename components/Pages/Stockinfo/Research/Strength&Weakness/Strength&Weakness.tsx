@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, X } from 'lucide-react';
+import { motion } from 'framer-motion'
 
 const swotAnalysis = {
   strengths: [
@@ -40,35 +41,40 @@ const swotAnalysis = {
 
 const StrengthsWeaknesses = () => {
   return (
-    <div className="bg-transparent p-5 font-sans">
-      <h2 className="font-bold text-3xl mb-6">Strengths & Weaknesses</h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      className="bg-transparent font-sans">
+      <h2 className=" text-3xl mb-6">Strengths & Weaknesses</h2>
 
-      <h3 className="font-bold text-2xl mb-4">Strengths</h3>
+      <h3 className=" text-2xl mb-4">Strengths</h3>
       <ul className="list-none space-y-4">
         {swotAnalysis.strengths.map((strength, index) => (
           <li key={index} className="flex items-start">
             <Check className="h-6 w-6 text-green-500 mr-2 flex-shrink-0" />
             <div>
-              <h4 className="font-semibold text-lg">{strength.title}:</h4>
+              <h4 className=" text-lg">{strength.title}:</h4>
               <p className="text-white/50">{strength.description}</p>
             </div>
           </li>
         ))}
       </ul>
 
-      <h3 className="font-bold text-2xl mt-8 mb-4">Weaknesses</h3>
+      <h3 className=" text-2xl mt-8 mb-4">Weaknesses</h3>
       <ul className="list-none space-y-4">
         {swotAnalysis.weaknesses.map((weakness, index) => (
           <li key={index} className="flex items-start">
             <X className="h-6 w-6 text-red-500 mr-2 flex-shrink-0" />
             <div>
-              <h4 className="font-semibold text-lg">{weakness.title}:</h4>
+              <h4 className=" text-lg">{weakness.title}:</h4>
               <p className="text-white/50">{weakness.description}</p>
             </div>
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
