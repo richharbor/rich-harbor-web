@@ -8,7 +8,7 @@ export default function Fundamentals() {
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="bg-transparent font-sans">
             <h2 className=" text-3xl mb-6 max-md:text-xl">Fundamentals</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
                 <div>
                     <p className="text-white/50 text-sm mb-1">Current Price</p>
                     <p className="text-xl max-sm:text-lg ">₹195</p>

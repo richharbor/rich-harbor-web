@@ -18,7 +18,7 @@ export default function Research(){
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease:'easeInOut' }} 
             
-        className="flex items-center gap-10 flex-col py-20 px-20 max-md:px-0">
+        className="flex items-center gap-10 flex-col py-10 px-20 max-md:px-0">
             <div className="w-full flex items-center justify-center">
                 <TradingViewWidget />
             </div>

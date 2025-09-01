@@ -73,7 +73,7 @@ export default function AllStocks() {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="z-10 bg-neutral-900 group/items cursor-pointer ease-in-out hover:border-blue-600 transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
+                        className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
                         onClick={() => route.push("/stockInfo/343")}
                     >
                         <div className="flex justify-center h-32 max-sm:h-28">

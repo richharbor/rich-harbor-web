@@ -11,7 +11,7 @@ export default function TradingViewWidget() {
       new TradingView.widget({
         container_id: "tradingview_chart",
         autosize: true,
-        symbol: "NSE:RELIANCE", // example symbol
+        symbol: "RELIANCE", // example symbol
         interval: "D",
         theme: "dark",
         style: "3",

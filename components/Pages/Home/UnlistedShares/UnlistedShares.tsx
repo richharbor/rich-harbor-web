@@ -80,7 +80,7 @@ export default function UnlistedShares() {
                         {items.map((company, i) => (
                             <div
                                 key={i}
-                                className="bg-[#141A2D] rounded-xl border border-gray-800 flex flex-col p-2 hover:border-rich-violet hover:shadow-lg hover:shadow-rich-violet/30 transition z-10 cursor-pointer"
+                                className="bg-card rounded-xl border border-gray-800 flex flex-col p-2 hover:border-rich-violet hover:shadow-lg hover:shadow-rich-violet/30 transition z-10 cursor-pointer"
                                 onClick={()=> route.push("/unlistedSharesInfo")}
                             >
                                 <div className='h-24 max-sm:h-16 w-full flex justify-center items-center'>
