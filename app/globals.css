@@ -42,17 +42,16 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
- 
   @keyframes scroll {
     to {
       transform: translate(calc(-50% - 0.5rem));
     }
-  }
+  };
 }
 
 :root {
   --radius: 0.625rem;
-  --rich-violet: rgb(149,115,228);
+  --rich-violet: rgb(149, 115, 228);
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -85,6 +84,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
+
 /* Hide scrollbar for Chrome, Safari, Edge */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -92,29 +92,28 @@
 
 /* Hide scrollbar for Firefox */
 .scrollbar-hide {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 .mask-right {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent);
+  mask-image: linear-gradient(to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

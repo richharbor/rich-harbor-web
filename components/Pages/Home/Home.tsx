@@ -30,6 +30,7 @@ import JoinLeague from "./JoinLeague/JoinLeague";
 import Glipms from "./TechPlatform/Glimps";
 import EliteClub from "./EliteClub/EliteClub";
 import UnlistedShares from "./UnlistedShares/UnlistedShares";
+import Tagline from "./Tagline/Tagline";
 
 export default function HomePage() {
   return (
@@ -63,9 +64,9 @@ export default function HomePage() {
               <div className="relative -top:5 sm:-top-20 w-full">
                 <GlobeComponent />
 
-                <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
+                {/* <div className="absolute top-5/6 left-0 w-full z-10 transform -translate-y-1/2">
                   <SamplePage />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -77,14 +78,15 @@ export default function HomePage() {
         {/* <Features2 /> */}
         {/* <GlowingEffectDemo /> */}
         {/* <GlowingStarsBackgroundCardPreview /> */}
+        <Tagline />
         <OurProduct />
         {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
         {/* <Transform /> */}
-        <HotSelling />
         <TechPlatform />
         <Glipms />
+        <HotSelling />
         
         {/* <ExtraFeatures /> */}
         <UnlistedShares />
@@ -93,7 +95,7 @@ export default function HomePage() {
         
         
         <EliteClub />
-        <ReadyToBoost />
+        {/* <ReadyToBoost /> */}
         <Faq /> 
 
         {/* <ReadyToTransform /> */}
