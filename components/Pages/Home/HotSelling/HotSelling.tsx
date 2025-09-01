@@ -1,51 +1,68 @@
-import figmaIcon from "@/assets/images/figma-logo.svg";
-import notionIcon from "@/assets/images/notion-logo.svg";
-import slackIcon from "@/assets/images/slack-logo.svg";
-import relumeIcon from "@/assets/images/relume-logo.svg";
-import framerIcon from "@/assets/images/framer-logo.svg";
-import githubIcon from "@/assets/images/github-logo.svg";
+import biraIcon from '@/public/images/bira91.webp'
+import boatIcon from '@/public/images/boat.webp'
+import capgeminiIcon from '@/public/images/capgemini.webp'
+import mseIcon from '@/public/images/mse.png'
+import nseIcon from '@/public/images/NSE.png'
+import oyoIcon from '@/public/images/oyo.png'
+import peIcon from '@/public/images/pe.webp'
+import tapariaIcon from '@/public/images/taparia.webp'
+
 import IntegrationRows from "./IntegrationRows/IntegrationRows";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 
-const testimonials = [
+const items = [
     {
-        name: "Figma",
-        icon: figmaIcon,
+        name: "B9 Beverages (BIRA 91)",
+        icon: biraIcon,
+        sector: "FMCG",
+    },
+    {
+        name: "Imagine Marketing (boAt)",
+        icon: boatIcon,
+        sector: "Consumer Durables",
+    },
+    {
+        name: "API Holdings (Pharmeasy)",
+        icon: peIcon,
+        sector: "Healthcare",
+    },
+    {
+        name: "Taparia Tools",
+        icon: tapariaIcon,
+        sector: "Manufacturing",
+    },
+    {
+        name: "Oravel Stays (OYO Rooms)",
+        icon: oyoIcon,
         sector: "Design",
     },
     {
-        name: "Notion",
-        icon: notionIcon,
-        sector: "Productivity",
+        name: "Capgemini",
+        icon: capgeminiIcon,
+        sector: "Information Technology",
     },
     {
-        name: "Slack",
-        icon: slackIcon,
-        sector: "Communication",
+        name: "National Stock Exchange (NSE)",
+        icon: nseIcon,
+        sector: "Stock Exchange",
     },
     {
-        name: "Relume",
-        icon: relumeIcon,
-        sector: "Design",
-    },
-    {
-        name: "Framer",
-        icon: framerIcon,
-        sector: "Design",
-    },
-    {
-        name: "GitHub",
-        icon: githubIcon,
-        sector: "Development",
+        name: "Metropolitan Stock Exchange (MSE)",
+        icon: mseIcon,
+        sector: "Stock Exchange",
     },
 ];
 
-export type itemsType = typeof testimonials;
+export type itemsType = typeof items;
 
 export default function HotSelling() {
+     const route = useRouter();
     return (
-        <section className="py-24 overflow-hidden max-sm:py-10 ">
+        <section className="py-20 overflow-hidden max-sm:py-10 ">
             <div className="container">
                 <div className="flex flex-col items-center lg:gap-10">
                     <div>
@@ -57,14 +74,14 @@ export default function HotSelling() {
                             Explore the most in-demand equities and make informed trading decisions.
                         </p>
                     </div>
-                    <div className="z-30 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ">
+                    {/* <div className="z-30 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ">
                         <div className="h-[32rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden min-w-[99vw]">
-                            {/* <IntegrationRows integrations={items} />
+                            <IntegrationRows integrations={items} />
                             <IntegrationRows
                                 integrations={items.slice().reverse()}
                                 className=" "
                                 reverse={true}
-                            /> */}
+                            />
                             <InfiniteMovingCards
                                 items={testimonials}
                                 direction="right"
@@ -77,7 +94,35 @@ export default function HotSelling() {
                             />
                             
                         </div>
+                    </div> */}
+                    <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
+                        {items.map((item, index) => (
+                            <div
+                                key={index}
+                                className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-blue-600 transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
+                                onClick={()=> route.push("/stockInfo/343") }
+                            >
+                                <div className="flex justify-center h-32 max-sm:h-28">
+                                    <Image
+                                        className="object-contain group-hover/items:scale-85 transition-all duration-500 ease-in-out"
+                                        src={item.icon}
+                                        alt={`${item.name}-icon`}
+                                    />
+                                </div>
+                                <h3 className="text-2xl max-sm:text-xl mt-6 ">
+                                    {item.name}
+                                </h3>
+                                <p className=" text-white/30 mt-3 ">Sector</p>
+                                <p className=" text-white/50 mt-1 ">
+                                    {item.sector}
+                                </p>
+                            </div>
+                        ))}
                     </div>
+
+                </div>
+                <div className="flex justify-center mt-10">
+                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/allstocks")}>View more</Button>
                 </div>
             </div>
         </section>

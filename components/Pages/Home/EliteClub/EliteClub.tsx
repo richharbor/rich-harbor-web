@@ -8,10 +8,10 @@ import Image from "next/image";
 
 export default function EliteClub(){
     return (
-        <section className=" h-full mx-auto w-full lg:max-w-screen-xl px-4 lg:px-20 py-20 max-md:py-10 bg-muted/30 relative overflow-hidden">
+        <section className=" rounded-2xl h-full mx-auto w-full lg:max-w-screen-xl px-5 lg:px-20 py-20 max-md:py-14 bg-muted/30 relative overflow-hidden">
           <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
           <Boxes />
-            <div className='flex max-md:flex-col-reverse gap-10 max-sm:gap-3'>
+            <div className='flex max-md:flex-col-reverse gap-20 max-md:gap-3'>
                 <div className='flex justify-center'>
                     <Image src={EliteImg} alt="eliteClub" className="size-96 max-md:size-64 relative z-10" />
                 </div>
@@ -23,7 +23,7 @@ export default function EliteClub(){
                            Join the <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Elite Circle</span>
                         </h1>
                         <p className='relative z-10 text-sm max-sm:text-center md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto'>
-                            Gain exclusive access to high-growth private markets, powered by intelligent insights.
+                            The Elite Club is more than membership—it’s your entry to a circle of ambition and success. Gain priority access to exclusive assets, smarter strategies, and opportunities designed to maximize your trading potential.
                         </p>
 
                         <Button className='w-fit relative z-10'>Reserve access</Button>
