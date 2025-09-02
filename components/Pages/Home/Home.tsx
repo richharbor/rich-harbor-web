@@ -88,7 +88,7 @@ export default function HomePage() {
         {/* <Integration2 /> */}
         {/* <Transform /> */}
         <TechPlatform />
-        <Glipms />
+        {/* <Glipms /> */}
         <HotSelling />
         
         {/* <ExtraFeatures /> */}

@@ -4,18 +4,14 @@ import ColourfulText from "@/components/ui/colourful-text";
  
 export default function Tagline() {
   return (
-    <div className="relative flex h-[35rem] max-md:h-[20rem] w-full overflow-hidden rounded-2xl antialiased md:items-center md:justify-center">
+    <div className="relative flex  w-full overflow-hidden rounded-2xl antialiased md:items-center md:justify-center">
       <div
         className={cn(
           
         )}
       />
  
-      <Spotlight
-        className="-top-80 -left-30"
-        fill="white"
-      />
-      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
+      <div className="relative z-10 mx-auto pb-20 max-md:pb-10 w-full max-w-7xl ">
         <h1 style={{ fontFamily: "Batman, sans-serif" }} className="text-2xl md:text-5xl lg:text-6xl font-bold text-center text-white relative z-2">
                   Your Gateway to Tomorrow’s{" "}<ColourfulText text="Unicorns" />.
                 </h1>

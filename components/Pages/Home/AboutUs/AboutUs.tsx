@@ -1,65 +1,70 @@
-// components/AboutUs.tsx
-import { TrendingUp, DollarSign, ShieldCheck, Globe } from "lucide-react";
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+"use client"
 
-export default function AboutUs() {
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Check } from "lucide-react"
 
-    const features = [
-        {
-            icon: <TrendingUp className="w-8 h-8 text-rich-violet" />,
-            title: "Exclusive Pre-IPO Access",
-            description:
-                "Gain early access to high-potential companies before they hit the public markets and unlock new growth opportunities.",
-        },
-        {
-            icon: <DollarSign className="w-8 h-8 text-rich-violet" />,
-            title: "Buy & Sell with Ease",
-            description:
-                "Seamlessly trade Pre-IPOs, IPOs, and private market shares in a secure, transparent, and efficient marketplace.",
-        },
-        {
-            icon: <ShieldCheck className="w-8 h-8 text-rich-violet" />,
-            title: "Secure & Transparent",
-            description:
-                "Every transaction is built on trust. We ensure compliance, transparency, and the highest standards of security.",
-        },
-        {
-            icon: <Globe className="w-8 h-8 text-rich-violet" />,
-            title: "Global Marketplace",
-            description:
-                "Connect with a growing community of investors and sellers worldwide, expanding opportunities across borders.",
-        },
-    ];
+export default function WhoWeAre() {
+  return (
+    <section className="relative w-full bg-background text-foreground py-20 px-20 max-md:px-10 max-sm:px-4">
+      <div className="container mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-12 items-center">
+        
+        {/* Left Side - Images */}
+        <div className="relative grid grid-cols-12 [grid-template-rows:repeat(9,50px)] w-full h-full ">
+          <div className="col-start-2 col-end-8 row-start-1 row-end-5">
+            <img
+              src="https://i.pinimg.com/736x/ae/e6/d4/aee6d45245609592339c8508ae27182d.jpg"
+              alt="Team Member"
+              width={50}
+              height={50}
+              className="rounded-4xl object-cover w-full h-full"
+            />
+            
+          </div>
+          <div className="col-start-1 col-end-8 row-start-6 row-end-10">
+            <img
+              src="https://i.pinimg.com/736x/46/14/02/46140271c41e3f6493d01d5c974e2e2a.jpg"
+              alt="Team Member"
+              width={50}
+              height={50}
+              className="rounded-4xl object-cover w-full h-full"
+            />
+            
+          </div>
+          <div className="col-start-9 col-end-13 row-start-2 row-end-8">
+            <img
+              src="https://i.pinimg.com/736x/7b/ae/d3/7baed3ee85756fa875a97db1b1c38f46.jpg"
+              alt="Team Member"
+              width={50}
+              height={50}
+              className="rounded-4xl object-cover w-full h-full"
+            />
+            
+          </div>
+        </div>
 
-    return (
-        <section id="aboutus" className="relative  text-gray-100 py-20 px-4 md:px-12 lg:px-20">
-            <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-rich-violet font-batman">
-                    Who we are?
-                </h2>
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-14">
-                    We are building a trusted marketplace where investors can discover,
-                    buy, and sell Pre-IPOs, IPOs, and other private equity opportunities.
-                    Our mission is to make alternative investments accessible, secure, and
-                    transparent for everyone.
-                </p>
-
-                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                    {features.map((feature, index) => (
-                        <div
-                            key={index}
-                            className="flex z-10 flex-col items-center bg-card rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
-                        >
-                            <div className="mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                            <p className="text-gray-400 text-sm">{feature.description}</p>
-                        </div>
-                    ))}
-                </div>
-                {/* <div className="w-full py-4">
-                    <StickyScroll content={content} />
-                </div> */}
-            </div>
-        </section>
-    );
+        {/* Right Side - Content */}
+        <div className="flex flex-col gap-6">
+          <h2 className="text-4xl font-batman font-bold text-gradient bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
+            Who We Are
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            We are building a trusted marketplace where investors can discover,
+            buy, and sell Pre-IPOs, IPOs, and private equity opportunities. 
+            Our mission is to make alternative investments more accessible, 
+            secure, and transparent for everyone.
+          </p>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex gap-2"><Check className="text-rich-violet" /> Exclusive access to high-growth Pre-IPOs</li>
+            <li className="flex gap-2"><Check className="text-rich-violet" /> Seamless & secure buy/sell process</li>
+            <li className="flex gap-2"><Check className="text-rich-violet" /> Transparent and compliant transactions</li>
+            <li className="flex gap-2"><Check className="text-rich-violet" /> Growing global investor community</li>
+          </ul>
+          <Button size="lg" className="mt-4 w-fit">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
 }

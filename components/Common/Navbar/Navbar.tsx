@@ -23,6 +23,7 @@ export const NAV_LINKS = [
   { name: "Unlisted Share", link: "/#unlisted-shares" },
   { name: "SME IPO", link: "#smeIPO" },
   { name: "Liquidate Shares", link: "/liquidate-shares" },
+  { name: "Join Us", link: "/partner-with-us" },
   { name: "About us", link: "/#aboutus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
@@ -99,7 +100,7 @@ const Navbar = () => {
           damping: 40,
         }}
         style={{
-          minWidth: "800px",
+          minWidth: "1000px",
         }}
         className={cn(
           "hidden lg:flex bg-transparent self-start items-center justify-between py-4 rounded-full relative z-[50] mx-auto w-full backdrop-blur",
