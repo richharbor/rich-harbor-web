@@ -33,7 +33,7 @@ export default function OurProduct() {
                                 duration: 0.5,
                                 ease: [0.4, 0.0, 0.2, 1],
                             }}
-                            className="text-3xl text-center max-md:text-center md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 "
+                            className="text-3xl font-batman text-center max-md:text-center md:text-4xl lg:text-5xl font-normal !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 "
                         >
                            Indian Private Markets At Your{" "}
                             <Highlight className="text-black dark:text-white">
