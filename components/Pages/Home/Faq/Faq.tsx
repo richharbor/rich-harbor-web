@@ -13,25 +13,45 @@ const faqs = [
       "Rich Harbor unifies trading, research, compliance, and AI into one platform—bringing transparency, liquidity, and intelligence together.",
   },
   {
-    question: "Is my data secure?",
-    answer:
-      "Yes. We use encryption for trading history and secure data handling across devices, with rigorous KYC/AML controls.",
+    question:"What are Pre-IPO Shares",
+    answer:"Pre-IPO shares are stocks of a company that are available for purchase before the company goes public and lists its shares on a stock exchange. Companies may offer Pre-IPO shares to investors, such as venture capitalists, angel investors, and high net worth individuals, in order to raise capital before going pulic. Investing in Pre-IPO shares can offer high potential returns, but also comes with high risk."
   },
   {
-    question: "Who benefits from Rich Harbor?",
-    answer:
-      "Investors get trusted access and liquidity; companies gain visibility and fair valuation; intermediaries expand reach and efficiency.",
+    question: "How are IPO shares taxed?",
+    answer: "In India, IPO shares are subject to capital gains tax. Capital gains tax is the tax levied on the profit that an individual or company makes by selling an asset. The tax rate depends on whether the shares are sold within or after a certain period, and whether the profit is short-term or long-term."
   },
   {
-    question: "How does the AI assistant help?",
-    answer:
-      "It analyzes trends, summarizes reports, and highlights signals so you can act faster with more confidence.",
+    question: "What Happens to Pre Ipo Shares After IPO?",
+    answer: "After an IPO, pre-IPO shares become tradable on the stock exchange. The price of the shares is determined by market forces and may fluctuate based on various factors, such as company performance and market conditions. To know the share price contact us"
   },
   {
-    question: "What is the pricing?",
-    answer:
-      "One plan at $10/month. Full access to the platform, AI tools, compliance suite, and digital marketing add‑ons.",
+    question: "What is the benefit of pre-IPO?",
+    answer: "The benefit of pre-IPO is the opportunity for investors to buy shares of a company before it goes public, potentially resulting in higher returns when the company goes public."
   },
+  {
+    question: "When can I sell my Pre-IPO shares?",
+    answer: "Pre-IPO shares can only be sold after the company goes public, which means after the IPO (Initial Public Offering) is completed and the shares are listed on the stock exchange."
+  },
+  {
+    question: "Who can Invest in Pre-IPO shares in India?",
+    answer: "Pre-IPO shares can be purchased by institutional investors, high net worth individuals, and certain qualified retail investors. But now retail investors can also invest easily in Pre IPO-Shares online through wwipl.com"
+  },
+  {
+    question: "How do I buy Pre-IPO shares in India?",
+    answer: "Pre-IPO shares are typically sold through private placements, which are made available to select investors through brokers or investment banks. Investors can buy Pre IPO shares online and offline through wwipl.com"
+  },
+  {
+    question: "What is the minimum investment for Pre-IPO shares in India?",
+    answer: "The minimum investment for Pre-IPO shares in India can vary depending on the company and minimum number of shares, but it is typically a substantial amount and may range from Rs. 10 thousand to Rs. 100 crore."
+  },
+  {
+    question: "What are the risks associated with investing in Pre-IPO shares in India?",
+    answer: "Investing in pre-IPO shares is considered a high-risk, high-reward proposition. The risks include the possibility of the company not going public, a delay in the IPO, or a drop in the stock price after the IPO."
+  },
+  {
+    question: "What are the advantages of investing in Pre-IPO shares in India?",
+    answer: "The advantages of investing in Pre-IPO shares include the potential for high returns, access to investment opportunities that are not available to the general public, and the ability to invest in promising companies at a lower valuation than the IPO price."
+  }
 ];
 
 export default function Faqs() {
@@ -39,7 +59,7 @@ export default function Faqs() {
 
   return (
     <section className="py-20 max-md:py-10 ">
-      <div className="container">
+      <div className="container mx-auto">
         <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium text-center max-w-xl mx-auto">
           Questions? We&apos;ve got{" "}
           <span className="text-[#FFFFFF]">answers</span>

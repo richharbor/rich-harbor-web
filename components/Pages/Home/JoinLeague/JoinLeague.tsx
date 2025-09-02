@@ -111,10 +111,10 @@ const Feature = ({
 
 export default function JoinLeague() {
     return (
-        <div className="flex rounded-2xl flex-col gap-20 h-full mx-auto w-full lg:max-w-screen-xl px-2 lg:px-20 py-20 max-md:py-10">
+        <div className="flex rounded-2xl flex-col gap-20 max-md:gap-2 h-full mx-auto w-full lg:max-w-screen-xl px-2 lg:px-20 py-20 max-md:py-10">
             <h1 className="text-3xl mx-20 max-sm:mx-5 md:text-5xl text-center lg:text-6xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">User into a new era of private investments</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 relative z-10 py-10 max-w-7xl mx-auto">
                 {/* {features.map((feature, index) => (
                     <GridItem
                         area=""

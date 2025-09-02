@@ -79,7 +79,7 @@ export default function TechPlatform(){
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
           /> */}
-          <Image src={phoneImg} alt="hoding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl "/>
+          <Image src={phoneImg} alt="hoding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl mx-auto "/>
         </CardItem>
         {/* <div className="flex justify-between items-center mt-20">
           <CardItem

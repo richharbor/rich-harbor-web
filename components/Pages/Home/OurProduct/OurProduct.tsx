@@ -47,7 +47,7 @@ export default function OurProduct() {
                         <Button className='w-fit'>Get Started</Button>
                     </div>
                 </div>
-                <div className='grid grid-cols-4 h-[8rem] gap-5 w-full max-md:grid-cols-2'>
+                <div className='grid grid-cols-4 min-h-[8rem] gap-5 w-full max-md:grid-cols-2'>
                     <CometCard rotateDepth={6} translateDepth={10}>
                         <div className='bg-card rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 h-[8rem]'>
                         <BadgeIndianRupee className='size-10' />

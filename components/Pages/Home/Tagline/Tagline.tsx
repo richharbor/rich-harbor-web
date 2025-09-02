@@ -19,7 +19,7 @@ export default function Tagline() {
         <h1 style={{ fontFamily: "Batman, sans-serif" }} className="text-2xl md:text-5xl lg:text-6xl font-bold text-center text-white relative z-2">
                   Your Gateway to Tomorrow’s{" "}<ColourfulText text="Unicorns" />.
                 </h1>
-        <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300">
+        <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-white/50 max-sm:text-sm">
           Discover and invest in the visionaries of today who are building the market leaders of tomorrow. Unlock opportunities early and be part of the next big success story.
         </p>
       </div>

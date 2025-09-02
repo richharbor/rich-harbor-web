@@ -7,13 +7,85 @@ import Research from "@/components/Pages/Stockinfo/Research/Research";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
+import { StickyScroll } from '@/components/ui/sticky-scroll-reveal';
+import step1Img from '@/public/images/step1.png'
+import step2Img from '@/public/images/step2.png'
+import step3Img from '@/public/images/step3.png'
+import step4Img from '@/public/images/step4.png'
+import step5Img from '@/public/images/step5.png'
+import step6Img from '@/public/images/step6.png'
+import { TracingBeam } from "@/components/ui/tracing-beam";
+
+
+const content = [
+    {
+        title: "Steps 1",
+        description:
+            "A deal is established through WhatsApp or phone conversation between an investment specialist of UnlistedGuru LLP and the buyer on the quantity and price of identified script(s).",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step1Img} alt='step1-img' />
+            </div>
+        ),
+    },
+    {
+        title: "Steps 2",
+        description:
+            "UnlistedGuru LLP will send a detailed offer email of the deal (including KYC), which must be accepted by the buyer on the same day in order for us to block the quantity and rate. Payment and delivery takes place on the same day or the following day, as agreed in Step 1.",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step2Img} alt='step2-img' />
+            </div>
+        ),
+    },
+    {
+        title: "Steps 3",
+        description:
+            "Post acceptance, the buyer will provide their KYC [including a copy of PAN, Cancelled Cheque, Client Master List (CML) and Aadhar card]. The deal gets confirmed once the documents provided are in order.",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step3Img} alt='step3-img' />
+            </div>
+        ),
+    },
+    {
+        title: "Steps 4",
+        description:
+            "The buyer adds UnlistedGuru LLP as a beneficiary in their bank account, transfers the deal amount (as per the agreed rate) and will share the payment reference ID with us.",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step4Img} alt='step4-img' />
+            </div>
+        ),
+    },
+    {
+        title: "Steps 5",
+        description:
+            "We ensure a smooth and timely transfer process for every transaction. Once the deal is confirmed, the shares will be transferred to the buyer’s demat account on the very same day, before 8 PM. To keep the buyer fully informed, we also send notifications across multiple channels, including email, WhatsApp, and a direct phone call, confirming the successful transfer.",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step5Img} alt='step5-img' />
+            </div>
+        ),
+    },
+    {
+        title: "Steps 6",
+        description:
+            "UnlistedGuru LLP will issue an official invoice for the transaction. This invoice will be prepared and shared with the buyer.The buyer can expect to receive it on the following business day after the deal is finalized.",
+        content: (
+            <div className="flex h-full w-full items-center justify-center text-white">
+                <Image src={step6Img} alt='step6-img' />
+            </div>
+        ),
+    },
+];
 
 
 
-export default function StockInfoPage({id}:  {id: string}) {
-    
-     const [window, setWindow] = useState<string>("research")
-     
+export default function StockInfoPage({ id }: { id: string }) {
+
+    const [window, setWindow] = useState<string>("research")
+
     return (
 
         <div className="min-h-screen py-10 mt-20 w-full">
@@ -84,7 +156,14 @@ export default function StockInfoPage({id}:  {id: string}) {
                         In FY24, the NSE reported revenues of ₹16,433.61 crore, marking a year-on-year growth of 28% and a compound annual growth rate (CAGR) of 33.35% over the past five years. This growth can be attributed to increased investor participation post-COVID, with the trading segment contributing approximately 91.93% of the total revenue. In CY23, the exchange witnessed a remarkable increase in trading volume, with 38,114 million derivative contracts traded compared to just 3,790.09 million contracts before the pandemic. Regulatory fees, representing 27% of total costs, have risen at a CAGR of 78% over the last five years.
                     </p>
                 </div>
+
             </div>
+            
+            <div className="w-full py-4">
+                <h1 className='text-center text-2xl md:text-4xl lg:text-5xl my-5 mt-10'>Steps to Buy Unlisted Shares</h1>
+                <StickyScroll content={content} />
+            </div>
+            
         </div>
 
     );
