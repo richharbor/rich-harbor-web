@@ -23,7 +23,6 @@ export const NAV_LINKS = [
   { name: "Unlisted Share", link: "/#unlisted-shares" },
   { name: "SME IPO", link: "#smeIPO" },
   { name: "Liquidate Shares", link: "/liquidate-shares" },
-  { name: "Join Us", link: "/partner-with-us" },
   { name: "About us", link: "/#aboutus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
@@ -151,7 +150,9 @@ const Navbar = () => {
           {/* Right Button */}
           {/* <ContactUs /> */}
 
-          <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+          <div>
+            <Button className="cursor-ponter" onClick={()=> route.push('/partner-with-us')}>Join us</Button>
+          </div>
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (

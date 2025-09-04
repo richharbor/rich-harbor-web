@@ -12,7 +12,7 @@ export default function Glipms() {
         <MaxWidthWrapper className="pt-10 grid grid-cols-2 max-lg:grid-cols-1 gap-10 py-20 max-md:py-10">
             <AnimationContainer delay={0.1} className="my-auto">
                 <div className="flex flex-col w-full justify-center max-lg:items-center py-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 max-sm:text-center">
+                    <h2 className="text-2xl font-batman md:text-3xl lg:text-4xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 max-sm:text-center">
                         Less platform, more portal
                     </h2>
                     <p className="mt-4 max-lg:text-center text-lg text-muted-foreground max-w-lg">

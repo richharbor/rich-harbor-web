@@ -116,11 +116,11 @@ export default function SellSharesForm() {
         {/* Full Name + Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-1 font-medium">Full Name *</label>
+            <label className="block mb-1 font-medium mb-2">Full Name *</label>
             <Input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter Full Name" required />
           </div>
           <div>
-            <label className="block mb-1 font-medium">Email *</label>
+            <label className="block mb-1 font-medium mb-2">Email *</label>
             <Input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" required />
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function SellSharesForm() {
         {/* Phone + Profile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-1 font-medium">Mobile Number *</label>
+            <label className="block mb-1 font-medium mb-2">Mobile Number *</label>
             <Input
               type="number"
               name="phone"
@@ -140,7 +140,7 @@ export default function SellSharesForm() {
             />
           </div>
           <div className="w-full">
-            <label className="block mb-1 font-medium">Profile *</label>
+            <label className="block mb-1 font-medium mb-2">Profile *</label>
             <Select
 
               value={formData.profile}
@@ -165,7 +165,7 @@ export default function SellSharesForm() {
         {/* Share Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-1 font-medium">Share Name *</label>
+            <label className="block mb-1 font-medium mb-2">Share Name *</label>
             <Select
               value={formData.shareName}
               onValueChange={(value) => setFormData((prev) => ({ ...prev, shareName: value }))}
@@ -193,7 +193,7 @@ export default function SellSharesForm() {
         {/* Other Share */}
         {formData.shareName === "other" && (
           <div>
-            <label className="block mb-1 font-medium">Please specify if your share is not listed</label>
+            <label className="block mb-1 font-medium mb-2">Please specify if your share is not listed</label>
             <Input
               name="otherShare"
               value={formData.otherShare}
@@ -206,7 +206,7 @@ export default function SellSharesForm() {
         {/* Quantity + Price */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block mb-1 font-medium">Quantity Available *</label>
+            <label className="block mb-1 font-medium mb-2">Quantity Available *</label>
             <Input
               type="number"
               name="quantity"
@@ -218,7 +218,7 @@ export default function SellSharesForm() {
             />
           </div>
           <div>
-            <label className="block mb-1 font-medium">Selling Price (Per share) *</label>
+            <label className="block mb-1 font-medium mb-2">Selling Price (Per share) *</label>
             <Input
               type="number"
               name="price"

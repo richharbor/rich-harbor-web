@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from "framer-motion";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { BadgeIndianRupee, BanknoteArrowDown, Handshake, PackageCheck } from 'lucide-react';
+import { BadgeIndianRupee, BanknoteArrowDown, Handshake, LineChart, PackageCheck, Sprout } from 'lucide-react';
 import { Highlight } from '@/components/ui/hero-highlight';
 import { CometCard } from "@/components/ui/comet-card";
 
@@ -28,14 +28,14 @@ export default function OurProduct() {
                                 opacity: 1,
                                 y: [20, -5, 0],
                             }}
-                            viewport={{ once: true}}
+                            viewport={{ once: true }}
                             transition={{
                                 duration: 0.5,
                                 ease: [0.4, 0.0, 0.2, 1],
                             }}
                             className="text-3xl font-batman text-center max-md:text-center md:text-4xl lg:text-5xl font-normal !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 "
                         >
-                           Indian Private Markets At Your{" "}
+                            Indian Private Markets At Your{" "}
                             <Highlight className="text-black dark:text-white">
                                 Fingertips.
                             </Highlight>
@@ -49,29 +49,29 @@ export default function OurProduct() {
                 </div>
                 <div className='grid grid-cols-4 min-h-[8rem] gap-5 w-full max-md:grid-cols-2'>
                     <CometCard rotateDepth={6} translateDepth={10}>
-                        <div className='bg-card rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 h-[8rem]'>
-                        <BadgeIndianRupee className='size-10' />
-                        <h1 className='font-bold max-md:font-normal ' >Angel Investing</h1>
-                    </div>
+                        <div className='bg-card h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2'>
+
+                            <LineChart className='size-10 max-sm:size-8' />
+                            <h1 className='font-bold max-md:font-normal '>Unlisted Shares</h1>
+                        </div>
                     </CometCard>
                     <CometCard rotateDepth={6} translateDepth={10}>
                         <div className='bg-card rounded-xl flex gap-3 h-[8rem] justify-center items-center py-3 px-5 max-sm:px-2'>
-                        <PackageCheck className='size-10' />
-                        <h1 className='font-bold max-md:font-normal '>PreIPO | Unicons</h1>
-                    </div>
+                            <PackageCheck className='size-10' />
+                            <h1 className='font-bold max-md:font-normal '>PreIPO | Unicons</h1>
+                        </div>
                     </CometCard>
                     <CometCard rotateDepth={6} translateDepth={10}>
                         <div className='bg-card h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2'>
-                        <BanknoteArrowDown className='size-10' />
-                        <h1 className='font-bold max-md:font-normal '>Startup Funding</h1>
-                    </div>
+                            <Sprout className='size-10' />
+                            <h1 className='font-bold max-md:font-normal '>SME IPO</h1>
+                        </div>
                     </CometCard>
                     <CometCard rotateDepth={6} translateDepth={10}>
-                        <div className='bg-card h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2'>
-
-                        <Handshake className='size-10 max-sm:size-8' />
-                        <h1 className='font-bold max-md:font-normal '>Esops</h1>
-                    </div>
+                        <div className='bg-card rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 h-[8rem]'>
+                            <BadgeIndianRupee className='size-10' />
+                            <h1 className='font-bold max-md:font-normal ' >Angel Investing</h1>
+                        </div>
                     </CometCard>
                 </div>
 

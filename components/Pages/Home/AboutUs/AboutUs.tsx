@@ -3,10 +3,13 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function WhoWeAre() {
+  const route = useRouter();
+
   return (
-    <section className="relative w-full bg-background text-foreground py-20 px-20 max-md:px-10 max-sm:px-4">
+    <section id="aboutus" className="relative w-full bg-background text-foreground py-20 px-20 max-md:px-10 max-sm:px-4">
       <div className="container mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-12 items-center">
         
         {/* Left Side - Images */}
@@ -60,9 +63,13 @@ export default function WhoWeAre() {
             <li className="flex gap-2"><Check className="text-rich-violet" /> Transparent and compliant transactions</li>
             <li className="flex gap-2"><Check className="text-rich-violet" /> Growing global investor community</li>
           </ul>
-          <Button size="lg" className="mt-4 w-fit">
+          
+          <div>
+            <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+            {/* <Button size="lg" className="mt-4 w-fit">
             Learn More
-          </Button>
+          </Button> */}
+          </div>
         </div>
       </div>
     </section>
