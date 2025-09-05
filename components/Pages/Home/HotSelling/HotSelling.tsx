@@ -62,12 +62,12 @@ export type itemsType = typeof items;
 export default function HotSelling() {
      const route = useRouter();
     return (
-        <section className="py-20 overflow-hidden max-sm:py-10 ">
-            <div className="container">
+        <section className="py-20 overflow-hidden max-sm:py-10">
+            <div className="container mx-auto">
                 <div className="flex flex-col items-center lg:gap-10">
                     <div>
-                        <h2 className="text-3xl md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
-                            Hot Stocks on the Rise
+                        <h2 className="text-3xl font-batman md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
+                            Hot IPO’s on the Rise
                         </h2>
 
                         <p className="text-white/50 mt-4 text-lg text-center">
@@ -95,7 +95,7 @@ export default function HotSelling() {
                             
                         </div>
                     </div> */}
-                    <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
+                    <div className="grid grid-cols-4 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
                         {items.map((item, index) => (
                             <div
                                 key={index}

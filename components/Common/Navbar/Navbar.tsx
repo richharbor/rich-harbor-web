@@ -20,10 +20,10 @@ import ContactUsPage from "@/components/Pages/ContactUs/page";
 
 export const NAV_LINKS = [
   { name: "Home", link: "/" },
-  { name: "Unlisted Share", link: "#unlistedShare" },
+  { name: "Unlisted Share", link: "/#unlisted-shares" },
   { name: "SME IPO", link: "#smeIPO" },
-  { name: "Startup Funding", link: "#startupFunding" },
-  { name: "About us", link: "#aboutus" },
+  { name: "Liquidate Shares", link: "/liquidate-shares" },
+  { name: "About us", link: "/#aboutus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
 ];
@@ -99,7 +99,7 @@ const Navbar = () => {
           damping: 40,
         }}
         style={{
-          minWidth: "800px",
+          minWidth: "1000px",
         }}
         className={cn(
           "hidden lg:flex bg-transparent self-start items-center justify-between py-4 rounded-full relative z-[50] mx-auto w-full backdrop-blur",
@@ -150,7 +150,9 @@ const Navbar = () => {
           {/* Right Button */}
           {/* <ContactUs /> */}
 
-          <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+          <div>
+            <Button className="cursor-ponter" onClick={()=> route.push('/partner-with-us')}>Join us</Button>
+          </div>
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (

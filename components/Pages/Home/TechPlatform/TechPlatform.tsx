@@ -35,7 +35,7 @@ export default function TechPlatform(){
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
           <AnimationContainer animation="fadeUp" delay={0.3}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
+            <h2 className="text-2xl font-batman md:text-3xl lg:text-4xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
               Your portal for 
               <br />
               diversification
@@ -79,7 +79,7 @@ export default function TechPlatform(){
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
           /> */}
-          <Image src={phoneImg} alt="hoding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl "/>
+          <Image src={phoneImg} alt="hoding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl mx-auto "/>
         </CardItem>
         {/* <div className="flex justify-between items-center mt-20">
           <CardItem

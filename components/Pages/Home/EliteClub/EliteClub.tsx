@@ -19,7 +19,7 @@ export default function EliteClub(){
 
                 <div className="flex items-center justify-center">
                     <div className='flex flex-col gap-5 max-md:items-center'>
-                        <h1 className='text-3xl relative z-10 w-fit max-md:text-center md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400'>
+                        <h1 className='font-batman text-2xl relative z-10 w-fit max-md:text-center md:text-3xl lg:text-4xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400'>
                            Join the <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Elite Circle</span>
                         </h1>
                         <p className='relative z-10 text-sm max-sm:text-center md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto'>

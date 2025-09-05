@@ -49,7 +49,7 @@ export default function UnlistedShares() {
     const route = useRouter();
 
     return (
-        <section className="w-full bg-[#0B0E19] text-white rounded-2xl pt-20 max-sm:py-10 shadow-lg overflow-hidden">
+        <section id='unlisted-shares' className="w-full bg-[#0B0E19] text-white rounded-2xl pt-20 max-sm:py-10 shadow-lg overflow-hidden">
             <div className="flex flex-col items-center justify-between gap-10">
 
                 <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-5 lg:px-20 px-4">

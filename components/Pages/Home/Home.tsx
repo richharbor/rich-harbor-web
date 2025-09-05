@@ -31,6 +31,8 @@ import Glipms from "./TechPlatform/Glimps";
 import EliteClub from "./EliteClub/EliteClub";
 import UnlistedShares from "./UnlistedShares/UnlistedShares";
 import Tagline from "./Tagline/Tagline";
+import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
+import AboutUs from "./AboutUs/AboutUs";
 
 export default function HomePage() {
   return (
@@ -42,7 +44,7 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full pt-5 overflow-hidden">
-          <div className="container px-4 md:px-6 relative">
+          <div className="container px-4 md:px-6 relative mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -80,16 +82,18 @@ export default function HomePage() {
         {/* <GlowingStarsBackgroundCardPreview /> */}
         <Tagline />
         <OurProduct />
+        <AboutUs />
         {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
         {/* <Transform /> */}
         <TechPlatform />
-        <Glipms />
+        {/* <Glipms /> */}
         <HotSelling />
         
         {/* <ExtraFeatures /> */}
         <UnlistedShares />
+        <TomorrowBigBets />
         <JoinLeague />
         {/* <Integrations /> */}
         
