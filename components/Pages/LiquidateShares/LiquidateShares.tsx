@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { BanknoteArrowDown, CircleCheckBig, CircleX, Handshake, Mail, Phone, Users, UserStar } from "lucide-react";
@@ -66,6 +66,17 @@ export default function SellSharesForm() {
     price: "",
   });
 
+  // const [isOpen, setIsOpen] = useState(false)
+
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     console.log("hello");
+  //     document.body.classList.add("no-scroll")
+  //   } else {
+  //     document.body.classList.remove("no-scroll")
+  //   }
+  // }, [isOpen])
+
   const [SuccOpen, setSuccOpen] = useState<boolean>(false);
   const [ErrOpen, setErrOpen] = useState<boolean>(false);
 
@@ -112,6 +123,8 @@ export default function SellSharesForm() {
         We can assist you with the liquidation of Unlisted, Startup Shares and ESOPs
       </h1>
 
+      {/* Form */}
+      
       <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto p-6 border rounded shadow-md">
         {/* Full Name + Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,7 +155,6 @@ export default function SellSharesForm() {
           <div className="w-full">
             <label className="block mb-1 font-medium mb-2">Profile *</label>
             <Select
-
               value={formData.profile}
               onValueChange={(value) => setFormData((prev) => ({ ...prev, profile: value }))}
 

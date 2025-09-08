@@ -104,7 +104,7 @@ const Navbar = () => {
         className={cn(
           "hidden lg:flex bg-transparent self-start items-center justify-between py-4 rounded-full relative z-[50] mx-auto w-full backdrop-blur",
           visible &&
-            "bg-background/60 py-2 border border-t-foreground/20 border-b-foreground/10 border-x-foreground/15 w-full"
+          "bg-background/60 py-2 border border-t-foreground/20 border-b-foreground/10 border-x-foreground/15 w-full"
         )}
       >
         <Wrapper className="flex items-center justify-between lg:px-4">
@@ -132,7 +132,7 @@ const Navbar = () => {
                   delay={0.1 * index}
                 >
                   <div className="relative">
-                    
+
                     <Link
                       href={link.link}
                       className="hover:text-foreground transition-all duration-500 hover:bg-accent rounded-md px-4 py-2"
@@ -140,10 +140,10 @@ const Navbar = () => {
                       {link.name}
                     </Link>
                   </div>
-                  
+
                 </AnimationContainer>
               ))}
-              
+
             </AnimatePresence>
           </div>
 
@@ -151,7 +151,7 @@ const Navbar = () => {
           {/* <ContactUs /> */}
 
           <div>
-            <Button className="cursor-ponter" onClick={()=> route.push('/partner-with-us')}>Join us</Button>
+            <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
           </div>
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
@@ -210,9 +210,9 @@ const Navbar = () => {
                     className="h-10 w-auto"
                   />
                 </Link> */}
-                <Button onClick={() => route.push("/contactus")}>
-                  Contact Us
-                </Button>
+                <div>
+                  <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
+                </div>
                 {open ? (
                   <XIcon
                     className="text-black dark:text-white"
