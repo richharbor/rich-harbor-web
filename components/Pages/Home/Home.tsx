@@ -33,6 +33,7 @@ import UnlistedShares from "./UnlistedShares/UnlistedShares";
 import Tagline from "./Tagline/Tagline";
 import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
 import AboutUs from "./AboutUs/AboutUs";
+import PromisingOnes from "./PromissingOnes/PromissingOnes";
 
 export default function HomePage() {
   return (
@@ -92,7 +93,8 @@ export default function HomePage() {
         <HotSelling />
         
         {/* <ExtraFeatures /> */}
-        <UnlistedShares />
+        {/* <UnlistedShares /> */}
+        <PromisingOnes />
         <TomorrowBigBets />
         <JoinLeague />
         {/* <Integrations /> */}

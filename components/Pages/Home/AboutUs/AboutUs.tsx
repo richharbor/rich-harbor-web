@@ -13,7 +13,7 @@ export default function WhoWeAre() {
       <div className="container mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-12 items-center">
         
         {/* Left Side - Images */}
-        <div className="relative grid grid-cols-12 [grid-template-rows:repeat(9,50px)] max-sm:[grid-template-rows:repeat(9,35px)] w-full h-full ">
+        {/* <div className="relative grid grid-cols-12 [grid-template-rows:repeat(9,50px)] max-sm:[grid-template-rows:repeat(9,35px)] w-full h-full ">
           <div className="col-start-2 col-end-8 row-start-1 row-end-5">
             <img
               src="https://i.pinimg.com/736x/ae/e6/d4/aee6d45245609592339c8508ae27182d.jpg"
@@ -44,6 +44,9 @@ export default function WhoWeAre() {
             />
             
           </div>
+        </div> */}
+        <div className="w-full h-full ">
+          <img src="https://i.pinimg.com/736x/e0/58/10/e05810aaccb21d117659797f522f5bfe.jpg" alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
         </div>
 
         {/* Right Side - Content */}

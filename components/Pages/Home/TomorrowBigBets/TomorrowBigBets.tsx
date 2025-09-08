@@ -64,7 +64,7 @@ export default function TomorrowBigBets() {
         {items.map((ipo, idx) => (
           <Card
             key={idx}
-            className="bg-card border z-10 border-gray-800 hover:border-purple-500 transition-all rounded-2xl shadow-lg hover:shadow-purple-500/20"
+            className="bg-card border z-10 border-gray-800 hover:border-rich-violet transition-all rounded-2xl shadow-lg hover:shadow-purple-500/20"
           >
             <CardContent className="px-6 flex flex-col gap-5 items-center text-center">
               <div className='h-24 max-sm:h-16 w-full flex justify-center items-center'>
