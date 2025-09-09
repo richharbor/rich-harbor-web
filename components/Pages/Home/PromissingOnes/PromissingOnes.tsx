@@ -44,12 +44,20 @@ export default function PromisingOnes() {
     const route = useRouter();
 
     return (
-        <section id='promising-ones' className="w-full bg-[#0B0E19] text-white rounded-2xl pt-20 max-sm:pt-10 shadow-lg overflow-hidden">
-            <div className="flex flex-col items-center justify-between gap-10">
-
-                <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5 max-md:gap-5 lg:px-20 px-4">
+        <div className="relative h-full w-full overflow-hidden">
+              <img
+                src="https://i.pinimg.com/1200x/c2/dc/13/c2dc13c4bab177b318dfd8f1e960f81b.jpg"
+                alt="Background"
+                className="absolute left-1/2 -translate-x-1/2 -bottom-16  size-[25rem] w-full"
+              />
+              {/* <div className="absolute inset-0 bg-transparent backdrop-blur-3xl"></div> */}
+        <section id='promising-ones' className="max-w-7xl z-10 w-full  text-white rounded-2xl pt-20 max-sm:pt-10 shadow-lg overflow-hidden">
+            <div className="flex flex-col items-center justify-between">
+                
+                <div className="grid grid-cols-2 relative max-md:grid-cols-1 gap-5 lg:px-20 px-4 pb-10">
+                    <div className="absolute inset-0 bg-transparent backdrop-blur-sm"></div>
                     {/* Left Content */}
-                    <div className="flex-1 space-y-5">
+                    <div className="flex-1 z-10 ">
                         <h2 className="font-bold text-rich-violet font-batman text-2xl md:text-3xl lg:text-4xl tracking-wide">
                             The Promising Ones
                         </h2>
@@ -102,7 +110,7 @@ export default function PromisingOnes() {
                     </div>
                 </div>
 
-                <div className="flex w-full justify-between gap-5 items-center py-10 backdrop-blur-3xl bg-white/5 lg:px-20 px-4 mt-5">
+                <div className="flex w-full z-10 justify-between gap-5 bg-transparent items-center py-10 lg:px-20 px-4">
                     <p className="text-xl text-gray-400">
                         Curated list of <span className="font-semibold text-white">fast-growing businesses</span>
                     </p>
@@ -112,5 +120,6 @@ export default function PromisingOnes() {
                 </div>
             </div>
         </section>
+        </div>
     );
 }

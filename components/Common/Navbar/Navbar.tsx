@@ -21,7 +21,7 @@ import ContactUsPage from "@/components/Pages/ContactUs/page";
 export const NAV_LINKS = [
   { name: "Home", link: "/" },
   { name: "Unlisted Share", link: "/#unlisted-shares" },
-  { name: "SME IPO", link: "#smeIPO" },
+  { name: "SME IPO", link: "/sme-ipos" },
   { name: "Liquidate Shares", link: "/liquidate-shares" },
   { name: "About us", link: "/#aboutus" },
   // { name: "Academy", link: "#" },

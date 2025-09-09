@@ -6,6 +6,8 @@ import HowWeHelp from './HowWeHelp/HowWeHelp'
 import { TechDisplay } from "./TechDisplay/TechDisplay";
 import Link from "next/link";
 import { Vortex } from "@/components/ui/vortex";
+import RocketIcon from '@/public/images/Rocket.png'
+import Image from "next/image";
 
 
 
@@ -17,16 +19,17 @@ import { Vortex } from "@/components/ui/vortex";
 export default function PartnerWithUs() {
 
     return (
-        <section className="container mt-32 max-sm:mt-20">
-            <Vortex
-                backgroundColor="black"
-                rangeY={800}
-                particleCount={500}
-                baseHue={120}
-                className="flex items-center flex-col justify-center px-2 md:px-10 rounded-2xl  py-4 w-full h-full"
-            >
+        <section className="mt-20 max-sm:mt-20 max-w-screen">
 
-                <div className="w-full items-center flex flex-col gap-7 max-md:gap-5 py-30 px-20 max-md:px-10 max-sm:px-4">
+            <div className="relative h-full w-full overflow-hidden">
+                <Image
+                    src={RocketIcon}
+                    alt="Background"
+                    className="absolute bottom-0 left-1/2 max-sm:size-[18rem] -translate-x-1/2 size-[25rem] object-cover"
+                />
+                <div className="absolute inset-0 bg-transparent backdrop-blur-sm"></div>
+                <div className="w-full z-10 relative items-center flex flex-col gap-7 max-md:gap-5 py-40 max-md:py-20 max-md:py-10 px-20 max-md:px-10 max-sm:px-4">
+
 
                     <h1 className="text-2xl md:text-3xl lg:text-5xl font-batman text-center">
                         Partner With <span className="bg-gradient-to-r from-rich-violet to-[#704bd2] bg-clip-text text-transparent">Rich Harbor</span>
@@ -45,7 +48,8 @@ export default function PartnerWithUs() {
                     </div>
 
                 </div>
-            </Vortex>
+            </div>
+
             <WhyChooseUs />
 
             <Glipms />

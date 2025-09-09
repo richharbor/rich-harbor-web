@@ -88,7 +88,7 @@ export default function StockInfoPage({ id }: { id: string }) {
 
     return (
 
-        <div className="min-h-screen py-10 mt-20 w-full">
+        <div className="max-w-7xl  min-h-screen py-10 mt-20 w-full">
             <div className="w-full flex">
                 <div className="flex flex-1 flex-col gap-10 border-b">
                     <div className="flex gap-5 max-md:flex-col relative w-full ">

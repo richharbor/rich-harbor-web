@@ -60,7 +60,7 @@ export default function AllStocks() {
     const route = useRouter();
 
     return (
-        <div className="mt-20 min-h-screen py-10 flex flex-col gap-10 max-md:gap-5">
+        <div className="mt-20 max-w-7xl min-h-screen py-10 flex flex-col gap-10 max-md:gap-5">
             <div className="w-full items-center flex flex-col gap-10 max-md:gap-5">
                 <h1 className="text-2xl md:text-3xl lg:text-5xl font-batman text-center">
                     Where Your Wealth Takes Shape
