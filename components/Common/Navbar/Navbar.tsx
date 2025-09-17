@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import { MenuIcon, XIcon } from "lucide-react";
+import { CircleUserRound, MenuIcon, User, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
@@ -17,13 +17,15 @@ import RHLogo from "@/assets/logo/RH-Logo.png";
 import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 import { useRouter } from "next/navigation";
 import ContactUsPage from "@/components/Pages/ContactUs/page";
+import { useAuthStore } from "@/store/authStore";
 
 export const NAV_LINKS = [
   { name: "Home", link: "/" },
-  { name: "Unlisted Share", link: "/#unlisted-shares" },
-  { name: "SME IPO", link: "/sme-ipos" },
+  { name: "Unlisted Share", link: "/allstocks" },
+  { name: "SME IPO", link: "/coming-soon" },
   { name: "Liquidate Shares", link: "/liquidate-shares" },
   { name: "About us", link: "/#aboutus" },
+  { name: "Join us", link: "/partner-with-us" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
 ];
@@ -68,6 +70,7 @@ const Wrapper = ({
 
 const Navbar = () => {
   const { user } = { user: "user" };
+  const { authUser } = useAuthStore();
 
   const route = useRouter();
 
@@ -99,7 +102,7 @@ const Navbar = () => {
           damping: 40,
         }}
         style={{
-          minWidth: "1000px",
+          minWidth: "1100px",
         }}
         className={cn(
           "hidden lg:flex bg-transparent self-start items-center justify-between py-4 rounded-full relative z-[50] mx-auto w-full backdrop-blur",
@@ -150,9 +153,11 @@ const Navbar = () => {
           {/* Right Button */}
           {/* <ContactUs /> */}
 
-          <div>
-            <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
-          </div>
+          {authUser && <div className=""><CircleUserRound /></div>}
+          {!authUser && <div className="flex gap-3">
+            <Button className="cursor-pointer" onClick={() => route.push('/login')}>Log in</Button>
+            <Button className="cursor-pointer" onClick={() => route.push('/signup')}>Sign up</Button>
+          </div>}
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (

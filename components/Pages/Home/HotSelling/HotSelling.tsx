@@ -62,7 +62,7 @@ export type itemsType = typeof items;
 export default function HotSelling() {
      const route = useRouter();
     return (
-        <section className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
+        <section id='hot-ipo' className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
             <div className="container mx-auto">
                 <div className="flex flex-col items-center lg:gap-10">
                     <div>

@@ -85,11 +85,27 @@ const content = [
 export default function StockInfoPage({ id }: { id: string }) {
 
     const [window, setWindow] = useState<string>("research")
+    const pricePerUnit = 53;
+    const minUnits = 500;
+    const [units, setUnits] = useState(minUnits);
+
+    const handleDecrease = () => {
+        if (units > minUnits) {
+            setUnits(units - 1);
+        }
+    };
+
+    const handleIncrease = () => {
+        setUnits(units + 1);
+    };
+
+    const finalAmount = units * pricePerUnit;
 
     return (
 
         <div className="max-w-7xl  min-h-screen py-10 mt-20 w-full">
             <div className="w-full flex">
+                {/* left ipo info section */}
                 <div className="flex flex-1 flex-col gap-10 border-b">
                     <div className="flex gap-5 max-md:flex-col relative w-full ">
                         <div className="h-20 w-20 ">
@@ -103,16 +119,17 @@ export default function StockInfoPage({ id }: { id: string }) {
                                 <p>New Delhi</p>
                             </div>
                         </div>
-                        <div className="absolute right-0 top-0">
-                            <button className="bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 max-md:px-3 max-md:py-2 rounded-l-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200">
-                                Available now
-                            </button>
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2">
+                            <a href="https://wa.me/919211265558"
+                                target="_blank" className="bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 max-md:px-3 max-md:py-2 rounded-l-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200">
+                                Enquiry now
+                            </a>
                         </div>
                     </div>
                     <div className="flex gap-5">
                         <div className="flex flex-col">
                             <p className="text-white/50">Price per share</p>
-                            <h2>$1.00{" ("}Face Value{")"}</h2>
+                            <h2>₹1.00{" ("}Face Value{")"}</h2>
                         </div>
                         <div>
                             <p className="text-white/50">Available on</p>
@@ -121,16 +138,72 @@ export default function StockInfoPage({ id }: { id: string }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex gap-2 z-10">
+                    <div className="flex mt-auto gap-2 z-10">
                         <button onClick={() => setWindow('research')} className={`px-3 py-2 ${window === 'research' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>Research Report</button>
                         <button onClick={() => setWindow('finance')} className={`px-3 py-2 ${window === 'finance' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>Finance</button>
                         <button onClick={() => setWindow('news')} className={`px-3 py-2 ${window === 'news' ? 'border-b-2 border-rich-violet' : 'cursor-pointer'} transition-all duration-200 ease-in-out`}>News</button>
                     </div>
                 </div>
-                <div className="flex w-[35%] max-md:hidden flex-col justify-center gap-5 py-10 px-5 border-l border-b border-r">
-                    <p className="text-center">Register to see prices and unloack exclusive investment opportunities</p>
 
-                    <Button className="px-5 py-2">Reserve Access</Button>
+                {/* right pricing section */}
+                <div className="flex w-[30%] max-md:hidden flex-col justify-center gap-5 border-l border-b border-r">
+                    <div className=" w-full rounded-2xl p-6 space-y-4">
+                        {/* Price per unit */}
+                        <div className="flex justify-between">
+                            <span className="">Price per unit</span>
+                            <span className="font-semibold">₹{pricePerUnit}</span>
+                        </div>
+
+                        {/* Settlement period */}
+                        <div className="flex justify-between">
+                            <span className="0">Settlement period</span>
+                            <span className="font-semibold">26 Sep 2025</span>
+                        </div>
+
+                        {/* Min units */}
+                        <div className="flex justify-between">
+                            <span className="">Min. units</span>
+                            <span className="font-semibold">{minUnits}</span>
+                        </div>
+
+                        {/* Units selector */}
+                        <div className="flex justify-between items-center">
+                            <span className="">No. of units to buy</span>
+                            <div className="flex items-center space-x-3">
+                                <button
+                                    onClick={handleDecrease}
+                                    className="px-3 py-1 bg-gray-200/20 rounded-full hover:bg-gray-300/30"
+                                >
+                                    -
+                                </button>
+                                <span className="font-semibold">{units}</span>
+                                <button
+                                    onClick={handleIncrease}
+                                    className="px-3 py-1 bg-gray-200/20 rounded-full hover:bg-gray-300/30"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Offer */}
+                        {/* <p className="text-sm text-orange-600 cursor-pointer">
+                            Grab this opportunity at ₹51
+                        </p> */}
+
+                        <hr />
+
+                        {/* Final amount */}
+                        <div className="flex justify-between">
+                            <span className=" font-medium">Final amount</span>
+                            <span className="font-bold text-lg">₹{finalAmount.toLocaleString()}</span>
+                        </div>
+
+                        {/* Button */}
+                        <Button className="w-full ">
+                            Book Now
+                        </Button>
+                    </div>
                 </div>
             </div>
             <div className="">
@@ -158,12 +231,13 @@ export default function StockInfoPage({ id }: { id: string }) {
                 </div>
 
             </div>
-            
+
+            {/* Steps to Buy unlisted Shares */}
             <div className="w-full py-4">
                 <h1 className='text-center text-2xl md:text-4xl lg:text-5xl my-5 mt-10'>Steps to Buy Unlisted Shares</h1>
                 <StickyScroll content={content} />
             </div>
-            
+
         </div>
 
     );

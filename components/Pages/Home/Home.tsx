@@ -34,8 +34,20 @@ import Tagline from "./Tagline/Tagline";
 import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
 import AboutUs from "./AboutUs/AboutUs";
 import PromisingOnes from "./PromissingOnes/PromissingOnes";
+import { useAuthStore } from "@/store/authStore";
+import { useEffect } from "react";
 
 export default function HomePage() {
+
+  const {authUser, checkAuth} = useAuthStore();
+
+
+  useEffect(()=>{
+    checkAuth();
+  },[])
+
+
+
   return (
     
     <div className="flex flex-col pt-5 sm:pt-20">
@@ -95,12 +107,12 @@ export default function HomePage() {
         {/* <ExtraFeatures /> */}
         {/* <UnlistedShares /> */}
         <PromisingOnes />
-        <TomorrowBigBets />
+        {/* <TomorrowBigBets /> */}
         <JoinLeague />
         {/* <Integrations /> */}
         
         
-        <EliteClub />
+        {/* <EliteClub /> */}
         {/* <ReadyToBoost /> */}
         <Faq /> 
 

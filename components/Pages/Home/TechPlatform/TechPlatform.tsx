@@ -42,13 +42,13 @@ export default function TechPlatform(){
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
-            <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl mx-auto">
                 RichHarbor offers a curated gateway to leading private growth companies and global trade finance opportunities, helping you diversify with confidence and access markets beyond the ordinary.
             </p>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.5}>
-            <Button className="mt-4">Reserve access</Button>
+            <Button className="mt-4">Live soon</Button>
           </AnimationContainer>
         </div>
 

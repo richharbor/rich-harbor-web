@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { useRouter } from "next/navigation"
 import AboutUsIcon from "@/public/images/AboutUsIcon.png"
+import whoWeAreImg from '@/public/images/whoWeAre.jpg'
 
 export default function WhoWeAre() {
   const route = useRouter();
@@ -48,7 +49,7 @@ export default function WhoWeAre() {
           </div>
         </div> */}
           <div className="w-full h-full ">
-            <img src="https://i.pinimg.com/736x/e0/58/10/e05810aaccb21d117659797f522f5bfe.jpg" alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
+            <Image src={whoWeAreImg} alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
           </div>
 
           {/* Right Side - Content */}
@@ -70,11 +71,11 @@ export default function WhoWeAre() {
               <li className="flex gap-2"><div><Check className="text-rich-violet" /></div> Transparent & Compliant transactions with full investor confidence</li>
               <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Global Investor Network growing stronger every day
               </li>
-              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>At the heart of our platform is a vision to democratize private markets, empowering investors to enter early, grow smarter, and trade with trust.</li>
+              {/* <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>At the heart of our platform is a vision to democratize private markets, empowering investors to enter early, grow smarter, and trade with trust.</li> */}
             </ul>
 
             <div>
-              <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+              {/* <Button onClick={() => route.push("/contactus")}>Contact Us</Button> */}
               {/* <Button size="lg" className="mt-4 w-fit">
             Learn More
           </Button> */}

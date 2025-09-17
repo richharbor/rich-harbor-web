@@ -44,7 +44,7 @@ export default function PromisingOnes() {
     const route = useRouter();
 
     return (
-        <div className="relative h-full w-full overflow-hidden">
+        <div className="relative h-full mx-auto rounded-2xl max-w-7xl overflow-hidden">
               <img
                 src="https://i.pinimg.com/1200x/c2/dc/13/c2dc13c4bab177b318dfd8f1e960f81b.jpg"
                 alt="Background"
@@ -73,7 +73,7 @@ export default function PromisingOnes() {
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="text-rich-violet mr-2">✔</span>
-                                Early-stage investments with high future value
+                                Discover startups and growing businesses ideal for Pre-IPO investing.
                             </li>
                             <li className="flex items-center gap-2">
                                 <span className="text-rich-violet mr-2">✔</span>
