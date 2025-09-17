@@ -87,7 +87,7 @@ export default function SellSharesForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData)
+
     setFormData({
       fullName: "",
       email: "",

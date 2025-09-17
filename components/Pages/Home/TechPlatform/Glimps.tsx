@@ -30,12 +30,12 @@
 //                     <Image src={sampleImg} alt="Sample-image" className="w-96 h-auto mx-auto"  />
 //                 </div>
 //                 {/* <div className="relative w-96 h-[35rem] group">
-                    
+
 //                     <Image src={sampleImg2}
 //                         alt="No Color"
 //                         className="w-full h-auto absolute top-0 left-0 transition-opacity duration-700 opacity-100 group-hover:opacity-0" />
 
-                    
+
 //                     <Image src={sampleImg}
 //                         alt="Color"
 //                         className="w-full h-auto absolute top-0 left-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100" />
@@ -47,12 +47,23 @@
 "use client";
 
 import { Shield, Headphones, Clock, KeyRound } from "lucide-react";
+import Image from "next/image";
+import circleIcon from '@/public/images/CircleIcon.png'
 
 export default function Glimps() {
   return (
-    <section className="w-full bg-[#0B0E19] text-white py-20 px-6 lg:px-20">
+    <div className="relative h-full w-full rounded-2xl">
+      <Image
+        src={circleIcon}
+        alt="Background"
+        className="absolute -top-28 -left-34 max-sm:size-[18rem] max-sm:-top-10 max-sm:-left-15  size-[35rem] object-cover"
+      />
+      <div className="absolute inset-0 bg-transparent backdrop-blur-lg"></div>
+    <section className="max-w-7xl relative  mx-auto w-full text-white py-20 px-6 lg:px-20">
+      
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+
         {/* Left Content */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-batman font-extrabold leading-tight bg-gradient-to-r from-rich-violet to-[#704bd2] bg-clip-text text-transparent">
@@ -86,6 +97,7 @@ export default function Glimps() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 

@@ -36,20 +36,19 @@ export default function TechPlatform(){
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
           <AnimationContainer animation="fadeUp" delay={0.3}>
             <h2 className="text-2xl font-batman md:text-3xl lg:text-4xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
-              Your portal for 
-              <br />
-              diversification
+              Your Portal to Smarter Diversification
+
             </h2>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.4}>
-            <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
-                Precize brings you a curated selection of leading private growth companies & global trade finance opportunities
+            <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl mx-auto">
+                RichHarbor offers a curated gateway to leading private growth companies and global trade finance opportunities, helping you diversify with confidence and access markets beyond the ordinary.
             </p>
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.5}>
-            <Button className="mt-4">Reserve access</Button>
+            <Button className="mt-4">Live soon</Button>
           </AnimationContainer>
         </div>
 

@@ -28,9 +28,9 @@ const cardContent = [
 
 export default function WhyChooseUs(){
     return (
-        <div className="flex flex-col items-center gap-10 py-10 max-md:py-5 ">
-                <h2 className="font-batman text-4xl max-md:text-3xl max-sm:text-xl text-center">Why Partner With Us?</h2>
-                <div className="grid grid-cols-4 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1 ">
+        <div className="max-w-7xl relative mx-auto flex flex-col items-center gap-10 py-20 max-md:py-5 ">
+                <h2 className="text-2xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">Why Partner With Us?</h2>
+                <div className="grid grid-cols-4 gap-5 z-10 max-md:grid-cols-2 max-sm:grid-cols-1 ">
                     {cardContent.map((item, index) => (
                         <CometCard rotateDepth={6} translateDepth={10} key={index} className="">
                         <div className="bg-card rounded-xl h-[16rem] max-sm:h-[14rem] max-lg:h-[20rem] flex flex-col items-center gap-3 px-2 py-5">

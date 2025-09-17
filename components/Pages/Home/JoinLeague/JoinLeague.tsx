@@ -6,24 +6,24 @@ import { BadgeIndianRupee, ChartBarBig, IndianRupee, LockKeyhole, Zap } from "lu
 
 const features = [
     {
-        title: "Low ticket size",
+        title: "Low Entry, High Potential",
         icon: <BadgeIndianRupee className="size-full text-rich-violet" />, // Placeholder for icon path
-        description: "A minimum of ₹10,000 is all it takes for you to start investing in private opportunities",
+        description: "Start your journey into private markets with just ₹10,000. A small entry opens the door to exclusive, high-growth opportunities once reserved for a select few.",
     },
     {
-        title: "Bank-level security",
+        title: "Enterprise-Grade Security",
         icon: <LockKeyhole className="size-full text-rich-violet" />, // Placeholder for icon path
-        description: "Strict policies are enforced to prevent unauthorized revelation of your sensitive personal information",
+        description: "Your trust is safeguarded with bank-level encryption and strict compliance protocols. Every transaction is protected, ensuring your investments remain private and secure.",
     },
     {
-        title: "Research-driven",
+        title: "Research-Backed Decisions",
         icon: <ChartBarBig className="size-full text-rich-violet" />,
-        description: "Access curated financial reports by analyst for informed investment decisions",
+        description: "Invest with confidence through curated financial insights and analyst-driven reports, empowering you to make informed, data-backed choices in emerging companies.",
     },
     {
-        title: "Fast & Simple",
+        title: "Seamless Three-Step Investing",
         icon: <Zap className="size-full text-rich-violet " />, // Placeholder for icon path
-        description: "Hassle-free investment experience. Invest in just three steps - confirm, order, and pay",
+        description: "Experience the future of investing—Confirm, Order, Pay. A fast, frictionless process designed to give you access to opportunities at your fingertips.",
     },
 ];
 
@@ -101,7 +101,7 @@ const Feature = ({
                     {title}
                 </span>
             </div>
-            <p className="text-sm text-neutral-600 dark:text-white/50 max-w-xs relative z-10 px-10">
+            <p className="text-sm text-neutral-600 dark:text-white/80 max-w-xs relative z-10 px-10">
                 {description}
             </p>
         </div>

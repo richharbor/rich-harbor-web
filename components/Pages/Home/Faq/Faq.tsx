@@ -13,6 +13,11 @@ const faqs = [
       "Rich Harbor unifies trading, research, compliance, and AI into one platform—bringing transparency, liquidity, and intelligence together.",
   },
   {
+    question: "How do I buy Pre-IPO shares in India?",
+    answer:
+      "Pre-IPO shares are typically sold through private placements, which are made available to select investors through brokers or investment banks. Investors can buy Pre IPO shares online and offline through www.richharbor.com ",
+  },
+  {
     question:"What are Pre-IPO Shares",
     answer:"Pre-IPO shares are stocks of a company that are available for purchase before the company goes public and lists its shares on a stock exchange. Companies may offer Pre-IPO shares to investors, such as venture capitalists, angel investors, and high net worth individuals, in order to raise capital before going pulic. Investing in Pre-IPO shares can offer high potential returns, but also comes with high risk."
   },
@@ -37,10 +42,6 @@ const faqs = [
     answer: "Pre-IPO shares can be purchased by institutional investors, high net worth individuals, and certain qualified retail investors. But now retail investors can also invest easily in Pre IPO-Shares online through wwipl.com"
   },
   {
-    question: "How do I buy Pre-IPO shares in India?",
-    answer: "Pre-IPO shares are typically sold through private placements, which are made available to select investors through brokers or investment banks. Investors can buy Pre IPO shares online and offline through wwipl.com"
-  },
-  {
     question: "What is the minimum investment for Pre-IPO shares in India?",
     answer: "The minimum investment for Pre-IPO shares in India can vary depending on the company and minimum number of shares, but it is typically a substantial amount and may range from Rs. 10 thousand to Rs. 100 crore."
   },
@@ -58,9 +59,9 @@ export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="py-20 max-md:py-10 ">
+    <section className="py-20 max-md:py-10 px-3 ">
       <div className="container mx-auto">
-        <h2 className="text-6xl max-md:text-4xl max-sm:text-3xl font-medium text-center max-w-xl mx-auto">
+        <h2 className="text-5xl max-md:text-4xl max-sm:text-3xl font-medium font-batman text-center max-w-3xl mx-auto">
           Questions? We&apos;ve got{" "}
           <span className="text-[#FFFFFF]">answers</span>
         </h2>

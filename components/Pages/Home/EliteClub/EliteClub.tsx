@@ -23,7 +23,7 @@ export default function EliteClub(){
                            Join the <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Elite Circle</span>
                         </h1>
                         <p className='relative z-10 text-sm max-sm:text-center md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto'>
-                            The Elite Club is more than membership—it’s your entry to a circle of ambition and success. Gain priority access to exclusive assets, smarter strategies, and opportunities designed to maximize your trading potential.
+                            Unlock entry into an exclusive network of visionary investors with priority access to India’s first tech-powered marketplace for unlisted shares. Where ambition turns into opportunity, and you gain unmatched pricing, seamless transactions, and premium deals—all crafted to accelerate your wealth.
                         </p>
 
                         <Button className='w-fit relative z-10'>Reserve access</Button>
