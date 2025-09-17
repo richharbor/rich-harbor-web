@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
-import { BanknoteArrowDown, CircleCheckBig, CircleX, Handshake, Mail, Phone, Users, UserStar } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import {
+  AArrowDown as BanknoteArrowDown,
+  CircleCheckBig,
+  CircleX,
+  Handshake,
+  Users,
+  UserSearch as UserStar,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -15,24 +23,45 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { postLiquidateShares } from "@/services/shareServices";
 
-type FormData = {
-  fullName: string;
-  email: string;
-  phone: string;
-  profile: string;
-  shareName: string;
-  otherShare?: string;
-  quantity: string;
-  price: string;
-};
+const formSchema = z.object({
+  fullName: z.string().min(2, "Full name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  profile: z.string().min(2, "Profile must be at least 2 characters"),
+  shareName: z.string().min(1, "Share name is required"),
+  quantity: z
+    .string()
+    .min(1, "Quantity is required")
+    .refine(
+      (val) => !isNaN(Number(val)) && Number(val) > 0,
+      "Quantity must be a positive number"
+    ),
+  price: z
+    .string()
+    .min(1, "Price is required")
+    .refine(
+      (val) => !isNaN(Number(val)) && Number(val) > 0,
+      "Price must be a positive number"
+    ),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const features = [
   {
     icon: <UserStar className="w-8 h-8 text-rich-violet" />,
     title: "Shareholder",
-    description:
-      "Liquidate your stocks to unlock your true net worth.",
+    description: "Liquidate your stocks to unlock your true net worth.",
   },
   {
     icon: <Handshake className="w-8 h-8 text-rich-violet" />,
@@ -43,61 +72,51 @@ const features = [
   {
     icon: <BanknoteArrowDown className="w-8 h-8 text-rich-violet" />,
     title: "Funds",
-    description:
-      "Liquidate your Unlisted Funds with Rich Harbor.",
+    description: "Liquidate your Unlisted Funds with Rich Harbor.",
   },
   {
     icon: <Users className="w-8 h-8 text-rich-violet" />,
     title: "Employees",
-    description:
-      "Join us to explore new options for selling your ESOP’s.",
+    description: "Join us to explore new options for selling your ESOP's.",
   },
 ];
 
 export default function SellSharesForm() {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    email: "",
-    phone: "",
-    profile: "",
-    shareName: "",
-    otherShare: "",
-    quantity: "",
-    price: "",
-  });
+  const [successOpen, setSuccessOpen] = useState<boolean>(false);
+  const [errorOpen, setErrorOpen] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  // const [isOpen, setIsOpen] = useState(false)
-
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     console.log("hello");
-  //     document.body.classList.add("no-scroll")
-  //   } else {
-  //     document.body.classList.remove("no-scroll")
-  //   }
-  // }, [isOpen])
-
-  const [SuccOpen, setSuccOpen] = useState<boolean>(false);
-  const [ErrOpen, setErrOpen] = useState<boolean>(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setFormData({
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       fullName: "",
       email: "",
       phone: "",
       profile: "",
       shareName: "",
-      otherShare: "",
       quantity: "",
       price: "",
-    });
+    },
+  });
+
+  const handleSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+
+    try {
+      const response = await postLiquidateShares(data);
+
+      console.log(response);
+      
+
+      // Reset form on successful submission
+      form.reset();
+      setSuccessOpen(true);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setErrorOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -105,185 +124,205 @@ export default function SellSharesForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-background px-2 py-5 mt-15 mx-auto "
+      className="bg-background px-2 py-5 mt-15 mx-auto"
     >
-      <div className="py-20 mb-5 w-full rounded-2xl flex items-center justify-center relative px-10 max-sm:p-3 overflow-hidden  bg-black">
+      <div className="py-20 mb-5 w-full rounded-2xl flex items-center justify-center relative px-10 max-sm:p-3 overflow-hidden bg-black">
         <motion.img
           src="https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1500507449/image_1500507449.jpg?io=getty-c-w750"
           className="h-auto w-full object-center absolute inset-0 [mask-image:radial-gradient(circle,transparent,black_80%)] pointer-events-none -top-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
+          alt="Investment background"
         />
-        <h1 style={{ fontFamily: "Batman, sans-serif" }} className="text-2xl md:text-5xl lg:text-6xl font-bold text-center text-white relative z-2">
+        <h1
+          style={{ fontFamily: "Batman, sans-serif" }}
+          className="text-2xl md:text-5xl lg:text-6xl font-bold text-center text-white relative z-2"
+        >
           Liquidate Investments
         </h1>
       </div>
+
       <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 max-w-3xl mx-auto">
-        We can assist you with the liquidation of Unlisted, Startup Shares and ESOPs
+        We can assist you with the liquidation of Unlisted, Startup Shares and
+        ESOPs
       </h1>
 
-      {/* Form */}
-      
-      <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto p-6 border rounded shadow-md">
-        {/* Full Name + Email */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-medium mb-2">Full Name *</label>
-            <Input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter Full Name" required />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="space-y-6 max-w-3xl mx-auto p-6 border rounded shadow-md"
+        >
+          {/* Full Name + Email */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="fullName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Full Name *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Full Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email *</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="Enter Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
-          <div>
-            <label className="block mb-1 font-medium mb-2">Email *</label>
-            <Input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" required />
-          </div>
-        </div>
 
-        {/* Phone + Profile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-medium mb-2">Mobile Number *</label>
-            <Input
-              type="number"
+          {/* Phone + Profile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Enter Mobile Number"
-              required
-              className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number *</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="tel"
+                      placeholder="Enter Mobile Number"
+                      className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="profile"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profile *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Profile Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </div>
-          <div className="w-full">
-            <label className="block mb-1 font-medium mb-2">Profile *</label>
-            <Select
-              value={formData.profile}
-              onValueChange={(value) => setFormData((prev) => ({ ...prev, profile: value }))}
 
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Your Profession" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="investor">Investor</SelectItem>
-                  <SelectItem value="employee">Startup Employee</SelectItem>
-                  <SelectItem value="founder">Founder</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        {/* Share Name */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-medium mb-2">Share Name *</label>
-            <Select
-              value={formData.shareName}
-              onValueChange={(value) => setFormData((prev) => ({ ...prev, shareName: value }))}
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select Share Name" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="bira91">Bira91</SelectItem>
-                  <SelectItem value="boat">boAt</SelectItem>
-                  <SelectItem value="oyo">OYO</SelectItem>
-                  <SelectItem value="capgemini">Capgemini</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-          {/* <div>
-          <label className="block mb-1 font-medium">Share Name*</label>
-          <Input name="shareName" value={formData.shareName} onChange={handleChange} placeholder="Enter Share Name" required />
-        </div> */}
-        </div>
-
-        {/* Other Share */}
-        {formData.shareName === "other" && (
-          <div>
-            <label className="block mb-1 font-medium mb-2">Please specify if your share is not listed</label>
-            <Input
-              name="otherShare"
-              value={formData.otherShare}
-              onChange={handleChange}
-              placeholder="Enter Share Name"
+          {/* Share Name */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="shareName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Share Name *</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter Share Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </div>
-        )}
 
-        {/* Quantity + Price */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-medium mb-2">Quantity Available *</label>
-            <Input
-              type="number"
+          {/* Quantity + Price */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
               name="quantity"
-              value={formData.quantity}
-              onChange={handleChange}
-              placeholder="Enter Quantities"
-              className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Quantity Available *</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      placeholder="Enter Quantities"
+                      className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium mb-2">Selling Price (Per share) *</label>
-            <Input
-              type="number"
+            <FormField
+              control={form.control}
               name="price"
-              value={formData.price}
-              onChange={handleChange}
-              placeholder="Enter Selling Price"
-              className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Selling Price (Per share) *</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      placeholder="Enter Selling Price"
+                      className="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
           </div>
-        </div>
 
-        <Button type="submit" className="w-full">Submit</Button>
-      </form>
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Button>
+        </form>
+      </Form>
 
       {/* Success Dialog */}
-      <Dialog open={SuccOpen} onOpenChange={setSuccOpen}>
+      <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Success 🎉</DialogTitle>
-            <DialogDescription>Your form has been submitted successfully.</DialogDescription>
+            <DialogDescription>
+              Your form has been submitted successfully.
+            </DialogDescription>
           </DialogHeader>
           <div className="my-5 text-green-500 w-full">
             <CircleCheckBig className="mx-auto" size={100} />
           </div>
-          <Button onClick={() => setSuccOpen(false)}>Close</Button>
+          <Button onClick={() => setSuccessOpen(false)}>Close</Button>
         </DialogContent>
       </Dialog>
 
       {/* Error Dialog */}
-      <Dialog open={ErrOpen} onOpenChange={setErrOpen}>
+      <Dialog open={errorOpen} onOpenChange={setErrorOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Error</DialogTitle>
-            <DialogDescription>Unable to submit your form. Please try again later.</DialogDescription>
+            <DialogDescription>
+              Unable to submit your form. Please try again later.
+            </DialogDescription>
           </DialogHeader>
           <div className="my-5 text-red-500 w-full">
             <CircleX className="mx-auto" size={100} />
           </div>
-          <Button onClick={() => setErrOpen(false)}>Close</Button>
+          <Button onClick={() => setErrorOpen(false)}>Close</Button>
         </DialogContent>
       </Dialog>
 
-
-
-      <section className="relative  text-gray-100 py-20 px-6 md:px-12 lg:px-20">
+      <section className="relative text-gray-100 py-20 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-rich-violet font-batman">
             Liquidate your Unlisted & Startup Investments
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-14">
-
-            Whether you’re looking to diversify your portfolio or seeking liquidity from an Early Stage Investment, Rich Harbor can help you get the liquidity you deserve. Liquidate your Unlisted & Startup Investments through Rich Harbor.
+            Whether you’re looking to diversify your portfolio or seeking
+            liquidity from an Early Stage Investment, Rich Harbor can help you
+            get the liquidity you deserve. Liquidate your Unlisted & Startup
+            Investments through Rich Harbor.
           </p>
 
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -300,8 +339,6 @@ export default function SellSharesForm() {
           </div>
         </div>
       </section>
-
-
     </motion.div>
   );
 }
