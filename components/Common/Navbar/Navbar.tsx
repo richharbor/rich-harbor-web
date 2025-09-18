@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import { MenuIcon, XIcon } from "lucide-react";
+import { CircleUserRound, MenuIcon, User, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
@@ -17,9 +17,15 @@ import RHLogo from "@/assets/logo/RH-Logo.png";
 import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 import { useRouter } from "next/navigation";
 import ContactUsPage from "@/components/Pages/ContactUs/page";
+import { useAuthStore } from "@/store/authStore";
 
 export const NAV_LINKS = [
-  { name: "", link: "" },
+  { name: "Home", link: "/" },
+  { name: "Unlisted Share", link: "/#hot-ipo" },
+  { name: "SME IPO", link: "/coming-soon" },
+  { name: "Liquidate Shares", link: "/liquidate-shares" },
+  { name: "About us", link: "/#aboutus" },
+  { name: "Contact us", link: "/contactus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
 ];
@@ -64,6 +70,7 @@ const Wrapper = ({
 
 const Navbar = () => {
   const { user } = { user: "user" };
+  const { authUser } = useAuthStore();
 
   const route = useRouter();
 
@@ -95,12 +102,12 @@ const Navbar = () => {
           damping: 40,
         }}
         style={{
-          minWidth: "800px",
+          minWidth: "1100px",
         }}
         className={cn(
           "hidden lg:flex bg-transparent self-start items-center justify-between py-4 rounded-full relative z-[50] mx-auto w-full backdrop-blur",
           visible &&
-            "bg-background/60 py-2 border border-t-foreground/20 border-b-foreground/10 border-x-foreground/15 w-full"
+          "bg-background/60 py-2 border border-t-foreground/20 border-b-foreground/10 border-x-foreground/15 w-full"
         )}
       >
         <Wrapper className="flex items-center justify-between lg:px-4">
@@ -128,6 +135,7 @@ const Navbar = () => {
                   delay={0.1 * index}
                 >
                   <div className="relative">
+
                     <Link
                       href={link.link}
                       className="hover:text-foreground transition-all duration-500 hover:bg-accent rounded-md px-4 py-2"
@@ -135,15 +143,25 @@ const Navbar = () => {
                       {link.name}
                     </Link>
                   </div>
+
                 </AnimationContainer>
               ))}
+
             </AnimatePresence>
           </div>
 
           {/* Right Button */}
           {/* <ContactUs /> */}
 
-          <Button onClick={() => route.push("/contactus")}>Contact Us</Button>
+          <div>
+            <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
+          </div>
+
+          {/* {authUser && <div className=""><CircleUserRound /></div>}
+          {!authUser && <div className="flex gap-3">
+            <Button className="cursor-pointer" onClick={() => route.push('/login')}>Log in</Button>
+            <Button className="cursor-pointer" onClick={() => route.push('/signup')}>Sign up</Button>
+          </div>} */}
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
@@ -201,10 +219,10 @@ const Navbar = () => {
                     className="h-10 w-auto"
                   />
                 </Link> */}
-                <Button onClick={() => route.push("/contactus")}>
-                  Contact Us
-                </Button>
-                {/* {open ? (
+                <div>
+                  <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
+                </div>
+                {open ? (
                   <XIcon
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
@@ -214,7 +232,7 @@ const Navbar = () => {
                     className="text-black dark:text-white"
                     onClick={() => setOpen(!open)}
                   />
-                )} */}
+                )}
               </div>
             </AnimationContainer>
           </div>
@@ -246,7 +264,7 @@ const Navbar = () => {
                   </Link>
                 </AnimationContainer>
               ))}
-              <AnimationContainer
+              {/* <AnimationContainer
                 animation="fadeUp"
                 delay={0.5}
                 className="w-full"
@@ -283,7 +301,7 @@ const Navbar = () => {
                     </Link>
                   </>
                 )}
-              </AnimationContainer>
+              </AnimationContainer> */}
             </motion.div>
           )}
         </AnimatePresence>

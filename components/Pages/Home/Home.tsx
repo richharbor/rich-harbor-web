@@ -23,9 +23,33 @@ import Features2 from "./Features2/Features2";
 import Companies from "./Companies/companies";
 import Perks from "./Perks/Perks";
 import Transform from "./Transfrom/Transform";
+import OurProduct from "./OurProduct/OurProduct";
+import TechPlatform from "./TechPlatform/TechPlatform";
+import HotSelling from "./HotSelling/HotSelling";
+import JoinLeague from "./JoinLeague/JoinLeague";
+import Glipms from "./TechPlatform/Glimps";
+import EliteClub from "./EliteClub/EliteClub";
+import UnlistedShares from "./UnlistedShares/UnlistedShares";
+import Tagline from "./Tagline/Tagline";
+import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
+import AboutUs from "./AboutUs/AboutUs";
+import PromisingOnes from "./PromissingOnes/PromissingOnes";
+import { useAuthStore } from "@/store/authStore";
+import { useEffect } from "react";
 
 export default function HomePage() {
+
+  const {authUser, checkAuth} = useAuthStore();
+
+
+  // useEffect(()=>{
+  //   checkAuth();
+  // },[])
+
+
+
   return (
+    
     <div className="flex flex-col pt-5 sm:pt-20">
       <ShootingStars />
       <StarsBackground />
@@ -33,7 +57,7 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full pt-5 overflow-hidden">
-          <div className="container px-4 md:px-6 relative">
+          <div className="container px-4 md:px-6 relative mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -69,18 +93,32 @@ export default function HomePage() {
         {/* <Features2 /> */}
         {/* <GlowingEffectDemo /> */}
         {/* <GlowingStarsBackgroundCardPreview /> */}
-
+        <Tagline />
+        <OurProduct />
+        <AboutUs />
         {/* <HowItWorks /> */}
         {/* <Testimonials /> */}
         {/* <Integration2 /> */}
-        {/* <Transform />
-        <ExtraFeatures />
-        <Integrations />
-        <ReadyToBoost />
-        <Faq /> */}
+        {/* <Transform /> */}
+        <TechPlatform />
+        {/* <Glipms /> */}
+        <HotSelling />
+        
+        {/* <ExtraFeatures /> */}
+        {/* <UnlistedShares /> */}
+        <PromisingOnes />
+        {/* <TomorrowBigBets /> */}
+        <JoinLeague />
+        {/* <Integrations /> */}
+        
+        
+        {/* <EliteClub /> */}
+        {/* <ReadyToBoost /> */}
+        <Faq /> 
 
         {/* <ReadyToTransform /> */}
       </main>
+      
     </div>
   );
 }

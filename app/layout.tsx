@@ -23,9 +23,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Navbar />
-        <div className="max-w-7xl mx-auto items-center flex flex-col px-5 relative">
+        <div className=" mx-auto items-center max-md:px-4 flex flex-col relative">
           {children}
-          <div className="fixed bottom-4 right-4">
+          <div className="fixed bottom-4 right-4 z-10">
             <Whatsapp />
           </div>
         </div>
