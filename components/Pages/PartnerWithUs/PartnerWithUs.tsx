@@ -41,7 +41,7 @@ export default function PartnerWithUs() {
                         <Link
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://rich-harbor-app.vercel.app/auth/onboarding" className="z-10 bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200 max-sm:px-3 max-sm:py-2 max-sm:text-sm max-sm:rounded-lg">
+                            href="https://app.richharbor.com/auth/onboarding" className="z-10 bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200 max-sm:px-3 max-sm:py-2 max-sm:text-sm max-sm:rounded-lg">
                             Become a Partner
                         </Link>
 

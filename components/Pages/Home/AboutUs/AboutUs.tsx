@@ -49,7 +49,7 @@ export default function WhoWeAre() {
           </div>
         </div> */}
           <div className="w-full h-full ">
-            <Image src={whoWeAreImg} alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
+            <img src="https://aicdn.picsart.com/8bad17da-04e3-400e-8c1d-6c081be4e691.jpg" alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
           </div>
 
           {/* Right Side - Content */}

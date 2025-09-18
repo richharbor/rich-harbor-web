@@ -12,55 +12,138 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@/components/ui/dialog'
+import { DialogClose, DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
+
+import { Input } from '@/components/ui/input'
+import { useState } from 'react'
+import { Label } from '@/components/ui/label'
+import { postStockEnquiry } from '@/services/shareServices'
+import { z } from "zod";
 
 
 const items = [
     {
-        name: "B9 Beverages (BIRA 91)",
-        icon: biraIcon,
-        sector: "FMCG",
-    },
-    {
-        name: "Imagine Marketing (boAt)",
-        icon: boatIcon,
-        sector: "Consumer Durables",
-    },
-    {
-        name: "API Holdings (Pharmeasy)",
-        icon: peIcon,
-        sector: "Healthcare",
-    },
-    {
-        name: "Taparia Tools",
-        icon: tapariaIcon,
-        sector: "Manufacturing",
-    },
-    {
-        name: "Oravel Stays (OYO Rooms)",
-        icon: oyoIcon,
-        sector: "Design",
-    },
-    {
-        name: "Capgemini",
-        icon: capgeminiIcon,
-        sector: "Information Technology",
-    },
-    {
         name: "National Stock Exchange (NSE)",
-        icon: nseIcon,
-        sector: "Stock Exchange",
+        icon: "https://assets.incredmoney.com/images/v2/webp/NSE.webp",
+        sector: "Exchange",
+    },
+    {
+        name: "NCDEX Ltd",
+        icon: "https://assets.incredmoney.com/images/v2/webp/NCDEX.webp",
+        sector: "agricultural commodity exchange",
     },
     {
         name: "Metropolitan Stock Exchange (MSE)",
-        icon: mseIcon,
-        sector: "Stock Exchange",
+        icon: "https://assets.incredmoney.com/images/v3/Xmse.webp",
+        sector: "Exchange",
+    },
+    {
+        name: "Oravel Stays (OYO Rooms)",
+        icon: "https://assets.incredmoney.com/images/v2/webp/OYO.webp",
+        sector: "Hospitality",
+    },
+    {
+        name: "Chennai Super Kings (CSK)",
+        icon: "https://assets.incredmoney.com/images/v2/webp/CSK.webp",
+        sector: "Sports",
+    },
+
+    {
+        name: "Apollo Green Energy Ltd",
+        icon: "https://assets.incredmoney.com/images/v2/webp/Apollo.webp",
+        sector: "EPC & Renewable energy",
     },
 ];
 
 export type itemsType = typeof items;
+type Stock = {
+    name: string
+    sector: string
+    icon: string
+}
+interface FormData {
+    shareName: string
+    quantity: string
+    name: string
+    email: string
+    phone: string
+}
+const enquirySchema = z.object({
+    shareName: z.string().min(1, "Share name is required"),
+    quantity: z
+        .string()
+        .regex(/^\d+$/, "Quantity must be a number"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
+});
+
+// Infer type
+type EnquiryFormData = z.infer<typeof enquirySchema>;
 
 export default function HotSelling() {
-     const route = useRouter();
+    const route = useRouter();
+    const [open, setOpen] = useState(false)
+    const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
+    const [error, setError] = useState<string>("");
+    const [formData, setFormData] = useState<FormData>({
+        shareName: "",
+        quantity: "",
+        name: "",
+        email: "",
+        phone: "",
+    })
+
+    const handleOpenDialog = (item: Stock) => {
+        setSelectedStock(item)
+        setFormData((prev) => ({ ...prev, shareName: item.name }))
+        setOpen(true)
+    }
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+    ) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(formData);
+        const result = enquirySchema.safeParse(formData);
+        if (!result.success) {
+            const firstError = result.error.issues[0]?.message;
+            setError(firstError);
+            console.error(firstError);
+            return;
+        }
+
+
+        try {
+            setError("");
+            const response = await postStockEnquiry(result.data);
+            console.log(response);
+            setOpen(false);
+            const whatsappUrl = `https://wa.me/919211265558`;
+            window.open(whatsappUrl, "_blank");
+            setFormData({
+                shareName: "",
+                quantity: "",
+                name: "",
+                email: "",
+                phone: "",
+            })
+
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setError("Form submission error")
+        }
+
+    }
     return (
         <section id='hot-ipo' className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
             <div className="container mx-auto">
@@ -95,16 +178,16 @@ export default function HotSelling() {
                             
                         </div>
                     </div> */}
-                    <div className="grid grid-cols-4 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
+                    <div className="grid grid-cols-3 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
                         {items.map((item, index) => (
                             <div
                                 key={index}
                                 className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
-                                onClick={()=> route.push("/stockInfo/343") }
+                                onClick={() => handleOpenDialog(item)}
                             >
                                 <div className="flex justify-center h-32 max-sm:h-28">
-                                    <Image
-                                        className="object-contain group-hover/items:scale-85 transition-all duration-500 ease-in-out"
+                                    <img
+                                        className="object-contain rounded-3xl group-hover/items:scale-85 transition-all duration-500 ease-in-out"
                                         src={item.icon}
                                         alt={`${item.name}-icon`}
                                     />
@@ -121,10 +204,68 @@ export default function HotSelling() {
                     </div>
 
                 </div>
-                <div className="flex justify-center mt-10">
+                {/* <div className="flex justify-center mt-10">
                     <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/allstocks")}>View more</Button>
-                </div>
+                </div> */}
+
             </div>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Send Enquiry</DialogTitle>
+                        <DialogDescription>
+                            Please fill in the details below to send an enquiry for this share.
+                        </DialogDescription>
+                    </DialogHeader>
+                    {selectedStock && (
+                        <form onSubmit={handleEnquirySubmit} className="grid gap-4">
+                            {/* Share Name (readonly) */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="shareName">Share Name</Label>
+                                <Input
+                                    id="shareName"
+                                    name="shareName"
+                                    value={selectedStock.name}
+                                    readOnly
+                                    className="bg-gray-100 cursor-not-allowed"
+                                />
+                            </div>
+
+                            {/* Quantity */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="quantity">Quantity</Label>
+                                <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
+                            </div>
+
+                            {/* Name */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="name">Name</Label>
+                                <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
+                            </div>
+
+                            {/* Email */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="email">Email</Label>
+                                <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
+                            </div>
+
+                            {/* Phone */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="phone">Phone</Label>
+                                <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+                            </div>
+                            <p className='text-red-500 text-sm'>{error}</p>
+                            <DialogFooter>
+                                <DialogClose asChild>
+                                    <Button variant="outline">Cancel</Button>
+                                </DialogClose>
+                                <Button type="submit">Send Enquiry</Button>
+                                
+                            </DialogFooter>
+                        </form>
+                    )}
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }

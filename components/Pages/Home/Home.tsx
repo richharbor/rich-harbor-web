@@ -42,9 +42,9 @@ export default function HomePage() {
   const {authUser, checkAuth} = useAuthStore();
 
 
-  useEffect(()=>{
-    checkAuth();
-  },[])
+  // useEffect(()=>{
+  //   checkAuth();
+  // },[])
 
 
 

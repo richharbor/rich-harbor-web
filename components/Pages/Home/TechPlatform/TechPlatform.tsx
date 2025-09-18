@@ -48,7 +48,7 @@ export default function TechPlatform(){
           </AnimationContainer>
 
           <AnimationContainer animation="fadeUp" delay={0.5}>
-            <Button className="mt-4">Live soon</Button>
+            <Button className="mt-4 hover:bg-rich-violet hover:text-black hover:scale-115 transition-all duration:300 ease-in-out">Live soon</Button>
           </AnimationContainer>
         </div>
 

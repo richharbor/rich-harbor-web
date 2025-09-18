@@ -21,11 +21,11 @@ import { useAuthStore } from "@/store/authStore";
 
 export const NAV_LINKS = [
   { name: "Home", link: "/" },
-  { name: "Unlisted Share", link: "/allstocks" },
+  { name: "Unlisted Share", link: "/#hot-ipo" },
   { name: "SME IPO", link: "/coming-soon" },
   { name: "Liquidate Shares", link: "/liquidate-shares" },
   { name: "About us", link: "/#aboutus" },
-  { name: "Join us", link: "/partner-with-us" },
+  { name: "Contact us", link: "/contactus" },
   // { name: "Academy", link: "#" },
   // { name: "Pricing", link: "#pricing" },
 ];
@@ -153,11 +153,15 @@ const Navbar = () => {
           {/* Right Button */}
           {/* <ContactUs /> */}
 
-          {authUser && <div className=""><CircleUserRound /></div>}
+          <div>
+            <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
+          </div>
+
+          {/* {authUser && <div className=""><CircleUserRound /></div>}
           {!authUser && <div className="flex gap-3">
             <Button className="cursor-pointer" onClick={() => route.push('/login')}>Log in</Button>
             <Button className="cursor-pointer" onClick={() => route.push('/signup')}>Sign up</Button>
-          </div>}
+          </div>} */}
           {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               {user ? (
@@ -260,7 +264,7 @@ const Navbar = () => {
                   </Link>
                 </AnimationContainer>
               ))}
-              <AnimationContainer
+              {/* <AnimationContainer
                 animation="fadeUp"
                 delay={0.5}
                 className="w-full"
@@ -297,7 +301,7 @@ const Navbar = () => {
                     </Link>
                   </>
                 )}
-              </AnimationContainer>
+              </AnimationContainer> */}
             </motion.div>
           )}
         </AnimatePresence>
