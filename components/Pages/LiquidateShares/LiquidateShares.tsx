@@ -124,7 +124,7 @@ export default function SellSharesForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-background px-2 py-5 mt-15 mx-auto"
+      className="bg-background px-2 max-sm:px-0 py-5 mt-15"
     >
       <div className="py-20 mb-5 w-full rounded-2xl flex items-center justify-center relative px-10 max-sm:p-3 overflow-hidden bg-black">
         <motion.img
@@ -143,10 +143,10 @@ export default function SellSharesForm() {
         </h1>
       </div>
 
-      <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 max-w-3xl mx-auto">
+      <p className="text-xl md:text-3xl font-bold text-center mb-6 max-w-3xl mx-auto">
         We can assist you with the liquidation of Unlisted, Startup Shares and
         ESOPs
-      </h1>
+      </p>
 
       <Form {...form}>
         <form

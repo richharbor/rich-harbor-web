@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     question: "Who can Invest in Pre-IPO shares in India?",
-    answer: "Pre-IPO shares can be purchased by institutional investors, high net worth individuals, and certain qualified retail investors. But now retail investors can also invest easily in Pre IPO-Shares online through wwipl.com"
+    answer: "Pre-IPO shares can be purchased by institutional investors, high net worth individuals, and certain qualified retail investors. But now retail investors can also invest easily in Pre IPO-Shares online through Richharbor.com"
   },
   {
     question: "What is the minimum investment for Pre-IPO shares in India?",

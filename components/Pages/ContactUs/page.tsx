@@ -28,15 +28,20 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { z } from "zod";
 
-type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  subject: string;
-  source: string;
-  message: string;
-};
+const formSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z
+    .string()
+    .regex(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+  subject: z.string().min(1, "Please select a subject"),
+  source: z.string().min(1, "Please select a source"),
+  message: z.string().min(5, "Message must be at least 5 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const baseURl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -69,6 +74,7 @@ export default function ContactForm() {
   });
   const [SuccOpen, setSuccOpen] = useState<boolean>(false);
   const [ErrOpen, setErrOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -85,14 +91,27 @@ export default function ContactForm() {
   // Handle submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const result = formSchema.safeParse(formData);
+
+    if (!result.success) {
+      // Get first error message
+      const firstError = result.error.issues[0]?.message;
+      setError(firstError);
+      return;
+    }
+
+
+
     const emailHTML = convertToHtmlForm(formData);
     const email = {
-      to: "ram@richharbor.com",
+      to: "info@richharbor.com",
       subject: formData.subject + " - " + formData.name,
       content: emailHTML,
       isHtml: true,
     };
     try {
+      setError("");
       const response = await axios.post(`${baseURl}/email/send`, email);
       if (response.status === 200) {
         setSuccOpen(true);
@@ -234,6 +253,7 @@ export default function ContactForm() {
             required
           />
         </div>
+        <p className="text-red-500 text-sm">{error}</p>
 
         {/* Submit */}
         <Button type="submit">Submit</Button>

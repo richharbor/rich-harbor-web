@@ -4,12 +4,14 @@ import Link from "next/link";
 import Icons from "../../global/icons";
 import { Button } from "../../ui/button";
 import { Particles } from "../../ui/particles";
+import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 
 
 
 
 import { cn } from "@/lib/cn";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Props {
     className?: string;
@@ -26,7 +28,7 @@ const Container = ({ children, className, delay = 0.2, reverse, simple }: Props)
             initial={{ opacity: 0, y: reverse ? -20 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            transition={{ delay: delay, duration: simple ? 0.2 : 0.4, type: simple ? "keyframes" : "spring"}}
+            transition={{ delay: delay, duration: simple ? 0.2 : 0.4, type: simple ? "keyframes" : "spring" }}
         >
             {children}
         </motion.div>
@@ -101,7 +103,7 @@ const Footer = () => {
     return (
         <footer className="w-full py-10 relative">
             <Container>
-                <Wrapper className="relative flex flex-col md:flex-row justify-between pb-40 overflow-hidden footer">
+                <Wrapper className="relative flex flex-col md:flex-row justify-between pb-20 overflow-hidden footer">
                     <Particles
                         className="absolute inset-0 w-full -z-10"
                         quantity={40}
@@ -111,22 +113,35 @@ const Footer = () => {
                     />
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
-                            <Icons.icon className="w-5 h-5" />
-                            <span className="text-xl font-medium">
-                                RH
-                            </span>
+                            <Link href="/" className="flex items-center gap-2">
+                                <Image
+                                    src={RichHarbor}
+                                    alt="Rich Harbor Logo"
+                                    className="h-10 w-auto"
+                                />
+                            </Link>
                         </div>
                         <p className="text-base max-w mt-4">
-                            Empower your business with our AI tools.
+                            Invest smart, grow steady, secure your future.
                         </p>
-                        <Button className="mt-8">
+                        {/* <Button className="mt-8">
                             <Link href="/app">
-                                Start for free
+                                About Us
+                            </Link>
+                        </Button> */}
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-2 gap-8 w-full max-w-sm mt-10 md:mt-0">
+                        <Button className="mt-8">
+                            <Link href="/#aboutus">
+                                About Us
                             </Link>
                         </Button>
-                    </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-lg mt-10 md:mt-0">
-                        {FOOTER_LINKS?.map((section, index) => (
+                        <Button className="mt-8">
+                            <Link href="/contactus">
+                                Contact Us
+                            </Link>
+                        </Button>
+                        {/* {FOOTER_LINKS?.map((section, index) => (
                             <div key={index} className="flex flex-col gap-4">
                                 <h4 className="text-sm font-medium">
                                     {section.title}
@@ -141,7 +156,7 @@ const Footer = () => {
                                     ))}
                                 </ul>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
                 </Wrapper>
             </Container>
@@ -150,7 +165,7 @@ const Footer = () => {
                     <p className="text-sm text-secondary-foreground">
                         &copy; {new Date().getFullYear()} RH. All rights reserved.
                     </p>
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">
                             <Icons.instagram className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
@@ -160,7 +175,7 @@ const Footer = () => {
                         <Link href="#" className="p-1">
                             <Icons.discord className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
-                    </div>
+                    </div> */}
                 </Wrapper>
             </Container>
         </footer>
