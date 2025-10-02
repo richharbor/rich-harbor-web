@@ -113,6 +113,43 @@ const Icons: IconType = {
       </g>
     </svg>
   ),
+  linkedin: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M19 3A2.94 2.94 0 0 1 22 6v12a2.94 2.94 0 0 1-3 3H5a2.94 2.94 0 0 1-3-3V6a2.94 2.94 0 0 1 3-3h14M8.34 17v-7H5.67v7h2.67m-.07-8.33c.83 0 1.34-.55 1.34-1.25c0-.71-.51-1.25-1.37-1.25c-.86 0-1.34.54-1.34 1.25c0 .7.51 1.25 1.34 1.25h.03M18.33 17v-4.03c0-2.16-1.15-3.17-2.68-3.17c-1.23 0-1.78.67-2.09 1.14V10H10.9c.03.67 0 7 0 7h2.67v-3.91c0-.21.02-.42.08-.57c.18-.42.59-.86 1.28-.86c.9 0 1.25.65 1.25 1.6V17h2.15Z" />
+    </svg>
+  ),
+  // X (Twitter)
+  x: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M18.244 2H21.5l-7.28 8.32L22 22h-6.84l-5.36-7.04L4.64 22H1.5l7.68-8.768L2 2h6.96l4.84 6.44L18.244 2Zm-1.2 18h1.88L7.08 4h-2L17.044 20Z" />
+    </svg>
+  ),
+  facebook: (props: LucideProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1c.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12" />
+    </svg>
+  ),
   twitter: (props: LucideProps) => (
     <svg
       {...props}

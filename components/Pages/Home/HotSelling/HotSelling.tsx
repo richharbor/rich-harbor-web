@@ -87,6 +87,7 @@ export default function HotSelling() {
     const [open, setOpen] = useState(false)
     const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
     const [error, setError] = useState<string>("");
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState<FormData>({
         shareName: "",
         quantity: "",
@@ -113,6 +114,7 @@ export default function HotSelling() {
     };
     const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
         console.log(formData);
         const result = enquirySchema.safeParse(formData);
         if (!result.success) {
@@ -141,6 +143,8 @@ export default function HotSelling() {
         } catch (error) {
             console.error("Form submission error:", error);
             setError("Form submission error")
+        }finally{
+            setLoading(false);
         }
 
     }
@@ -204,9 +208,9 @@ export default function HotSelling() {
                     </div>
 
                 </div>
-                {/* <div className="flex justify-center mt-10">
+                <div className="flex justify-center mt-10">
                     <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/allstocks")}>View more</Button>
-                </div> */}
+                </div>
 
             </div>
             <Dialog open={open} onOpenChange={setOpen}>
@@ -259,7 +263,7 @@ export default function HotSelling() {
                                 <DialogClose asChild>
                                     <Button variant="outline">Cancel</Button>
                                 </DialogClose>
-                                <Button type="submit">Send Enquiry</Button>
+                                <Button disabled={loading} type="submit">{loading?'Sending...':'Send Enquiry'}</Button>
                                 
                             </DialogFooter>
                         </form>

@@ -1,63 +1,180 @@
 'use client'
-import Image from "next/image";
-import biraIcon from '@/public/images/bira91.webp'
-import boatIcon from '@/public/images/boat.webp'
-import capgeminiIcon from '@/public/images/capgemini.webp'
-import mseIcon from '@/public/images/mse.png'
-import nseIcon from '@/public/images/NSE.png'
-import oyoIcon from '@/public/images/oyo.png'
-import peIcon from '@/public/images/pe.webp'
-import tapariaIcon from '@/public/images/taparia.webp'
 import { useRouter } from "next/navigation";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { postStockEnquiry } from "@/services/shareServices";
+import z from "zod";
 
 
 
 
-const items = [
-    {
-        name: "B9 Beverages (BIRA 91)",
-        icon: biraIcon,
-        sector: "FMCG",
-    },
-    {
-        name: "Imagine Marketing (boAt)",
-        icon: boatIcon,
-        sector: "Consumer Durables",
-    },
-    {
-        name: "API Holdings (Pharmeasy)",
-        icon: peIcon,
-        sector: "Healthcare",
-    },
-    {
-        name: "Taparia Tools",
-        icon: tapariaIcon,
-        sector: "Manufacturing",
-    },
-    {
-        name: "Oravel Stays (OYO Rooms)",
-        icon: oyoIcon,
-        sector: "Design",
-    },
-    {
-        name: "Capgemini",
-        icon: capgeminiIcon,
-        sector: "Information Technology",
-    },
-    {
-        name: "National Stock Exchange (NSE)",
-        icon: nseIcon,
-        sector: "Stock Exchange",
-    },
-    {
-        name: "Metropolitan Stock Exchange (MSE)",
-        icon: mseIcon,
-        sector: "Stock Exchange",
-    },
+type Stock = {
+    scriptName: string;
+    faceValue: string | number;
+    landingPrice: string | number;
+};
+
+export const stocket: Stock[] = [
+    { scriptName: "APOLLOGREEN", faceValue: 10, landingPrice: 85 },
+    { scriptName: "BIRA(89)", faceValue: 10, landingPrice: 280 },
+    { scriptName: "BOAT", faceValue: "-", landingPrice: 1500 },
+    { scriptName: "CAPGEMIMITECH.", faceValue: 10, landingPrice: 12000 },
+    { scriptName: "CARE HEALTH", faceValue: 10, landingPrice: 147 },
+    { scriptName: "CARRIER AIRCON", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "CIAL", faceValue: 10, landingPrice: 475 },
+    { scriptName: "CSK", faceValue: 0.1, landingPrice: 185 },
+    { scriptName: "ESDS", faceValue: 10, landingPrice: "DISCUSS" },
+    { scriptName: "FINO", faceValue: 10, landingPrice: 102 },
+    { scriptName: "TRANSLINE TECHNOLOGIES", faceValue: 2, landingPrice: 166 },
+    { scriptName: "FRICK INDIA", faceValue: 10, landingPrice: 3000 },
+    { scriptName: "GOODLUCK DEFENCE", faceValue: 10, landingPrice: 328 },
+    { scriptName: "GREENZO", faceValue: 10, landingPrice: 612 },
+    { scriptName: "HDFC SEC.", faceValue: 10, landingPrice: 10200 },
+    { scriptName: "HERO FINCORP", faceValue: 10, landingPrice: 1400 },
+    { scriptName: "HINDON", faceValue: 10, landingPrice: 640 },
+    { scriptName: "HINDUJALAND FINANCE", faceValue: 10, landingPrice: 270 },
+    { scriptName: "ICEX", faceValue: 1, landingPrice: 4.1 },
+    { scriptName: "INCRED HOLDING", faceValue: 10, landingPrice: 155 },
+    { scriptName: "INDIAN CARBON", faceValue: 10, landingPrice: 850 },
+    { scriptName: "INDIAN POTASH", faceValue: 10, landingPrice: 3250 },
+    { scriptName: "INDOFIL", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "INKEL INDIA", faceValue: 10, landingPrice: 19 },
+    { scriptName: "INNOV8 COWORKING", faceValue: 2, landingPrice: 50 },
+    { scriptName: "KIAL", faceValue: 100, landingPrice: 125 },
+    { scriptName: "LAVA", faceValue: 5, landingPrice: 42 },
+    { scriptName: "LORDSMARK INDUSTRIES", faceValue: 10, landingPrice: 98 },
+    { scriptName: "MANUSHREE TECHNOPACK", faceValue: 10, landingPrice: 1020 },
+    { scriptName: "MATRIX", faceValue: 10, landingPrice: 30 },
+    { scriptName: "MERINO", faceValue: 10, landingPrice: 3500 },
+    { scriptName: "MOHAMEAKIN", faceValue: 5, landingPrice: 2150 },
+    { scriptName: "MOHFL", faceValue: 10, landingPrice: 14.65 },
+    { scriptName: "MSEI", faceValue: 1, landingPrice: 3.3 },
+    { scriptName: "NAYARA ENERGY", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "NCDEX", faceValue: 2, landingPrice: 485 },
+    { scriptName: "NeRL LTD", faceValue: 2, landingPrice: 69 },
+    { scriptName: "NSE", faceValue: 1, landingPrice: 1985 },
+    { scriptName: "ONIX RENEWABLE", faceValue: 1, landingPrice: "NA" },
+    { scriptName: "ORAVEL TRAVEL LTD (OYO)", faceValue: 1, landingPrice: 49.5 },
+    { scriptName: "ORBIS FINANCIALS", faceValue: 10, landingPrice: 510 },
+    { scriptName: "PACE DIGITEK", faceValue: 12, landingPrice: 208 },
+    { scriptName: "PARAG PARIKH", faceValue: 1, landingPrice: "NA" },
+    { scriptName: "PHARM EASY", faceValue: 1, landingPrice: 6 },
+    { scriptName: "PINE LABS", faceValue: 1, landingPrice: 325 },
+    { scriptName: "POLYMATECH ELECTRONICS", faceValue: 10, landingPrice: 68.5 },
+    { scriptName: "PXIL", faceValue: 10, landingPrice: 645 },
+    { scriptName: "RRP S4E INNOVATIONS", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "SBI ASSET MANAGEMENT", faceValue: 1, landingPrice: 2700 },
+    { scriptName: "SIGNIFY INNOVATIONS", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "SPRAY ENGINEERING DEVICES", faceValue: 10, landingPrice: 360 },
+    { scriptName: "STERLITE GRID", faceValue: 10, landingPrice: "NA" },
+    { scriptName: "STERLITE ELECTRIC", faceValue: 2, landingPrice: "NA" },
+    { scriptName: "STUDDS", faceValue: 5, landingPrice: 630 },
+    { scriptName: "TATA CAPITAL", faceValue: 10, landingPrice: 740 },
+    { scriptName: "TICKER", faceValue: 1, landingPrice: 32 },
+    { scriptName: "URBAN TOTS", faceValue: 1, landingPrice: 69 },
+    { scriptName: "UTKARSH CORE", faceValue: 10, landingPrice: 185 },
+    { scriptName: "VEEDA CLINIC", faceValue: 2, landingPrice: 465 },
+    { scriptName: "VIRIDI CAPITAL", faceValue: 11, landingPrice: 1000 },
 ];
+interface FormData {
+    shareName: string
+    quantity: string
+    name: string
+    email: string
+    phone: string
+}
+const enquirySchema = z.object({
+    shareName: z.string().min(1, "Share name is required"),
+    quantity: z
+        .string()
+        .regex(/^\d+$/, "Quantity must be a number"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
+});
 
 export default function AllStocks() {
+    const [open, setOpen] = useState(false)
+    const [error, setError] = useState<string>("");
+    const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
     const route = useRouter();
+    const [loading, setLoading] = useState(false);
+
+    const [formData, setFormData] = useState<FormData>({
+            shareName: "",
+            quantity: "",
+            name: "",
+            email: "",
+            phone: "",
+        })
+
+
+    const handleOpenDialog = (item: Stock) => {
+        setSelectedStock(item)
+        setFormData((prev) => ({ ...prev, shareName: item.scriptName }))
+        setOpen(true)
+    }
+
+
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+    ) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            setLoading(true);
+            console.log(formData);
+            const result = enquirySchema.safeParse(formData);
+            if (!result.success) {
+                const firstError = result.error.issues[0]?.message;
+                setError(firstError);
+                console.error(firstError);
+                return;
+            }
+    
+    
+            try {
+                setError("");
+                const response = await postStockEnquiry(result.data);
+                console.log(response);
+                setOpen(false);
+                const whatsappUrl = `https://wa.me/919211265558`;
+                window.open(whatsappUrl, "_blank");
+                setFormData({
+                    shareName: "",
+                    quantity: "",
+                    name: "",
+                    email: "",
+                    phone: "",
+                })
+    
+            } catch (error) {
+                console.error("Form submission error:", error);
+                setError("Form submission error")
+            }finally{
+                setLoading(false);
+            }
+    
+        }
 
     return (
         <div className="mt-20 max-w-7xl min-h-screen py-10 flex flex-col gap-10 max-md:gap-5">
@@ -69,30 +186,86 @@ export default function AllStocks() {
                     See all your stocks come together in one powerful view, giving you the clarity, confidence, and control to navigate your financial future.
                 </p>
             </div>
-            <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
-                {items.map((item, index) => (
-                    <div
-                        key={index}
-                        className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
-                        onClick={() => route.push("/stockInfo/343")}
-                    >
-                        <div className="flex justify-center h-32 max-sm:h-28">
-                            <Image
-                                className="object-contain group-hover/items:scale-85 transition-all duration-500 ease-in-out"
-                                src={item.icon}
-                                alt={`${item.name}-icon`}
-                            />
-                        </div>
-                        <h3 className="text-xl max-md:text-lg mt-6 ">
-                            {item.name}
-                        </h3>
-                        <p className=" text-white/30 mt-3 ">Sector</p>
-                        <p className=" text-white/50 mt-1 ">
-                            {item.sector}
-                        </p>
-                    </div>
-                ))}
+            <div className="p-6">
+                <h1 className="text-2xl font-bold mb-4">Unlisted Shares Price List</h1>
+                <Table className="w-full text-xs sm:text-sm md:text-base">
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="px-2 py-1">Script Name</TableHead>
+                            <TableHead className="px-2 py-1">Face Value</TableHead>
+                            <TableHead className="px-2 py-1">Landing Price</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {stocket.map((stock, index) => (
+                            <TableRow onClick={()=>handleOpenDialog(stock)} key={index}>
+                                <TableCell className="font-medium px-2 py-1">{stock.scriptName}</TableCell>
+                                <TableCell className="px-2 py-1">{stock.faceValue}</TableCell>
+                                <TableCell className="px-2 py-1">{stock.landingPrice}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
             </div>
+
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Send Enquiry</DialogTitle>
+                        <DialogDescription>
+                            Please fill in the details below to send an enquiry for this share.
+                        </DialogDescription>
+                    </DialogHeader>
+                    {selectedStock && (
+                        <form onSubmit={handleEnquirySubmit} className="grid gap-4">
+                            {/* Share Name (readonly) */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="shareName">Share Name</Label>
+                                <Input
+                                    id="shareName"
+                                    name="shareName"
+                                    value={selectedStock.scriptName}
+                                    readOnly
+                                    className="bg-gray-100 cursor-not-allowed"
+                                />
+                            </div>
+
+                            {/* Quantity */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="quantity">Quantity</Label>
+                                <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
+                            </div>
+
+                            {/* Name */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="name">Name</Label>
+                                <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
+                            </div>
+
+                            {/* Email */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="email">Email</Label>
+                                <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
+                            </div>
+
+                            {/* Phone */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="phone">Phone</Label>
+                                <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+                            </div>
+                            <p className='text-red-500 text-sm'>{error}</p>
+                            <DialogFooter>
+                                <DialogClose asChild>
+                                    <Button variant="outline">Cancel</Button>
+                                </DialogClose>
+                                <Button disabled={loading} type="submit">{loading?'Sending...': 'Send Enquiry'}</Button>
+                                
+                            </DialogFooter>
+                        </form>
+                    )}
+                </DialogContent>
+            </Dialog>
+
         </div>
     )
 }
