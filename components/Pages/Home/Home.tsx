@@ -36,6 +36,7 @@ import AboutUs from "./AboutUs/AboutUs";
 import PromisingOnes from "./PromissingOnes/PromissingOnes";
 import { useAuthStore } from "@/store/authStore";
 import { useEffect } from "react";
+import { Testimonials2 } from "./Testimonials2/Testimonials2";
 
 export default function HomePage() {
 
@@ -107,6 +108,8 @@ export default function HomePage() {
         {/* <ExtraFeatures /> */}
         {/* <UnlistedShares /> */}
         <PromisingOnes />
+
+        <Testimonials2 />
         {/* <TomorrowBigBets /> */}
         <JoinLeague />
         {/* <Integrations /> */}

@@ -165,17 +165,20 @@ const Footer = () => {
                     <p className="text-sm text-secondary-foreground">
                         &copy; {new Date().getFullYear()} RH. All rights reserved.
                     </p>
-                    {/* <div className="flex items-center gap-4">
-                        <Link href="#" className="p-1">
+                    <div className="flex items-center gap-4">
+                        <Link href="https://www.instagram.com/richharborofficial/" target="_blank" className="p-1">
                             <Icons.instagram className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
-                        <Link href="#" className="p-1">
-                            <Icons.twitter className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        <Link href="https://x.com/Rich_harbor" target="blank" className="p-1">
+                            <Icons.x className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
-                        <Link href="#" className="p-1">
-                            <Icons.discord className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        <Link href="https://www.linkedin.com/company/richharbor/?viewAsMember=true" target="_blank" className="p-1">
+                            <Icons.linkedin className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
-                    </div> */}
+                        <Link href="https://www.facebook.com/profile.php?id=61580613956975" target="_blank" className="p-1">
+                            <Icons.facebook className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
+                        </Link>
+                    </div>
                 </Wrapper>
             </Container>
         </footer>
