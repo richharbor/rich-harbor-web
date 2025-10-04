@@ -26,10 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Analytics */}
+        {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S23L52FW0T"
           strategy="afterInteractive"
+          async
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
