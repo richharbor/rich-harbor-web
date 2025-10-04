@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Rich Harbor",
   description: "Your Harbor for Financial Growth",
+  verification: {
+    google: "PvrpLhAVJG58lfDd71fEKcjSRyXLZFvXNogrNK2lYcc",
+  },
 };
 
 export default function RootLayout({
@@ -68,7 +71,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navbar />
-        <div className=" mx-auto items-center max-md:px-4 flex flex-col relative">
+        <div className="mx-auto items-center max-md:px-4 flex flex-col relative">
           {children}
           <div className="fixed bottom-4 right-4 z-10">
             <Whatsapp />
