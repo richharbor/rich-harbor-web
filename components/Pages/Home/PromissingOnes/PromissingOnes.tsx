@@ -76,65 +76,69 @@ type EnquiryFormData = z.infer<typeof enquirySchema>;
 export default function PromisingOnes() {
     const route = useRouter();
     const [open, setOpen] = useState(false)
-        const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
-        const [error, setError] = useState<string>("");
-        const [formData, setFormData] = useState<FormData>({
-            shareName: "",
-            quantity: "",
-            name: "",
-            email: "",
-            phone: "",
-        })
-    
-        const handleOpenDialog = (item: Stock) => {
-            setSelectedStock(item)
-            setFormData((prev) => ({ ...prev, shareName: item.name }))
-            setOpen(true)
+    const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
+    const [error, setError] = useState<string>("");
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState<FormData>({
+        shareName: "",
+        quantity: "",
+        name: "",
+        email: "",
+        phone: "",
+    })
+
+    const handleOpenDialog = (item: Stock) => {
+        setSelectedStock(item)
+        setFormData((prev) => ({ ...prev, shareName: item.name }))
+        setOpen(true)
+    }
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+    ) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        console.log(formData);
+        const result = enquirySchema.safeParse(formData);
+        if (!result.success) {
+            const firstError = result.error.issues[0]?.message;
+            setError(firstError);
+            console.error(firstError);
+            return;
         }
-        const handleChange = (
-            e: React.ChangeEvent<
-                HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-            >
-        ) => {
-            const { name, value } = e.target;
+
+
+        try {
+            setError("");
+            const response = await postStockEnquiry(result.data);
+            console.log(response);
+            setOpen(false);
+            const whatsappUrl = `https://wa.me/919211265558`;
+            window.open(whatsappUrl, "_blank");
             setFormData({
-                ...formData,
-                [name]: value,
-            });
-        };
-        const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
-            console.log(formData);
-            const result = enquirySchema.safeParse(formData);
-            if (!result.success) {
-                const firstError = result.error.issues[0]?.message;
-                setError(firstError);
-                console.error(firstError);
-                return;
-            }
-    
-    
-            try {
-                setError("");
-                const response = await postStockEnquiry(result.data);
-                console.log(response);
-                setOpen(false);
-                const whatsappUrl = `https://wa.me/919211265558`;
-                window.open(whatsappUrl, "_blank");
-                setFormData({
-                    shareName: "",
-                    quantity: "",
-                    name: "",
-                    email: "",
-                    phone: "",
-                })
-    
-            } catch (error) {
-                console.error("Form submission error:", error);
-                setError("Form submission error")
-            }
-    
+                shareName: "",
+                quantity: "",
+                name: "",
+                email: "",
+                phone: "",
+            })
+
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setError("Form submission error")
+        }finally{
+            setLoading(false);
         }
+
+    }
 
     return (
         <div className="relative h-full mx-auto rounded-2xl max-w-7xl overflow-hidden">
@@ -263,8 +267,8 @@ export default function PromisingOnes() {
                                     <DialogClose asChild>
                                         <Button variant="outline">Cancel</Button>
                                     </DialogClose>
-                                    <Button type="submit">Send Enquiry</Button>
-                                    
+                                    <Button type="submit">{loading?'Saving...':'Send Enquiry'}</Button>
+
                                 </DialogFooter>
                             </form>
                         )}
