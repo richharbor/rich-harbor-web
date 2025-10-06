@@ -19,12 +19,12 @@ import { z } from "zod";
 const promisingCompanies = [
     {
         name: "BIRA 91",
-        icon: "https://aicdn.picsart.com/95d1ee09-91e5-4371-99e9-ef39eff1965d.png",
+        icon: biraIcon,
         sector: "FMCG",
     },
     {
         name: "Imagine Marketing (boAt)",
-        icon: "https://aicdn.picsart.com/dcb65e73-a43d-41e4-8ce4-a6e1266b3453.png",
+        icon: boatIcon,
         sector: "Consumer Durables",
     },
     {
@@ -51,7 +51,7 @@ const promisingCompanies = [
 type Stock = {
     name: string
     sector: string
-    icon: string
+    icon: any
 }
 interface FormData {
     shareName: string
@@ -134,7 +134,7 @@ export default function PromisingOnes() {
         } catch (error) {
             console.error("Form submission error:", error);
             setError("Form submission error")
-        }finally{
+        } finally {
             setLoading(false);
         }
 
@@ -196,7 +196,8 @@ export default function PromisingOnes() {
                                     onClick={() => handleOpenDialog(company)}
                                 >
                                     <div className='h-24 max-sm:h-16 w-full flex justify-center items-center'>
-                                        <img src={company.icon} alt={company.name} className="h-full rounded-2xl w-auto object-contain" />
+                                        <Image src={company.icon} alt={company.name} width={100}
+                                            height={100} className="h-full rounded-2xl w-auto object-contain" />
                                     </div>
                                     <p className="mt-3 text-white/40 text-center text-sm font-medium">
                                         {company.name}
@@ -267,7 +268,7 @@ export default function PromisingOnes() {
                                     <DialogClose asChild>
                                         <Button variant="outline">Cancel</Button>
                                     </DialogClose>
-                                    <Button type="submit">{loading?'Saving...':'Send Enquiry'}</Button>
+                                    <Button type="submit">{loading ? 'Saving...' : 'Send Enquiry'}</Button>
 
                                 </DialogFooter>
                             </form>

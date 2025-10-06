@@ -1,11 +1,28 @@
 import type { NextConfig } from "next";
 
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "cdn.dribbble.com",
+      },
+      {
+        protocol: "https",
+        hostname: "aicdn.picsart.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pinimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.chittorgarh.net",
+      },
+      {
+        protocol: "https",
+        hostname: "www.careinsurance.com",
       },
       {
         protocol: "https",

@@ -166,6 +166,7 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} RH. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4">
+                        <Link href={'/privacy-policy'} className=" text-sm text-secondary-foreground hover:underline"> Privacy & Policy</Link>
                         <Link href="https://www.instagram.com/richharborofficial/" target="_blank" className="p-1">
                             <Icons.instagram className="w-5 h-5 text-muted-foreground hover:text-secondary-foreground" />
                         </Link>
