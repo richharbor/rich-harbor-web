@@ -1,20 +1,53 @@
-import React, { HTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+"use client"
 
-const Avatar = (props: HTMLAttributes<HTMLDivElement>) => {
-    const { className, children, ...rest } = props;
+import * as React from "react"
+import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
-    return (
-        <div
-            className={twMerge(
-                "size-20 rounded-full overflow-hidden border-4 border-blue-500 p-1 bg-neutral-900",
-                className
-            )}
-            {...rest}
-        >
-            {children}
-        </div>
-    );
-};
+import { cn } from "@/lib/utils"
 
-export default Avatar;
+function Avatar({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+  return (
+    <AvatarPrimitive.Root
+      data-slot="avatar"
+      className={cn(
+        "relative flex size-8 shrink-0 overflow-hidden rounded-full",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarImage({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+  return (
+    <AvatarPrimitive.Image
+      data-slot="avatar-image"
+      className={cn("aspect-square size-full", className)}
+      {...props}
+    />
+  )
+}
+
+function AvatarFallback({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+  return (
+    <AvatarPrimitive.Fallback
+      data-slot="avatar-fallback"
+      className={cn(
+        "bg-muted flex size-full items-center justify-center rounded-full",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Avatar, AvatarImage, AvatarFallback }

@@ -4,8 +4,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { useRouter } from "next/navigation"
-import AboutUsIcon from "@/public/images/AboutUsIcon.png"
-import whoWeAreImg from '@/public/images/whoWeAre.jpg'
+import AboutUsImg from "@/public/images/aboutUsImg.jpg"
+
+
 
 export default function WhoWeAre() {
   const route = useRouter();
@@ -49,7 +50,7 @@ export default function WhoWeAre() {
           </div>
         </div> */}
           <div className="w-full h-full ">
-            <img src="https://aicdn.picsart.com/8bad17da-04e3-400e-8c1d-6c081be4e691.jpg" alt="dashboard-img" className="w-full h-full rounded-2xl object-cover" />
+            <Image src={AboutUsImg} alt="dashboard-img" width={1000} height={1000} className="w-full h-full rounded-2xl object-cover" />
           </div>
 
           {/* Right Side - Content */}

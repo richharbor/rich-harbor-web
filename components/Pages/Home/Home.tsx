@@ -4,24 +4,14 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { motion } from "framer-motion";
 import Faq from "./Faq/Faq";
-import Testimonials from "./Testimonials/Testimonials";
-import HowItWorks from "./HowItWorks/HowItWorks";
 import TrustedBy from "./TrustedBy/TrustedBy";
-import Features from "./Features/Features";
 import GlobeComponent from "./Globe/Globe";
 import SamplePage from "./SamplePage/SamplePage";
-import {
-  GlowingEffect,
-  GlowingEffectDemo,
-} from "./GlowingEffect/Glowing-effect";
-import { GlowingStarsBackgroundCardPreview } from "./GlowingStarsCard/glowing-stars";
-import Integrations from "./Integration/Integration";
+
 import ExtraFeatures from "./ExtraFeatures/ExtraFeatures";
 import ReadyToBoost from "./ReadyToBoost/ReadyToBoost";
 import Integration2 from "./Integration2/integration";
 import Features2 from "./Features2/Features2";
-import Companies from "./Companies/companies";
-import Perks from "./Perks/Perks";
 import Transform from "./Transfrom/Transform";
 import OurProduct from "./OurProduct/OurProduct";
 import TechPlatform from "./TechPlatform/TechPlatform";
@@ -29,7 +19,6 @@ import HotSelling from "./HotSelling/HotSelling";
 import JoinLeague from "./JoinLeague/JoinLeague";
 import Glipms from "./TechPlatform/Glimps";
 import EliteClub from "./EliteClub/EliteClub";
-import UnlistedShares from "./UnlistedShares/UnlistedShares";
 import Tagline from "./Tagline/Tagline";
 import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
 import AboutUs from "./AboutUs/AboutUs";
@@ -88,25 +77,25 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* <Companies /> */}
-        {/* <Perks /> */}
-        {/* <Features /> */}
-        {/* <Features2 /> */}
-        {/* <GlowingEffectDemo /> */}
-        {/* <GlowingStarsBackgroundCardPreview /> */}
+       
+        
+        
+        
+        
+        
         <Tagline />
         <OurProduct />
         <AboutUs />
-        {/* <HowItWorks /> */}
-        {/* <Testimonials /> */}
+        {/* <Features2 /> */}
+        {/* <ReadyToBoost /> */}
+        {/* <EliteClub /> */}
+
         {/* <Integration2 /> */}
         {/* <Transform /> */}
         <TechPlatform />
-        {/* <Glipms /> */}
         <HotSelling />
         
         {/* <ExtraFeatures /> */}
-        {/* <UnlistedShares /> */}
         <PromisingOnes />
 
         <Testimonials2 />
@@ -115,11 +104,11 @@ export default function HomePage() {
         {/* <Integrations /> */}
         
         
-        {/* <EliteClub /> */}
-        {/* <ReadyToBoost /> */}
+        
+        
         <Faq /> 
 
-        {/* <ReadyToTransform /> */}
+        
       </main>
       
     </div>
