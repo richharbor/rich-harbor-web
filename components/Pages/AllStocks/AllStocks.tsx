@@ -112,12 +112,12 @@ export default function AllStocks() {
     const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState<FormData>({
-            shareName: "",
-            quantity: "",
-            name: "",
-            email: "",
-            phone: "",
-        })
+        shareName: "",
+        quantity: "",
+        name: "",
+        email: "",
+        phone: "",
+    })
 
 
     const handleOpenDialog = (item: Stock) => {
@@ -140,8 +140,9 @@ export default function AllStocks() {
     };
 
     const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
-            setLoading(true);
+        e.preventDefault();
+        setLoading(true);
+        try {
             console.log(formData);
             const result = enquirySchema.safeParse(formData);
             if (!result.success) {
@@ -150,31 +151,31 @@ export default function AllStocks() {
                 console.error(firstError);
                 return;
             }
-    
-    
-            try {
-                setError("");
-                const response = await postStockEnquiry(result.data);
-                console.log(response);
-                setOpen(false);
-                const whatsappUrl = `https://wa.me/919211265558`;
-                window.open(whatsappUrl, "_blank");
-                setFormData({
-                    shareName: "",
-                    quantity: "",
-                    name: "",
-                    email: "",
-                    phone: "",
-                })
-    
-            } catch (error) {
-                console.error("Form submission error:", error);
-                setError("Form submission error")
-            }finally{
-                setLoading(false);
-            }
-    
+
+
+
+            setError("");
+            const response = await postStockEnquiry(result.data);
+            console.log(response);
+            setOpen(false);
+            const whatsappUrl = `https://wa.me/919211265558`;
+            window.open(whatsappUrl, "_blank");
+            setFormData({
+                shareName: "",
+                quantity: "",
+                name: "",
+                email: "",
+                phone: "",
+            })
+
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setError("Form submission error")
+        } finally {
+            setLoading(false);
         }
+
+    }
 
     return (
         <div className="mt-20 max-w-7xl min-h-screen py-10 flex flex-col gap-10 max-md:gap-5">
@@ -193,19 +194,29 @@ export default function AllStocks() {
                         <TableRow>
                             <TableHead className="px-2 py-1">Script Name</TableHead>
                             <TableHead className="px-2 py-1">Face Value</TableHead>
-                            <TableHead className="px-2 py-1">Landing Price</TableHead>
+                            <TableHead className="px-2 py-1">Tentative Price</TableHead>
+                            <TableHead className="px-2 py-1 text-center">Action</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {stocket.map((stock, index) => (
-                            <TableRow onClick={()=>handleOpenDialog(stock)} key={index}>
+                            <TableRow className="" key={index}>
                                 <TableCell className="font-medium px-2 py-1">{stock.scriptName}</TableCell>
-                                <TableCell className="px-2 py-1">{stock.faceValue}</TableCell>
+                                <TableCell className="px-2 py-5">{stock.faceValue}</TableCell>
                                 <TableCell className="px-2 py-1">{stock.landingPrice}</TableCell>
+                                <TableCell className="px-2 py-1 text-center">
+                                    <Button variant={'outline'} className="cursor-pointer" onClick={() => handleOpenDialog(stock)}>Send Enquiry</Button>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
+            </div>
+
+            <div className="flex justify-center -mt-5">
+                <Button variant={"outline"} onClick={() => setOpen(true)}>
+                    Other
+                </Button>
             </div>
 
             <Dialog open={open} onOpenChange={setOpen}>
@@ -258,8 +269,55 @@ export default function AllStocks() {
                                 <DialogClose asChild>
                                     <Button variant="outline">Cancel</Button>
                                 </DialogClose>
-                                <Button disabled={loading} type="submit">{loading?'Sending...': 'Send Enquiry'}</Button>
-                                
+                                <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
+
+                            </DialogFooter>
+                        </form>
+                    )}
+                    {!selectedStock && (
+                        <form onSubmit={handleEnquirySubmit} className="grid gap-4">
+                            {/* Share Name (readonly) */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="shareName">Share Name</Label>
+                                <Input
+                                    id="shareName"
+                                    name="shareName"
+                                    onChange={handleChange}
+                                    placeholder="Enter share name"
+                                    className="bg-gray-100"
+                                />
+                            </div>
+
+                            {/* Quantity */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="quantity">Quantity</Label>
+                                <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
+                            </div>
+
+                            {/* Name */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="name">Name</Label>
+                                <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
+                            </div>
+
+                            {/* Email */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="email">Email</Label>
+                                <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
+                            </div>
+
+                            {/* Phone */}
+                            <div className="grid gap-3">
+                                <Label htmlFor="phone">Phone</Label>
+                                <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+                            </div>
+                            <p className='text-red-500 text-sm'>{error}</p>
+                            <DialogFooter>
+                                <DialogClose asChild>
+                                    <Button variant="outline">Cancel</Button>
+                                </DialogClose>
+                                <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
+
                             </DialogFooter>
                         </form>
                     )}

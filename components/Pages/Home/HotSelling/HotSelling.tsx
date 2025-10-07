@@ -116,16 +116,17 @@ export default function HotSelling() {
         e.preventDefault();
         setLoading(true);
         console.log(formData);
-        const result = enquirySchema.safeParse(formData);
-        if (!result.success) {
-            const firstError = result.error.issues[0]?.message;
-            setError(firstError);
-            console.error(firstError);
-            return;
-        }
-
-
         try {
+            const result = enquirySchema.safeParse(formData);
+            if (!result.success) {
+                const firstError = result.error.issues[0]?.message;
+                setError(firstError);
+                console.error(firstError);
+                return;
+            }
+
+
+
             setError("");
             const response = await postStockEnquiry(result.data);
             console.log(response);
@@ -143,7 +144,7 @@ export default function HotSelling() {
         } catch (error) {
             console.error("Form submission error:", error);
             setError("Form submission error")
-        }finally{
+        } finally {
             setLoading(false);
         }
 
@@ -209,7 +210,7 @@ export default function HotSelling() {
 
                 </div>
                 <div className="flex justify-center mt-10">
-                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={()=> route.push("/allstocks")}>View more</Button>
+                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={() => route.push("/allstocks")}>View more</Button>
                 </div>
 
             </div>
@@ -263,8 +264,8 @@ export default function HotSelling() {
                                 <DialogClose asChild>
                                     <Button variant="outline">Cancel</Button>
                                 </DialogClose>
-                                <Button disabled={loading} type="submit">{loading?'Sending...':'Send Enquiry'}</Button>
-                                
+                                <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
+
                             </DialogFooter>
                         </form>
                     )}

@@ -301,7 +301,7 @@ export default function ContactForm() {
         </a>
         <a href="tel:+919211265558" className="flex gap-2 items-center">
           <Phone size={15} />
-          <p>+91 92112 655583</p>
+          <p>+91 92112 65558</p>
         </a>
       </div>
     </motion.div>
