@@ -59,7 +59,7 @@ export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="py-20 max-md:py-10 px-3 ">
+    <section id="faq" className="py-20 max-md:py-10 px-3 ">
       <div className="container mx-auto">
         <h2 className="text-5xl max-md:text-4xl max-sm:text-3xl font-medium font-batman text-center max-w-3xl mx-auto">
           Questions? We&apos;ve got{" "}

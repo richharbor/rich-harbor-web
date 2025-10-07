@@ -58,7 +58,7 @@ export default function Glimps() {
         alt="Background"
         className="absolute -top-28 -left-34 max-sm:size-[18rem] max-sm:-top-10 max-sm:-left-15  size-[35rem] object-cover"
       />
-      <div className="absolute inset-0 bg-transparent backdrop-blur-lg"></div>
+      <div className="absolute rounded-2xl inset-0 bg-transparent backdrop-blur-lg"></div>
     <section className="max-w-7xl relative  mx-auto w-full text-white py-20 px-6 lg:px-20">
       
       
