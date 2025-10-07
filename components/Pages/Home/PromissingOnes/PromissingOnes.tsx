@@ -107,6 +107,7 @@ export default function PromisingOnes() {
         e.preventDefault();
         setLoading(true);
         console.log(formData);
+        try {
         const result = enquirySchema.safeParse(formData);
         if (!result.success) {
             const firstError = result.error.issues[0]?.message;
@@ -116,7 +117,7 @@ export default function PromisingOnes() {
         }
 
 
-        try {
+        
             setError("");
             const response = await postStockEnquiry(result.data);
             console.log(response);
