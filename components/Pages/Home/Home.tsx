@@ -41,7 +41,7 @@ export default function HomePage() {
   return (
     
     <div className="flex flex-col pt-5 sm:pt-20">
-      <ShootingStars />
+      {/* <ShootingStars /> */}
       <StarsBackground />
 
       <main className="flex-1">
@@ -83,7 +83,7 @@ export default function HomePage() {
         
         
         
-        <Tagline />
+        {/* <Tagline /> */}
         <OurProduct />
         <AboutUs />
         {/* <Features2 /> */}
