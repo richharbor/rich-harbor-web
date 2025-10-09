@@ -97,10 +97,8 @@ export default function OurProduct() {
                         >
                             <CometCard rotateDepth={6} translateDepth={10} >
                                 <div
-
-
                                     onClick={() => route.push(item.href)}
-                                    className='bg-card cursor-pointer h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 group hover:bg-rich-violet  transition-all duration-300 ease-in-out '
+                                    className='bg-card cursor-pointer h-[8rem] max-sm:h-[6rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-5 group hover:bg-rich-violet  transition-all duration-300 ease-in-out '
                                 >
                                     {item.icon}
                                     <h1 className='font-bold max-md:font-normal group-hover:text-black '>{item.title}</h1>

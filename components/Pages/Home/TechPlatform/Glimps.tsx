@@ -49,55 +49,70 @@
 import { Shield, Headphones, Clock, KeyRound } from "lucide-react";
 import Image from "next/image";
 import circleIcon from '@/public/images/CircleIcon.png'
+import { motion } from 'framer-motion'
 
 export default function Glimps() {
   return (
-    <div className="relative h-full w-full rounded-2xl">
-      <Image
-        src={circleIcon}
-        alt="Background"
-        className="absolute -top-28 -left-34 max-sm:size-[18rem] max-sm:-top-10 max-sm:-left-15  size-[35rem] object-cover"
-      />
+    <motion.div
+      className="relative h-full w-full rounded-2xl"
+    >
+      <motion.div
+        initial={{ rotate: -90, x: -200, opacity:0, scale:0.5}}
+        whileInView={{ rotate: 0, x: 0, opacity:[0, 0.5, 1], scale:1}}
+        viewport={{once: true, amount:0.5}}
+        transition={{
+          duration: 1,      // full rotation time
+          ease: "easeInOut",    // smooth continuous motion
+        }}
+        className="absolute -top-28 -left-34 max-sm:size-[18rem] max-sm:-top-10 max-sm:-left-15 size-[35rem]"
+      >
+        <Image
+          src={circleIcon}
+          alt="Background"
+          className="object-cover"
+          priority
+        />
+      </motion.div>
       <div className="absolute rounded-2xl inset-0 bg-transparent backdrop-blur-lg"></div>
-    <section className="max-w-7xl relative  mx-auto w-full text-white py-20 px-6 lg:px-20">
-      
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="max-w-7xl relative  mx-auto w-full text-white py-20 px-6 lg:px-20">
 
-        {/* Left Content */}
-        <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-batman font-extrabold leading-tight bg-gradient-to-r from-rich-violet to-[#704bd2] bg-clip-text text-transparent">
-            Less Platform, <br /> More Portal
-          </h2>
-          <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-            We envision a future where investing in private assets is as seamless
-            as entering public markets—an open gateway that moves beyond traditional
-            investing in India. Rich Harbor is your portal to new opportunities once
-            reserved for a privileged few.
-          </p>
-          <button className="bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/70 hover:to-[#704bd2]/70 transition ease-in-out duration-200 shadow-lg">
-            Get Started
-          </button>
-        </div>
 
-        {/* Right Feature Grid */}
-        <div className="grid grid-cols-2 gap-6 max-sm:grid-cols-1">
-          {features.map((feature, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center justify-center text-center bg-white/5 rounded-xl p-6 border border-white/10 hover:border-rich-violet hover:shadow-lg hover:shadow-rich-violet/30 transition duration-300"
-            >
-              <div className="p-3 rounded-full bg-gradient-to-r from-rich-violet/80 to-[#704bd2]/80 mb-4">
-                <feature.icon className="h-6 w-6 text-white" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* Left Content */}
+          <div className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-batman font-extrabold leading-tight bg-gradient-to-r from-rich-violet to-[#704bd2] bg-clip-text text-transparent">
+              Less Platform, <br /> More Portal
+            </h2>
+            <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
+              We envision a future where investing in private assets is as seamless
+              as entering public markets—an open gateway that moves beyond traditional
+              investing in India. Rich Harbor is your portal to new opportunities once
+              reserved for a privileged few.
+            </p>
+            <button className="bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/70 hover:to-[#704bd2]/70 transition ease-in-out duration-200 shadow-lg">
+              Get Started
+            </button>
+          </div>
+
+          {/* Right Feature Grid */}
+          <div className="grid grid-cols-2 gap-6 max-sm:grid-cols-1">
+            {features.map((feature, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center text-center bg-white/5 rounded-xl p-6 border border-white/10 hover:border-rich-violet hover:shadow-lg hover:shadow-rich-violet/30 transition duration-300"
+              >
+                <div className="p-3 rounded-full bg-gradient-to-r from-rich-violet/80 to-[#704bd2]/80 mb-4">
+                  <feature.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-white">{feature.title}</h3>
+                <p className="text-sm text-gray-400 mt-2">{feature.desc}</p>
               </div>
-              <h3 className="font-semibold text-white">{feature.title}</h3>
-              <p className="text-sm text-gray-400 mt-2">{feature.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-    </div>
+      </section>
+    </motion.div>
   );
 }
 

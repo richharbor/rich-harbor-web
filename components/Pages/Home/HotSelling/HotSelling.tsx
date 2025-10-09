@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@/components/ui/dialog'
 import { DialogClose, DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
+import { motion } from 'framer-motion'
 
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
@@ -153,7 +154,12 @@ export default function HotSelling() {
         <section id='hot-ipo' className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
             <div className="container mx-auto">
                 <div className="flex flex-col items-center lg:gap-10">
-                    <div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
                         <h2 className="text-3xl font-batman md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">
                             Hot IPO’s on the Rise
                         </h2>
@@ -161,7 +167,7 @@ export default function HotSelling() {
                         <p className="text-white/50 mt-4 text-lg text-center">
                             Explore the most in-demand equities and make informed trading decisions.
                         </p>
-                    </div>
+                    </motion.div>
                     {/* <div className="z-30 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ">
                         <div className="h-[32rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden min-w-[99vw]">
                             <IntegrationRows integrations={items} />
@@ -183,9 +189,15 @@ export default function HotSelling() {
                             
                         </div>
                     </div> */}
-                    <div className="grid grid-cols-3 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5">
+                    <div
+                        className="grid grid-cols-3 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5"
+                    >
                         {items.map((item, index) => (
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.5 }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
                                 key={index}
                                 className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
                                 onClick={() => handleOpenDialog(item)}
@@ -204,10 +216,9 @@ export default function HotSelling() {
                                 <p className=" text-white/50 mt-1 ">
                                     {item.sector}
                                 </p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-
                 </div>
                 <div className="flex justify-center mt-10">
                     <Button variant={"outline"} className="z-10 cursor-pointer" onClick={() => route.push("/allstocks")}>View more</Button>

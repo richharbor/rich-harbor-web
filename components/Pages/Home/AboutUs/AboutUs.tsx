@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import { useRouter } from "next/navigation"
 import AboutUsImg from "@/public/images/aboutUsImg.jpg"
+import {motion} from 'framer-motion';
 
 
 
@@ -49,12 +50,25 @@ export default function WhoWeAre() {
             
           </div>
         </div> */}
-          <div className="w-full h-full ">
-            <Image src={AboutUsImg} alt="dashboard-img" width={1000} height={1000} className="w-full h-full rounded-2xl object-cover" />
-          </div>
+          <motion.div 
+          initial={{opacity:0, x:-50}}
+          whileInView={{opacity:1, x:0}}
+          viewport={{once: true, amount:0.5}}
+          transition={{duration:0.3, ease:'easeInOut'}}
+          className="w-full h-full "
+          >
+            <Image src={AboutUsImg} alt="dashboard-img" width={819} height={819} className="w-full h-full rounded-2xl object-cover" />
+          </motion.div>
 
           {/* Right Side - Content */}
-          <div className="flex flex-col gap-6">
+          <motion.div 
+          initial={{opacity:0, x:50}}
+          whileInView={{opacity:1, x:0}}
+          viewport={{once: true, amount:0.5}}
+          transition={{duration:0.3, ease:'easeInOut'}}
+          
+          className="flex flex-col gap-6"
+          >
             <h2 className="text-4xl font-batman font-bold text-gradient bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
               Who We Are
             </h2>
@@ -81,7 +95,7 @@ export default function WhoWeAre() {
             Learn More
           </Button> */}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Whatsapp = () => {
@@ -8,10 +9,11 @@ const Whatsapp = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
+        <Image
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/640px-WhatsApp_icon.png"
           alt="WhatsApp"
           width={50}
+          height={50}
         />
       </a>
     </div>
