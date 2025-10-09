@@ -215,7 +215,7 @@ export default function AllStocks() {
 
             <div className="flex justify-center -mt-5">
                 <Button variant={"outline"} onClick={() => setOpen(true)}>
-                    Other
+                    Others
                 </Button>
             </div>
 
