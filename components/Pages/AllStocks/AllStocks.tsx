@@ -189,28 +189,68 @@ export default function AllStocks() {
             </div>
             <div className="p-6">
                 <h1 className="text-2xl font-bold mb-4">Unlisted Shares Price List</h1>
-                <Table className="w-full text-xs sm:text-sm md:text-base">
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead className="px-2 py-1">Script Name</TableHead>
-                            <TableHead className="px-2 py-1">Face Value</TableHead>
-                            <TableHead className="px-2 py-1">Tentative Price</TableHead>
-                            <TableHead className="px-2 py-1 text-center">Action</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {stocket.map((stock, index) => (
-                            <TableRow className="" key={index}>
-                                <TableCell className="font-medium px-2 py-1">{stock.scriptName}</TableCell>
-                                <TableCell className="px-2 py-5">{stock.faceValue}</TableCell>
-                                <TableCell className="px-2 py-1">{stock.landingPrice}</TableCell>
-                                <TableCell className="px-2 py-1 text-center">
-                                    <Button variant={'outline'} className="cursor-pointer" onClick={() => handleOpenDialog(stock)}>Send Enquiry</Button>
-                                </TableCell>
+
+                <div className="hidden md:block overflow-x-auto">
+                    <Table className="w-full text-sm">
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="px-2 py-2 md:px-4">Script Name</TableHead>
+                                <TableHead className="px-2 py-2 md:px-4">Face Value</TableHead>
+                                <TableHead className="px-2 py-2 md:px-4">Tentative Price</TableHead>
+                                <TableHead className="px-2 py-2 md:px-4 text-center">Action</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {stocket.map((stock, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium px-2 py-2 md:px-4">{stock.scriptName}</TableCell>
+                                    <TableCell className="px-2 py-2 md:px-4">{stock.faceValue}</TableCell>
+                                    <TableCell className="px-2 py-2 md:px-4">{stock.landingPrice}</TableCell>
+                                    <TableCell className="px-2 py-2 md:px-4 text-center">
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="cursor-pointer bg-transparent"
+                                            onClick={() => handleOpenDialog(stock)}
+                                        >
+                                            Enquiry
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+
+                <div className="md:hidden space-y-3">
+                    {stocket.map((stock, index) => (
+                        <div key={index} className="border border-border rounded-lg p-4 bg-card">
+                            <div className="flex justify-between items-start mb-3">
+                                <div>
+                                    <p className="text-xs text-muted-foreground">Script Name</p>
+                                    <p className="font-semibold text-base">{stock.scriptName}</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-xs text-muted-foreground">Tentative Price</p>
+                                    <p className="font-semibold text-base">{stock.landingPrice}</p>
+                                </div>
+                            </div>
+                            <div className="mb-3 pb-3 border-b border-border">
+                                <p className="text-xs text-muted-foreground">Face Value</p>
+                                <p className="text-sm">{stock.faceValue}</p>
+                            </div>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full cursor-pointer bg-transparent"
+                                onClick={() => handleOpenDialog(stock)}
+                            >
+                                Send Enquiry
+                            </Button>
+                        </div>
+                    ))}
+                </div>
+
             </div>
 
             <div className="flex justify-center -mt-5">
