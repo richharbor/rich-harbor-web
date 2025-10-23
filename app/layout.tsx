@@ -11,8 +11,8 @@ import Whatsapp from "@/components/Common/Whatsapp/Whatsapp";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rich Harbor",
-  description: "Your Harbor for Financial Growth",
+  title: "Rich Harbor | Invest in Unlisted Shares & Upcoming IPOs",
+  description: "Rich Harbor provides exclusive access to curated unlisted shares and upcoming IPO opportunities in India. Partner with us to build your future-ready portfolio.",
   verification: {
     google: "PvrpLhAVJG58lfDd71fEKcjSRyXLZFvXNogrNK2lYcc",
   },
@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" as="font" href="/fonts/batman.ttf" type="font/truetype" crossOrigin="anonymous"></link>
+        <link rel="canonical" href="https://richharbor.com/" />
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S23L52FW0T"

@@ -187,8 +187,8 @@ export default function AllStocks() {
                     See all your stocks come together in one powerful view, giving you the clarity, confidence, and control to navigate your financial future.
                 </p>
             </div>
-            <div className="p-6">
-                <h1 className="text-2xl font-bold mb-4">Unlisted Shares Price List</h1>
+            <div className="p-6 max-sm:p-2">
+                <h1 className="text-2xl font-bold mb-4 max-sm:text-center">Unlisted Shares Price List</h1>
 
                 <div className="hidden md:block overflow-x-auto">
                     <Table className="w-full text-sm">
@@ -224,8 +224,8 @@ export default function AllStocks() {
 
                 <div className="md:hidden space-y-3">
                     {stocket.map((stock, index) => (
-                        <div key={index} className="border border-border rounded-lg p-4 bg-card">
-                            <div className="flex justify-between items-start mb-3">
+                        <div key={index} className="border border-border rounded-lg p-2 bg-card">
+                            <div className="flex justify-between items-start mb-1">
                                 <div>
                                     <p className="text-xs text-muted-foreground">Script Name</p>
                                     <p className="font-semibold text-base">{stock.scriptName}</p>
@@ -235,7 +235,7 @@ export default function AllStocks() {
                                     <p className="font-semibold text-base">{stock.landingPrice}</p>
                                 </div>
                             </div>
-                            <div className="mb-3 pb-3 border-b border-border">
+                            <div className="mb-2 pb-1 border-b border-border">
                                 <p className="text-xs text-muted-foreground">Face Value</p>
                                 <p className="text-sm">{stock.faceValue}</p>
                             </div>

@@ -8,7 +8,7 @@ const features = [
     {
         title: "Low Entry, High Potential",
         icon: <BadgeIndianRupee className="size-full text-rich-violet" />, // Placeholder for icon path
-        description: "Start your journey into private markets with just ₹10,000. A small entry opens the door to exclusive, high-growth opportunities once reserved for a select few.",
+        description: "Start your journey into private markets with just ₹10,000. A small entry opens the door to exclusive, high-growth opportunities in unlisted shares once reserved for a select few.",
     },
     {
         title: "Enterprise-Grade Security",
@@ -18,7 +18,7 @@ const features = [
     {
         title: "Research-Backed Decisions",
         icon: <ChartBarBig className="size-full text-rich-violet" />,
-        description: "Invest with confidence through curated financial insights and analyst-driven reports, empowering you to make informed, data-backed choices in emerging companies.",
+        description: "Invest with confidence through curated financial insights and analyst-driven reports, empowering you to make informed choices in emerging companies and pre-IPO placements.",
     },
     {
         title: "Seamless Three-Step Investing",
@@ -112,7 +112,7 @@ const Feature = ({
 export default function JoinLeague() {
     return (
         <div className="flex rounded-2xl flex-col gap-20 max-md:gap-2 h-full mx-auto w-full lg:max-w-screen-xl px-2 lg:px-20 py-20 max-md:py-10">
-            <h1 className="text-3xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">User into a new era of private investments</h1>
+            <h2 className="text-3xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">Ushering in a New Era of Private Market Investing</h2>
 
             <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 relative z-10 py-10 max-w-7xl mx-auto">
                 {/* {features.map((feature, index) => (
