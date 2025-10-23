@@ -17,7 +17,7 @@ const cards = [
         href: '/#hot-ipo'
     },
     {
-        title: 'PreIPO | Unicons',
+        title: 'PreIPO | Unicorns',
         icon: <PackageCheck className='size-10 group-hover:text-black' />,
         href: '/coming-soon'
     },
