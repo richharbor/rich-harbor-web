@@ -56,7 +56,7 @@ const faqs = [
 ];
 
 export default function Faqs() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <section id="faq" className="py-20 max-md:py-10 px-3 ">
@@ -70,7 +70,13 @@ export default function Faqs() {
           {faqs.map((faq, faqIndex) => (
             <div
               key={faq.question}
-              onClick={() => setSelectedIndex(faqIndex)}
+              onClick={() =>{
+                if(selectedIndex === faqIndex){
+                  setSelectedIndex(-1)
+                }else{
+                  setSelectedIndex(faqIndex)
+                }
+              }}
               className="bg-neutral-900 z-10 rounded-2xl border border-white/10 p-6 "
             >
               <div className="flex justify-between items-start">

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Vortex } from "@/components/ui/vortex";
 import RocketIcon from '@/public/images/Rocket.png'
 import Image from "next/image";
+import { easeInOut, motion } from 'framer-motion'
 
 
 
@@ -28,16 +29,34 @@ export default function PartnerWithUs() {
                     className="absolute bottom-0 left-1/2 max-sm:size-[18rem] -translate-x-1/2 size-[25rem] object-cover"
                 />
                 <div className="absolute inset-0 bg-transparent backdrop-blur-sm"></div>
-                <div className="w-full z-10 relative items-center flex flex-col gap-7 max-md:gap-5 py-40 max-md:py-20 max-md:py-10 px-20 max-md:px-10 max-sm:px-4">
+                <div className="w-full z-10 relative items-center flex flex-col gap-7 max-md:gap-5 py-40 max-md:py-10 px-20 max-md:px-10 max-sm:px-4">
 
 
-                    <h1 className="text-2xl md:text-3xl lg:text-5xl font-batman text-center">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="text-2xl md:text-3xl lg:text-5xl font-batman text-center"
+                    >
                         Partner With <span className="bg-gradient-to-r from-rich-violet to-[#704bd2] bg-clip-text text-transparent">Rich Harbor</span>
-                    </h1>
-                    <p className="text-white/50 max-w-3xl text-center mx-auto">
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.1 }}
+                        className="text-white/50 max-w-3xl text-center mx-auto"
+                    >
                         Join hands with India’s leading Pre-IPO and unlisted shares platform. Together, we empower investors, grow businesses, and create seamless trading experiences.
-                    </p>
-                    <div className="flex justify-evenly w-full">
+                    </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, ease: 'easeInOut', delay:0.2 }}
+                        className="flex justify-evenly w-full"
+                    >
                         <Link
                             target="_blank"
                             rel="noopener noreferrer"
@@ -45,7 +64,7 @@ export default function PartnerWithUs() {
                             Become a Partner
                         </Link>
 
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

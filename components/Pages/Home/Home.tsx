@@ -27,6 +27,9 @@ import { useAuthStore } from "@/store/authStore";
 import { useEffect } from "react";
 import { Testimonials2 } from "./Testimonials2/Testimonials2";
 
+
+
+
 export default function HomePage() {
 
   const {authUser, checkAuth} = useAuthStore();
@@ -48,22 +51,20 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="w-full pt-5 overflow-hidden">
           <div className="container px-4 md:px-6 relative mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+            <div
+              
               className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1
-                style={{ fontFamily: "Batman, sans-serif" }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+               
+                className="text-3xl font-batman sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
               >
                 Smarter Tech Better Deals
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
                 Welcome to Rich Harbor – Where Intelligence Meets Profit
               </p>
-            </motion.div>
+            </div>
 
             <div className="w-full">
               <div className="relative -top:5 sm:-top-20 w-full">

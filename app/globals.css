@@ -56,6 +56,7 @@
 
 .animate-scroll {
   animation: scroll 15s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll:hover {
@@ -173,6 +174,7 @@
   src: url('/fonts/batman.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @layer utilities {
