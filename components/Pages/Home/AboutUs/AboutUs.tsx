@@ -69,22 +69,22 @@ export default function WhoWeAre() {
           
           className="flex flex-col gap-6"
           >
-            <h2 className="text-4xl font-batman font-bold text-gradient bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl max-sm:text-2xl font-batman font-bold text-gradient bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
               Who We Are
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
 
-              We are building a trusted, tech-driven marketplace where investors can seamlessly discover, buy, and sell Pre-IPOs, IPOs, and private equity opportunities. Our mission is to make alternative investments accessible, transparent, and secure for every investor—backed by technology, compliance, and trust.
+              We are building a trusted, tech-driven marketplace where investors can seamlessly discover, buy, and sell top-tier unlisted shares, Pre-IPOs, and private equity opportunities. Our mission is to make alternative investments accessible, transparent, and secure for every investor.
 
             </p>
             <h2 className=" text-xl font-semibold max-md:text-xl max-sm:text-lg ">What Sets Us Apart
             </h2>
             <ul className="space-y-3 text-muted-foreground">
-              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div> Exclusive Access to high-growth Pre-IPO and private market opportunities
+              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Exclusive access to high-growth pre-IPO and private market opportunities.
               </li>
-              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Seamless & Secure end-to-end trading experience</li>
-              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div> Transparent & Compliant transactions with full investor confidence</li>
-              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Global Investor Network growing stronger every day
+              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Seamless and secure end-to-end trading experience.</li>
+              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>Transparent and compliant transactions for full investor confidence.</li>
+              <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>A robust marketplace connecting you to a growing network of investors.
               </li>
               {/* <li className="flex gap-2"><div><Check className="text-rich-violet" /></div>At the heart of our platform is a vision to democratize private markets, empowering investors to enter early, grow smarter, and trade with trust.</li> */}
             </ul>

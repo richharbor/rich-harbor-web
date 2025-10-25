@@ -50,19 +50,19 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full pt-5 overflow-hidden">
-          <div className="container px-4 md:px-6 relative mx-auto">
+          <div className="container px-2 md:px-6 relative mx-auto">
             <div
               
               className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1
                
-                className="text-3xl font-batman sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+                className="text-2xl font-batman sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
               >
-                Smarter Tech Better Deals
+                Invest in India's Leading Unlisted Shares and Upcoming IPOs
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
-                Welcome to Rich Harbor – Where Intelligence Meets Profit
+                Get early access to India’s top companies with exclusive investments in unlisted shares and pre-IPO placements.
               </p>
             </div>
 
