@@ -65,7 +65,7 @@ export default function OurProduct() {
                         {/* <h1 className='text-3xl max-md:text-center md:text-4xl lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400'>
                             Indian Private Markets At Your <span className='bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>Fingertips</span>
                         </h1> */}
-                        <motion.h1
+                        <motion.h2
                             
                             className="text-2xl font-batman text-center max-md:text-center md:text-4xl lg:text-5xl font-normal !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400 "
                         >
@@ -73,9 +73,9 @@ export default function OurProduct() {
                             <Highlight className="text-black dark:text-white">
                                 Fingertips.
                             </Highlight>
-                        </motion.h1>
+                        </motion.h2>
                         <p className='text-sm text-center md:text-base lg:text-lg text-white/80 max-w-2xl mx-auto'>
-                            Your Premier Destination for Startup, MSME, Pre-IPO, and Unicorn Investments.
+                            As your premier destination, we provide curated access to a diverse portfolio of private market opportunities, including high-growth startups, SMEs, exclusive pre-IPO placements, and Unicorn investments.
                         </p>
 
                         <Button className='w-fit'>Get Started</Button>
