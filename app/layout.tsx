@@ -7,6 +7,7 @@ import Script from "next/script"; // 👈 important
 import Footer from "../components/Common/Footer/Footer";
 import Navbar from "@/components/Common/Navbar/Navbar";
 import Whatsapp from "@/components/Common/Whatsapp/Whatsapp";
+import Chatbot from "@/components/Common/Chatbot/Chatbot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,9 +77,10 @@ export default function RootLayout({
         <Navbar />
         <div className="mx-auto items-center max-md:px-4 flex flex-col relative">
           {children}
-          <div className="fixed bottom-4 right-4 z-10">
+          {/* <div className="fixed bottom-4 left-4 z-10">
             <Whatsapp />
-          </div>
+          </div> */}
+          <Chatbot />
         </div>
         <Footer />
       </body>

@@ -188,7 +188,7 @@ export default function AllStocks() {
                 </p>
             </div>
             <div className="p-6 max-sm:p-2">
-                <h1 className="text-2xl font-bold mb-4 max-sm:text-center">Unlisted Shares Price List</h1>
+                <h2 className="text-2xl font-bold mb-4 max-sm:text-center">Unlisted Shares Price List</h2>
 
                 <div className="hidden md:block overflow-x-auto">
                     <Table className="w-full text-sm">

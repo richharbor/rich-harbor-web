@@ -411,6 +411,51 @@ const sampleArcs = [
     arcAlt: 0.3,
     color: colors[Math.floor(Math.random() * (colors.length - 1))],
   },
+  {
+    order: 15,
+    startLat: 28.6100, // Delhi, India
+    startLng: 77.2300,
+    endLat: 51.5072, // London, UK
+    endLng: -0.1276,
+    arcAlt: 0.5,
+    color: colors[Math.floor(Math.random() * (colors.length - 1))],
+  },
+  {
+    order: 15,
+    startLat: 19.0761, // Mumbai, India
+    startLng: 72.8775,
+    endLat: 35.6762, // Tokyo, Japan
+    endLng: 139.6503,
+    arcAlt: 0.3,
+    color: colors[Math.floor(Math.random() * (colors.length - 1))],
+  },
+  {
+    order: 15,
+    startLat: 22.5675, // Kolkāta, India
+    startLng: 88.3700,
+    endLat: -22.9068, // Rio de Janeiro, Brazil
+    endLng: -43.1729,
+    arcAlt: 0.8,
+    color: colors[Math.floor(Math.random() * (colors.length - 1))],
+  },
+  {
+    order: 16,
+    startLat: 28.6100, // Delhi, India
+    startLng: 77.2300,
+    endLat: -33.9361, // Cape Town, South Africa
+    endLng: 18.4365,
+    arcAlt: 0.5,
+    color: colors[Math.floor(Math.random() * (colors.length - 1))],
+  },
+  {
+    order: 16,
+    startLat: 19.0761, // Mumbai, India
+    startLng: 72.8775,
+    endLat: 51.5072, // London, UK
+    endLng: -0.1276,
+    arcAlt: 0.6,
+    color: colors[Math.floor(Math.random() * (colors.length - 1))],
+  },
 ];
 
 const World = dynamic(

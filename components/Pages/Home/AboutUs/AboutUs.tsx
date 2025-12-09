@@ -18,38 +18,7 @@ export default function WhoWeAre() {
         <div className="container mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-12 items-center">
 
           {/* Left Side - Images */}
-          {/* <div className="relative grid grid-cols-12 [grid-template-rows:repeat(9,50px)] max-sm:[grid-template-rows:repeat(9,35px)] w-full h-full ">
-          <div className="col-start-2 col-end-8 row-start-1 row-end-5">
-            <img
-              src="https://i.pinimg.com/736x/ae/e6/d4/aee6d45245609592339c8508ae27182d.jpg"
-              alt="Team Member"
-              width={50}
-              height={50}
-              className="rounded-4xl object-cover w-full h-full"
-            />
-            
-          </div>
-          <div className="col-start-1 col-end-8 row-start-6 row-end-10">
-            <img
-              src="https://i.pinimg.com/736x/46/14/02/46140271c41e3f6493d01d5c974e2e2a.jpg"
-              alt="Team Member"
-              width={50}
-              height={50}
-              className="rounded-4xl object-cover w-full h-full"
-            />
-            
-          </div>
-          <div className="col-start-9 col-end-13 row-start-2 row-end-8">
-            <img
-              src="https://i.pinimg.com/736x/7b/ae/d3/7baed3ee85756fa875a97db1b1c38f46.jpg"
-              alt="Team Member"
-              width={50}
-              height={50}
-              className="rounded-4xl object-cover w-full h-full"
-            />
-            
-          </div>
-        </div> */}
+          
           <motion.div 
           initial={{opacity:0, x:-50}}
           whileInView={{opacity:1, x:0}}
