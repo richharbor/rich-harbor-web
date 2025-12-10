@@ -72,7 +72,7 @@ const Feature = ({
 export default function JoinLeague() {
     return (
         <div className="flex rounded-2xl flex-col gap-10 max-md:gap-2 h-full mx-auto w-full lg:max-w-screen-xl px-2 lg:px-20 py-20 max-md:py-5">
-            <h1 className="text-2xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">How Can Rich Harbor Help Your Business?</h1>
+            <h2 className="text-2xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">How Can Rich Harbor Help Your Business?</h2>
             <p className="text-center text-white/50">
                Partnering with us means unlocking new opportunities, expanding your reach, and creating lasting value for your business. 
             </p>

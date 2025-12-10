@@ -117,7 +117,7 @@ export const FOOTER_LINKS = [
         title: "Resources",
         links: [
             { name: "FAQS", href: "/#faq" },
-            { name: "Blogs", href: "/" },
+            // { name: "Blogs", href: "/blogs" },
 
         ],
     },
