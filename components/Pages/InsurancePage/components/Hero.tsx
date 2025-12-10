@@ -1,0 +1,92 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { motion } from "framer-motion"
+
+const benefits = ["No hidden fees or charges", "24/7 customer support", "Fast claim processing"]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+}
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <motion.div
+          className="flex flex-col items-center text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Announcement badge */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-8 inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm"
+          >
+            <span className="h-2 w-2 rounded-full bg-[#4AA651]" />
+            <span className="text-muted-foreground">Trusted by 500,000+ families nationwide</span>
+            <ArrowRight className="h-4 w-4 text-muted-foreground" />
+          </motion.div>
+
+          {/* Main heading */}
+          <motion.h1
+            variants={itemVariants}
+            className="max-w-4xl font-serif text-4xl tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance"
+          >
+            Comprehensive Insurance Coverage for Every Stage of Life
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty"
+          >
+            Protect your family, home, and future with our tailored insurance plans. Get peace of mind knowing
+            you&apos;re covered when it matters most.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+            <Button size="lg" className="rounded-full px-8 h-12 text-base">
+              Get Your Free Quote
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-transparent">
+              View Coverage Options
+            </Button>
+          </motion.div>
+
+          {/* Trust indicators */}
+          <motion.div variants={itemVariants} className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={benefit}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                className="flex items-center gap-2 text-sm text-muted-foreground"
+              >
+                <CheckCircle2 className="h-5 w-5 text-[#4AA651]" />
+                <span>{benefit}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
