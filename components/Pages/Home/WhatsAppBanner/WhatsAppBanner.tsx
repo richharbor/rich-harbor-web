@@ -7,7 +7,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 export default function WhatsAppBanner() {
     return (
         <div className="w-full px-4 md:px-6 mb-16">
-            <Link href="/whatsapp-community" className="block w-full">
+            <Link href="/whatsapp-community" className="block w-full relative z-10">
                 <motion.div
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
