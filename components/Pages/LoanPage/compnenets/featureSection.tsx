@@ -64,7 +64,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">Why Choose LoanFlow</h2>
+          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">Why Choose Us</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We've reimagined business lending from the ground up, making it faster, simpler, and more transparent.
           </p>
