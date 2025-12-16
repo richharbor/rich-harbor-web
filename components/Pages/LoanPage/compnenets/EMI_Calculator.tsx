@@ -34,7 +34,7 @@ function AnimatedNumber({ value, prefix = "₹", suffix = "" }: { value: number;
 export function EMICalculator() {
     const [amount, setAmount] = useState(500000)
     const [years, setYears] = useState(3)
-    const interestRate = 15
+    const [interestRate, setInterestRate] = useState(11.5)
 
     // EMI Calculation: EMI = P × r × (1 + r)^n / ((1 + r)^n - 1)
     const monthlyRate = interestRate / 12 / 100
@@ -128,13 +128,29 @@ export function EMICalculator() {
                                     </div>
                                 </div>
 
-                                {/* Interest Rate Display */}
-                                <div className="flex items-center justify-between p-4 bg-[#4AA651]/10 rounded-lg border border-accent/20">
-                                    <div className="flex items-center gap-2">
-                                        <Percent className="w-4 h-4 text-[#4AA651]" />
-                                        <span className="text-sm font-medium">Interest Rate</span>
+                                {/* Interest Rate Slider */}
+                                <div className="space-y-4">
+                                    <div className="flex items-center justify-between">
+                                        <label className="flex items-center gap-2 text-sm font-medium">
+                                            <Percent className="w-4 h-4 text-muted-foreground" />
+                                            Interest Rate
+                                        </label>
+                                        <span className="text-sm font-semibold bg-secondary px-3 py-1 rounded-md">
+                                            {interestRate}%
+                                        </span>
                                     </div>
-                                    <span className="text-lg font-bold text-[#4AA651]">{interestRate}% p.a.</span>
+                                    <Slider
+                                        value={[interestRate]}
+                                        onValueChange={(val) => setInterestRate(val[0])}
+                                        min={8}
+                                        max={24}
+                                        step={0.5}
+                                        className="w-full"
+                                    />
+                                    <div className="flex justify-between text-xs text-muted-foreground">
+                                        <span>8%</span>
+                                        <span>24%</span>
+                                    </div>
                                 </div>
                             </div>
 

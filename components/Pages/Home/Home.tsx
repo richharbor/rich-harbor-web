@@ -26,13 +26,15 @@ import PromisingOnes from "./PromissingOnes/PromissingOnes";
 import { useAuthStore } from "@/store/authStore";
 import { useEffect } from "react";
 import { Testimonials2 } from "./Testimonials2/Testimonials2";
+import ProductSlider from "./ProductSlider/ProductSlider";
+import WhatsAppBanner from "./WhatsAppBanner/WhatsAppBanner";
 
 
 
 
 export default function HomePage() {
 
-  const {authUser, checkAuth} = useAuthStore();
+  const { authUser, checkAuth } = useAuthStore();
 
 
   // useEffect(()=>{
@@ -42,7 +44,7 @@ export default function HomePage() {
 
 
   return (
-    
+
     <div className="flex flex-col pt-5 sm:pt-20">
       <ShootingStars />
       <StarsBackground />
@@ -52,11 +54,11 @@ export default function HomePage() {
         <section className="w-full pt-5 overflow-hidden">
           <div className="container px-2 md:px-6 relative mx-auto">
             <div
-              
+
               className="text-center max-w-3xl mx-auto  pt-10"
             >
               <h1
-               
+
                 className="text-2xl font-batman sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
               >
                 Invest in India's Leading Unlisted Shares and Upcoming IPOs
@@ -78,13 +80,16 @@ export default function HomePage() {
           </div>
         </section>
 
-       
-        
-        
-        
-        
-        
-        <Tagline />
+
+
+
+
+
+
+
+        <ProductSlider />
+        <WhatsAppBanner />
+        {/* <Tagline /> */}
         <OurProduct />
         <AboutUs />
         {/* <Features2 /> */}
@@ -95,7 +100,7 @@ export default function HomePage() {
         {/* <Transform /> */}
         <TechPlatform />
         <HotSelling />
-        
+
         {/* <ExtraFeatures /> */}
         <PromisingOnes />
 
@@ -103,15 +108,15 @@ export default function HomePage() {
         {/* <TomorrowBigBets /> */}
         <JoinLeague />
         {/* <Integrations /> */}
-        
-        
-        
-        
-        <Faq /> 
 
-        
+
+
+
+        <Faq />
+
+
       </main>
-      
+
     </div>
   );
 }
