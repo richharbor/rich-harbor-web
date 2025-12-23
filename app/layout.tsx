@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   verification: {
     google: "PvrpLhAVJG58lfDd71fEKcjSRyXLZFvXNogrNK2lYcc",
   },
+  metadataBase: new URL('https://richharbor.com'),
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +33,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" as="font" href="/fonts/batman.ttf" type="font/truetype" crossOrigin="anonymous"></link>
-        <link rel="canonical" href="https://richharbor.com/" />
+
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S23L52FW0T"
