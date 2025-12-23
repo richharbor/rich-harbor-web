@@ -101,7 +101,7 @@ export default function OurProduct() {
                                     className='bg-card cursor-pointer h-[8rem] max-sm:h-[6rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-5 group hover:bg-rich-violet  transition-all duration-300 ease-in-out '
                                 >
                                     {item.icon}
-                                    <h1 className='font-bold max-md:font-normal group-hover:text-black '>{item.title}</h1>
+                                    <h2 className='font-bold max-md:font-normal group-hover:text-black '>{item.title}</h2>
                                 </div>
                             </CometCard>
                         </motion.div>

@@ -234,7 +234,7 @@ export default function StockInfoPage({ id }: { id: string }) {
 
             {/* Steps to Buy unlisted Shares */}
             <div className="w-full py-4">
-                <h1 className='text-center text-2xl md:text-4xl lg:text-5xl my-5 mt-10'>Steps to Buy Unlisted Shares</h1>
+                <h2 className='text-center text-2xl md:text-4xl lg:text-5xl my-5 mt-10'>Steps to Buy Unlisted Shares</h2>
                 <StickyScroll content={content} />
             </div>
 

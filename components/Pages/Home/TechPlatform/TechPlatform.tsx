@@ -58,7 +58,7 @@ export default function TechPlatform(){
         
         <CardItem translateZ="100" className="w-full">
           
-          <Image src={phoneImg} alt="hoding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl mx-auto "/>
+          <Image src={phoneImg} alt="holding phone" className="size-full max-md:size-52 max-lg:size-64 object-cover rounded-xl mx-auto "/>
         </CardItem>
         
       </CardBody>
