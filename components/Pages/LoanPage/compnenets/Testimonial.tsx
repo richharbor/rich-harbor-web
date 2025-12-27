@@ -37,7 +37,7 @@ export function TestimonialsSection() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">Trusted by Thousands</h2>
+                    <h2 className="text-3xl sm:text-4xl font-bold font-batman tracking-tight mb-4">Trusted by Thousands</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
                         See what business owners are saying about their experience with LoanFlow.
                     </p>

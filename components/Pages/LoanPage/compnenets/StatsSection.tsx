@@ -73,7 +73,7 @@ export function StatsSection() {
               transition={{ delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-5xl font-medium tracking-tight mb-2">
+              <div className="text-4xl sm:text-5xl font-bold font-batman tracking-tight mb-2">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
               </div>
               <p className="text-sm text-muted-foreground">{stat.label}</p>

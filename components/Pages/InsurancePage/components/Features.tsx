@@ -1,6 +1,6 @@
 "use client"
 
-import { Shield, Heart, Home, Car, Umbrella, Users } from "lucide-react"
+import { Shield, Heart, Home, Car, Umbrella, Users, Building2 } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 
@@ -16,24 +16,14 @@ const features = [
     description: "Access quality healthcare with flexible plans covering preventive care to major medical expenses.",
   },
   {
-    icon: Home,
-    name: "Home Insurance",
-    description: "Protect your biggest investment with coverage for your home, belongings, and liability.",
-  },
-  {
     icon: Car,
-    name: "Auto Insurance",
+    name: "Motor Insurance",
     description: "Drive with confidence knowing you're protected against accidents, theft, and liability.",
   },
   {
-    icon: Umbrella,
-    name: "Umbrella Coverage",
-    description: "Extra liability protection that goes beyond your standard policies for complete peace of mind.",
-  },
-  {
-    icon: Users,
-    name: "Family Plans",
-    description: "Bundle coverage for your entire family and save while ensuring everyone is protected.",
+    icon: Building2,
+    name: "Business & Commercial Insurance",
+    description: "Protect your business assets, employees, and operations with tailored commercial coverage.",
   },
 ]
 
@@ -65,8 +55,8 @@ export function Features() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="font-serif text-3xl tracking-tight text-foreground sm:text-4xl text-balance">
-            Coverage That Fits Your Life
+          <h2 className="font-bold font-batman text-3xl tracking-tight text-foreground sm:text-4xl text-balance">
+            Insurance Categories
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             From protecting your health to securing your home, we offer comprehensive coverage options tailored to your

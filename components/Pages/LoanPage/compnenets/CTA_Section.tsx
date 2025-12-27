@@ -15,7 +15,7 @@ export function CTASection() {
           transition={{ duration: 0.5 }}
           className="bg-primary text-primary-foreground rounded-3xl p-12 md:p-16 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">Ready to Grow Your Business?</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold font-batman tracking-tight mb-4">Ready to Grow Your Business?</h2>
           <p className="text-primary-foreground/80 max-w-xl mx-auto mb-8">
             Join thousands of businesses that have accelerated their growth with LoanFlow. Get started in minutes.
           </p>

@@ -9,6 +9,7 @@ import Navbar from "@/components/Common/Navbar/Navbar";
 import Whatsapp from "@/components/Common/Whatsapp/Whatsapp";
 import Chatbot from "@/components/Common/Chatbot/Chatbot";
 import QueryWidget from "@/components/Common/QueryWidget/QueryWidget";
+import NewsletterPopup from "@/components/Common/NewsletterPopup/NewsletterPopup";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -87,6 +88,7 @@ export default function RootLayout({
           </div> */}
           <Chatbot />
           <QueryWidget />
+          <NewsletterPopup />
         </div>
         <Footer />
       </body>

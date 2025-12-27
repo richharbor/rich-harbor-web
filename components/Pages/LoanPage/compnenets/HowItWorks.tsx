@@ -35,7 +35,7 @@ export function HowItWorksSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">How It Works</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold font-batman tracking-tight mb-4">How It Works</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Get funded in three simple steps. No complicated processes, no hidden fees.
           </p>

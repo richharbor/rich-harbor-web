@@ -50,7 +50,7 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="px-6 py-8 lg:py-12 text-center lg:text-left"
     >
-      <p className="text-3xl lg:text-4xl font-bold text-foreground">
+      <p className="text-3xl lg:text-4xl font-bold font-batman text-foreground">
         {stat.prefix}
         {displayValue}
         {stat.suffix}
