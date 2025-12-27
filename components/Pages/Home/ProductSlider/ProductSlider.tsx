@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -9,37 +10,50 @@ const products = [
     {
         id: 1,
         title: "Unlisted Shares",
-        description: "Invest in high-growth companies before they go public. exclusive access to pre-IPO shares.",
+        description: "Invest in high-growth companies before they go public. Exclusive access to pre-IPO shares.",
         image: "https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=1920&auto=format&fit=crop",
-        color: "from-blue-900/80 to-black/40"
+        color: "from-blue-900/80 to-black/40",
+        link: "/unlisted-shares"
     },
     {
         id: 2,
-        title: "Loans",
-        description: "Tailored financing solutions for your personal and business needs. Quick approvals and competitive rates.",
-        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1920&auto=format&fit=crop",
-        color: "from-green-900/80 to-black/40"
+        title: "Bulk Deals",
+        description: "Facilitating large volume transactions in listed securities with minimal market impact.",
+        image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1920&auto=format&fit=crop",
+        color: "from-emerald-900/80 to-black/40",
+        link: "/bulk-deals"
     },
     {
         id: 3,
-        title: "Insurances",
-        description: "Comprehensive protection for your future. Life, health, and general insurance plans.",
-        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1920&auto=format&fit=crop",
-        color: "from-indigo-900/80 to-black/40"
+        title: "Private Markets",
+        description: "Access exclusive opportunities in Private Equity, Venture Capital, and Alternative Investment Funds (AIFs).",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop",
+        color: "from-purple-900/80 to-black/40",
+        link: "/private-markets"
     },
     {
         id: 4,
-        title: "Startup Funding",
-        description: "Fueling the next generation of unicorns. Seed to Series A funding for innovative startups.",
-        image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1920&auto=format&fit=crop",
-        color: "from-purple-900/80 to-black/40"
+        title: "Loans",
+        description: "Tailored financing solutions including Personal, Home, and Business loans with competitive rates.",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1920&auto=format&fit=crop",
+        color: "from-green-900/80 to-black/40",
+        link: "/loans"
     },
     {
         id: 5,
-        title: "Private Equity",
-        description: "Strategic capital for established businesses. unlocking value through operational expertise.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop",
-        color: "from-rose-900/80 to-black/40"
+        title: "Insurance",
+        description: "Comprehensive protection for you and your business. Life, Health, Motor, and Corporate insurance plans.",
+        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1920&auto=format&fit=crop",
+        color: "from-indigo-900/80 to-black/40",
+        link: "/insurance"
+    },
+    {
+        id: 6,
+        title: "Corporate Finance",
+        description: "Strategic financial advisory, debt syndication, and capital raising services for growing enterprises.",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop",
+        color: "from-rose-900/80 to-black/40",
+        link: "/corporate-finance"
     }
 ];
 
@@ -97,12 +111,14 @@ export default function ProductSlider() {
                                 {products[currentIndex].description}
                             </p>
 
-                            <Button
-                                size="lg"
-                                className="rounded-full bg-white text-black hover:bg-white/90 text-lg px-8 py-6 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
-                            >
-                                Explore Now <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
+                            <Link href={products[currentIndex].link}>
+                                <Button
+                                    size="lg"
+                                    className="rounded-full bg-white text-black hover:bg-white/90 text-lg px-8 py-6 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+                                >
+                                    Explore Now <ArrowRight className="ml-2 w-5 h-5" />
+                                </Button>
+                            </Link>
                         </motion.div>
                     </div>
                 </motion.div>

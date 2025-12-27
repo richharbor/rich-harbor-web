@@ -67,7 +67,7 @@ export function ServicesSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-5xl font-bold tracking-tight mb-6"
+                        className="text-3xl md:text-5xl font-bold font-batman tracking-tight mb-6"
                     >
                         Expert Services from Industry Leaders
                     </motion.h2>

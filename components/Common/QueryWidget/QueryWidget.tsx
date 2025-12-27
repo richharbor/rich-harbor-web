@@ -18,19 +18,21 @@ import { Label } from "@/components/ui/label";
 export default function QueryWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [email, setEmail] = useState("");
-    const [category, setCategory] = useState("");
+    const [userType, setUserType] = useState("");
+    const [interest, setInterest] = useState("");
     const [description, setDescription] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle submission logic here (console.log mostly for now)
-        console.log({ email, category, description });
+        console.log({ email, userType, interest, description });
         // Reset and close
         setEmail("");
-        setCategory("");
+        setUserType("");
+        setInterest("");
         setDescription("");
         setIsOpen(false);
-        alert("Query Sent! We'll get back to you soon.");
+        
     };
 
     return (
@@ -54,26 +56,28 @@ export default function QueryWidget() {
                         </motion.button>
                     )}
                 </AnimatePresence>
+            </div>
 
-                <AnimatePresence>
-                    {isOpen && (
-                        <>
-                            {/* Backdrop */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                onClick={() => setIsOpen(false)}
-                                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-                            />
+            <AnimatePresence>
+                {isOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsOpen(false)}
+                            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+                        />
 
-                            {/* Drawer/Dialog */}
+                        {/* Drawer/Dialog */}
+                        <div className="fixed inset-0 z-50 flex items-center justify-end pointer-events-none">
                             <motion.div
                                 initial={{ x: "100%", opacity: 0.5 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 exit={{ x: "100%", opacity: 0, transition: { duration: 0.3 } }}
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                className="fixed right-0 -top-64 h-[590px] w-full sm:w-[400px] bg-background border-l border-border shadow-2xl z-50 flex flex-col"
+                                className="pointer-events-auto h-[590px] w-full sm:w-[400px] bg-background border-l border-border shadow-2xl flex flex-col"
                             >
                                 <div className="flex items-center justify-between p-6 border-b border-border bg-secondary/5">
                                     <div>
@@ -108,17 +112,31 @@ export default function QueryWidget() {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <Label htmlFor="category" className="text-sm font-medium">Category</Label>
-                                            <Select value={category} onValueChange={setCategory} required>
+                                            <Label htmlFor="userType" className="text-sm font-medium">I am a</Label>
+                                            <Select value={userType} onValueChange={setUserType} required>
                                                 <SelectTrigger className="bg-secondary/20 border-border">
-                                                    <SelectValue placeholder="Select a topic" />
+                                                    <SelectValue placeholder="Select your role" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="loan">Loans</SelectItem>
-                                                    <SelectItem value="insurance">Insurance</SelectItem>
+                                                    <SelectItem value="partner">Partner</SelectItem>
+                                                    <SelectItem value="seller">Seller</SelectItem>
+                                                    <SelectItem value="buyer">Buyer</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <Label htmlFor="interest" className="text-sm font-medium">Interested in</Label>
+                                            <Select value={interest} onValueChange={setInterest} required>
+                                                <SelectTrigger className="bg-secondary/20 border-border">
+                                                    <SelectValue placeholder="Select an interest" />
+                                                </SelectTrigger>
+                                                <SelectContent>
                                                     <SelectItem value="unlisted_shares">Unlisted Shares</SelectItem>
-                                                    <SelectItem value="startup_funding">Startup Funding</SelectItem>
-                                                    <SelectItem value="other">Other</SelectItem>
+                                                    <SelectItem value="insurance">Insurance</SelectItem>
+                                                    <SelectItem value="loans">Loans</SelectItem>
+                                                    <SelectItem value="corporate_finance">Corporate Finance</SelectItem>
+                                                    <SelectItem value="private_markets">Private Markets</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </div>
@@ -147,10 +165,10 @@ export default function QueryWidget() {
                                     </p>
                                 </div>
                             </motion.div>
-                        </>
-                    )}
-                </AnimatePresence>
-            </div>
+                        </div>
+                    </>
+                )}
+            </AnimatePresence>
         </>
     );
 }

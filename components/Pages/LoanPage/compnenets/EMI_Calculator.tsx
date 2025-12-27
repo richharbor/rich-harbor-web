@@ -58,7 +58,7 @@ export function EMICalculator() {
                         <Calculator className="w-4 h-4" />
                         <span className="text-sm font-medium">EMI Calculator</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold font-batman tracking-tight text-balance mb-4">
                         Calculate Your Monthly EMI
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">

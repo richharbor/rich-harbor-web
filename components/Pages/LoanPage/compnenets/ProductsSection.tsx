@@ -2,95 +2,50 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Zap, ShieldCheck, Clock, Coins, Code, TrendingUp, Home, User, Factory } from "lucide-react";
+import { ArrowRight, CheckCircle2, Zap, ShieldCheck, Clock, Coins, Code, TrendingUp, Home, User, Factory, Building2, ArrowRightLeft } from "lucide-react";
 import Link from "next/link";
 
 export function ProductsSection() {
     const products = [
         {
-            name: "Startup Term Loan",
-            badge: "Popular for Startups",
-            description: "Unlock immediate cash on your future cash flow. Instant credit lines designed specifically for new-age startups.",
-            features: [
-                "Collateral Free Funding",
-                "Up to ₹5 Crores Limit",
-                "Disbursal in 48 Hours",
-                "Connect via Banking/GST"
-            ],
-            icon: Zap,
+            name: "Personal Loans",
+            description: "Quick access to funds for your personal needs with flexible repayment tenure.",
+            features: ["Disbursal in 24 Hours", "Minimal Documentation", "No Collateral Required"],
+            icon: User,
             link: "#",
-            color: "bg-purple-500/10 text-purple-600 border-purple-200"
+            color: "bg-pink-500/10 text-pink-600 border-pink-200"
         },
-        // {
-        //     name: "Embedded Finance",
-        //     badge: "For Platforms",
-        //     description: "Seamlessly integrate lending solutions into your platform. Empower your users with instant, data-driven capital access.",
-        //     features: [
-        //         "Full API/SDK Integration",
-        //         "Non-Dilutive Capital",
-        //         "AI-Driven Underwriting",
-        //         "Revenue-Based Repayment"
-        //     ],
-        //     icon: Code,
-        //     link: "#",
-        // },
         {
-            name: "Working Capital",
-            badge: "For SME/MSME",
-            description: "Manage your day-to-day operations with ease. Cash credit and overdraft facilities tailored for your business.",
-            features: [
-                "ROI from 8.5% p.a.",
-                "Unsecured Limit up to ₹5 Cr",
-                "Cash Credit & Overdraft",
-                "Stock & Debtor Financing"
-            ],
-            icon: Factory,
-            link: "#",
-            color: "bg-teal-500/10 text-teal-600 border-teal-200"
-        },
-        
-        {
-            name: "Home Loan",
-            badge: "Best for Individuals",
-            description: "Own your dream home with easy financing options. Competitive interest rates and flexible tenures.",
-            features: [
-                "ROI from 8.4% p.a.",
-                "Tenure up to 30 Years",
-                "Quick 10-15 Day Disbursal",
-                "Minimal Documentation"
-            ],
+            name: "Home Loans",
+            description: "Realize your dream home with low-interest rates and extended repayment options.",
+            features: ["Doorstep Service", "Simplified Processing", "Flexible Tenure"],
             icon: Home,
             link: "#",
             color: "bg-orange-500/10 text-orange-600 border-orange-200"
         },
         {
-            name: "Personal Loan",
-            badge: "Quick Disbursal",
-            description: "Fast-track your dreams or restructure debts. Unsecured loans with minimal documentation.",
-            features: [
-                "Disbursal in 24 Hours",
-                "ROI from 10.50% p.a.",
-                "Min Salary ₹12,500/mo",
-                "21-60 Years Age Limit"
-            ],
-            icon: User,
+            name: "Business Loans",
+            description: "Fuel your business growth with capital for expansion, inventory, or working capital.",
+            features: ["Unsecured Options", "Competitive Rates", "Quick Approval"],
+            icon: Factory,
             link: "#",
-            color: "bg-pink-500/10 text-pink-600 border-pink-200"
+            color: "bg-teal-500/10 text-teal-600 border-teal-200"
         },
-        
         {
-            name: "Growth Capital",
-            badge: "Flexible",
-            description: "Scale your inventory and marketing without equity dilution. Repay based on a percentage of your revenue.",
-            features: [
-                "100% Digital Process",
-                "No Fixed EMIs",
-                "Data-Driven Offers",
-                "Flat Fee Structure"
-            ],
-            icon: TrendingUp,
+            name: "Loan Against Property",
+            description: "Unlock the value of your property to fund your personal or business needs.",
+            features: ["High Loan Amount", "Long Tenure", "Low Interest Rates"],
+            icon: Building2,
             link: "#",
-            color: "bg-green-500/10 text-green-600 border-green-200"
+            color: "bg-purple-500/10 text-purple-600 border-purple-200"
+        },
+        {
+            name: "Balance Transfer Solutions",
+            description: "Transfer your existing high-cost loans to enjoy lower interest rates and reduced EMIs.",
+            features: ["Lower Interest Rates", "Top-up Loan Facility", "Simplified Process"],
+            icon: ArrowRightLeft,
+            link: "#",
+            color: "bg-blue-500/10 text-blue-600 border-blue-200"
         },
     ];
 
@@ -103,7 +58,7 @@ export function ProductsSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
+                        className="text-3xl md:text-5xl font-bold font-batman tracking-tight mb-4"
                     >
                         Featured Loan Products
                     </motion.h2>
@@ -132,11 +87,7 @@ export function ProductsSection() {
                                 <product.icon size={80} className="text-secondary opacity-20 -rotate-12" />
                             </div>
 
-                            {product.badge && (
-                                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-6">
-                                    {product.badge}
-                                </span>
-                            )}
+
 
                             <div className="flex items-center gap-3 mb-4">
                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${product.color}`}>

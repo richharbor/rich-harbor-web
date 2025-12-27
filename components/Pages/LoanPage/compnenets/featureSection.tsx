@@ -6,35 +6,20 @@ import { Zap, Shield, TrendingUp, Clock, PiggyBank, HeadphonesIcon } from "lucid
 
 const features = [
   {
-    icon: Zap,
-    title: "Instant Approval",
-    description:
-      "Get approved in minutes with our AI-powered underwriting system that analyzes your business in real-time.",
-  },
-  {
-    icon: Shield,
-    title: "Secure & Private",
-    description: "Bank-level encryption protects your data. We never share your information without your consent.",
-  },
-  {
     icon: TrendingUp,
-    title: "Flexible Terms",
-    description: "Choose repayment terms that work for your cash flow. From 3 months to 5 years, you're in control.",
+    title: "Multiple Lender Options",
+    description:
+      "Access a wide network of leading banks and NBFCs to find the best rate and terms for your profile.",
   },
   {
-    icon: Clock,
-    title: "Fast Funding",
-    description: "Receive funds within 24 hours of approval. No waiting weeks for traditional bank processes.",
-  },
-  {
-    icon: PiggyBank,
-    title: "Competitive Rates",
-    description: "Our rates start as low as 5.9% APR. We reward strong businesses with better terms.",
+    icon: Zap,
+    title: "Faster Eligibility Assessment",
+    description: "Instant eligibility check and quick approval process to get you funded sooner.",
   },
   {
     icon: HeadphonesIcon,
-    title: "Dedicated Support",
-    description: "Get help when you need it with our dedicated loan advisors available 24/7.",
+    title: "End to End Application Support",
+    description: "Dedicated support team to guide you from documentation to disbursal.",
   },
 ]
 
@@ -64,7 +49,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">Why Choose Us</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold font-batman tracking-tight mb-4">Why Apply Through Richharbor</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We've reimagined business lending from the ground up, making it faster, simpler, and more transparent.
           </p>

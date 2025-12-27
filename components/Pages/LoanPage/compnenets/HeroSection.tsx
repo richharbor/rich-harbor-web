@@ -59,24 +59,24 @@ export function HeroSection() {
     }, [BOX_SIZE, CONTAINER_WIDTH, CONTAINER_HEIGHT, BOX_COUNT]);
     return (
         <section className="pt-12 relative mt-20 z-10  pb-20 px-6 " onMouseMove={handleMouseMove}>
-             <div className="absolute inset-0 -z-30 bg-transparent backdrop-blur-[4px]"></div>
-             <div className="max-md:hidden absolute w-48 h-fit left-32 top-10 -z-40 ">
-                <Image src='https://aicdn.picsart.com/d22f4d37-ddab-4bc8-aae5-b37197499e3f.png' alt='bg-img'  width={240} height={700} />
+            <div className="absolute inset-0 -z-30 bg-transparent backdrop-blur-[4px]"></div>
+            <div className="max-md:hidden absolute w-48 h-fit left-32 top-10 -z-40 ">
+                <Image src='https://aicdn.picsart.com/d22f4d37-ddab-4bc8-aae5-b37197499e3f.png' alt='bg-img' width={240} height={700} />
 
-             </div>
-             <div className="max-md:hidden absolute w-60 h-fit left-72 top-72 -z-40 opacity-70">
-                <Image src='https://aicdn.picsart.com/31471774-1fb4-49db-994e-f19e2d4fb2dd.png' alt='bg-img'  width={240} height={700} />
+            </div>
+            <div className="max-md:hidden absolute w-60 h-fit left-72 top-72 -z-40 opacity-70">
+                <Image src='https://aicdn.picsart.com/31471774-1fb4-49db-994e-f19e2d4fb2dd.png' alt='bg-img' width={240} height={700} />
 
-             </div>
-             <div className="max-md:hidden absolute w-40 h-fit right-40 top-10 -z-40 ">
-                <Image src='https://aicdn.picsart.com/27446715-3b21-492a-9c45-d237b951974b.png' alt='bg-img'  width={240} height={700} />
+            </div>
+            <div className="max-md:hidden absolute w-40 h-fit right-40 top-10 -z-40 ">
+                <Image src='https://aicdn.picsart.com/27446715-3b21-492a-9c45-d237b951974b.png' alt='bg-img' width={240} height={700} />
 
-             </div>
-             <div className="max-md:hidden absolute w-24 h-fit right-[360px] top-[350px] -z-40 ">
-                <Image src='https://aicdn.picsart.com/fe9c5e1e-fd93-4c27-be86-7b34a995ca29.png' alt='bg-img'  width={240} height={700} />
+            </div>
+            <div className="max-md:hidden absolute w-24 h-fit right-[360px] top-[350px] -z-40 ">
+                <Image src='https://aicdn.picsart.com/fe9c5e1e-fd93-4c27-be86-7b34a995ca29.png' alt='bg-img' width={240} height={700} />
 
-             </div>
-             
+            </div>
+
             {/* {boxes.map((box, i) => (
                 <motion.div
                     key={i}
@@ -108,11 +108,11 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-balance max-w-4xl mx-auto leading-[1.1]"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-batman tracking-tight text-balance max-w-4xl mx-auto leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                 >
-                    Smart Lending for
+                    Loans & Credit
                     <br />
-                    Modern Businesses
+                    Solutions
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -122,8 +122,7 @@ export function HeroSection() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty"
                 >
-                    Get fast, flexible financing with competitive rates. Our platform helps businesses access the capital they
-                    need to grow, powered by intelligent underwriting.
+                    Richharbor offers access to a wide range of loan products across leading banks and NBFCs.
                 </motion.p>
 
                 {/* CTA Buttons */}

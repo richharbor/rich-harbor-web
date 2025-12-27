@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { motion } from "framer-motion"
 
-const benefits = ["No hidden fees or charges", "24/7 customer support", "Fast claim processing"]
+const benefits = ["Plan comparison support", "Transparent guidance", "Renewal and claim assistance"]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,18 +45,24 @@ export function Hero() {
           {/* Main heading */}
           <motion.h1
             variants={itemVariants}
-            className="max-w-4xl font-serif text-4xl tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance"
+            className="max-w-4xl font-bold font-batman tracking-tight text-4xl sm:text-5xl lg:text-7xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
           >
-            Comprehensive Insurance Coverage for Every Stage of Life
+            Insurance Solutions
           </motion.h1>
+
+          <motion.h2
+            variants={itemVariants}
+            className="mt-4 text-2xl sm:text-3xl font-medium text-foreground/80"
+          >
+            Protection Solutions for Individuals & Businesses
+          </motion.h2>
 
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty"
           >
-            Protect your family, home, and future with our tailored insurance plans. Get peace of mind knowing
-            you&apos;re covered when it matters most.
+            Richharbor offers access to life, health, motor, and business insurance solutions from leading insurers, helping you compare and choose suitable coverage.
           </motion.p>
 
           {/* CTA buttons */}
