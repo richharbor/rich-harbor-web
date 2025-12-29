@@ -74,7 +74,7 @@ export default function PrivateMarkets() {
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-bold font-batman mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+                            className="text-3xl md:text-5xl font-bold font-batman mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                         >
                             Private Markets & Institutional Capital Solutions
                         </motion.h1>
@@ -82,7 +82,7 @@ export default function PrivateMarkets() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-xl md:text-2xl font-semibold mb-6 text-foreground/80"
+                            className="text-lg md:text-xl font-semibold mb-6 text-foreground/80"
                         >
                             Connecting Exceptional Businesses with Institutional Capital
                         </motion.h2>
@@ -90,7 +90,7 @@ export default function PrivateMarkets() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto"
+                            className="text-md md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto"
                         >
                             Richharbor partners with a select group of growth-stage and pre-IPO companies to facilitate confidential capital introductions to institutional investors, including AIFs, private equity firms, and family offices.
                         </motion.p>
