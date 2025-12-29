@@ -27,15 +27,15 @@ export default function CorporateFinance() {
                             Growth Capital Solutions
                         </motion.div>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-batman tracking-tight text-balance max-w-5xl mx-auto mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold font-batman tracking-tight text-balance max-w-5xl mx-auto mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                             Corporate Finance & Growth Capital
                         </h1>
 
-                        <h2 className="text-xl sm:text-2xl font-medium text-muted-foreground mb-8">
+                        <h2 className="text-lg sm:text-xl font-medium text-muted-foreground mb-8">
                             Non Dilutive Growth Capital for Businesses
                         </h2>
 
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+                        <p className="text-md sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
                             Richharbor enables businesses to access revenue based and structured financing solutions without equity dilution.
                         </p>
 

@@ -74,7 +74,7 @@ export default function UnlistedShares() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed"
+                            className="text-md sm:text-lg md:text-lg text-muted-foreground mb-8 leading-relaxed"
                         >
                             Richharbor enables investors to buy and sell NSE unlisted shares and pre-IPO shares of fundamentally strong companies. We offer transparent NSE share price unlisted data and structured execution.
                             We focus on quality opportunities, clear documentation, and end-to-end transaction support.

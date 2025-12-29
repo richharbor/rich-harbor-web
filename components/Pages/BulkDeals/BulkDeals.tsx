@@ -50,14 +50,14 @@ export default function BulkDeals() {
     return (
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
-            <section className="relative overflow-hidden w-[99vw] py-20 lg:py-32">
+            <section className="relative overflow-hidden w-[99vw] py-20 lg:py-36">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-bold font-batman mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+                            className="text-3xl md:text-5xl font-bold font-batman mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                         >
                             Listed Shares — Bulk & Institutional Deals
                         </motion.h1>
