@@ -22,6 +22,7 @@ const profiles = [
     "CA / CS / Tax Consultant",
     "Real Estate Consultant",
     "Entrepreneur / Professional",
+    "Other"
 ];
 
 const products = [
