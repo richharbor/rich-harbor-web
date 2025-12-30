@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, FileCheck, Users, Search, MessageCircle, FileSignature, ArrowRightLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import HotSelling from "../Home/HotSelling/HotSelling";
+import PromisingOnes from "../Home/PromissingOnes/PromissingOnes";
 
 const benefits = [
     {
@@ -165,6 +167,10 @@ export default function UnlistedShares() {
                     </div>
                 </div>
             </section>
+            <HotSelling />
+
+            
+            <PromisingOnes />
 
             {/* Disclosure */}
             <section className="py-12 bg-neutral-900 text-neutral-400">

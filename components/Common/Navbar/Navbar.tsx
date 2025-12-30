@@ -46,7 +46,7 @@ export const NAV_LINKS = [
     ]
   },
   { name: "About Us", link: "/#aboutus" },
-  { name: "Resources", link: "/blogs" },
+  { name: "Blogs", link: "/blogs" },
   { name: "Contact us", link: "/contactus" },
   { name: "Partner With Us", link: "/partner-with-us" },
 ];
@@ -164,7 +164,7 @@ const Navbar = () => {
                     <Link
                       href={link.link}
                       className={cn(
-                        "hover:text-foreground transition-all duration-500 hover:bg-accent rounded-md px-4 py-2 flex items-center gap-1",
+                        "hover:text-foreground text-[17px] transition-all duration-500 hover:bg-accent rounded-md px-4 py-2 flex items-center gap-1",
                         hoveredIndex === index && link.subItems && "text-foreground bg-accent"
                       )}
                     >

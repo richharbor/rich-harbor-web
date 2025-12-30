@@ -24,6 +24,7 @@ import EliteClub from "./EliteClub/EliteClub";
 import Tagline from "./Tagline/Tagline";
 import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
 import AboutUs from "./AboutUs/AboutUs";
+import ProductShowcase from "./ProductShowcase/ProductShowcase";
 import PromisingOnes from "./PromissingOnes/PromissingOnes";
 import { useAuthStore } from "@/store/authStore";
 import { useEffect } from "react";
@@ -66,16 +67,16 @@ export default function HomePage() {
                 Access Alternative Investments & Financial Solutions — All in One Place
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
-                Access Alternative Investments & Financial Solutions — All in One Place
+                Unlisted Shares | Listed Bulk Deals | Private Markets | Loans | Insurance | Growth Capital
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 mb-8">
-                <Link href="#">
+                <Link href="#invest-trade">
                   <Button size="lg" className="rounded-full font-semibold h-12 px-8">
                     Explore Investment Products
                   </Button>
                 </Link>
-                <Link href="#">
+                <Link href="#financial-solutions">
                   <Button size="lg" variant="outline" className="rounded-full font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
                     Explore Financial Services
                   </Button>
@@ -107,6 +108,7 @@ export default function HomePage() {
         {/* <Tagline /> */}
         <OurProduct />
         <AboutUs />
+        <ProductShowcase />
         {/* <Features2 /> */}
         {/* <ReadyToBoost /> */}
         {/* <EliteClub /> */}
@@ -114,10 +116,7 @@ export default function HomePage() {
         {/* <Integration2 /> */}
         {/* <Transform /> */}
         <TechPlatform />
-        <HotSelling />
-
-        {/* <ExtraFeatures /> */}
-        <PromisingOnes />
+        
 
         <Testimonials2 />
         {/* <TomorrowBigBets /> */}

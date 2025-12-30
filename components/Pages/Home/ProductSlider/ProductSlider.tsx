@@ -11,7 +11,7 @@ const products = [
         id: 1,
         title: "Unlisted Shares",
         description: "Invest in high-growth companies before they go public. Exclusive access to pre-IPO shares.",
-        image: "https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=1920&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1920&auto=format&fit=crop",
         color: "from-blue-900/80 to-black/40",
         link: "/unlisted-shares"
     },
