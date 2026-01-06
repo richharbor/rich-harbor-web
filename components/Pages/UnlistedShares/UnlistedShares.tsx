@@ -62,7 +62,8 @@ export default function UnlistedShares() {
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
             <section className="relative overflow-hidden py-20 lg:py-32">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
                         <motion.h1
@@ -97,8 +98,8 @@ export default function UnlistedShares() {
             </section>
 
             {/* Key Benefits */}
-            <section className="py-20 bg-secondary/5">
-                <div className="container px-4 md:px-6 mx-auto">
+            <section className="py-20 md:w-[99vw] bg-secondary/5">
+                <div className="container max-w-7xl mx-auto px-4 md:px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">Key Benefits</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -131,7 +132,7 @@ export default function UnlistedShares() {
 
             {/* How It Works */}
             <section className="py-20">
-                <div className="container px-4 md:px-6 mx-auto">
+                <div className="container max-w-7xl px-4 md:px-6 mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">How It Works</h2>
                         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -169,11 +170,11 @@ export default function UnlistedShares() {
             </section>
             <HotSelling />
 
-            
+
             <PromisingOnes />
 
             {/* Disclosure */}
-            <section className="py-12 bg-neutral-900 text-neutral-400">
+            <section className="py-12 mt-5 bg-neutral-900 text-neutral-400">
                 <div className="container px-4 md:px-6 mx-auto">
                     <div className="max-w-4xl mx-auto border border-neutral-800 bg-neutral-950/50 p-8 rounded-2xl backdrop-blur-sm">
                         <h3 className="text-lg font-semibold text-neutral-200 mb-3 flex items-center gap-2">

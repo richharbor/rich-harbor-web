@@ -64,21 +64,22 @@ export default function HomePage() {
 
                 className="text-2xl font-batman sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
               >
-                Access Alternative Investments & Financial Solutions — All in One Place
+                Access Unlisted Shares, Capital & Financial Solutions — Transparently
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
-                Unlisted Shares | Listed Bulk Deals | Private Markets | Loans | Insurance | Growth Capital
+                {/* <Link href={"/unlisted-shares"}>Unlisted Shares</Link> | <Link href={"/bulk-deals"}>Listed Bulk Deals</Link> | <Link href={"/private-markets"}>Private Markets</Link> | <Link href={"/loans"}>Loans</Link> | <Link href={"/insurance"}>Insurance</Link> | <Link href={"/corporate-finance"}>Growth Capital</Link> */}
+                Richharbor is a unified financial execution platform enabling access to unlisted shares, private markets, loans, insurance, and structured credit — backed by institutional processes, compliance, and secure execution.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 mb-8">
                 <Link href="#invest-trade">
-                  <Button size="lg" className="rounded-full font-semibold h-12 px-8">
-                    Explore Investment Products
+                  <Button size="lg" className="rounded-full md:text-[16px] font-semibold h-12 px-8">
+                    Explore Opportunities
                   </Button>
                 </Link>
                 <Link href="#financial-solutions">
-                  <Button size="lg" variant="outline" className="rounded-full font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
-                    Explore Financial Services
+                  <Button size="lg" variant="outline" className="rounded-full md:text-[16px] font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
+                    Submit Your Requirement
                   </Button>
                 </Link>
               </div>
@@ -106,9 +107,10 @@ export default function HomePage() {
         <ProductSlider />
         <WhatsAppBanner />
         {/* <Tagline /> */}
-        <OurProduct />
-        <AboutUs />
+        {/* <OurProduct /> */}
         <ProductShowcase />
+        <AboutUs />
+        
         {/* <Features2 /> */}
         {/* <ReadyToBoost /> */}
         {/* <EliteClub /> */}

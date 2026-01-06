@@ -33,6 +33,38 @@ const products = [
     "Loans",
     "Real Estate",
     "Corporate Finance",
+    "Not sure - want guidance"
+];
+
+const activityLevels = [
+    "Yes, actively managing clients",
+    "Somewhat active (side income)",
+    "Not yet, but interested to start",
+    "Exploring opportunities"
+];
+
+const clientBaseSizes = [
+    "0-10",
+    "10-50",
+    "50-100",
+    "100+",
+    "Corporate/HNI network"
+];
+
+const partnerGoals = [
+    "Free tech platform to manage wealth business",
+    "Additional income source",
+    "Access to Pre-IPO/Unlisted opportunities",
+    "Faster execution & better deals",
+    "White-label / scalable business",
+    "Learning & support"
+];
+
+const startTimelines = [
+    "Immediately",
+    "Within 30 days",
+    "In 1-3 months",
+    "Just exploring"
 ];
 
 export function PartnerForm() {
@@ -59,7 +91,7 @@ export function PartnerForm() {
 
     return (
         <section id="partner-form" className="py-20 px-4 md:px-6 relative overflow-hidden">
-            <div className="max-w-xl mx-auto">
+            <div className="max-w-2xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -74,23 +106,23 @@ export function PartnerForm() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
                             <Label htmlFor="name">Full Name</Label>
-                            <Input id="name" placeholder="John Doe" required className="bg-background/50" />
+                            <Input id="name" placeholder="John Doe" required className="bg-background/50 placeholder:text-muted-foreground/50" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="mobile">Mobile Number</Label>
-                                <Input id="mobile" placeholder="+91 98765 43210" required className="bg-background/50" />
+                                <Input id="mobile" placeholder="+91 987xx xxxxx" required className="bg-background/50 placeholder:text-muted-foreground/50" />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="email">Email ID</Label>
-                                <Input id="email" type="email" placeholder="john@example.com" required className="bg-background/50" />
+                                <Input id="email" type="email" placeholder="john@example.com" required className="bg-background/50 placeholder:text-muted-foreground/50" />
                             </div>
                         </div>
 
                         <div className="space-y-2">
                             <Label htmlFor="city">City</Label>
-                            <Input id="city" placeholder="Mumbai, Delhi, etc." required className="bg-background/50" />
+                            <Input id="city" placeholder="Mumbai, Delhi, etc." required className="bg-background/50 placeholder:text-muted-foreground/50" />
                         </div>
 
                         <div className="space-y-2">
@@ -103,6 +135,38 @@ export function PartnerForm() {
                                     {profiles.map((profile) => (
                                         <SelectItem key={profile} value={profile}>
                                             {profile}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Are you currently active in wealth or financial product distribution?</Label>
+                            <Select required>
+                                <SelectTrigger className="bg-background/50">
+                                    <SelectValue placeholder="Select activity level" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {activityLevels.map((level) => (
+                                        <SelectItem key={level} value={level}>
+                                            {level}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Approximate client base you can tap into?</Label>
+                            <Select required>
+                                <SelectTrigger className="bg-background/50">
+                                    <SelectValue placeholder="Select client base size" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {clientBaseSizes.map((size) => (
+                                        <SelectItem key={size} value={size}>
+                                            {size}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
@@ -128,6 +192,38 @@ export function PartnerForm() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>What are you looking for from Rich Harbor?</Label>
+                            <Select required>
+                                <SelectTrigger className="bg-background/50">
+                                    <SelectValue placeholder="Select your primary goal" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {partnerGoals.map((goal) => (
+                                        <SelectItem key={goal} value={goal}>
+                                            {goal}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>How soon would you like to start?</Label>
+                            <Select required>
+                                <SelectTrigger className="bg-background/50">
+                                    <SelectValue placeholder="Select timeline" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {startTimelines.map((time) => (
+                                        <SelectItem key={time} value={time}>
+                                            {time}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                         </div>
 
                         <Button type="submit" size="lg" className="w-full h-12 text-base rounded-xl font-semibold relative overflow-hidden group" disabled={submitting}>
