@@ -1,32 +1,110 @@
-import { CTA } from "./components/CTA";
-import { Features } from "./components/Features";
+'use client'
+import WhatAre from "@/components/Common/components/WhatAre";
+import { Search, MessageCircle, FileSignature, ArrowRightLeft } from "lucide-react";
+import Disclosure from "@/components/Common/components/Disclosure";
+
 import { Hero } from "./components/Hero";
 
 import { Stats } from "./components/Stats";
-import { Testimonials } from "./components/Testimonials";
+import WhyInvest from "@/components/Common/components/WhyInvest";
+import HowItWorks from "@/components/Common/components/HowItWorks";
+import Faq from "../Home/Faq/Faq";
+import CommonCTA from "@/components/Common/components/CommonCTA";
+import InsuranceProducts from "./components/InsuranceProducts";
+
+
+const steps = [
+    {
+        id: 1,
+        title: "Requirement Submission",
+        description: "Share your insurance requirement and coverage details.",
+        icon: Search,
+    },
+    {
+        id: 2,
+        title: "Product Mapping",
+        description: "Suitable options are identified through licensed insurance partners.",
+        icon: MessageCircle,
+    },
+    {
+        id: 3,
+        title: "Policy Issuance",
+        description: "Documentation is completed and policies are issued by the insurer.",
+        icon: FileSignature,
+    },
+    {
+        id: 4,
+        title: "Ongoing Support",
+        description: "Assistance for renewals, endorsements, and claims coordination.",
+        icon: ArrowRightLeft,
+    },
+];
 
 export default function InsurancePage() {
     return (
         <section className="mt-10 max-sm:mt-10 max-w-screen">
             <Hero />
             <Stats />
-            <Features />
-            <Testimonials />
-            <CTA />
+            {/* What Are Unlisted Shares */}
+            <WhatAre
+                title="Comprehensive Insurance Coverage, Simplified"
+                description="Richharbor enables individuals and businesses to access a wide range of insurance products through licensed insurance partners. Our role is to facilitate product access, documentation, and execution — ensuring clarity, efficiency, and compliance at every stage."
+            />
 
-            {/* Disclosure */}
-            <section className="py-12 bg-neutral-900 text-neutral-400">
-                <div className="container px-4 md:px-6 mx-auto">
-                    <div className="max-w-4xl mx-auto border border-neutral-800 bg-neutral-950/50 p-8 rounded-2xl backdrop-blur-sm">
-                        <h3 className="text-lg font-semibold text-neutral-200 mb-3 flex items-center gap-2">
-                            Disclosure
-                        </h3>
-                        <p className="text-sm leading-relaxed">
-                            Insurance is subject to policy terms, conditions, and insurer underwriting. Richharbor acts as an insurance intermediary and does not underwrite risk.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <InsuranceProducts />
+
+            {/* Why Invest */}
+            <WhyInvest
+                title="Why Choose Richharbor for Insurance"
+                description="Richharbor is a platform that provides access to multiple insurers through one platform, transparent product comparison, structured documentation and policy issuance, claims coordination support, and partner-led distribution with compliance focus."
+                reasons={[
+                    "Access to multiple insurers through one platform",
+                    "Transparent product comparison",
+                    "Structured documentation and policy issuance",
+                    "Claims coordination support",
+                    "Partner-led distribution with compliance focus"
+                ]}
+            />
+
+            <HowItWorks
+                title="How the Insurance Process Works"
+                description="Simple, transparent, and secure process to get started."
+                steps={steps}
+            />
+
+
+
+
+
+
+
+            <Disclosure
+                title="Regulatory & Risk Disclosure"
+                description="Richharbor operates as a facilitation and distribution platform through licensed insurance partners. Richharbor does not provide insurance advice or guarantee claim outcomes. Policy terms, coverage, and claims are subject to the respective insurer’s conditions."
+            />
+
+            {/* FAQ */}
+            <Faq items={[
+                {
+                    question: "Can I compare insurance products on Richharbor?",
+                    answer: "Yes. Options are presented through partner insurers for comparison."
+                },
+                {
+                    question: "Does Richharbor handle claims?",
+                    answer: "Claims are processed by insurers; Richharbor assists in coordination."
+                },
+                {
+                    question: "Is my data secure?",
+                    answer: "Yes. All data is handled confidentially and securely."
+                }
+            ]} />
+            <CommonCTA
+                title={<span>Looking for the Right <span className="text-primary">Insurance Coverage?</span></span>}
+                description="Submit your requirement for a quick and confidential quote."
+                buttonText="Request an Insurance Quote"
+                buttonLink="#contact"
+            />
+
         </section>
     )
 }

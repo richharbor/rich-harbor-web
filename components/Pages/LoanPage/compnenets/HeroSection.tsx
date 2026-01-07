@@ -108,11 +108,9 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-batman tracking-tight text-balance max-w-4xl mx-auto leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-batman tracking-tight text-balance max-w-4xl mx-auto leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                 >
-                    Loans & Credit
-                    <br />
-                    Solutions
+                    Loans & Structured Credit Solutions
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -122,7 +120,7 @@ export function HeroSection() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty"
                 >
-                    Richharbor offers access to a wide range of loan products across leading banks and NBFCs.
+                    Access retail, SME, and corporate loan products through a structured execution platform designed for speed, transparency, and scalability.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -133,16 +131,16 @@ export function HeroSection() {
                     className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
                     <Button size="lg" className="rounded-full px-8 gap-2">
-                        Apply Now
+                        Apply for a Loan
                         <ArrowRight size={16} />
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-full px-8 bg-transparent">
+                    {/* <Button variant="outline" size="lg" className="rounded-full px-8 bg-transparent">
                         Calculate Rate
-                    </Button>
+                    </Button> */}
                 </motion.div>
 
                 {/* Trust Indicators */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
@@ -162,7 +160,7 @@ export function HeroSection() {
                             </motion.span>
                         ))}
                     </div>
-                </motion.div>
+                </motion.div> */}
             </div>
         </section>
     )

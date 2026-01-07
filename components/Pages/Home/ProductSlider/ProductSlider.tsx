@@ -77,7 +77,7 @@ export default function ProductSlider() {
     };
 
     return (
-        <section className="relative rounded-2xl mb-5 w-full h-[500px] md:h-[600px] overflow-hidden">
+        <section className="relative rounded-2xl w-full h-[500px] md:h-[600px] overflow-hidden">
             <AnimatePresence initial={false} mode="wait">
                 <motion.div
                     key={currentIndex}

@@ -21,6 +21,13 @@ import HotSelling from "./HotSelling/HotSelling";
 import JoinLeague from "./JoinLeague/JoinLeague";
 import Glipms from "./TechPlatform/Glimps";
 import EliteClub from "./EliteClub/EliteClub";
+import TrustStrip from "./TrustStrip";
+import CoreOfferings from "./CoreOfferings";
+import HowItWorks from "./HowItWorks";
+import WhyRichHarbor from "./WhyRichHarbor";
+import WhoWeServe from "./WhoWeServe";
+import Testimonials from "./Testimonials";
+import FinalCTA from "./FinalCTA";
 import Tagline from "./Tagline/Tagline";
 import TomorrowBigBets from "./TomorrowBigBets/TomorrowBigBets";
 import AboutUs from "./AboutUs/AboutUs";
@@ -32,6 +39,29 @@ import { Testimonials2 } from "./Testimonials2/Testimonials2";
 import ProductSlider from "./ProductSlider/ProductSlider";
 import WhatsAppBanner from "./WhatsAppBanner/WhatsAppBanner";
 
+
+const faq = [
+  {
+    question: "Is investing in unlisted shares legal in India?",
+    answer: "Yes. Off-market transfer of unlisted shares is legal when executed with proper documentation and compliance."
+  },
+  {
+    question: "Does Richharbor guarantee returns or IPO listing?",
+    answer: "No. Richharbor does not assure returns or listing outcomes. All investments carry inherent risk."
+  },
+  {
+    question: "Can retail investors use Richharbor?",
+    answer: "Yes. Access depends on product suitability and regulatory eligibility."
+  },
+  {
+    question: "Does Richharbor provide investment advice?",
+    answer: "No. Richharbor operates as an execution and facilitation platform, not an investment advisor."
+  },
+  {
+    question: "Is my information kept confidential?",
+    answer: "Yes. All engagements are handled with strict confidentiality protocols"
+  }
+];
 
 
 
@@ -49,8 +79,8 @@ export default function HomePage() {
   return (
 
     <div className="flex flex-col pt-5 sm:pt-20">
-      <ShootingStars />
-      <StarsBackground />
+      <ShootingStars className="fixed inset-0 -z-10" />
+      <StarsBackground className="fixed inset-0 -z-10" />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -104,31 +134,53 @@ export default function HomePage() {
 
 
 
+
         <ProductSlider />
-        <WhatsAppBanner />
+        <TrustStrip />
+        {/* <WhatsAppBanner /> */}
+
+        <CoreOfferings />
+
+        <HowItWorks />
+
+        <WhyRichHarbor />
+
+        <WhoWeServe />
+        {/* <Testimonials /> */}
+
+
+
+
+        
+
+
+
+        
         {/* <Tagline /> */}
         {/* <OurProduct /> */}
-        <ProductShowcase />
-        <AboutUs />
-        
+        {/* <ProductShowcase /> */}
+        {/* <AboutUs /> */}
+
         {/* <Features2 /> */}
         {/* <ReadyToBoost /> */}
         {/* <EliteClub /> */}
 
         {/* <Integration2 /> */}
         {/* <Transform /> */}
-        <TechPlatform />
-        
+        {/* <TechPlatform /> */}
+
 
         <Testimonials2 />
         {/* <TomorrowBigBets /> */}
-        <JoinLeague />
+        {/* <JoinLeague /> */}
         {/* <Integrations /> */}
 
 
 
 
-        <Faq />
+        <Faq items={faq} />
+        <FinalCTA />
+
 
 
       </main>

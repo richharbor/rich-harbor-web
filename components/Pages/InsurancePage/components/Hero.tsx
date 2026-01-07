@@ -47,34 +47,24 @@ export function Hero() {
           {/* Main heading */}
           <motion.h1
             variants={itemVariants}
-            className="max-w-4xl font-bold font-batman tracking-tight text-3xl sm:text-4xl lg:text-6xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+            className="max-w-4xl font-bold font-batman tracking-tight text-2xl sm:text-4xl lg:text-5xl text-balance bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
           >
-            Insurance Solutions
+            Insurance Solutions for Individuals & Businesses
           </motion.h1>
-
-          <motion.h2
-            variants={itemVariants}
-            className="mt-4 text-lg sm:text-xl font-medium text-foreground/80"
-          >
-            Protection Solutions for Individuals & Businesses
-          </motion.h2>
 
           {/* Subheading */}
           <motion.p
             variants={itemVariants}
             className="mt-6 max-w-2xl text-md sm:text-lg leading-relaxed text-muted-foreground text-pretty"
           >
-            Richharbor offers access to life, health, motor, and business insurance solutions from leading insurers, helping you compare and choose suitable coverage.
+            Access life, health, motor, and business insurance solutions through a structured, partner-led platform with transparent execution and end-to-end support.
           </motion.p>
 
           {/* CTA buttons */}
           <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row items-center gap-4">
             <Button size="lg" className="rounded-full px-8 h-12 text-base">
-              Get Your Free Quote
+              Request an Insurance Quote
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-transparent">
-              View Coverage Options
             </Button>
           </motion.div>
 

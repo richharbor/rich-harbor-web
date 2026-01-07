@@ -39,7 +39,14 @@ export function Testimonials2() {
     ];
     return (
         <div className="flex rounded-2x flex-col gap-10 max-md:gap-2 h-full mx-auto w-full max-sm:w-[90vw] lg:max-w-[1500px] overflow-hidden px-2 lg:px-10 py-10 max-md:py-10">
-            <h2 className="text-3xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">Testimonials</h2>
+            {/* <h2 className="text-3xl font-batman mx-20 max-sm:mx-5 md:text-4xl text-center lg:text-5xl font-medium !leading-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground to-neutral-400">Testimonials</h2> */}
+            <div className="text-center">
+                    <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-3 ">Testimonials</h2>
+                    <h3 className="text-3xl md:text-5xl font-bold font-batman tracking-tight text-foreground mb-4 ">
+                        Trusted by Professionals Across the Financial Ecosystem
+                    </h3>
+                </div>
+
             <div className="relative mt-5 max-w-[100vw] [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] overflow-hidden ">
                 <div className="flex w-fit gap-[16px] animate-scroll">
                     {[...testimonials, ...testimonials].map((t, idx) => (
