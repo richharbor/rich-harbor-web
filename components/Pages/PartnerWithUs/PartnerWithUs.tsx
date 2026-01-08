@@ -54,13 +54,12 @@ export default function PartnerWithUs() {
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.3, ease: 'easeInOut', delay:0.2 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.2 }}
                         className="flex justify-evenly w-full"
                     >
                         <Link
-                            target="_blank"
                             rel="noopener noreferrer"
-                            href="https://richharbor.com/contactus" className="z-10 bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200 max-sm:px-3 max-sm:py-2 max-sm:text-sm max-sm:rounded-lg">
+                            href="/contactus" className="z-10 bg-gradient-to-r from-rich-violet to-[#704bd2] px-6 py-3 rounded-xl text-white font-medium hover:from-rich-violet/60 hover:to-[#704bd2]/60 transition ease-in-out duration-200 max-sm:px-3 max-sm:py-2 max-sm:text-sm max-sm:rounded-lg">
                             Become a Partner
                         </Link>
 
