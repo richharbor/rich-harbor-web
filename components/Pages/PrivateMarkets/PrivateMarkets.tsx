@@ -5,27 +5,31 @@ import { ShieldCheck, TrendingUp, Handshake, Users, Lock, PieChart, ArrowRight, 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import WhatAre from "@/components/Common/components/WhatAre";
+import Disclosure from "@/components/Common/components/Disclosure";
+import Faq from "../Home/Faq/Faq";
+import CommonCTA from "@/components/Common/components/CommonCTA";
 
 const suitability = [
     {
-        title: "Appropriate For",
+        title: "Appropriate for Companies That:",
         icon: CheckCircle,
         iconColor: "text-emerald-500",
         items: [
-            "Companies seeking ₹50–100+ Crore of growth or pre-IPO capital",
-            "Strong operating fundamentals supported by audited financials",
-            "Professional governance and institutional readiness",
-            "Open to partnering with institutional and strategic investors"
+            "Seek ₹50–100+ crore of growth or pre-IPO capital",
+            "Demonstrate strong operating fundamentals",
+            "Maintain professional governance and audit readiness",
+            "Are open to institutional partnerships"
         ]
     },
     {
-        title: "Not Intended For",
+        title: "Not Intended For:",
         icon: XCircle,
         iconColor: "text-red-500",
         items: [
             "Seed or early-stage ventures",
-            "Retail or publicly solicited fundraises",
-            "Crowdfunding or mass-distribution initiatives"
+            "Retail fundraising or public solicitation",
+            "Crowdfunding or mass distribution initiatives"
         ]
     }
 ];
@@ -34,33 +38,48 @@ const process = [
     {
         id: 1,
         title: "Mandate & Readiness Review",
-        description: "Assessment of capital structure, governance, and scalability under a non-exclusive mandate.",
+        description: "Non-exclusive mandate and preliminary evaluation.",
         icon: FileText
     },
     {
         id: 2,
         title: "Confidential Positioning",
-        description: "Preparation of confidential investment teaser articulating growth drivers and strategic rationale.",
+        description: "Preparation of a confidential teaser without public disclosure.",
         icon: Lock
     },
     {
         id: 3,
-        title: "Targeted Outreach",
-        description: "Selective introduction to relevant AIFs, PE funds, and family offices based on investment profile.",
+        title: "Targeted Institutional Outreach",
+        description: "Selective sharing with relevant investors.",
         icon: Globe
     },
     {
         id: 4,
         title: "Transaction Coordination",
-        description: "Support through diligence and execution. Capital flows directly between investors and company.",
+        description: "Support through diligence and execution.",
         icon: Handshake
     }
 ];
 
+const faq = [
+    {
+        question: "Does Richharbor raise capital directly?",
+        answer: "No. Richharbor facilitates introductions only."
+    },
+    {
+        question: "Are outcomes guaranteed?",
+        answer: "No. Capital raising outcomes depend on investor discretion."
+    },
+    {
+        question: "Is information kept confidential?",
+        answer: "Yes. All discussions are strictly confidential."
+    }
+];
+
 const network = [
-    "Category II Alternative Investment Funds (AIFs)",
-    "Growth-oriented and pre-IPO focused private equity firms",
-    "Family offices and strategic investment platforms"
+    "Category II AIFs",
+    "Growth and pre-IPO focused PE funds",
+    "Family offices and strategic investors"
 ];
 
 export default function PrivateMarkets() {
@@ -79,21 +98,13 @@ export default function PrivateMarkets() {
                         >
                             Private Markets & Institutional Capital Solutions
                         </motion.h1>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-lg md:text-xl font-semibold mb-6 text-foreground/80"
-                        >
-                            Connecting Exceptional Businesses with Institutional Capital
-                        </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
                             className="text-md md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto"
                         >
-                            Richharbor partners with a select group of growth-stage and pre-IPO companies to facilitate confidential capital introductions to institutional investors, including AIFs, private equity firms, and family offices.
+                            Confidential, mandate-led capital introduction for growth-stage and pre-IPO companies seeking institutional investment from private equity India, venture capital India, and growth equity firms.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -110,11 +121,16 @@ export default function PrivateMarkets() {
                 </div>
             </section>
 
+            <WhatAre
+                title="Connecting Businesses with Institutional Capital"
+                description="Richharbor partners with select growth-stage and pre-IPO companies to facilitate capital introductions to institutional investors, including Alternative Investment Funds (AIFs), private equity firms, family offices, and strategic capital providers."
+            />
+
             {/* Suitability Criteria */}
             <section className="py-20 bg-secondary/5">
                 <div className="container px-4 md:px-6 mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">Company Profile — Suitability Criteria</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">Who This Is For</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -149,10 +165,31 @@ export default function PrivateMarkets() {
             <section className="py-20">
                 <div className="container px-4 md:px-6 mx-auto">
                     <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary/10 via-background to-secondary/10 border border-primary/20 p-8 md:p-12 rounded-3xl text-center">
-                        <h2 className="text-3xl font-bold font-batman mb-6">Our Mandate</h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
-                            Richharbor operates as a capital introduction and deal sourcing partner. We do not act as an investment advisor, portfolio manager, or fund sponsor. Our mandate is limited to evaluating investment readiness, positioning opportunities appropriately, and facilitating introductions to relevant institutional capital providers.
-                        </p>
+                        <h2 className="text-3xl font-bold font-batman mb-6">Our Mandate & Scope</h2>
+                        <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                            <p>
+                                Richharbor operates as a capital introduction and deal sourcing partner.
+                                <br className="hidden md:block" />
+                                We do not act as an investment advisor, fund manager, or portfolio manager.
+                            </p>
+
+                            <div className="pt-2">
+                                <p className="font-medium text-foreground mb-4">Our role includes:</p>
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 max-w-2xl mx-auto text-base text-left">
+                                    {[
+                                        "Investment readiness evaluation",
+                                        "Opportunity positioning",
+                                        "Targeted institutional introductions",
+                                        "Transaction coordination support"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-3">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -161,10 +198,7 @@ export default function PrivateMarkets() {
             <section className="py-20 bg-secondary/5">
                 <div className="container px-4 md:px-6 mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">Engagement Process</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            A structured, update-driven approach.
-                        </p>
+                        <h2 className="text-3xl md:text-4xl font-bold font-batman mb-4">How the Engagement Works</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -199,7 +233,7 @@ export default function PrivateMarkets() {
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-3xl md:text-4xl font-bold font-batman mb-8">Institutional Capital Network</h2>
                         <p className="text-muted-foreground mb-12">
-                            Richharbor maintains active relationships across the private capital ecosystem.
+                            Opportunities are shared selectively in line with institutional mandates.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {network.map((item, idx) => (
@@ -272,19 +306,26 @@ export default function PrivateMarkets() {
                 </div>
             </section>
 
+
+
+            {/* FAQ */}
+            <Faq items={faq} />
+
+            <CommonCTA
+                title={<span>Exploring <span className="text-primary">Institutional Capital?</span></span>}
+                description="Request a confidential discussion to evaluate suitability."
+                buttonText="Request Confidential Discussion"
+                buttonLink="#contact"
+            />
+
+
             {/* Disclosure */}
-            <section className="py-12 bg-neutral-900 text-neutral-400">
-                <div className="container px-4 md:px-6 mx-auto">
-                    <div className="max-w-4xl mx-auto border border-neutral-800 bg-neutral-950/50 p-8 rounded-2xl backdrop-blur-sm">
-                        <h3 className="text-lg font-semibold text-neutral-200 mb-3 flex items-center gap-2">
-                            <ShieldCheck className="w-5 h-5 text-yellow-500" /> Important Disclosure
-                        </h3>
-                        <p className="text-sm leading-relaxed">
-                            Richharbor does not solicit capital from the public, does not provide investment advice, and does not assure or guarantee capital raise outcomes. All engagements are conducted on a private, mandate-based basis. Investment decisions, due diligence, valuation assessments, and capital deployment are solely at the discretion of the respective investors and companies, in accordance with applicable laws and regulations.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <Disclosure
+                title="Important Disclosure"
+                description="Richharbor does not solicit public investments, does not guarantee capital raises, and does not provide investment advice. All investment decisions are made independently by investors and companies."
+            />
+
+
         </div>
     );
 }

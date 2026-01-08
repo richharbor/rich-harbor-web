@@ -38,7 +38,7 @@ export default function CorporateFinance() {
                         </h2>
 
                         <p className="text-md sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-                            Richharbor enables businesses to access revenue based and structured financing solutions without equity dilution.
+                            Richharbor specializes in corporate finance management and strategic corporate finance, enabling businesses to access revenue based and structured financing solutions without equity dilution.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

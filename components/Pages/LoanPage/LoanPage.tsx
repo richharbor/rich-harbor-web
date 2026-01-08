@@ -50,7 +50,7 @@ export default function LoanPage() {
             <HeroSection />
             <WhatAre
                 title="Financing Solutions Across Every Stage"
-                description="Richharbor facilitates access to a broad range of loan and structured credit products through banks, NBFCs, and institutional lenders. We focus on requirement mapping, documentation coordination, and execution support — not advisory."
+                description="Richharbor facilitates access to a broad range of business and personal loans. Whether you need working capital loans for your enterprise or a home loan India or personal loan India for individual needs, we connect you with banks, NBFCs, and institutional lenders. We focus on requirement mapping, documentation coordination, and execution support — not advisory."
             />
             <ServicesSection />
             <ProductsSection />

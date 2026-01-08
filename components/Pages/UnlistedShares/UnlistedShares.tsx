@@ -129,7 +129,7 @@ export default function UnlistedShares() {
             {/* What Are Unlisted Shares */}
             <WhatAre
                 title="What Are Unlisted Shares?"
-                description="Unlisted shares are equity shares of companies not listed on stock exchanges such as NSE or BSE. These may include fast-growing private companies, mature businesses, or companies preparing for an IPO. Transactions occur through private, off-market transfers rather than public exchanges."
+                description="Richharbor is a trusted unlisted shares platform that simplifies access to unlisted shares India. We provide a transparent unlisted shares price list and facilitate secure transactions. Unlisted shares are equity shares of companies not listed on stock exchanges such as NSE or BSE. These may include fast-growing private companies, mature businesses, or companies preparing for an IPO."
             />
 
             {/* Why Invest */}

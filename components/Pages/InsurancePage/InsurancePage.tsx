@@ -48,7 +48,7 @@ export default function InsurancePage() {
             {/* What Are Unlisted Shares */}
             <WhatAre
                 title="Comprehensive Insurance Coverage, Simplified"
-                description="Richharbor enables individuals and businesses to access a wide range of insurance products through licensed insurance partners. Our role is to facilitate product access, documentation, and execution — ensuring clarity, efficiency, and compliance at every stage."
+                description="Richharbor enables access to a wide range of insurance products. We connect you with the right life insurance company in India to secure life insurance in India or health insurance in India. Additionally, we facilitate comprehensive car insurance, business liability insurance, and home insurance policy issuance. Our role is to ensure clarity, efficiency, and compliance at every stage."
             />
 
             <InsuranceProducts />
