@@ -109,7 +109,7 @@ export const FOOTER_LINKS = [
             { name: "Unlisted Shares", href: "/#hot-ipo" },
             { name: "SME IPO", href: "/coming-soon" },
             { name: "Liquidated Shares", href: "/liquidate-shares" },
-            { name: "About Us", href: "/#aboutus" },
+            // { name: "About Us", href: "/#aboutus" },
             { name: "Contact Us", href: "/contactus" },
         ],
     },
@@ -117,7 +117,7 @@ export const FOOTER_LINKS = [
         title: "Resources",
         links: [
             { name: "FAQS", href: "/#faq" },
-            { name: "Blogs", href: "/" },
+            // { name: "Blogs", href: "/blogs" },
 
         ],
     },

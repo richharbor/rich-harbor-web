@@ -1,6 +1,13 @@
 import Login from "@/components/Pages/Auth/Login/Login";
+import { Metadata } from "next";
 
-export default function login(){
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "/login",
+    },
+};
+
+export default function login() {
     return (
         <Login />
     )

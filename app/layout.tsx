@@ -7,6 +7,9 @@ import Script from "next/script"; // 👈 important
 import Footer from "../components/Common/Footer/Footer";
 import Navbar from "@/components/Common/Navbar/Navbar";
 import Whatsapp from "@/components/Common/Whatsapp/Whatsapp";
+import Chatbot from "@/components/Common/Chatbot/Chatbot";
+import QueryWidget from "@/components/Common/QueryWidget/QueryWidget";
+import NewsletterPopup from "@/components/Common/NewsletterPopup/NewsletterPopup";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +18,10 @@ export const metadata: Metadata = {
   description: "Rich Harbor provides exclusive access to curated unlisted shares and upcoming IPO opportunities in India. Partner with us to build your future-ready portfolio.",
   verification: {
     google: "PvrpLhAVJG58lfDd71fEKcjSRyXLZFvXNogrNK2lYcc",
+  },
+  metadataBase: new URL('https://richharbor.com'),
+  alternates: {
+    canonical: '/',
   },
 };
 
@@ -27,7 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" as="font" href="/fonts/batman.ttf" type="font/truetype" crossOrigin="anonymous"></link>
-        <link rel="canonical" href="https://richharbor.com/" />
+
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S23L52FW0T"
@@ -62,6 +69,10 @@ export default function RootLayout({
             `,
           }}
         />
+
+        <Script src="https://t.contentsquare.net/uxa/96e263eb06934.js" strategy="afterInteractive" />
+
+
         <noscript>
           <img
             height="1"
@@ -76,9 +87,12 @@ export default function RootLayout({
         <Navbar />
         <div className="mx-auto items-center max-md:px-4 flex flex-col relative">
           {children}
-          <div className="fixed bottom-4 right-4 z-10">
+          {/* <div className="fixed bottom-4 left-4 z-10">
             <Whatsapp />
-          </div>
+          </div> */}
+          <Chatbot />
+          <QueryWidget />
+          <NewsletterPopup />
         </div>
         <Footer />
       </body>

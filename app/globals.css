@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @theme inline {
   --font-batman: Batman, sans-serif;
   --color-rich-violet: var(--rich-violet);
@@ -178,6 +179,7 @@
 }
 
 @layer utilities {
+  /* Force rebuild */
   .font-batman {
     font-family: "Batman", sans-serif;
   }

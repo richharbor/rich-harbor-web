@@ -1,5 +1,13 @@
 import AllStocks from "@/components/Pages/AllStocks/AllStocks";
+import { Metadata } from "next";
 
-export default function AllStockPages(){
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "/allstocks",
+    },
+};
+
+
+export default function AllStockPages() {
     return <AllStocks />
 }

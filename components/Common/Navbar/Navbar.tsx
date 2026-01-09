@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import { CircleUserRound, MenuIcon, User, XIcon } from "lucide-react";
+import { ChevronDown, CircleUserRound, MenuIcon, User, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AnimationContainer from "./AnimatedContainer/AnimatedContainer";
@@ -18,16 +18,37 @@ import RichHarbor from "@/assets/logo/Rich Harbor R.png";
 import { useRouter } from "next/navigation";
 import ContactUsPage from "@/components/Pages/ContactUs/page";
 import { useAuthStore } from "@/store/authStore";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const NAV_LINKS = [
   { name: "Home", link: "/" },
-  { name: "Unlisted Share", link: "/#hot-ipo" },
-  { name: "SME IPO", link: "/coming-soon" },
-  { name: "Liquidate Shares", link: "/liquidate-shares" },
-  { name: "About us", link: "/#aboutus" },
+  {
+    name: "Invest & Trade",
+    link: "#",
+    subItems: [
+      { name: "Unlisted Shares", link: "/unlisted-shares" },
+      { name: "Bulk Deals (Listed Shares)", link: "/bulk-deals" },
+      { name: "Private Markets (Pre-IPO, PE/AIF)", link: "/private-markets" },
+    ]
+  },
+  {
+    name: "Financial Solutions",
+    link: "#",
+    subItems: [
+      { name: "Loans", link: "/loans" },
+      { name: "Insurance (Life / Health / Motor / Business)", link: "/insurance" },
+      { name: "Corporate Finance", link: "/corporate-finance" },
+    ]
+  },
+  // { name: "About Us", link: "/#aboutus" },
+  // { name: "Blogs", link: "/blogs" },
   { name: "Contact us", link: "/contactus" },
-  // { name: "Academy", link: "#" },
-  // { name: "Pricing", link: "#pricing" },
+  { name: "Partner With Us", link: "/partner-with-us" },
 ];
 
 const useClickOutside = (callback: () => void) => {
@@ -76,6 +97,7 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const mobileMenuRef = useClickOutside(() => {
     if (open) setOpen(false);
@@ -134,47 +156,51 @@ const Navbar = () => {
                   animation="fadeDown"
                   delay={0.1 * index}
                 >
-                  <div className="relative">
-
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
                     <Link
                       href={link.link}
-                      className="hover:text-foreground transition-all duration-500 hover:bg-accent rounded-md px-4 py-2"
+                      className={cn(
+                        "hover:text-foreground text-[17px] transition-all duration-500 hover:bg-accent rounded-md px-4 py-2 flex items-center gap-1",
+                        hoveredIndex === index && link.subItems && "text-foreground bg-accent"
+                      )}
                     >
                       {link.name}
+                      {link.subItems && <ChevronDown size={14} className={cn("transition-transform duration-200", hoveredIndex === index && "rotate-180")} />}
                     </Link>
-                  </div>
 
+                    {/* Dropdown */}
+                    <AnimatePresence>
+                      {link.subItems && hoveredIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-[280px] bg-background/95 backdrop-blur-md border border-border rounded-xl shadow-xl overflow-hidden p-2 z-50"
+                        >
+                          {link.subItems.map((subItem, subIndex) => (
+                            <Link
+                              key={subIndex}
+                              href={subItem.link}
+                              className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </AnimationContainer>
               ))}
-
             </AnimatePresence>
           </div>
 
-          {/* Right Button */}
-          {/* <ContactUs /> */}
-
-          <div>
-            <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
-          </div>
-
-          {/* {authUser && <div className=""><CircleUserRound /></div>}
-          {!authUser && <div className="flex gap-3">
-            <Button className="cursor-pointer" onClick={() => route.push('/login')}>Log in</Button>
-            <Button className="cursor-pointer" onClick={() => route.push('/signup')}>Sign up</Button>
-          </div>} */}
-          {/* <AnimationContainer animation="fadeLeft" delay={0.1}>
-            <div className="flex items-center gap-x-4">
-              {user ? (
-                <Link href="#">
-                  <Button>Dashboard</Button>
-                </Link>
-              ) : (
-                <Link href="/signup">
-                  <Button size="sm">Get started</Button>
-                </Link>
-              )}
-            </div>
-          </AnimationContainer> */}
+          <div className="w-[100px]"></div> {/* Spacer to balance logo */}
         </Wrapper>
       </motion.div>
 
@@ -212,16 +238,6 @@ const Navbar = () => {
 
             <AnimationContainer animation="fadeLeft" delay={0.1}>
               <div className="flex items-center justify-between gap-x-4 w-full">
-                {/* <Link href="/" className="flex items-center gap-2">
-                  <Image
-                    src={RichHarbor}
-                    alt="Rich Harbor Logo"
-                    className="h-10 w-auto"
-                  />
-                </Link> */}
-                <div>
-                  <Button className="cursor-ponter" onClick={() => route.push('/partner-with-us')}>Join us</Button>
-                </div>
                 {open ? (
                   <XIcon
                     className="text-black dark:text-white"
@@ -248,60 +264,43 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               className="flex rounded-b-xl absolute top-16 bg-neutral-950 inset-x-0 z-50 flex-col items-start justify-start gap-2 w-full px-4 py-8 shadow-xl shadow-neutral-950"
             >
-              {NAV_LINKS.map((navItem, idx) => (
-                <AnimationContainer
-                  key={`link-${idx}`}
-                  animation="fadeRight"
-                  delay={0.1 * (idx + 1)}
-                  className="w-full"
-                >
-                  <Link
-                    href={navItem.link}
-                    onClick={() => setOpen(false)}
-                    className="relative text-neutral-300 hover:bg-neutral-800 w-full px-4 py-2 rounded-lg"
-                  >
-                    <motion.span>{navItem.name}</motion.span>
-                  </Link>
-                </AnimationContainer>
-              ))}
-              {/* <AnimationContainer
-                animation="fadeUp"
-                delay={0.5}
-                className="w-full"
-              >
-                {user ? (
-                  <Link href="/dashboard" className="w-full">
-                    <Button
-                      onClick={() => setOpen(false)}
-                      variant="default"
-                      className="block md:hidden w-full"
-                    >
-                      Dashboard
-                    </Button>
-                  </Link>
-                ) : (
-                  <>
-                    <Link href="/signin" className="w-full">
-                      <Button
-                        onClick={() => setOpen(false)}
-                        variant="secondary"
-                        className="block md:hidden w-full"
-                      >
-                        Login
-                      </Button>
-                    </Link>
-                    <Link href="/signup" className="w-full">
-                      <Button
-                        onClick={() => setOpen(false)}
-                        variant="default"
-                        className="block md:hidden w-full"
-                      >
-                        Start for free
-                      </Button>
-                    </Link>
-                  </>
-                )}
-              </AnimationContainer> */}
+              <div className="w-full">
+                <Accordion type="single" collapsible className="w-full">
+                  {NAV_LINKS.map((navItem, idx) => (
+                    navItem.subItems ? (
+                      <AccordionItem key={`nav-${idx}`} value={`item-${idx}`} className="border-b-neutral-800">
+                        <AccordionTrigger className="text-neutral-300 hover:no-underline py-3 px-2">
+                          {navItem.name}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="flex flex-col gap-1 pl-4 pb-2">
+                            {navItem.subItems.map((sub, subIdx) => (
+                              <Link
+                                key={`sub-${subIdx}`}
+                                href={sub.link}
+                                onClick={() => setOpen(false)}
+                                className="block py-2 px-2 text-sm text-neutral-400 hover:text-white rounded-md hover:bg-neutral-800"
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ) : (
+                      <div key={`nav-${idx}`} className="border-b border-b-neutral-800 last:border-0">
+                        <Link
+                          href={navItem.link}
+                          onClick={() => setOpen(false)}
+                          className="flex items-center w-full py-3 px-2 text-neutral-300 font-medium hover:text-white"
+                        >
+                          {navItem.name}
+                        </Link>
+                      </div>
+                    )
+                  ))}
+                </Accordion>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

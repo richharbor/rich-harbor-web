@@ -101,37 +101,11 @@ export default function OurProduct() {
                                     className='bg-card cursor-pointer h-[8rem] max-sm:h-[6rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-5 group hover:bg-rich-violet  transition-all duration-300 ease-in-out '
                                 >
                                     {item.icon}
-                                    <h1 className='font-bold max-md:font-normal group-hover:text-black '>{item.title}</h1>
+                                    <h2 className='font-bold max-md:font-normal group-hover:text-black '>{item.title}</h2>
                                 </div>
                             </CometCard>
                         </motion.div>
                     ))}
-
-
-                    {/* <CometCard rotateDepth={6} translateDepth={10} >
-                        <div onClick={()=> route.push("/#hot-ipo")} className='bg-card cursor-pointer h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 group hover:bg-rich-violet  transition-all duration-300 ease-in-out '>
-                            <LineChart className='size-10 group-hover:text-black max-sm:size-8' />
-                            <h1 className='font-bold max-md:font-normal group-hover:text-black '>Unlisted Shares</h1>
-                        </div>
-                    </CometCard>
-                    <CometCard rotateDepth={6} translateDepth={10}>
-                        <div onClick={()=> route.push('/coming-soon')} className='bg-card cursor-pointer rounded-xl flex gap-3 h-[8rem] justify-center items-center py-3 px-5 max-sm:px-2 group hover:bg-rich-violet  transition-all duration-300 ease-in-out'>
-                            <PackageCheck className='size-10 group-hover:text-black' />
-                            <h1 className='font-bold max-md:font-normal group-hover:text-black '>PreIPO | Unicons</h1>
-                        </div>
-                    </CometCard>
-                    <CometCard rotateDepth={6} translateDepth={10}>
-                        <div onClick={()=> route.push('/coming-soon')} className='bg-card cursor-pointer h-[8rem] rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 group hover:bg-rich-violet  transition-all duration-300 ease-in-out'>
-                            <Sprout className='size-10 group-hover:text-black' />
-                            <h1 className='font-bold max-md:font-normal group-hover:text-black '>SME IPO</h1>
-                        </div>
-                    </CometCard>
-                    <CometCard rotateDepth={6} translateDepth={10}>
-                        <div onClick={()=> route.push('/coming-soon')} className='bg-card cursor-pointer rounded-xl flex gap-3 justify-center items-center py-3 px-5 max-sm:px-2 h-[8rem] group hover:bg-rich-violet  transition-all duration-300 ease-in-out'>
-                            <BadgeIndianRupee className='size-10 group-hover:text-black' />
-                            <h1 className='font-bold max-md:font-normal group-hover:text-black ' >Angel Investing</h1>
-                        </div>
-                    </CometCard> */}
                 </div>
 
             </div>
