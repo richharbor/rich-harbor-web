@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useQueryWidgetStore } from "@/store/queryWidgetStore";
 
 export default function FinalCTA() {
+    const { open } = useQueryWidgetStore();
     return (
         <section className="py-24 bg-[#0a0a0a] relative overflow-hidden border-t border-white/5">
             {/* Background Gradients */}
@@ -22,7 +24,7 @@ export default function FinalCTA() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link href="#financial-solutions">
-                        <Button size="lg" className="rounded-full h-14 px-8 text-base font-semibold w-full sm:w-auto">
+                        <Button onClick={open} size="lg" className="rounded-full h-14 px-8 text-base font-semibold w-full sm:w-auto">
                             Submit Your Requirement
                             <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>

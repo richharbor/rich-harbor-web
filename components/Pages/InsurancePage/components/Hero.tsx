@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { motion } from "framer-motion"
+import { useState } from "react"
+import { InsuranceFormDialog } from "./InsuranceFormDialog"
 
 const benefits = ["Plan comparison support", "Transparent guidance", "Renewal and claim assistance"]
 
@@ -23,6 +25,8 @@ const itemVariants = {
 }
 
 export function Hero() {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className="relative overflow-hidden w-[99vw] py-20 lg:py-32">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
@@ -62,7 +66,7 @@ export function Hero() {
 
           {/* CTA buttons */}
           <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-            <Button size="lg" className="rounded-full px-8 h-12 text-base">
+            <Button onClick={() => setOpen(true)} size="lg" className="rounded-full px-8 h-12 text-base">
               Request an Insurance Quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -85,6 +89,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
+      <InsuranceFormDialog open={open} onOpenChange={setOpen} />
     </section>
   )
 }

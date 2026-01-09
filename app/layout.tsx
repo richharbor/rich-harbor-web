@@ -69,6 +69,10 @@ export default function RootLayout({
             `,
           }}
         />
+
+        <Script src="https://t.contentsquare.net/uxa/96e263eb06934.js" strategy="afterInteractive" />
+
+
         <noscript>
           <img
             height="1"

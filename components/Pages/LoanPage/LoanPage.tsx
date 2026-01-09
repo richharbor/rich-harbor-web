@@ -15,6 +15,8 @@ import HowItWorks from "@/components/Common/components/HowItWorks";
 import Disclosure from "@/components/Common/components/Disclosure";
 import Faq from "../Home/Faq/Faq";
 import CommonCTA from "@/components/Common/components/CommonCTA";
+import { useState } from "react";
+import { LoanFormDialog } from "./compnenets/LoanFormDialog";
 
 
 const steps = [
@@ -45,6 +47,8 @@ const steps = [
 ];
 
 export default function LoanPage() {
+    const [open, setOpen] = useState(false);
+
     return (
         <section className="mt-10 max-sm:mt-10 max-w-screen">
             <HeroSection />
@@ -94,6 +98,7 @@ export default function LoanPage() {
                 description="Submit your requirement for a structured loan evaluation."
                 buttonText="Apply for a Loan"
                 buttonLink="#contact"
+                onClick={() => setOpen(true)}
             />
 
             <Disclosure
@@ -101,7 +106,7 @@ export default function LoanPage() {
                 description="Loan approvals, interest rates, and terms are solely determined by the respective lender. Richharbor does not guarantee approvals, rates, or timelines and does not act as a credit advisor."
             />
 
-
+            <LoanFormDialog open={open} onOpenChange={setOpen} />
 
         </section>
     )

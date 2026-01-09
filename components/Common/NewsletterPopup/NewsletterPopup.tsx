@@ -7,15 +7,31 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell } from "lucide-react";
+import { Bell, CircleCheckBig, CircleX } from "lucide-react";
+import { z } from "zod";
+import { convertToHtmlForm } from "@/helpers/emailHelper";
+import { sendEmail } from "@/services/emailServices";
+
+const formSchema = z.object({
+    name: z.string().min(2, "Name is required"),
+    phone: z.string().regex(/^[0-9]{10}$/, "Invalid phone number"),
+    email: z.string().email("Invalid email address"),
+});
 
 export default function NewsletterPopup() {
     const [isOpen, setIsOpen] = useState(false);
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        email: "",
+    });
     const [timeOut, setTimeOut] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [succOpen, setSuccOpen] = useState(false);
+    const [errOpen, setErrOpen] = useState(false);
+
+    const [error, setError] = useState("");
 
     useEffect(() => {
         // Check if user has already subscribed (via cookie)
@@ -37,20 +53,51 @@ export default function NewsletterPopup() {
         }
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({ ...prev, [id]: value }));
+        if (error) setError("");
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitting(true);
+        setError("");
 
-        console.log({
-            name,
-            phone,
-            email,
-        });
+        const result = formSchema.safeParse(formData);
 
-        // Set cookie to prevent popup from showing again
-        // Expires in 365 days
-        Cookies.set("userEmail", email, { expires: 365 });
-        setIsSubscribed(true);
-        setIsOpen(false);
+        if (!result.success) {
+            setError(result.error.issues[0].message);
+            setSubmitting(false);
+            return;
+        }
+
+        const emailHTML = convertToHtmlForm(formData);
+        const email = {
+            to: "frontend@rhinontech.com",
+            subject: `New Newsletter Subscription - ${formData.name}`,
+            content: emailHTML,
+            isHtml: true,
+        };
+
+        try {
+            const response = await sendEmail(email);
+            if (response.status === 200) {
+                // Set cookie to prevent popup from showing again
+                // Expires in 365 days
+                Cookies.set("userEmail", formData.email, { expires: 365 });
+                setIsSubscribed(true);
+                setIsOpen(false);
+                setSuccOpen(true);
+            } else {
+                setErrOpen(true);
+            }
+        } catch (error) {
+            console.error(error);
+            setErrOpen(true);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -89,8 +136,8 @@ export default function NewsletterPopup() {
                             <Label htmlFor="name">Name</Label>
                             <Input
                                 id="name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={formData.name}
+                                onChange={handleChange}
                                 placeholder="John Doe"
                                 required
                             />
@@ -100,8 +147,8 @@ export default function NewsletterPopup() {
                             <Input
                                 id="phone"
                                 type="tel"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
+                                value={formData.phone}
+                                onChange={handleChange}
                                 placeholder="+91 98765 43210"
                                 required
                             />
@@ -111,17 +158,48 @@ export default function NewsletterPopup() {
                             <Input
                                 id="email"
                                 type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={formData.email}
+                                onChange={handleChange}
                                 placeholder="john@example.com"
                                 required
                             />
                         </div>
-                        <div className="flex justify-end mt-4 gap-2">
-                            <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button type="submit">Subscribe Now</Button>
+                        <div className="flex justify-end mt-4 gap-2 flex-col">
+                            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+                            <div className="flex justify-end gap-2">
+                                <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
+                                <Button disabled={submitting} type="submit">
+                                    {submitting ? "Subscribing..." : "Subscribe Now"}
+                                </Button>
+                            </div>
                         </div>
                     </form>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={succOpen} onOpenChange={setSuccOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Success 🎉</DialogTitle>
+                        <DialogDescription>
+                            You have successfully subscribed to our newsletter.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-green-500 w-full ">
+                        <CircleCheckBig className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={errOpen} onOpenChange={setErrOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogDescription>Unable to subscribe at the moment. Please try again later.</DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-red-500 w-full ">
+                        <CircleX className="mx-auto font-light" size={100} />
+                    </div>
                 </DialogContent>
             </Dialog>
         </>

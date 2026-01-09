@@ -13,6 +13,17 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { motion } from "framer-motion";
+import { z } from "zod";
+import { convertToHtmlForm } from "@/helpers/emailHelper";
+import { sendEmail } from "@/services/emailServices";
+import { CircleCheckBig, CircleX } from "lucide-react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
 
 const profiles = [
     "Wealth Manager",
@@ -67,9 +78,36 @@ const startTimelines = [
     "Just exploring"
 ];
 
+const formSchema = z.object({
+    name: z.string().min(2, "Name is required"),
+    mobile: z.string().regex(/^[0-9]{10}$/, "Invalid mobile number"),
+    email: z.string().email("Invalid email address"),
+    city: z.string().min(2, "City is required"),
+    currentProfile: z.string().min(1, "Current profile is required"),
+    activityLevel: z.string().min(1, "Activity level is required"),
+    clientBaseSize: z.string().min(1, "Client base size is required"),
+    partnerGoal: z.string().min(1, "Partner goal is required"),
+    startTimeline: z.string().min(1, "Timeline is required"),
+});
+
 export function PartnerForm() {
     const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+    const [formData, setFormData] = useState({
+        name: "",
+        mobile: "",
+        email: "",
+        city: "",
+        currentProfile: "",
+        activityLevel: "",
+        clientBaseSize: "",
+        partnerGoal: "",
+        startTimeline: "",
+    });
     const [submitting, setSubmitting] = useState(false);
+    const [succOpen, setSuccOpen] = useState(false);
+    const [errOpen, setErrOpen] = useState(false);
+
+    const [error, setError] = useState("");
 
     const toggleProduct = (product: string) => {
         setSelectedProducts((current) =>
@@ -79,14 +117,68 @@ export function PartnerForm() {
         );
     };
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({ ...prev, [id]: value }));
+        if (error) setError("");
+    };
+
+    const handleSelectChange = (field: string, value: string) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+        if (error) setError("");
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        // Simulate submit
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setSubmitting(false);
-        // Handle actual submission logic here
-        alert("Thanks for your interest! Our team will contact you shortly.");
+        setError("");
+
+        const result = formSchema.safeParse(formData);
+
+        if (!result.success) {
+            setError(result.error.issues[0].message);
+            setSubmitting(false);
+            return;
+        }
+
+        const submissionData = {
+            ...formData,
+            interestedProducts: selectedProducts.join(", "),
+        };
+
+        const emailHTML = convertToHtmlForm(submissionData);
+        const email = {
+            to: "frontend@rhinontech.com",
+            subject: `New Partner Application - ${formData.name}`,
+            content: emailHTML,
+            isHtml: true,
+        };
+
+        try {
+            const response = await sendEmail(email);
+            if (response.status === 200) {
+                setSuccOpen(true);
+                setFormData({
+                    name: "",
+                    mobile: "",
+                    email: "",
+                    city: "",
+                    currentProfile: "",
+                    activityLevel: "",
+                    clientBaseSize: "",
+                    partnerGoal: "",
+                    startTimeline: "",
+                });
+                setSelectedProducts([]);
+            } else {
+                setErrOpen(true);
+            }
+        } catch (error) {
+            console.error(error);
+            setErrOpen(true);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -106,28 +198,61 @@ export function PartnerForm() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
                             <Label htmlFor="name">Full Name</Label>
-                            <Input id="name" placeholder="John Doe" required className="bg-background/50 placeholder:text-muted-foreground/50" />
+                            <Input
+                                id="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                placeholder="John Doe"
+                                required
+                                className="bg-background/50 placeholder:text-muted-foreground/50"
+                            />
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="mobile">Mobile Number</Label>
-                                <Input id="mobile" placeholder="+91 987xx xxxxx" required className="bg-background/50 placeholder:text-muted-foreground/50" />
+                                <Input
+                                    id="mobile"
+                                    value={formData.mobile}
+                                    onChange={handleInputChange}
+                                    placeholder="+91 987xx xxxxx"
+                                    required
+                                    className="bg-background/50 placeholder:text-muted-foreground/50"
+                                />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="email">Email ID</Label>
-                                <Input id="email" type="email" placeholder="john@example.com" required className="bg-background/50 placeholder:text-muted-foreground/50" />
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    placeholder="john@example.com"
+                                    required
+                                    className="bg-background/50 placeholder:text-muted-foreground/50"
+                                />
                             </div>
                         </div>
 
                         <div className="space-y-2">
                             <Label htmlFor="city">City</Label>
-                            <Input id="city" placeholder="Mumbai, Delhi, etc." required className="bg-background/50 placeholder:text-muted-foreground/50" />
+                            <Input
+                                id="city"
+                                value={formData.city}
+                                onChange={handleInputChange}
+                                placeholder="Mumbai, Delhi, etc."
+                                required
+                                className="bg-background/50 placeholder:text-muted-foreground/50"
+                            />
                         </div>
 
                         <div className="space-y-2">
                             <Label>Current Profile</Label>
-                            <Select required>
+                            <Select
+                                value={formData.currentProfile}
+                                onValueChange={(val) => handleSelectChange("currentProfile", val)}
+                                required
+                            >
                                 <SelectTrigger className="bg-background/50">
                                     <SelectValue placeholder="Select your profile" />
                                 </SelectTrigger>
@@ -143,7 +268,11 @@ export function PartnerForm() {
 
                         <div className="space-y-2">
                             <Label>Are you currently active in wealth or financial product distribution?</Label>
-                            <Select required>
+                            <Select
+                                value={formData.activityLevel}
+                                onValueChange={(val) => handleSelectChange("activityLevel", val)}
+                                required
+                            >
                                 <SelectTrigger className="bg-background/50">
                                     <SelectValue placeholder="Select activity level" />
                                 </SelectTrigger>
@@ -159,7 +288,11 @@ export function PartnerForm() {
 
                         <div className="space-y-2">
                             <Label>Approximate client base you can tap into?</Label>
-                            <Select required>
+                            <Select
+                                value={formData.clientBaseSize}
+                                onValueChange={(val) => handleSelectChange("clientBaseSize", val)}
+                                required
+                            >
                                 <SelectTrigger className="bg-background/50">
                                     <SelectValue placeholder="Select client base size" />
                                 </SelectTrigger>
@@ -185,7 +318,7 @@ export function PartnerForm() {
                                         />
                                         <label
                                             htmlFor={product}
-                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground"
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-muted-foreground cursor-pointer"
                                         >
                                             {product}
                                         </label>
@@ -196,7 +329,11 @@ export function PartnerForm() {
 
                         <div className="space-y-2">
                             <Label>What are you looking for from Rich Harbor?</Label>
-                            <Select required>
+                            <Select
+                                value={formData.partnerGoal}
+                                onValueChange={(val) => handleSelectChange("partnerGoal", val)}
+                                required
+                            >
                                 <SelectTrigger className="bg-background/50">
                                     <SelectValue placeholder="Select your primary goal" />
                                 </SelectTrigger>
@@ -212,7 +349,11 @@ export function PartnerForm() {
 
                         <div className="space-y-2">
                             <Label>How soon would you like to start?</Label>
-                            <Select required>
+                            <Select
+                                value={formData.startTimeline}
+                                onValueChange={(val) => handleSelectChange("startTimeline", val)}
+                                required
+                            >
                                 <SelectTrigger className="bg-background/50">
                                     <SelectValue placeholder="Select timeline" />
                                 </SelectTrigger>
@@ -225,6 +366,8 @@ export function PartnerForm() {
                                 </SelectContent>
                             </Select>
                         </div>
+
+                        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
                         <Button type="submit" size="lg" className="w-full h-12 text-base rounded-xl font-semibold relative overflow-hidden group" disabled={submitting}>
                             <span className="relative z-10 transition-colors group-hover:text-white">
@@ -242,6 +385,32 @@ export function PartnerForm() {
                 {/* Decorative background elements */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-purple-500/10 via-transparent to-blue-500/10 blur-3xl -z-10 rounded-full" />
             </div>
+
+            <Dialog open={succOpen} onOpenChange={setSuccOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Success 🎉</DialogTitle>
+                        <DialogDescription>
+                            Your partnership request has been submitted successfully.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-green-500 w-full ">
+                        <CircleCheckBig className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={errOpen} onOpenChange={setErrOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogDescription>Unable to submit application. Please try again.</DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-red-500 w-full ">
+                        <CircleX className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }

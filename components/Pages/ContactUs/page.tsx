@@ -5,7 +5,7 @@ import { CircleX, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CircleCheckBig } from "lucide-react";
-import axios from "axios";
+import { sendEmail } from "@/services/emailServices";
 
 import {
   Dialog,
@@ -43,25 +43,10 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const baseURl = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { convertToHtmlForm } from "@/helpers/emailHelper";
 
-function convertToHtmlForm(data: Record<string, string>): string {
-  let html = `<div style="font-family: Arial, sans-serif; line-height: 1.6;">`;
-  html += `<h2>New Form Submission</h2>`;
-  html += `<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">`;
 
-  for (const [key, value] of Object.entries(data)) {
-    html += `
-      <tr>
-        <td style="font-weight: bold; text-transform: capitalize;">${key}</td>
-        <td>${value}</td>
-      </tr>
-    `;
-  }
 
-  html += `</table></div>`;
-  return html;
-}
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
@@ -105,14 +90,14 @@ export default function ContactForm() {
 
     const emailHTML = convertToHtmlForm(formData);
     const email = {
-      to: "info@richharbor.com",
+      to: "frontend@rhinontech.com",
       subject: formData.subject + " - " + formData.name,
       content: emailHTML,
       isHtml: true,
     };
     try {
       setError("");
-      const response = await axios.post(`${baseURl}/email/send`, email);
+      const response = await sendEmail(email);
       if (response.status === 200) {
         setSuccOpen(true);
       }

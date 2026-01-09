@@ -9,6 +9,32 @@ import WhatAre from "@/components/Common/components/WhatAre";
 import Disclosure from "@/components/Common/components/Disclosure";
 import Faq from "../Home/Faq/Faq";
 import CommonCTA from "@/components/Common/components/CommonCTA";
+import { useState } from "react";
+import { z } from "zod";
+import { convertToHtmlForm } from "@/helpers/emailHelper";
+import { sendEmail } from "@/services/emailServices";
+import { CircleCheckBig, CircleX } from "lucide-react";
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+
+const formSchema = z.object({
+    companyName: z.string().min(2, "Company Name is required"),
+    promoterName: z.string().min(2, "Promoter Name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().regex(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+    capitalRequirement: z.string().min(1, "Capital Requirement is required"),
+    stage: z.string().min(1, "Stage is required"),
+    businessOverview: z.string().min(10, "Business Overview must be at least 10 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const suitability = [
     {
@@ -83,6 +109,69 @@ const network = [
 ];
 
 export default function PrivateMarkets() {
+    const [formData, setFormData] = useState<FormData>({
+        companyName: "",
+        promoterName: "",
+        email: "",
+        phone: "",
+        capitalRequirement: "",
+        stage: "Growth",
+        businessOverview: "",
+    });
+    const [loading, setLoading] = useState(false);
+    const [succOpen, setSuccOpen] = useState(false);
+    const [errOpen, setErrOpen] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
+
+        const result = formSchema.safeParse(formData);
+        if (!result.success) {
+            setError(result.error.issues[0].message);
+            setLoading(false);
+            return;
+        }
+
+        const emailHTML = convertToHtmlForm(formData);
+        const email = {
+            to: "frontend@rhinontech.com",
+            subject: `Private Markets Enquiry - ${formData.companyName}`,
+            content: emailHTML,
+            isHtml: true,
+        };
+
+        try {
+            const response = await sendEmail(email);
+            if (response.status === 200) {
+                setSuccOpen(true);
+                setFormData({
+                    companyName: "",
+                    promoterName: "",
+                    email: "",
+                    phone: "",
+                    capitalRequirement: "",
+                    stage: "Growth",
+                    businessOverview: "",
+                });
+            } else {
+                setErrOpen(true);
+            }
+        } catch (error) {
+            console.error("Email send error:", error);
+            setErrOpen(true);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
@@ -264,42 +353,95 @@ export default function PrivateMarkets() {
                             </p>
                         </div>
 
-                        <form className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Company Name</label>
-                                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Enter company name" />
+                                    <input
+                                        name="companyName"
+                                        value={formData.companyName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                        placeholder="Enter company name"
+                                        required
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Promoter / Key Contact</label>
-                                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Name & Designation" />
+                                    <input
+                                        name="promoterName"
+                                        value={formData.promoterName}
+                                        onChange={handleChange}
+                                        type="text"
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                        placeholder="Name & Designation"
+                                        required
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Email Address</label>
-                                    <input type="email" className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="corporate@company.com" />
+                                    <input
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        type="email"
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                        placeholder="corporate@company.com"
+                                        required
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Phone Number</label>
-                                    <input type="tel" className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="+91 98765 43210" />
+                                    <input
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        type="tel"
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                        placeholder="+91 98765 43210"
+                                        required
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Capital Requirement (₹)</label>
-                                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="e.g. 50 Cr" />
+                                    <input
+                                        name="capitalRequirement"
+                                        value={formData.capitalRequirement}
+                                        onChange={handleChange}
+                                        type="text"
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                        placeholder="e.g. 50 Cr"
+                                        required
+                                    />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Stage</label>
-                                    <select className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50">
-                                        <option>Growth</option>
-                                        <option>Pre-IPO</option>
+                                    <select
+                                        name="stage"
+                                        value={formData.stage}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                    >
+                                        <option value="Growth">Growth</option>
+                                        <option value="Pre-IPO">Pre-IPO</option>
                                     </select>
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Brief Business Overview</label>
-                                <textarea className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 min-h-[100px]" placeholder="Brief description of the business..." />
+                                <textarea
+                                    name="businessOverview"
+                                    value={formData.businessOverview}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 rounded-lg bg-secondary/10 border border-border focus:outline-none focus:ring-2 focus:ring-primary/50 min-h-[100px]"
+                                    placeholder="Brief description of the business..."
+                                    required
+                                />
                             </div>
-                            <Button size="lg" className="w-full py-6 text-lg rounded-xl font-semibold">
-                                Submit for Review
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                            <Button disabled={loading} type="submit" size="lg" className="w-full py-6 text-lg rounded-xl font-semibold">
+                                {loading ? "Submitting..." : "Submit for Review"}
                             </Button>
                         </form>
                     </div>
@@ -326,6 +468,32 @@ export default function PrivateMarkets() {
             />
 
 
-        </div>
+
+            <Dialog open={succOpen} onOpenChange={setSuccOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Success 🎉</DialogTitle>
+                        <DialogDescription>
+                            Your request has been submitted successfully. We will review it and get back to you shortly.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-green-500 w-full ">
+                        <CircleCheckBig className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={errOpen} onOpenChange={setErrOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogDescription>Unable to submit your request at the moment. Please try again later.</DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-red-500 w-full ">
+                        <CircleX className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
+        </div >
     );
 }

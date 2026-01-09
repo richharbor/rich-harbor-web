@@ -11,6 +11,8 @@ import HowItWorks from "@/components/Common/components/HowItWorks";
 import Faq from "../Home/Faq/Faq";
 import CommonCTA from "@/components/Common/components/CommonCTA";
 import InsuranceProducts from "./components/InsuranceProducts";
+import { useState } from "react";
+import { InsuranceFormDialog } from "./components/InsuranceFormDialog";
 
 
 const steps = [
@@ -41,6 +43,8 @@ const steps = [
 ];
 
 export default function InsurancePage() {
+    const [open, setOpen] = useState(false);
+
     return (
         <section className="mt-10 max-sm:mt-10 max-w-screen">
             <Hero />
@@ -103,8 +107,10 @@ export default function InsurancePage() {
                 description="Submit your requirement for a quick and confidential quote."
                 buttonText="Request an Insurance Quote"
                 buttonLink="#contact"
+                onClick={() => setOpen(true)}
             />
 
+            <InsuranceFormDialog open={open} onOpenChange={setOpen} />
         </section>
     )
 }

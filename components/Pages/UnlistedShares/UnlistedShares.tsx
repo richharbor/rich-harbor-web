@@ -12,6 +12,14 @@ import WhyInvest from "@/components/Common/components/WhyInvest";
 import HowItWorks from "@/components/Common/components/HowItWorks";
 import CommonCTA from "@/components/Common/components/CommonCTA";
 import Disclosure from "@/components/Common/components/Disclosure";
+import { useState } from "react";
+import z from "zod";
+
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+
+import { postStockEnquiry } from "@/services/shareServices";
 
 const benefits = [
     {
@@ -87,7 +95,89 @@ const faq = [
     }
 ];
 
+interface FormData {
+    shareName: string
+    quantity: string
+    name: string
+    email: string
+    phone: string
+}
+const enquirySchema = z.object({
+    shareName: z.string().min(1, "Share name is required"),
+    quantity: z
+        .string()
+        .regex(/^\d+$/, "Quantity must be a number"),
+    name: z.string().min(2, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
+});
+
 export default function UnlistedShares() {
+
+    const [open, setOpen] = useState(false)
+    const [error, setError] = useState<string>("");
+    const [loading, setLoading] = useState(false);
+
+    const [formData, setFormData] = useState<FormData>({
+        shareName: "",
+        quantity: "",
+        name: "",
+        email: "",
+        phone: "",
+    })
+
+
+
+
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+    ) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            console.log(formData);
+            const result = enquirySchema.safeParse(formData);
+            if (!result.success) {
+                const firstError = result.error.issues[0]?.message;
+                setError(firstError);
+                console.error(firstError);
+                return;
+            }
+
+
+
+            setError("");
+            const response = await postStockEnquiry(result.data);
+            console.log(response);
+            setOpen(false);
+            const whatsappUrl = `https://wa.me/919211265558`;
+            window.open(whatsappUrl, "_blank");
+            setFormData({
+                shareName: "",
+                quantity: "",
+                name: "",
+                email: "",
+                phone: "",
+            })
+
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setError("Form submission error")
+        } finally {
+            setLoading(false);
+        }
+
+    }
     return (
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
@@ -117,7 +207,7 @@ export default function UnlistedShares() {
                             transition={{ delay: 0.2 }}
                         >
                             <Link href="#contact">
-                                <Button size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
+                                <Button onClick={() => setOpen(true)} size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
                                     Submit Request <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>
                             </Link>
@@ -216,7 +306,67 @@ export default function UnlistedShares() {
                 description="Submit your requirement for a confidential review and pricing discussion."
                 buttonText="Submit Requirement"
                 buttonLink="#contact"
+                onClick={() => setOpen(true)}
             />
+
+
+
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Send Enquiry</DialogTitle>
+                        <DialogDescription>
+                            Please fill in the details below to send an enquiry for this share.
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <form onSubmit={handleEnquirySubmit} className="grid gap-4">
+                        {/* Share Name (readonly) */}
+                        <div className="grid gap-3">
+                            <Label htmlFor="shareName">Share Name</Label>
+                            <Input
+                                id="shareName"
+                                name="shareName"
+                                onChange={handleChange}
+                                placeholder="Enter share name"
+                                className="bg-gray-100"
+                            />
+                        </div>
+
+                        {/* Quantity */}
+                        <div className="grid gap-3">
+                            <Label htmlFor="quantity">Quantity</Label>
+                            <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
+                        </div>
+
+                        {/* Name */}
+                        <div className="grid gap-3">
+                            <Label htmlFor="name">Name</Label>
+                            <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
+                        </div>
+
+                        {/* Email */}
+                        <div className="grid gap-3">
+                            <Label htmlFor="email">Email</Label>
+                            <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
+                        </div>
+
+                        {/* Phone */}
+                        <div className="grid gap-3">
+                            <Label htmlFor="phone">Phone</Label>
+                            <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+                        </div>
+                        <p className='text-red-500 text-sm'>{error}</p>
+                        <DialogFooter>
+                            <DialogClose asChild>
+                                <Button variant="outline">Cancel</Button>
+                            </DialogClose>
+                            <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
+
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

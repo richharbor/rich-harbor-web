@@ -37,7 +37,7 @@ export default function CoreOfferings() {
     ];
 
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section id="products" className="py-24 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none opacity-50" />
 
@@ -55,9 +55,9 @@ export default function CoreOfferings() {
                     {offerings.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-neutral-900 rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-start h-full border border-neutral-800 hover:border-primary/50"
+                            className="bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-start h-full border border-neutral-800 hover:border-primary/50"
                         >
-                            <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-300 border border-neutral-700">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-300 border border-neutral-700">
                                 <item.icon className="w-6 h-6 stroke-[1.5]" />
                             </div>
 

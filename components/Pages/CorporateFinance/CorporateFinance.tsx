@@ -4,10 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, TrendingUp, Building2, ShoppingBag, Briefcase, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function CorporateFinance() {
     return (
-        <div className="min-h-screen bg-background pt-20">
+        <div className="min-h-screen bg-background pt-5">
             {/* Hero Section */}
             <section className="relative px-6 lg:px-8 py-20 lg:py-32 w-[99vw] overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
@@ -42,12 +43,11 @@ export default function CorporateFinance() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Button size="lg" className="rounded-full px-8 h-12 text-base">
-                                Apply for Capital <ArrowRight className="ml-2 w-4 h-4" />
-                            </Button>
-                            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-transparent">
-                                Learn More
-                            </Button>
+                            <Link href="/private-markets#contact">
+                                <Button size="lg" className="rounded-full px-8 h-12 text-base">
+                                    Apply for Capital <ArrowRight className="ml-2 w-4 h-4" />
+                                </Button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

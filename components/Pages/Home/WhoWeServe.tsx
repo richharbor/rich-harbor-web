@@ -45,13 +45,13 @@ export default function WhoWeServe() {
                     {segments.map((segment, index) => (
                         <div
                             key={index}
-                            className={`group relative p-6 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-primary/50 transition-colors duration-300 h-[240px] flex flex-col items-center justify-center overflow-hidden ${
+                            className={`group relative p-6 rounded-2xl bg-card border border-neutral-800 hover:border-primary/50 transition-colors duration-300 h-[240px] flex flex-col items-center justify-center overflow-hidden ${
                                 // Make the last item span 2 columns on mobile/tablet to center it
                                 index === 4 ? "col-span-2 lg:col-span-1" : "col-span-1"
                                 }`}
                         >
                             <div className="flex flex-col items-center transition-transform duration-300 group-hover:-translate-y-6">
-                                <div className="w-16 h-16 rounded-xl bg-neutral-800 flex items-center justify-center text-neutral-400 mb-4 group-hover:text-primary group-hover:bg-primary/10 transition-colors duration-300">
+                                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-neutral-400 mb-4 group-hover:text-primary group-hover:bg-primary/10 transition-colors duration-300">
                                     <segment.icon className="w-8 h-8 stroke-[1.5]" />
                                 </div>
 

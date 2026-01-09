@@ -38,6 +38,7 @@ import { useEffect } from "react";
 import { Testimonials2 } from "./Testimonials2/Testimonials2";
 import ProductSlider from "./ProductSlider/ProductSlider";
 import WhatsAppBanner from "./WhatsAppBanner/WhatsAppBanner";
+import { useQueryWidgetStore } from "@/store/queryWidgetStore";
 
 
 const faq = [
@@ -68,6 +69,7 @@ const faq = [
 export default function HomePage() {
 
   const { authUser, checkAuth } = useAuthStore();
+  const { open: openQueryWidget } = useQueryWidgetStore();
 
 
   // useEffect(()=>{
@@ -102,16 +104,14 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 mb-8">
-                <Link href="#invest-trade">
+                <Link href="#products">
                   <Button size="lg" className="rounded-full md:text-[16px] font-semibold h-12 px-8">
                     Explore Opportunities
                   </Button>
                 </Link>
-                <Link href="#financial-solutions">
-                  <Button size="lg" variant="outline" className="rounded-full md:text-[16px] font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
-                    Submit Your Requirement
-                  </Button>
-                </Link>
+                <Button size="lg" variant="outline" onClick={openQueryWidget} className="rounded-full md:text-[16px] font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
+                  Submit Your Requirement
+                </Button>
               </div>
             </div>
 
@@ -151,11 +151,11 @@ export default function HomePage() {
 
 
 
-        
 
 
 
-        
+
+
         {/* <Tagline /> */}
         {/* <OurProduct /> */}
         {/* <ProductShowcase /> */}
@@ -185,6 +185,6 @@ export default function HomePage() {
 
       </main>
 
-    </div>
+    </div >
   );
 }
