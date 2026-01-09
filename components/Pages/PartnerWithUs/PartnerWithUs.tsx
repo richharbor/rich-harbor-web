@@ -49,7 +49,7 @@ export default function PartnerWithUs() {
                     >
                         You plan the business. Richharbor enables the rest.
                     </motion.p>
-
+   
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
