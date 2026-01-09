@@ -192,7 +192,7 @@ export default function HotSelling() {
                     <div
                         className="grid grid-cols-3 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5"
                     >
-                        {items.map((item, index) => (
+                        {items.slice(0, 5).map((item, index) => (
                             <motion.div
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -218,10 +218,28 @@ export default function HotSelling() {
                                 </p>
                             </motion.div>
                         ))}
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0 flex flex-col justify-center items-center min-h-[300px]"
+                            onClick={() => route.push("/allstocks")}
+                        >
+                            <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center group-hover/items:bg-rich-violet/20 transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 group-hover/items:text-rich-violet transition-all duration-300">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl max-sm:text-xl mt-6 font-medium">
+                                View All
+                            </h3>
+                            <p className="text-white/50 mt-2 text-center text-sm">
+                                Explore all available stocks
+                            </p>
+                        </motion.div>
                     </div>
-                </div>
-                <div className="flex justify-center mt-10">
-                    <Button variant={"outline"} className="z-10 cursor-pointer" onClick={() => route.push("/allstocks")}>View more</Button>
                 </div>
 
             </div>

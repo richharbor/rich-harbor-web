@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, HelpCircle } from "lucide-react";
+import { X, Send, HelpCircle, CircleCheckBig, CircleX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,25 +14,86 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+
+import { useQueryWidgetStore } from "@/store/queryWidgetStore";
+import { z } from "zod";
+import { convertToHtmlForm } from "@/helpers/emailHelper";
+import { sendEmail } from "@/services/emailServices";
+
+const formSchema = z.object({
+    email: z.string().email("Invalid email address"),
+    userType: z.string().min(1, "User role is required"),
+    interest: z.string().min(1, "Interest is required"),
+    description: z.string().min(10, "Query must be at least 10 characters"),
+});
 
 export default function QueryWidget() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [email, setEmail] = useState("");
-    const [userType, setUserType] = useState("");
-    const [interest, setInterest] = useState("");
-    const [description, setDescription] = useState("");
+    const { isOpen, open, close } = useQueryWidgetStore();
+    const [formData, setFormData] = useState({
+        email: "",
+        userType: "",
+        interest: "",
+        description: "",
+    });
+    const [submitting, setSubmitting] = useState(false);
+    const [succOpen, setSuccOpen] = useState(false);
+    const [errOpen, setErrOpen] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [error, setError] = useState("");
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+        if (error) setError("");
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle submission logic here (console.log mostly for now)
-        console.log({ email, userType, interest, description });
-        // Reset and close
-        setEmail("");
-        setUserType("");
-        setInterest("");
-        setDescription("");
-        setIsOpen(false);
-        
+        setSubmitting(true);
+        setError("");
+
+        const result = formSchema.safeParse(formData);
+
+        if (!result.success) {
+            setError(result.error.issues[0].message);
+            setSubmitting(false);
+            return;
+        }
+
+        const emailHTML = convertToHtmlForm(formData);
+        const email = {
+            to: "frontend@rhinontech.com",
+            subject: `New Query from ${formData.userType} - ${formData.interest}`,
+            content: emailHTML,
+            isHtml: true,
+        };
+
+        try {
+            const response = await sendEmail(email);
+            if (response.status === 200) {
+                setSuccOpen(true);
+                setFormData({
+                    email: "",
+                    userType: "",
+                    interest: "",
+                    description: "",
+                });
+                close();
+            } else {
+                setErrOpen(true);
+            }
+        } catch (error) {
+            console.error(error);
+            setErrOpen(true);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -46,7 +107,7 @@ export default function QueryWidget() {
                             exit={{ x: 100, opacity: 0 }}
                             whileHover={{ x: -5 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            onClick={() => setIsOpen(true)}
+                            onClick={open}
                             className="bg-[#2a2a2a] text-white py-3 px-2 rounded-l-lg shadow-xl cursor-pointer flex flex-col items-center gap-2 border-l border-t border-b border-gray-700/50 backdrop-blur-md hover:bg-[#333] transition-colors"
                         >
                             <HelpCircle size={20} className="text-white/70" />
@@ -66,7 +127,7 @@ export default function QueryWidget() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            onClick={() => setIsOpen(false)}
+                            onClick={close}
                             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
                         />
 
@@ -89,7 +150,7 @@ export default function QueryWidget() {
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={close}
                                         className="hover:bg-destructive/10 hover:text-destructive rounded-full"
                                     >
                                         <X size={20} />
@@ -104,8 +165,8 @@ export default function QueryWidget() {
                                                 id="email"
                                                 type="email"
                                                 placeholder="you@example.com"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                value={formData.email}
+                                                onChange={(e) => handleInputChange("email", e.target.value)}
                                                 required
                                                 className="bg-secondary/20 border-border focus:ring-1 transition-all"
                                             />
@@ -113,7 +174,7 @@ export default function QueryWidget() {
 
                                         <div className="space-y-2">
                                             <Label htmlFor="userType" className="text-sm font-medium">I am a</Label>
-                                            <Select value={userType} onValueChange={setUserType} required>
+                                            <Select value={formData.userType} onValueChange={(val) => handleInputChange("userType", val)} required>
                                                 <SelectTrigger className="bg-secondary/20 border-border">
                                                     <SelectValue placeholder="Select your role" />
                                                 </SelectTrigger>
@@ -127,7 +188,7 @@ export default function QueryWidget() {
 
                                         <div className="space-y-2">
                                             <Label htmlFor="interest" className="text-sm font-medium">Interested in</Label>
-                                            <Select value={interest} onValueChange={setInterest} required>
+                                            <Select value={formData.interest} onValueChange={(val) => handleInputChange("interest", val)} required>
                                                 <SelectTrigger className="bg-secondary/20 border-border">
                                                     <SelectValue placeholder="Select an interest" />
                                                 </SelectTrigger>
@@ -146,15 +207,17 @@ export default function QueryWidget() {
                                             <Textarea
                                                 id="description"
                                                 placeholder="Type your question detail here..."
-                                                value={description}
-                                                onChange={(e) => setDescription(e.target.value)}
+                                                value={formData.description}
+                                                onChange={(e) => handleInputChange("description", e.target.value)}
                                                 required
                                                 className="min-h-[150px] bg-secondary/20 border-border focus:ring-1 transition-all resize-none"
                                             />
                                         </div>
 
-                                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
-                                            Submit Query <Send size={18} className="ml-2" />
+                                        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
+                                        <Button disabled={submitting} type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
+                                            {submitting ? "Sending..." : "Submit Query"} <Send size={18} className="ml-2" />
                                         </Button>
                                     </form>
                                 </div>
@@ -169,6 +232,32 @@ export default function QueryWidget() {
                     </>
                 )}
             </AnimatePresence>
+
+            <Dialog open={succOpen} onOpenChange={setSuccOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Success 🎉</DialogTitle>
+                        <DialogDescription>
+                            Your query has been submitted successfully.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-green-500 w-full ">
+                        <CircleCheckBig className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog open={errOpen} onOpenChange={setErrOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogDescription>Unable to submit query. Please try again.</DialogDescription>
+                    </DialogHeader>
+                    <div className="my-5 text-red-500 w-full ">
+                        <CircleX className="mx-auto font-light" size={100} />
+                    </div>
+                </DialogContent>
+            </Dialog>
         </>
     );
 }

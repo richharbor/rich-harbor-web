@@ -2,75 +2,73 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Zap, ShieldCheck, Clock, Coins, Code, TrendingUp, Home, User, Factory, Building2, ArrowRightLeft } from "lucide-react";
+import { ArrowRight, CheckCircle2, User, Factory, Building2 } from "lucide-react";
 import Link from "next/link";
 
 export function ProductsSection() {
     const products = [
         {
-            name: "Personal Loans",
-            description: "Quick access to funds for your personal needs with flexible repayment tenure.",
-            features: ["Disbursal in 24 Hours", "Minimal Documentation", "No Collateral Required"],
+            name: "Retail Loans",
+            description: "Comprehensive personal financing solutions tailored for your individual needs and milestones.",
+            features: [
+                "Home Loans",
+                "Personal Loans",
+                "Education Loans",
+                "Vehicle & Car Loans",
+                "Gold Loans",
+                "Loan Against Property"
+            ],
             icon: User,
-            link: "#",
+            link: "#contact",
             color: "bg-pink-500/10 text-pink-600 border-pink-200"
         },
         {
-            name: "Home Loans",
-            description: "Realize your dream home with low-interest rates and extended repayment options.",
-            features: ["Doorstep Service", "Simplified Processing", "Flexible Tenure"],
-            icon: Home,
-            link: "#",
-            color: "bg-orange-500/10 text-orange-600 border-orange-200"
-        },
-        {
-            name: "Business Loans",
-            description: "Fuel your business growth with capital for expansion, inventory, or working capital.",
-            features: ["Unsecured Options", "Competitive Rates", "Quick Approval"],
+            name: "Business & SME Loans",
+            description: "Fuel your business growth with capital for expansion, inventory, or working capital needs.",
+            features: [
+                "Business Loans",
+                "MSME Loans",
+                "Mudra Loans",
+                "Term Loans",
+                "Working Capital Loans",
+                "Machinery Loans"
+            ],
             icon: Factory,
-            link: "#",
+            link: "#contact",
             color: "bg-teal-500/10 text-teal-600 border-teal-200"
         },
         {
-            name: "Loan Against Property",
-            description: "Unlock the value of your property to fund your personal or business needs.",
-            features: ["High Loan Amount", "Long Tenure", "Low Interest Rates"],
+            name: "Structured & Corporate Credit",
+            description: "Advanced credit facilities and structured financing for large-scale corporate requirements.",
+            features: [
+                "Revenue Based Financing (RBF)",
+                "Fixed Term Loans (FTL)",
+                "Anchor-Backed Vendor / Channel Financing",
+                "Construction Funding",
+                "Project Finance"
+            ],
             icon: Building2,
-            link: "#",
+            link: "#contact",
             color: "bg-purple-500/10 text-purple-600 border-purple-200"
-        },
-        {
-            name: "Balance Transfer Solutions",
-            description: "Transfer your existing high-cost loans to enjoy lower interest rates and reduced EMIs.",
-            features: ["Lower Interest Rates", "Top-up Loan Facility", "Simplified Process"],
-            icon: ArrowRightLeft,
-            link: "#",
-            color: "bg-blue-500/10 text-blue-600 border-blue-200"
-        },
+        }
     ];
 
     return (
         <section className="py-24 px-6 bg-secondary/20">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-5xl font-bold font-batman tracking-tight mb-4"
                     >
-                        Featured Loan Products
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-lg text-muted-foreground max-w-2xl mx-auto"
-                    >
-                        Handpicked financial products tailored to accelerate your business growth.
-                    </motion.p>
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider mb-4">
+                            LOAN PRODUCTS
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-bold font-batman tracking-tight mb-4">
+                            Loan Products Offered
+                        </h2>
+                    </motion.div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
@@ -87,8 +85,6 @@ export function ProductsSection() {
                                 <product.icon size={80} className="text-secondary opacity-20 -rotate-12" />
                             </div>
 
-
-
                             <div className="flex items-center gap-3 mb-4">
                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${product.color}`}>
                                     <product.icon size={24} />
@@ -99,21 +95,21 @@ export function ProductsSection() {
                                 </div>
                             </div>
 
-                            <p className="text-muted-foreground mb-8 leading-relaxed">
+                            <p className="text-muted-foreground mb-8 leading-relaxed text-sm">
                                 {product.description}
                             </p>
 
                             <div className="space-y-4 mb-8">
                                 {product.features.map((feature, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <CheckCircle2 size={18} className="text-green-500 shrink-0" />
+                                    <div key={i} className="flex items-start gap-3">
+                                        <CheckCircle2 size={18} className="text-green-500 shrink-0 mt-0.5" />
                                         <span className="text-sm font-medium opacity-80">{feature}</span>
                                     </div>
                                 ))}
                             </div>
 
                             <Button asChild className="w-full rounded-full group-hover:bg-primary/90">
-                                <Link href={product.link} target="_blank">
+                                <Link href={product.link}>
                                     Apply Now <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>

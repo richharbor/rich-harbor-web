@@ -18,7 +18,7 @@ export default function PartnerWithUs() {
     return (
         <div className="bg-background min-h-screen">
             {/* 1. Hero Section */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+            <section className="relative pt-32 pb-20 lg:pt-48 md:min-h-screen min-w-[99vw] lg:pb-32 px-6 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
 

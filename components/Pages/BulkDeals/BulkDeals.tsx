@@ -51,7 +51,8 @@ export default function BulkDeals() {
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
             <section className="relative overflow-hidden w-[99vw] py-20 lg:py-36">
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.h1
@@ -67,7 +68,7 @@ export default function BulkDeals() {
                             transition={{ delay: 0.1 }}
                             className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto"
                         >
-                            Richharbor facilitates bulk and block deals in listed shares, enabling access to large quantities at negotiated pricing for eligible investors.
+                            Richharbor facilitates bulk and block deals in listed shares, enabling access to large quantities at negotiated pricing for eligible investors. We facilitate BSE NSE bulk deals, helping you execute a bulk deal in NSE or a bulk deal in BSE, providing opportunities to bulk buy NSE and BSE shares.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

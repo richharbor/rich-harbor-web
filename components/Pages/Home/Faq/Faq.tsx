@@ -18,8 +18,8 @@ const faqs = [
       "Pre-IPO shares are typically sold through private placements, which are made available to select investors through brokers or investment banks. Investors can buy Pre IPO shares online and offline through www.richharbor.com ",
   },
   {
-    question:"What are Pre-IPO Shares",
-    answer:"Pre-IPO shares are stocks of a company that are available for purchase before the company goes public and lists its shares on a stock exchange. Companies may offer Pre-IPO shares to investors, such as venture capitalists, angel investors, and high net worth individuals, in order to raise capital before going pulic. Investing in Pre-IPO shares can offer high potential returns, but also comes with high risk."
+    question: "What are Pre-IPO Shares",
+    answer: "Pre-IPO shares are stocks of a company that are available for purchase before the company goes public and lists its shares on a stock exchange. Companies may offer Pre-IPO shares to investors, such as venture capitalists, angel investors, and high net worth individuals, in order to raise capital before going pulic. Investing in Pre-IPO shares can offer high potential returns, but also comes with high risk."
   },
   {
     question: "How are IPO shares taxed?",
@@ -55,8 +55,18 @@ const faqs = [
   }
 ];
 
-export default function Faqs() {
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface FaqsProps {
+  items?: FaqItem[];
+}
+
+export default function Faqs({ items }: FaqsProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const displayFaqs = items || faqs;
 
   return (
     <section id="faq" className="py-20 max-md:py-10 px-3 ">
@@ -67,13 +77,13 @@ export default function Faqs() {
         </h2>
 
         <div className="mt-12 flex flex-col gap-6 max-w-6xl mx-auto">
-          {faqs.map((faq, faqIndex) => (
+          {displayFaqs.map((faq, faqIndex) => (
             <div
               key={faq.question}
-              onClick={() =>{
-                if(selectedIndex === faqIndex){
+              onClick={() => {
+                if (selectedIndex === faqIndex) {
                   setSelectedIndex(-1)
-                }else{
+                } else {
                   setSelectedIndex(faqIndex)
                 }
               }}

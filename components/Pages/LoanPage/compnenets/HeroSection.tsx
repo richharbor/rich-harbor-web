@@ -5,6 +5,9 @@ import { useMemo, MouseEvent } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ChevronRight } from "lucide-react"
+import { LoanFormDialog } from "./LoanFormDialog"
+import { useState } from "react"
+
 
 export function HeroSection() {
     const BOX_SIZE = 128; // w-32 = 128px
@@ -57,8 +60,11 @@ export function HeroSection() {
         }
         return b;
     }, [BOX_SIZE, CONTAINER_WIDTH, CONTAINER_HEIGHT, BOX_COUNT]);
+
+    const [open, setOpen] = useState(false);
+
     return (
-        <section className="pt-12 relative mt-20 z-10  pb-20 px-6 " onMouseMove={handleMouseMove}>
+        <section className="pt-12 relative mt-20 z-10  pb-20 px-6 ">
             <div className="absolute inset-0 -z-30 bg-transparent backdrop-blur-[4px]"></div>
             <div className="max-md:hidden absolute w-48 h-fit left-32 top-10 -z-40 ">
                 <Image src='https://aicdn.picsart.com/d22f4d37-ddab-4bc8-aae5-b37197499e3f.png' alt='bg-img' width={240} height={700} />
@@ -76,19 +82,6 @@ export function HeroSection() {
                 <Image src='https://aicdn.picsart.com/fe9c5e1e-fd93-4c27-be86-7b34a995ca29.png' alt='bg-img' width={240} height={700} />
 
             </div>
-
-            {/* {boxes.map((box, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute w-32 h-32 -z-40 bg-red-300 rounded-lg"
-                    style={{
-                        left: box.x + 100,
-                        top: box.y,
-                        x: translateX,
-                        y: translateY,
-                    }}
-                />
-            ))}  */}
 
             <div className="max-w-7xl z-10 mx-auto text-center">
                 {/* Announcement Badge */}
@@ -108,11 +101,9 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-batman tracking-tight text-balance max-w-4xl mx-auto leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-batman tracking-tight text-balance max-w-4xl mx-auto leading-[1.1] bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                 >
-                    Loans & Credit
-                    <br />
-                    Solutions
+                    Loans & Structured Credit Solutions
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -122,7 +113,7 @@ export function HeroSection() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty"
                 >
-                    Richharbor offers access to a wide range of loan products across leading banks and NBFCs.
+                    Access retail, SME, and corporate loan products through a structured execution platform designed for speed, transparency, and scalability.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -132,38 +123,13 @@ export function HeroSection() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
-                    <Button size="lg" className="rounded-full px-8 gap-2">
-                        Apply Now
-                        <ArrowRight size={16} />
+                    <Button onClick={() => setOpen(true)} size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
+                        Apply for a Loan <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
-                    <Button variant="outline" size="lg" className="rounded-full px-8 bg-transparent">
-                        Calculate Rate
-                    </Button>
-                </motion.div>
-
-                {/* Trust Indicators */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                    className="mt-16 pt-8 border-t border-border"
-                >
-                    <p className="text-sm text-muted-foreground mb-6">Trusted by over 10,000+ businesses worldwide</p>
-                    <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-                        {["Stripe", "Shopify", "Square", "Notion", "Linear"].map((company, index) => (
-                            <motion.span
-                                key={company}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6 + index * 0.1 }}
-                                className="text-lg font-semibold text-muted-foreground/60"
-                            >
-                                {company}
-                            </motion.span>
-                        ))}
-                    </div>
                 </motion.div>
             </div>
-        </section>
+
+            <LoanFormDialog open={open} onOpenChange={setOpen} />
+        </section >
     )
 }

@@ -4,13 +4,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, TrendingUp, Building2, ShoppingBag, Briefcase, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function CorporateFinance() {
     return (
-        <div className="min-h-screen bg-background pt-20">
+        <div className="min-h-screen bg-background pt-5">
             {/* Hero Section */}
-            <section className="relative px-6 lg:px-8 py-20 lg:py-32 overflow-hidden">
-                <div className="mx-auto max-w-7xl">
+            <section className="relative px-6 lg:px-8 py-20 lg:py-32 w-[99vw] overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
+                <div className="mx-auto max-w-7xl relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -36,16 +39,15 @@ export default function CorporateFinance() {
                         </h2>
 
                         <p className="text-md sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-                            Richharbor enables businesses to access revenue based and structured financing solutions without equity dilution.
+                            Richharbor specializes in corporate finance management and strategic corporate finance, enabling businesses to access revenue based and structured financing solutions without equity dilution.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Button size="lg" className="rounded-full px-8 h-12 text-base">
-                                Apply for Capital <ArrowRight className="ml-2 w-4 h-4" />
-                            </Button>
-                            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-transparent">
-                                Learn More
-                            </Button>
+                            <Link href="/private-markets#contact">
+                                <Button size="lg" className="rounded-full px-8 h-12 text-base">
+                                    Apply for Capital <ArrowRight className="ml-2 w-4 h-4" />
+                                </Button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
