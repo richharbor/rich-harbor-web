@@ -58,7 +58,7 @@ export default function HowItWorks({
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <div className={`grid grid-cols-1 md:grid-cols-2 ${steps.length === 1 ? 'lg:grid-cols-1' : steps.length === 2 ? 'lg:grid-cols-2' : steps.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-8 relative`}>
                     {/* Connecting Line (Desktop) */}
                     {/* <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-border -z-10 -mt-10" /> */}
 

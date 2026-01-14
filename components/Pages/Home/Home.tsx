@@ -104,11 +104,16 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 mb-8">
-                <Link href="#products">
-                  <Button size="lg" className="rounded-full md:text-[16px] font-semibold h-12 px-8">
-                    Explore Opportunities
-                  </Button>
-                </Link>
+                <Button
+                  size="lg"
+                  className="rounded-full md:text-[16px] font-semibold h-12 px-8"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Explore Opportunities
+                </Button>
                 <Button size="lg" variant="outline" onClick={openQueryWidget} className="rounded-full md:text-[16px] font-semibold h-12 px-8 bg-transparent border-white/20 hover:bg-white/10 text-white backdrop-blur-sm">
                   Submit Your Requirement
                 </Button>
@@ -135,9 +140,11 @@ export default function HomePage() {
 
 
 
+
         <ProductSlider />
+
         <TrustStrip />
-        {/* <WhatsAppBanner /> */}
+        <WhatsAppBanner />
 
         <CoreOfferings />
 
