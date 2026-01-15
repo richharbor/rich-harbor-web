@@ -4,12 +4,19 @@ import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Handshake, Users, Lock, PieChart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { postStockEnquiry } from "@/services/shareServices";
+import { postLead, LeadData } from "@/services/leadService";
 import { useState } from "react";
 import z from "zod";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 
 const benefits = [
@@ -60,6 +67,8 @@ interface FormData {
     name: string
     email: string
     phone: string
+    city: string
+    transactionType: "buy" | "sell"
 }
 const enquirySchema = z.object({
     shareName: z.string().min(1, "Share name is required"),
@@ -69,6 +78,8 @@ const enquirySchema = z.object({
     name: z.string().min(2, "Name is required"),
     email: z.string().email("Invalid email address"),
     phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
+    city: z.string().min(2, "City is required"),
+    transactionType: z.enum(["buy", "sell"]),
 });
 
 export default function BulkDeals() {
@@ -82,6 +93,8 @@ export default function BulkDeals() {
         name: "",
         email: "",
         phone: "",
+        city: "",
+        transactionType: "buy"
     })
 
 
@@ -115,7 +128,26 @@ export default function BulkDeals() {
 
 
             setError("");
-            const response = await postStockEnquiry(result.data);
+
+            const { name, email, phone, city, shareName, quantity, transactionType, ...rest } = result.data;
+
+            const leadData: LeadData = {
+                product_type: "bulk_deal",
+                lead_type: "self",
+                name,
+                email,
+                phone,
+                city,
+                product_details: {
+                    shareName,
+                    quantity,
+                    transactionType,
+                    ...rest,
+                    source: "web",
+                },
+            };
+
+            const response = await postLead(leadData);
             console.log(response);
             setOpen(false);
             const whatsappUrl = `https://wa.me/919211265558`;
@@ -126,6 +158,8 @@ export default function BulkDeals() {
                 name: "",
                 email: "",
                 phone: "",
+                city: "",
+                transactionType: "buy"
             })
 
         } catch (error) {
@@ -298,6 +332,27 @@ export default function BulkDeals() {
                         <div className="grid gap-3">
                             <Label htmlFor="phone">Phone</Label>
                             <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+                        </div>
+
+                        <div className="grid gap-3">
+                            <Label htmlFor="city">City</Label>
+                            <Input onChange={handleChange} id="city" name="city" placeholder="Enter your city" />
+                        </div>
+
+                        <div className="grid gap-3">
+                            <Label>I want to</Label>
+                            <Select
+                                defaultValue="buy"
+                                onValueChange={(value: string) => setFormData({ ...formData, transactionType: value as "buy" | "sell" })}
+                            >
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select transaction type" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="buy">Buy</SelectItem>
+                                    <SelectItem value="sell">Sell</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
                         <p className='text-red-500 text-sm'>{error}</p>
                         <DialogFooter>

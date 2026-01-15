@@ -12,15 +12,9 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@/components/ui/dialog'
-import { DialogClose, DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
-import { motion } from 'framer-motion'
-
-import { Input } from '@/components/ui/input'
-import { useState } from 'react'
-import { Label } from '@/components/ui/label'
-import { postStockEnquiry } from '@/services/shareServices'
-import { z } from "zod";
+import { useState } from 'react';
+import UnlistedShareEnquiryDialog from "@/components/Common/components/UnlistedShareEnquiryDialog";
+import { motion } from 'framer-motion';
 
 
 const items = [
@@ -63,92 +57,15 @@ type Stock = {
     sector: string
     icon: string
 }
-interface FormData {
-    shareName: string
-    quantity: string
-    name: string
-    email: string
-    phone: string
-}
-const enquirySchema = z.object({
-    shareName: z.string().min(1, "Share name is required"),
-    quantity: z
-        .string()
-        .regex(/^\d+$/, "Quantity must be a number"),
-    name: z.string().min(2, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
-});
-
-// Infer type
-type EnquiryFormData = z.infer<typeof enquirySchema>;
 
 export default function HotSelling() {
     const route = useRouter();
     const [open, setOpen] = useState(false)
     const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
-    const [error, setError] = useState<string>("");
-    const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState<FormData>({
-        shareName: "",
-        quantity: "",
-        name: "",
-        email: "",
-        phone: "",
-    })
 
     const handleOpenDialog = (item: Stock) => {
         setSelectedStock(item)
-        setFormData((prev) => ({ ...prev, shareName: item.name }))
         setOpen(true)
-    }
-    const handleChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
-    ) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
-        console.log(formData);
-        try {
-            const result = enquirySchema.safeParse(formData);
-            if (!result.success) {
-                const firstError = result.error.issues[0]?.message;
-                setError(firstError);
-                console.error(firstError);
-                return;
-            }
-
-
-
-            setError("");
-            const response = await postStockEnquiry(result.data);
-            console.log(response);
-            setOpen(false);
-            const whatsappUrl = `https://wa.me/919211265558`;
-            window.open(whatsappUrl, "_blank");
-            setFormData({
-                shareName: "",
-                quantity: "",
-                name: "",
-                email: "",
-                phone: "",
-            })
-
-        } catch (error) {
-            console.error("Form submission error:", error);
-            setError("Form submission error")
-        } finally {
-            setLoading(false);
-        }
-
     }
     return (
         <section id='hot-ipo' className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
@@ -243,63 +160,11 @@ export default function HotSelling() {
                 </div>
 
             </div>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Send Enquiry</DialogTitle>
-                        <DialogDescription>
-                            Please fill in the details below to send an enquiry for this share.
-                        </DialogDescription>
-                    </DialogHeader>
-                    {selectedStock && (
-                        <form onSubmit={handleEnquirySubmit} className="grid gap-4">
-                            {/* Share Name (readonly) */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="shareName">Share Name</Label>
-                                <Input
-                                    id="shareName"
-                                    name="shareName"
-                                    value={selectedStock.name}
-                                    readOnly
-                                    className="bg-gray-100 cursor-not-allowed"
-                                />
-                            </div>
-
-                            {/* Quantity */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="quantity">Quantity</Label>
-                                <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
-                            </div>
-
-                            {/* Name */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="name">Name</Label>
-                                <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
-                            </div>
-
-                            {/* Email */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="email">Email</Label>
-                                <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
-                            </div>
-
-                            {/* Phone */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="phone">Phone</Label>
-                                <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
-                            </div>
-                            <p className='text-red-500 text-sm'>{error}</p>
-                            <DialogFooter>
-                                <DialogClose asChild>
-                                    <Button variant="outline">Cancel</Button>
-                                </DialogClose>
-                                <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
-
-                            </DialogFooter>
-                        </form>
-                    )}
-                </DialogContent>
-            </Dialog>
+            <UnlistedShareEnquiryDialog
+                open={open}
+                onOpenChange={setOpen}
+                defaultShareName={selectedStock?.name}
+            />
         </section>
     );
 }

@@ -19,11 +19,13 @@ import {
 import { useState } from "react"
 import { convertToHtmlForm } from "@/helpers/emailHelper"
 import { sendEmail } from "@/services/emailServices"
+import { postLead, LeadData } from "@/services/leadService"
 
 const insurance = [
     { id: 'name', label: 'Full Name', type: 'text', required: true },
     { id: 'email', label: 'Email Address', type: 'email', required: true },
     { id: 'phone', label: 'Phone Number', type: 'tel', required: true },
+    { id: 'city', label: 'City', type: 'text', required: true },
     { id: 'insuranceType', label: 'Insurance Type', type: 'select', options: ['Life', 'Health', 'Motor'], required: true },
     { id: 'budget', label: 'Annual Premium Budget (₹)', type: 'number', required: true },
     { id: 'coverage', label: 'Coverage Required (₹)', type: 'number', required: true },
@@ -101,17 +103,24 @@ export function InsuranceFormDialog({ open, onOpenChange }: InsuranceFormDialogP
             }
         }
 
-        const emailHTML = convertToHtmlForm(formData);
-        const email = {
-            to: "frontend@rhinontech.com",
-            subject: `Insurance Enquiry - ${formData.insuranceType || 'New Request'}`,
-            content: emailHTML,
-            isHtml: true,
+        const { name, email, phone, city, ...rest } = formData;
+
+        const leadData: LeadData = {
+            product_type: 'insurance',
+            lead_type: 'self',
+            name: name,
+            email: email,
+            phone: phone, // Assuming phone can be string, leadService defines it as string
+            city: city,
+            product_details: {
+                ...rest,
+                source: 'web'
+            }
         };
 
         try {
-            const response = await sendEmail(email);
-            if (response.status === 200) {
+            const response = await postLead(leadData);
+            if (response) {
                 setSuccOpen(true);
                 setFormData({});
                 onOpenChange(false);
@@ -119,7 +128,7 @@ export function InsuranceFormDialog({ open, onOpenChange }: InsuranceFormDialogP
                 setErrOpen(true);
             }
         } catch (error) {
-            console.error("Email send error:", error);
+            console.error("Lead submission error:", error);
             setErrOpen(true);
         } finally {
             setLoading(false);

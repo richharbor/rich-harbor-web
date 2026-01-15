@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, User, Factory, Building2 } from "lucide-react";
 import Link from "next/link";
+import { LoanFormDialog } from "./LoanFormDialog";
+import { useState } from "react";
 
 export function ProductsSection() {
+
+    const [open, setOpen] = useState(false);
     const products = [
         {
             name: "Retail Loans",
@@ -108,15 +112,14 @@ export function ProductsSection() {
                                 ))}
                             </div>
 
-                            <Button asChild className="w-full rounded-full group-hover:bg-primary/90">
-                                <Link href={product.link}>
-                                    Apply Now <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                            <Button onClick={() => setOpen(true)} className="w-full rounded-full group-hover:bg-primary/90">
+                                Apply Now <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </motion.div>
                     ))}
                 </div>
             </div>
+            <LoanFormDialog open={open} onOpenChange={setOpen} />
         </section>
     );
 }

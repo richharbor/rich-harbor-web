@@ -11,7 +11,7 @@ export interface EmailData {
 
 export const sendEmail = async (emailData: EmailData) => {
     try {
-        const response = await axios.post(`${baseURl}/email/send`, { ...emailData, to: "info@richharbor.com" });
+        const response = await axios.post(`${baseURl}/email/send`, { ...emailData, to: "frontend@rhinontech.com" });
         return response;
     } catch (error) {
         throw error;
