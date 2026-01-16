@@ -242,7 +242,7 @@ export default function UnlistedShares() {
             <HotSelling />
 
 
-            <PromisingOnes />
+            {/* <PromisingOnes /> */}
 
             <ComparisonBlock />
 

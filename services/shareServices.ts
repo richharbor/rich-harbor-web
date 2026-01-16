@@ -17,6 +17,16 @@ interface FormData {
   phone: string
 }
 
+export const getShares = async () => {
+    try {
+        const response = await PublicAxios.get(`/web-shares`);
+        return response.data.data;
+    } catch (error) {
+        console.error("Login failed", error);
+        throw error;
+    }
+}
+
 
 export const postLiquidateShares = async (requestBody: LiquidateShare) => {
     try {
