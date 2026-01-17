@@ -2,9 +2,12 @@ import UnlistedShares from "@/components/Pages/UnlistedShares/UnlistedShares";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Unlisted Shares | Rich Harbor",
-    description: "Invest in NSE unlisted shares and pre-IPO shares of fundamentally strong companies. Check NSE share price unlisted with Rich Harbor. Secure, transparent, and structured execution.",
-    keywords: ["NSE share price unlisted", "NSE unlisted shares", "unlisted shares", "pre-IPO", "Rich Harbor"],
+    title: "Buy Unlisted & Pre-IPO Shares in India | Richharbor",
+    description: "Invest in unlisted and pre-IPO shares in India with transparent pricing, secure demat transfer, and expert execution support. Start with Richharbor.",
+    keywords: ["unlisted shares india", "buy unlisted shares", "pre ipo shares india", "unlisted share prices", "private market investments", "off market shares india"],
+    alternates: {
+        canonical: "/unlisted-shares",
+    },
 };
 
 export default function Page() {

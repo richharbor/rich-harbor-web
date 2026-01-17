@@ -102,7 +102,7 @@ export default function NewsletterPopup() {
 
     return (
         <>
-            <div className="fixed top-1/2 left-0 transform -translate-y-1/2 z-[100] flex items-center">
+            <div className="fixed top-1/2 left-0 transform -translate-y-1/2 z-50 flex items-center">
                 <AnimatePresence>
                     {!isOpen && !isSubscribed && timeOut && (
                         <motion.button

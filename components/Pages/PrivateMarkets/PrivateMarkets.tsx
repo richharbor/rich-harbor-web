@@ -200,11 +200,16 @@ export default function PrivateMarkets() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
                         >
-                            <Link href="#contact">
-                                <Button size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
-                                    Request a Confidential Discussion <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
-                            </Link>
+                            <Button
+                                size="lg"
+                                className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Request a Confidential Discussion <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
                         </motion.div>
                     </div>
                 </div>

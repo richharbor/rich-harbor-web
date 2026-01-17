@@ -90,7 +90,9 @@ export default function RootLayout({
           {/* <div className="fixed bottom-4 left-4 z-10">
             <Whatsapp />
           </div> */}
+
           <Chatbot />
+
           <QueryWidget />
           <NewsletterPopup />
         </div>
