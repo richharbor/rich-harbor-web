@@ -20,6 +20,7 @@ type Stock = {
     name: string
     sector: string
     symbol: string
+    price: string | number
 }
 
 export default function HotSelling() {
@@ -84,8 +85,16 @@ export default function HotSelling() {
                                         <Skeleton className="h-24 w-24 rounded-3xl" />
                                     </div>
                                     <Skeleton className="h-8 w-3/4 mt-6 rounded-lg" />
-                                    <Skeleton className="h-4 w-1/4 mt-3 rounded-lg" />
-                                    <Skeleton className="h-4 w-1/2 mt-1 rounded-lg" />
+                                    <div className="flex justify-between gap-4 mt-3">
+                                        <div className="w-full">
+                                            <Skeleton className="h-4 w-1/2 rounded-lg" />
+                                            <Skeleton className="h-4 w-3/4 mt-1 rounded-lg" />
+                                        </div>
+                                        <div className="w-full flex flex-col items-end">
+                                            <Skeleton className="h-4 w-1/2 rounded-lg" />
+                                            <Skeleton className="h-4 w-3/4 mt-1 rounded-lg" />
+                                        </div>
+                                    </div>
                                 </div>
                             ))
                         ) : shares.length === 0 ? (
@@ -116,13 +125,23 @@ export default function HotSelling() {
                                                 </AvatarFallback>
                                             </Avatar>
                                         </div>
-                                        <h3 className="text-2xl max-sm:text-xl mt-6 ">
+                                        <h3 className="text-2xl max-sm:text-xl mt-6 truncate" title={item.name}>
                                             {item.name}
                                         </h3>
-                                        <p className=" text-white/30 mt-3 ">Sector</p>
-                                        <p className=" text-white/50 mt-1 ">
-                                            {item.sector}
-                                        </p>
+                                        <div className="flex justify-between items-end mt-3">
+                                            <div>
+                                                <p className="text-white/30 text-sm">Sector</p>
+                                                <p className="text-white/50 mt-1">
+                                                    {item.sector}
+                                                </p>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-white/30 text-sm">Price</p>
+                                                <p className="text-white/50 mt-1">
+                                                    ₹{item.price}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </motion.div>
                                 ))}
 
