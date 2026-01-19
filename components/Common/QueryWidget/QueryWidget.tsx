@@ -76,20 +76,18 @@ export default function QueryWidget() {
 
         try {
             const response = await sendEmail(email);
-            if (response.status === 200) {
-                setSuccOpen(true);
-                setFormData({
-                    email: "",
-                    userType: "",
-                    interest: "",
-                    description: "",
-                });
-                close();
-            } else {
-                setErrOpen(true);
-            }
+
+            setSuccOpen(true);
+            setFormData({
+                email: "",
+                userType: "",
+                interest: "",
+                description: "",
+            });
+            close()
         } catch (error) {
             console.error(error);
+            close();
             setErrOpen(true);
         } finally {
             setSubmitting(false);
