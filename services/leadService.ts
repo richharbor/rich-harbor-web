@@ -11,7 +11,7 @@ export interface LeadData {
     product_details: Record<string, any>;
 }
 
-const baseURl = "http://localhost:5003/v1";
+const baseURl = process.env.NEXT_PUBLIC_API_BASE_URL?.replace("/api", "/v1");
 
 export const postLead = async (requestBody: LeadData) => {
     try {
