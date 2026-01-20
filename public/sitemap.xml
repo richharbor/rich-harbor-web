@@ -26,4 +26,34 @@
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
+    <url>
+      <loc>https://richharbor.com/unlisted-shares</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://richharbor.com/bulk-deals</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://richharbor.com/loans</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://richharbor.com/private-markets</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://richharbor.com/corporate-finance</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    <url>
+      <loc>https://richharbor.com/insurance</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
 </urlset>
