@@ -2,12 +2,11 @@
 
 import React, { Fragment } from "react";
 import Image from "next/image";
-import { type itemsType } from "../HotSelling";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 
 const IntegrationRows = (props: {
-    integrations: itemsType;
+    integrations: { name: string; icon: string; sector: string }[];
     className?: string;
     reverse?: boolean;
 }) => {
@@ -15,7 +14,7 @@ const IntegrationRows = (props: {
     return (
         <motion.div
             initial={{
-                x: reverse ? "0%" : "-50%" ,
+                x: reverse ? "0%" : "-50%",
             }}
             animate={{
                 x: reverse ? "-50%" : "0%",

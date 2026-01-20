@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, TrendingUp, FileCheck, Users, Search, MessageCircle, FileSignature, ArrowRightLeft, ArrowRight } from "lucide-react";
+import { ShieldCheck, TrendingUp, FileCheck, Users, Search, MessageCircle, FileSignature, ArrowRightLeft, ArrowRight, CheckCircle2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import HotSelling from "../Home/HotSelling/HotSelling";
@@ -13,13 +13,9 @@ import HowItWorks from "@/components/Common/components/HowItWorks";
 import CommonCTA from "@/components/Common/components/CommonCTA";
 import Disclosure from "@/components/Common/components/Disclosure";
 import { useState } from "react";
-import z from "zod";
-
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-
-import { postStockEnquiry } from "@/services/shareServices";
+import WhatsAppBanner from "../Home/WhatsAppBanner/WhatsAppBanner";
+import ComparisonBlock from "./ComparisonBlock";
+import UnlistedShareEnquiryDialog from "@/components/Common/components/UnlistedShareEnquiryDialog";
 
 const benefits = [
     {
@@ -52,26 +48,20 @@ const benefits = [
 const steps = [
     {
         id: 1,
-        title: "Requirement Submission",
-        description: "Share your interest in a specific company or category.",
+        title: "Select a Share & View Pricing",
+        description: "Browse our curated list of unlisted companies and check transparent pricing.",
         icon: Search,
     },
     {
         id: 2,
-        title: "Price Discovery & Validation",
-        description: "Pricing is evaluated based on demand, company fundamentals, and transaction feasibility.",
-        icon: MessageCircle,
+        title: "Complete Secure Payment",
+        description: "Execute the payment securely through our trusted banking channels.",
+        icon: ShieldCheck,
     },
     {
         id: 3,
-        title: "Documentation & Transfer",
-        description: "Shares are transferred via off-market transaction with proper documentation and demat credit.",
-        icon: FileSignature,
-    },
-    {
-        id: 4,
-        title: "Confirmation & Closure",
-        description: "Transaction completion is confirmed once shares reflect in your demat account.",
+        title: "Shares Delivered to Your Demat",
+        description: "Receive shares directly into your Demat account within the standard settlement cycle.",
         icon: ArrowRightLeft,
     },
 ];
@@ -95,94 +85,20 @@ const faq = [
     }
 ];
 
-interface FormData {
-    shareName: string
-    quantity: string
-    name: string
-    email: string
-    phone: string
+const trustIndicators = ["Verified sellers", "Secure Demat transfers", "Transparent pricing"]
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 }
-const enquirySchema = z.object({
-    shareName: z.string().min(1, "Share name is required"),
-    quantity: z
-        .string()
-        .regex(/^\d+$/, "Quantity must be a number"),
-    name: z.string().min(2, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
-});
 
 export default function UnlistedShares() {
 
     const [open, setOpen] = useState(false)
-    const [error, setError] = useState<string>("");
-    const [loading, setLoading] = useState(false);
-
-    const [formData, setFormData] = useState<FormData>({
-        shareName: "",
-        quantity: "",
-        name: "",
-        email: "",
-        phone: "",
-    })
-
-
-
-
-    const handleChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
-    ) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            console.log(formData);
-            const result = enquirySchema.safeParse(formData);
-            if (!result.success) {
-                const firstError = result.error.issues[0]?.message;
-                setError(firstError);
-                console.error(firstError);
-                return;
-            }
-
-
-
-            setError("");
-            const response = await postStockEnquiry(result.data);
-            console.log(response);
-            setOpen(false);
-            const whatsappUrl = `https://wa.me/919211265558`;
-            window.open(whatsappUrl, "_blank");
-            setFormData({
-                shareName: "",
-                quantity: "",
-                name: "",
-                email: "",
-                phone: "",
-            })
-
-        } catch (error) {
-            console.error("Form submission error:", error);
-            setError("Form submission error")
-        } finally {
-            setLoading(false);
-        }
-
-    }
     return (
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
-            <section className="relative overflow-hidden py-20 lg:py-32">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+            <section className="relative md:min-h-[85vh] overflow-hidden py-20 lg:py-32">
+                <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+11.54.34.jpeg')] bg-cover bg-center opacity-50 blur-sm scale-105 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-5xl mx-auto text-center">
@@ -191,30 +107,66 @@ export default function UnlistedShares() {
                             animate={{ opacity: 1, y: 0 }}
                             className="text-2xl md:text-5xl font-bold font-batman mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70"
                         >
-                            Unlisted Shares & Pre-IPO Investment Opportunities
+                            Invest in Unlisted & Pre-IPO Shares With Confidence
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-md sm:text-lg md:text-lg text-muted-foreground mb-8 leading-relaxed"
+                            className="text-md sm:text-lg md:text-lg max-w-xl mx-auto text-muted-foreground mb-8 leading-relaxed"
                         >
-                            Access verified unlisted shares and pre-IPO opportunities with transparent pricing, compliant execution, and secure off-market transfers.
+                            Access exclusive private market opportunities with transparent pricing, secure execution, and expert support.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
+                            className="flex gap-4 justify-center max-md:flex-col"
                         >
-                            <Link href="#contact">
-                                <Button onClick={() => setOpen(true)} size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
-                                    Submit Request <ArrowRight className="ml-2 w-5 h-5" />
+
+                            <Button
+                                size="lg"
+                                className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const element = document.getElementById('hot-ipo');
+                                    element?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                View Live Opportunities
+                            </Button>
+
+                            <Link href="tel:+919211265558">
+                                <Button
+                                    variant={'outline'}
+                                    size="lg"
+                                    className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all"
+                                >
+                                    Talk to an Expert
                                 </Button>
                             </Link>
+
+                        </motion.div>
+
+                        {/* Trust indicators */}
+                        <motion.div variants={itemVariants} className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3">
+                            {trustIndicators.map((benefit, index) => (
+                                <motion.div
+                                    key={benefit}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.8 + index * 0.1 }}
+                                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                                >
+                                    <CheckCircle2 className="h-5 w-5 text-[#4AA651]" />
+                                    <span>{benefit}</span>
+                                </motion.div>
+                            ))}
                         </motion.div>
                     </div>
                 </div>
             </section>
+            <WhatsAppBanner />
 
             {/* What Are Unlisted Shares */}
             <WhatAre
@@ -227,12 +179,27 @@ export default function UnlistedShares() {
                 title="Why Investors Consider Unlisted Shares"
                 description="Unlisted investing is suitable for investors with a long-term perspective and higher risk tolerance looking to capture value early in a company's lifecycle."
                 reasons={[
-                    "Early access to high-quality companies",
-                    "Potential upside before public listing",
-                    "Portfolio diversification beyond listed equities",
-                    "Participation in growth and pre-IPO stages"
+                    "Early Access to Growth — Invest before companies go public",
+                    "Portfolio Diversification — Beyond traditional equities",
+                    "Potential Richer Returns — Early entry valuation capture",
+                    "Low Daily Volatility — Less short-term fluctuation InCred Money"
+
                 ]}
             />
+
+            <div className="container max-w-7xl mx-auto px-4 md:px-6 -mt-10">
+                <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 flex gap-3 items-start">
+                    <div className="mt-1">
+                        <AlertTriangle className="h-5 w-5 text-yellow-500" />
+                    </div>
+                    <div>
+                        <h4 className="text-sm font-semibold text-yellow-500 mb-1">Risk Disclosure</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                            Unlisted shares are illiquid and may have a lock-in period after listing (typically 6 months). Investment in unlisted equities carries high risk, including potential loss of capital.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             {/* Key Benefits */}
             <section className="py-20 md:w-[99vw] bg-secondary/5">
@@ -275,28 +242,16 @@ export default function UnlistedShares() {
             <HotSelling />
 
 
-            <PromisingOnes />
+            {/* <PromisingOnes /> */}
+
+            <ComparisonBlock />
 
             {/* Taxation & Regulatory Disclosure */}
             <Disclosure
-                title="Taxation & Important Disclosure"
-                description="Richharbor does not provide investment advice or guarantee outcomes. All investment decisions rest solely with the investor."
-            >
-                <div className="flex items-start gap-3 p-4 bg-neutral-50 rounded-xl border border-neutral-100">
-                    <div className="w-2 h-2 rounded-full bg-neutral-400 mt-2 shrink-0" />
-                    <div>
-                        <span className="block font-semibold text-neutral-900 text-sm">Holding period &lt; 24 months</span>
-                        <span className="text-neutral-600 text-sm">Short-Term Capital Gains</span>
-                    </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-neutral-50 rounded-xl border border-neutral-100">
-                    <div className="w-2 h-2 rounded-full bg-green-600 mt-2 shrink-0" />
-                    <div>
-                        <span className="block font-semibold text-neutral-900 text-sm">Holding period ≥ 24 months</span>
-                        <span className="text-neutral-600 text-sm">Long-Term Capital Gains with indexation</span>
-                    </div>
-                </div>
-            </Disclosure>
+                title="Trust & Legal Disclaimers"
+                description="Unlisted share transactions are not executed on stock exchanges. Past performance is not indicative of future results. Investing carries risk."
+            />
+
 
             {/* FAQ */}
             <Faq items={faq} />
@@ -310,63 +265,7 @@ export default function UnlistedShares() {
             />
 
 
-
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Send Enquiry</DialogTitle>
-                        <DialogDescription>
-                            Please fill in the details below to send an enquiry for this share.
-                        </DialogDescription>
-                    </DialogHeader>
-
-                    <form onSubmit={handleEnquirySubmit} className="grid gap-4">
-                        {/* Share Name (readonly) */}
-                        <div className="grid gap-3">
-                            <Label htmlFor="shareName">Share Name</Label>
-                            <Input
-                                id="shareName"
-                                name="shareName"
-                                onChange={handleChange}
-                                placeholder="Enter share name"
-                                className="bg-gray-100"
-                            />
-                        </div>
-
-                        {/* Quantity */}
-                        <div className="grid gap-3">
-                            <Label htmlFor="quantity">Quantity</Label>
-                            <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
-                        </div>
-
-                        {/* Name */}
-                        <div className="grid gap-3">
-                            <Label htmlFor="name">Name</Label>
-                            <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
-                        </div>
-
-                        {/* Email */}
-                        <div className="grid gap-3">
-                            <Label htmlFor="email">Email</Label>
-                            <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
-                        </div>
-
-                        {/* Phone */}
-                        <div className="grid gap-3">
-                            <Label htmlFor="phone">Phone</Label>
-                            <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
-                        </div>
-                        <p className='text-red-500 text-sm'>{error}</p>
-                        <DialogFooter>
-                            <DialogClose asChild>
-                                <Button variant="outline">Cancel</Button>
-                            </DialogClose>
-                            <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
-
-                        </DialogFooter>
-                    </form>
-                </DialogContent>
-            </Dialog>
+            <UnlistedShareEnquiryDialog open={open} onOpenChange={setOpen} />
         </div>
     );
 }

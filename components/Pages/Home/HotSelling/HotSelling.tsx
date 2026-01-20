@@ -7,149 +7,53 @@ import oyoIcon from '@/public/images/oyo.png'
 import peIcon from '@/public/images/pe.webp'
 import tapariaIcon from '@/public/images/taparia.webp'
 
-import IntegrationRows from "./IntegrationRows/IntegrationRows";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogFooter, DialogHeader } from '@/components/ui/dialog'
-import { DialogClose, DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
-import { motion } from 'framer-motion'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
+import { useEffect, useState } from 'react';
+import UnlistedShareEnquiryDialog from "@/components/Common/components/UnlistedShareEnquiryDialog";
+import { motion } from 'framer-motion';
+import { getShares } from '@/services/shareServices';
+import { Skeleton } from "@/components/ui/skeleton";
 
-import { Input } from '@/components/ui/input'
-import { useState } from 'react'
-import { Label } from '@/components/ui/label'
-import { postStockEnquiry } from '@/services/shareServices'
-import { z } from "zod";
-
-
-const items = [
-    {
-        name: "National Stock Exchange (NSE)",
-        icon: "https://assets.incredmoney.com/images/v2/webp/NSE.webp",
-        sector: "Exchange",
-    },
-    {
-        name: "NCDEX Ltd",
-        icon: "https://assets.incredmoney.com/images/v2/webp/NCDEX.webp",
-        sector: "agricultural commodity exchange",
-    },
-    {
-        name: "Metropolitan Stock Exchange (MSE)",
-        icon: "https://assets.incredmoney.com/images/v3/Xmse.webp",
-        sector: "Exchange",
-    },
-    {
-        name: "Oravel Stays (OYO Rooms)",
-        icon: "https://assets.incredmoney.com/images/v2/webp/OYO.webp",
-        sector: "Hospitality",
-    },
-    {
-        name: "Chennai Super Kings (CSK)",
-        icon: "https://assets.incredmoney.com/images/v2/webp/CSK.webp",
-        sector: "Sports",
-    },
-
-    {
-        name: "Apollo Green Energy Ltd",
-        icon: "https://assets.incredmoney.com/images/v2/webp/Apollo.webp",
-        sector: "EPC & Renewable energy",
-    },
-];
-
-export type itemsType = typeof items;
 type Stock = {
     name: string
     sector: string
-    icon: string
+    symbol: string
+    price: string | number
 }
-interface FormData {
-    shareName: string
-    quantity: string
-    name: string
-    email: string
-    phone: string
-}
-const enquirySchema = z.object({
-    shareName: z.string().min(1, "Share name is required"),
-    quantity: z
-        .string()
-        .regex(/^\d+$/, "Quantity must be a number"),
-    name: z.string().min(2, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    phone: z.string().regex(/^[0-9]{10}$/, "Phone must be 10 digits"),
-});
-
-// Infer type
-type EnquiryFormData = z.infer<typeof enquirySchema>;
 
 export default function HotSelling() {
     const route = useRouter();
     const [open, setOpen] = useState(false)
+    const [shares, setShares] = useState<any[]>([])
+    const [loading, setLoading] = useState(true);
     const [selectedStock, setSelectedStock] = useState<Stock | null>(null)
-    const [error, setError] = useState<string>("");
-    const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState<FormData>({
-        shareName: "",
-        quantity: "",
-        name: "",
-        email: "",
-        phone: "",
-    })
 
-    const handleOpenDialog = (item: Stock) => {
-        setSelectedStock(item)
-        setFormData((prev) => ({ ...prev, shareName: item.name }))
-        setOpen(true)
-    }
-    const handleChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
-    ) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-    const handleEnquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
-        console.log(formData);
+
+    useEffect(() => {
+        fetchShares();
+    }, [])
+
+    const fetchShares = async () => {
         try {
-            const result = enquirySchema.safeParse(formData);
-            if (!result.success) {
-                const firstError = result.error.issues[0]?.message;
-                setError(firstError);
-                console.error(firstError);
-                return;
-            }
-
-
-
-            setError("");
-            const response = await postStockEnquiry(result.data);
-            console.log(response);
-            setOpen(false);
-            const whatsappUrl = `https://wa.me/919211265558`;
-            window.open(whatsappUrl, "_blank");
-            setFormData({
-                shareName: "",
-                quantity: "",
-                name: "",
-                email: "",
-                phone: "",
-            })
-
+            const data = await getShares();
+            setShares(data);
         } catch (error) {
-            console.error("Form submission error:", error);
-            setError("Form submission error")
+            console.log(error);
         } finally {
             setLoading(false);
         }
-
     }
+
+    const handleOpenDialog = (item: Stock) => {
+        setSelectedStock(item)
+        setOpen(true)
+    }
+
+    const showViewAll = shares.length > 6;
+    const displayedShares = showViewAll ? shares.slice(0, 5) : shares;
+
     return (
         <section id='hot-ipo' className="max-w-7xl mx-auto py-20 overflow-hidden max-sm:py-10">
             <div className="container mx-auto">
@@ -168,138 +72,112 @@ export default function HotSelling() {
                             Explore the most in-demand equities and make informed trading decisions.
                         </p>
                     </motion.div>
-                    {/* <div className="z-30 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] ">
-                        <div className="h-[32rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden min-w-[99vw]">
-                            <IntegrationRows integrations={items} />
-                            <IntegrationRows
-                                integrations={items.slice().reverse()}
-                                className=" "
-                                reverse={true}
-                            />
-                            <InfiniteMovingCards
-                                items={testimonials}
-                                direction="right"
-                                speed="fast"
-                            />
-                            <InfiniteMovingCards
-                                items={testimonials}
-                                direction="left"
-                                speed="fast"
-                            />
-                            
-                        </div>
-                    </div> */}
                     <div
-                        className="grid grid-cols-3 max-sm:px-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5"
+                        className="grid grid-cols-3 max-sm:px-4 gap-5 md:gap-10 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:mt-5"
                     >
-                        {items.slice(0, 5).map((item, index) => (
-                            <motion.div
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.5 }}
-                                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                key={index}
-                                className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0"
-                                onClick={() => handleOpenDialog(item)}
-                            >
-                                <div className="flex justify-center h-32 max-sm:h-28">
-                                    <img
-                                        className="object-contain rounded-3xl group-hover/items:scale-85 transition-all duration-500 ease-in-out"
-                                        src={item.icon}
-                                        alt={`${item.name}-icon`}
-                                    />
+                        {loading ? (
+                            Array.from({ length: 6 }).map((_, index) => (
+                                <div
+                                    key={index}
+                                    className="z-10 bg-card border border-white/10 rounded-3xl p-6 min-w-[250px] md:min-w-[300px] flex-shrink-0"
+                                >
+                                    <div className="flex justify-center h-32 max-sm:h-28 items-center">
+                                        <Skeleton className="h-24 w-24 rounded-3xl" />
+                                    </div>
+                                    <Skeleton className="h-8 w-3/4 mt-6 rounded-lg" />
+                                    <div className="flex justify-between gap-4 mt-3">
+                                        <div className="w-full">
+                                            <Skeleton className="h-4 w-1/2 rounded-lg" />
+                                            <Skeleton className="h-4 w-3/4 mt-1 rounded-lg" />
+                                        </div>
+                                        <div className="w-full flex flex-col items-end">
+                                            <Skeleton className="h-4 w-1/2 rounded-lg" />
+                                            <Skeleton className="h-4 w-3/4 mt-1 rounded-lg" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl max-sm:text-xl mt-6 ">
-                                    {item.name}
-                                </h3>
-                                <p className=" text-white/30 mt-3 ">Sector</p>
-                                <p className=" text-white/50 mt-1 ">
-                                    {item.sector}
-                                </p>
-                            </motion.div>
-                        ))}
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ duration: 0.3, ease: 'easeInOut' }}
-                            className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0 flex flex-col justify-center items-center min-h-[300px]"
-                            onClick={() => route.push("/allstocks")}
-                        >
-                            <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center group-hover/items:bg-rich-violet/20 transition-all duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 group-hover/items:text-rich-violet transition-all duration-300">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                </svg>
+                            ))
+                        ) : shares.length === 0 ? (
+                            <div className="col-span-full min-h-[200px] flex items-center justify-center">
+                                <p className="text-xl text-white/50 font-medium">No share available now</p>
                             </div>
-                            <h3 className="text-2xl max-sm:text-xl mt-6 font-medium">
-                                View All
-                            </h3>
-                            <p className="text-white/50 mt-2 text-center text-sm">
-                                Explore all available stocks
-                            </p>
-                        </motion.div>
+                        ) : (
+                            <>
+                                {displayedShares.map((item, index) => (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, amount: 0.5 }}
+                                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                        key={index}
+                                        className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] md:min-w-[300px] flex-shrink-0"
+                                        onClick={() => handleOpenDialog(item)}
+                                    >
+                                        <div className="flex justify-center h-32 max-sm:h-28 items-center">
+                                            <Avatar className="h-24 w-24 rounded-3xl group-hover/items:scale-85 transition-all duration-500 ease-in-out bg-transparent">
+                                                <AvatarImage
+                                                    src={item.symbol}
+                                                    alt={`${item.name}-icon`}
+                                                    className="object-contain"
+                                                />
+                                                <AvatarFallback className="rounded-3xl text-2xl font-bold bg-neutral-800 text-white">
+                                                    {item.name?.substring(0, 2).toUpperCase()}
+                                                </AvatarFallback>
+                                            </Avatar>
+                                        </div>
+                                        <h3 className="text-2xl max-sm:text-xl mt-6 truncate" title={item.name}>
+                                            {item.name}
+                                        </h3>
+                                        <div className="flex justify-between items-end mt-3">
+                                            <div>
+                                                <p className="text-white/30 text-sm">Sector</p>
+                                                <p className="text-white/50 mt-1">
+                                                    {item.sector}
+                                                </p>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-white/30 text-sm">Price</p>
+                                                <p className="text-white/50 mt-1">
+                                                    ₹{item.price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+
+                                {showViewAll && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, amount: 0.5 }}
+                                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                        className="z-10 bg-card group/items cursor-pointer ease-in-out hover:border-rich-violet transition-all duration-200 border border-white/10 rounded-3xl p-6 min-w-[250px] flex-shrink-0 flex flex-col justify-center items-center min-h-[300px]"
+                                        onClick={() => route.push("/allstocks")}
+                                    >
+                                        <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center group-hover/items:bg-rich-violet/20 transition-all duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 group-hover/items:text-rich-violet transition-all duration-300">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-2xl max-sm:text-xl mt-6 font-medium">
+                                            View All
+                                        </h3>
+                                        <p className="text-white/50 mt-2 text-center text-sm">
+                                            Explore all available stocks
+                                        </p>
+                                    </motion.div>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
 
             </div>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>Send Enquiry</DialogTitle>
-                        <DialogDescription>
-                            Please fill in the details below to send an enquiry for this share.
-                        </DialogDescription>
-                    </DialogHeader>
-                    {selectedStock && (
-                        <form onSubmit={handleEnquirySubmit} className="grid gap-4">
-                            {/* Share Name (readonly) */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="shareName">Share Name</Label>
-                                <Input
-                                    id="shareName"
-                                    name="shareName"
-                                    value={selectedStock.name}
-                                    readOnly
-                                    className="bg-gray-100 cursor-not-allowed"
-                                />
-                            </div>
-
-                            {/* Quantity */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="quantity">Quantity</Label>
-                                <Input onChange={handleChange} id="quantity" name="quantity" type="number" placeholder="Enter quantity" />
-                            </div>
-
-                            {/* Name */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="name">Name</Label>
-                                <Input onChange={handleChange} id="name" name="name" placeholder="Enter your name" />
-                            </div>
-
-                            {/* Email */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="email">Email</Label>
-                                <Input onChange={handleChange} id="email" name="email" type="email" placeholder="Enter your email" />
-                            </div>
-
-                            {/* Phone */}
-                            <div className="grid gap-3">
-                                <Label htmlFor="phone">Phone</Label>
-                                <Input onChange={handleChange} id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
-                            </div>
-                            <p className='text-red-500 text-sm'>{error}</p>
-                            <DialogFooter>
-                                <DialogClose asChild>
-                                    <Button variant="outline">Cancel</Button>
-                                </DialogClose>
-                                <Button disabled={loading} type="submit">{loading ? 'Sending...' : 'Send Enquiry'}</Button>
-
-                            </DialogFooter>
-                        </form>
-                    )}
-                </DialogContent>
-            </Dialog>
+            <UnlistedShareEnquiryDialog
+                open={open}
+                onOpenChange={setOpen}
+                defaultShareName={selectedStock?.name}
+            />
         </section>
     );
 }

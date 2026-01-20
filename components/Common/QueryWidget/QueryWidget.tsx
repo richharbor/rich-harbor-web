@@ -76,20 +76,18 @@ export default function QueryWidget() {
 
         try {
             const response = await sendEmail(email);
-            if (response.status === 200) {
-                setSuccOpen(true);
-                setFormData({
-                    email: "",
-                    userType: "",
-                    interest: "",
-                    description: "",
-                });
-                close();
-            } else {
-                setErrOpen(true);
-            }
+
+            setSuccOpen(true);
+            setFormData({
+                email: "",
+                userType: "",
+                interest: "",
+                description: "",
+            });
+            close()
         } catch (error) {
             console.error(error);
+            close();
             setErrOpen(true);
         } finally {
             setSubmitting(false);
@@ -132,7 +130,7 @@ export default function QueryWidget() {
                         />
 
                         {/* Drawer/Dialog */}
-                        <div className="fixed inset-0 z-50 flex items-center justify-end pointer-events-none">
+                        <div className="fixed inset-0 z-60 flex items-center justify-end pointer-events-none">
                             <motion.div
                                 initial={{ x: "100%", opacity: 0.5 }}
                                 animate={{ x: 0, opacity: 1 }}
@@ -178,7 +176,7 @@ export default function QueryWidget() {
                                                 <SelectTrigger className="bg-secondary/20 border-border">
                                                     <SelectValue placeholder="Select your role" />
                                                 </SelectTrigger>
-                                                <SelectContent>
+                                                <SelectContent className="z-[100]">
                                                     <SelectItem value="partner">Partner</SelectItem>
                                                     <SelectItem value="seller">Seller</SelectItem>
                                                     <SelectItem value="buyer">Buyer</SelectItem>
@@ -192,7 +190,7 @@ export default function QueryWidget() {
                                                 <SelectTrigger className="bg-secondary/20 border-border">
                                                     <SelectValue placeholder="Select an interest" />
                                                 </SelectTrigger>
-                                                <SelectContent>
+                                                <SelectContent className="z-[100]">
                                                     <SelectItem value="unlisted_shares">Unlisted Shares</SelectItem>
                                                     <SelectItem value="insurance">Insurance</SelectItem>
                                                     <SelectItem value="loans">Loans</SelectItem>

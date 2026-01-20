@@ -176,7 +176,7 @@ export default function PrivateMarkets() {
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
             <section className="relative overflow-hidden w-[99vw] py-20 lg:py-32">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+11.56.39.jpeg')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
@@ -200,11 +200,16 @@ export default function PrivateMarkets() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
                         >
-                            <Link href="#contact">
-                                <Button size="lg" className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all">
-                                    Request a Confidential Discussion <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
-                            </Link>
+                            <Button
+                                size="lg"
+                                className="rounded-full h-12 px-8 text-lg shadow-lg hover:shadow-xl transition-all"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Request a Confidential Discussion <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
                         </motion.div>
                     </div>
                 </div>

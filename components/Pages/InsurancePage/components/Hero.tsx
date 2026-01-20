@@ -29,7 +29,7 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden w-[99vw] py-20 lg:py-32">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+11.58.02.jpeg')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <motion.div

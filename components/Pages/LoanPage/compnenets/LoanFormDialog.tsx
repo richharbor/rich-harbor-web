@@ -19,11 +19,13 @@ import {
 import { useState } from "react"
 import { convertToHtmlForm } from "@/helpers/emailHelper"
 import { sendEmail } from "@/services/emailServices"
+import { postLead, LeadData } from "@/services/leadService"
 
 const loans = [
     { id: 'name', label: 'Full Name', type: 'text', required: true },
     { id: 'email', label: 'Email Address', type: 'email', required: true },
     { id: 'phone', label: 'Phone Number', type: 'tel', required: true },
+    { id: 'city', label: 'City', type: 'text', required: true },
     {
         id: 'loanType',
         label: 'Loan Type',
@@ -139,17 +141,25 @@ export function LoanFormDialog({ open, onOpenChange }: LoanFormDialogProps) {
             }
         }
 
-        const emailHTML = convertToHtmlForm(formData);
-        const email = {
-            to: "frontend@rhinontech.com",
-            subject: `Loan Application - ${formData.loanType || 'New Request'}`,
-            content: emailHTML,
-            isHtml: true,
+        const { name, email, phone, city, ...rest } = formData;
+
+        const leadData: LeadData = {
+            product_type: 'loan',
+            lead_type: 'self',
+            name: name,
+            email: email,
+            phone: phone,
+            city: city,
+            product_details: {
+                ...rest,
+                source: 'web'
+            }
         };
 
         try {
-            const response = await sendEmail(email);
-            if (response.status === 200) {
+            const response = await postLead(leadData);
+            console.log(response)
+            if (response) {
                 setSuccOpen(true);
                 setFormData({});
                 onOpenChange(false);
@@ -157,7 +167,7 @@ export function LoanFormDialog({ open, onOpenChange }: LoanFormDialogProps) {
                 setErrOpen(true);
             }
         } catch (error) {
-            console.error("Email send error:", error);
+            console.error("Lead submission error:", error);
             setErrOpen(true);
         } finally {
             setLoading(false);

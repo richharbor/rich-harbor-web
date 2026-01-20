@@ -11,7 +11,7 @@ const communities = [
         description: "Get exclusive access to pre-IPO opportunities and daily price updates for top unlisted companies.",
         icon: TrendingUp,
         color: "bg-blue-500/10 text-blue-600",
-        link: "https://chat.whatsapp.com/invite/placeholder1" // Placeholder link
+        link: "https://chat.whatsapp.com/GltIpxF5emI5PIwiD22VCD" // Placeholder link
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const communities = [
         description: "Stay updated on the lowest interest rates for Personal, Home, and Business loans.",
         icon: Coins,
         color: "bg-green-500/10 text-green-600",
-        link: "https://chat.whatsapp.com/invite/placeholder2"
+        link: "https://chat.whatsapp.com/KCpcv6Ic05k8dCVWNwtCY0"
     },
     {
         id: 3,
@@ -27,23 +27,7 @@ const communities = [
         description: "Expert tips on Life, Health, and General Insurance. Decode policies and find the best coverage.",
         icon: ShieldCheck,
         color: "bg-indigo-500/10 text-indigo-600",
-        link: "https://chat.whatsapp.com/invite/placeholder3"
-    },
-    {
-        id: 4,
-        name: "Startup Funding Hub",
-        description: "Connect with founders and investors. Latest news on seed rounds, Series A, and venture capital.",
-        icon: Zap,
-        color: "bg-purple-500/10 text-purple-600",
-        link: "https://chat.whatsapp.com/invite/placeholder4"
-    },
-    {
-        id: 5,
-        name: "Private Equity Circle",
-        description: "Deep dive into private equity trends, market analysis, and high-value investment strategies.",
-        icon: Building,
-        color: "bg-rose-500/10 text-rose-600",
-        link: "https://chat.whatsapp.com/invite/placeholder5"
+        link: "https://chat.whatsapp.com/Ft4ynhxP8gJEqYXd2WG7YC"
     }
 ];
 
