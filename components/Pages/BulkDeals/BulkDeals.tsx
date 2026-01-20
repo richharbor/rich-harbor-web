@@ -175,7 +175,7 @@ export default function BulkDeals() {
         <div className="min-h-screen bg-background pt-20">
             {/* Hero Section */}
             <section className="relative overflow-hidden w-[99vw] py-20 lg:py-36">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+11.55.48.jpeg')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="container px-4 md:px-6 mx-auto relative z-10">
                     <div className="max-w-4xl mx-auto text-center">

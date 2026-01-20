@@ -41,6 +41,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "richharbor.s3.us-east-1.amazonaws.com",
+      },
     ],
   },
 

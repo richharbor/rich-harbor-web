@@ -64,26 +64,11 @@ export function HeroSection() {
     const [open, setOpen] = useState(false);
 
     return (
-        <section className="pt-12 relative mt-20 z-10  pb-20 px-6 ">
-            <div className="absolute inset-0 -z-30 bg-transparent backdrop-blur-[4px]"></div>
-            <div className="max-md:hidden absolute w-48 h-fit left-32 top-10 -z-40 ">
-                <Image src='https://aicdn.picsart.com/d22f4d37-ddab-4bc8-aae5-b37197499e3f.png' alt='bg-img' width={240} height={700} />
+        <section className="relative px-6 lg:px-8 py-20 lg:py-32 md:w-[99.2vw] w-full overflow-hidden ">
+            <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+12.08.37.jpeg')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
 
-            </div>
-            <div className="max-md:hidden absolute w-60 h-fit left-72 top-72 -z-40 opacity-70">
-                <Image src='https://aicdn.picsart.com/31471774-1fb4-49db-994e-f19e2d4fb2dd.png' alt='bg-img' width={240} height={700} />
-
-            </div>
-            <div className="max-md:hidden absolute w-40 h-fit right-40 top-10 -z-40 ">
-                <Image src='https://aicdn.picsart.com/27446715-3b21-492a-9c45-d237b951974b.png' alt='bg-img' width={240} height={700} />
-
-            </div>
-            <div className="max-md:hidden absolute w-24 h-fit right-[360px] top-[350px] -z-40 ">
-                <Image src='https://aicdn.picsart.com/fe9c5e1e-fd93-4c27-be86-7b34a995ca29.png' alt='bg-img' width={240} height={700} />
-
-            </div>
-
-            <div className="max-w-7xl z-10 mx-auto text-center">
+            <div className="max-w-7xl relative z-10 mx-auto text-center">
                 {/* Announcement Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

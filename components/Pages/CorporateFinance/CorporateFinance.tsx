@@ -11,7 +11,7 @@ export default function CorporateFinance() {
         <div className="min-h-screen bg-background pt-5">
             {/* Hero Section */}
             <section className="relative px-6 lg:px-8 py-20 lg:py-32 w-[99vw] overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
+                <div className="absolute inset-0 bg-[url('https://richharbor.s3.us-east-1.amazonaws.com/WhatsApp+Image+2026-01-20+at+11.58.13.jpeg')] bg-cover bg-center opacity-20 blur-sm scale-105 pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
                 <div className="mx-auto max-w-7xl relative z-10">
                     <motion.div
