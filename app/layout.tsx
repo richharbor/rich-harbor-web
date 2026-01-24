@@ -91,7 +91,7 @@ export default function RootLayout({
             <Whatsapp />
           </div> */}
 
-          <Chatbot />
+          {/* <Chatbot /> */}
 
           <QueryWidget />
           <NewsletterPopup />
