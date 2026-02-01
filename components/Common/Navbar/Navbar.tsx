@@ -45,6 +45,7 @@ export const NAV_LINKS = [
       { name: "Corporate Finance", link: "/corporate-finance" },
     ]
   },
+  { name: "Tech Support", link: "/tech-support" },
   // { name: "About Us", link: "/#aboutus" },
   // { name: "Blogs", link: "/blogs" },
   { name: "Contact us", link: "/contactus" },

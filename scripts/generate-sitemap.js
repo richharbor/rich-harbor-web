@@ -13,7 +13,8 @@ const staticPaths = [
   '/insurance',
   '/private-markets',
   '/bulk-deals',
-  '/corporate-finance'
+  '/corporate-finance',
+  '/tech-support'
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
