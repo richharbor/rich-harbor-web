@@ -263,14 +263,14 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex rounded-b-xl absolute top-16 bg-neutral-950 inset-x-0 z-50 flex-col items-start justify-start gap-2 w-full px-4 py-8 shadow-xl shadow-neutral-950"
+              className="flex rounded-b-xl absolute top-16 bg-neutral-950 inset-x-0 z-50 flex-col items-start justify-start gap-2 w-full px-8 py-8 shadow-xl shadow-neutral-950"
             >
               <div className="w-full">
                 <Accordion type="single" collapsible className="w-full">
                   {NAV_LINKS.map((navItem, idx) => (
                     navItem.subItems ? (
                       <AccordionItem key={`nav-${idx}`} value={`item-${idx}`} className="border-b-neutral-800">
-                        <AccordionTrigger className="text-neutral-300 hover:no-underline py-3 px-2">
+                        <AccordionTrigger className="text-neutral-300 hover:no-underline py-3 px-2 text-md font-medium">
                           {navItem.name}
                         </AccordionTrigger>
                         <AccordionContent>

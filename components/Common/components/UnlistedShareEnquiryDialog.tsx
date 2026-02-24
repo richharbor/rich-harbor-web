@@ -86,7 +86,7 @@ export default function UnlistedShareEnquiryDialog({ open, onOpenChange, default
 
             await postLead(leadData);
             onOpenChange(false);
-            const whatsappUrl = `https://wa.me/919211265558`;
+            const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20enquiry%20about%20unlisted%20shares.`;
             window.open(whatsappUrl, "_blank");
 
             // Reset form but keep share name if it was passed as default

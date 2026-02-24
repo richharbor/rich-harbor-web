@@ -150,7 +150,7 @@ export default function BulkDeals() {
             const response = await postLead(leadData);
             console.log(response);
             setOpen(false);
-            const whatsappUrl = `https://wa.me/919211265558`;
+            const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query%20about%20bulk%20deals.`;
             window.open(whatsappUrl, "_blank");
             setFormData({
                 shareName: "",
