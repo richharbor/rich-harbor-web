@@ -10,8 +10,9 @@ interface QueryWidgetState {
 export const useQueryWidgetStore = create<QueryWidgetState>((set) => ({
     isOpen: false,
     open: () => {
-        const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query.`;
-        window.open(whatsappUrl, "_blank");
+        // const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query.`;
+        // window.open(whatsappUrl, "_blank");
+        set({ isOpen: true });
     },
     close: () => set({ isOpen: false }),
     toggle: () => set((state) => ({ isOpen: !state.isOpen })),
