@@ -156,7 +156,7 @@ export function PartnerForm() {
 
         try {
             const response = await sendEmail(email);
-            const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query%20about%20partnering%20with%20RichHarbor.`;
+            const whatsappUrl = `https://wa.me/919211265558?text=Hello!%20I%20have%20a%20query%20about%20partnering%20with%20RichHarbor.`;
             window.open(whatsappUrl, "_blank");
             if (response.status === 200) {
                 setSuccOpen(true);
