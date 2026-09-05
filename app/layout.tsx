@@ -85,9 +85,9 @@ export default function RootLayout({
         <Navbar />
         <div className="mx-auto items-center max-md:px-4 flex flex-col relative">
           {children}
-          {/* <div className="fixed bottom-4 left-4 z-10">
+          <div className="fixed bottom-4 right-4 z-10">
             <Whatsapp />
-          </div> */}
+          </div>
 
           {/* <Chatbot /> */}
 

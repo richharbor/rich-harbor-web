@@ -158,7 +158,7 @@ export function LoanFormDialog({ open, onOpenChange }: LoanFormDialogProps) {
 
         try {
             const response = await postLead(leadData);
-            const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query%20about%20loans.`;
+            const whatsappUrl = `https://wa.me/919211265558?text=Hello!%20I%20have%20a%20query%20about%20loans.`;
             window.open(whatsappUrl, "_blank");
             if (response) {
                 setSuccOpen(true);
