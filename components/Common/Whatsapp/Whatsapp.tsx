@@ -14,7 +14,7 @@ const Whatsapp = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const whatsappUrl = `https://wa.me/918860761007?text=Hello!%20I%20have%20a%20query.`;
+  const whatsappUrl = `https://wa.me/919211265558?text=Hello!%20I%20have%20a%20query.`;
 
   return (
     <div className="relative z-50 flex flex-col items-end">

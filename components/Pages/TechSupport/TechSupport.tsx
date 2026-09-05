@@ -510,14 +510,14 @@ export default function TechSupport() {
                             {/* Action Buttons */}
                             <div className="flex gap-3">
                                 <a
-                                    href="tel:+918860761007"
+                                    href="tel:+919211265558"
                                     className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-3 px-6 font-semibold flex items-center justify-center gap-2 transition-colors"
                                 >
                                     <Phone className="w-5 h-5" />
                                     Call Now
                                 </a>
                                 <a
-                                    href="https://wa.me/918860761007?text=Hi%2C%20I%27m%20interested%20in%20your%20tech%20support%20services"
+                                    href="https://wa.me/919211265558?text=Hi%2C%20I%27m%20interested%20in%20your%20tech%20support%20services"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 bg-green-600 hover:bg-green-700 text-white rounded-full py-3 px-6 font-semibold flex items-center justify-center gap-2 transition-colors"
