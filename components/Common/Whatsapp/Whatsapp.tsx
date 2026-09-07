@@ -29,7 +29,7 @@ const Whatsapp = () => {
           >
             <div className="relative w-8 h-8 rounded-full bg-green-100 flex items-center justify-center overflow-hidden">
               <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/640px-WhatsApp_icon.png"
+                src="/icons/whatsapp.svg"
                 alt="WhatsApp"
                 width={20}
                 height={20}
@@ -68,7 +68,7 @@ const Whatsapp = () => {
         className="block hover:scale-110 transition-transform duration-300 drop-shadow-lg"
       >
         <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/640px-WhatsApp_icon.png"
+          src="/icons/whatsapp.svg"
           alt="WhatsApp"
           width={55}
           height={55}
